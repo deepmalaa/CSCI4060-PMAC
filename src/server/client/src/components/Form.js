@@ -25,7 +25,8 @@ const Form = () => {
                 
             }
             const body = JSON.stringify(newUser);
-            const res = await axios.post('http://localhost:5002/api/users', body, config);
+            //const res = await axios.post('http://localhost:5002/api/users', body, config);
+            const res = await axios.post('http://18.209.133.89:5002/api/users', body, config);
             console.log(res.data);
         } catch (err) {
             console.error(err.response.data);

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+
+<!-- 
+=======================================================================
+Document:         CSCI3030-43896-224_ICE30.html
+Author:           YOUR_NAME_HERE
+Student Number:   YOUR_STUDENT_CWID_HERE
+Organization:     The University of Louisiana at Monroe
+Class:            CLASS, SEMESTER, YEAR
+Assignment:       Assignemnt XX
+Due Date:         MONTH, DAY, YEAR
+
+Description:      This document displays ...
+
+Honor Statement:  My signature below attests to the fact that I have
+                  neither given nor received aid on this project.
+
+
+X _____________________________________________________________________
+
+
+=======================================================================
+-->
+
+<head>
+
+<title>DOCUMENT_TITLE_HERE</title>
+
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="description" content="DESCRIPTION_HERE" />
+<meta name="keywords" content="KEYWORDS,SEPARATED,BY,COMMAS,HERE" />
+<meta name="author" content="YOUR_NAME_HERE" />
+<meta name="revised" content="DATE_HERE" />
+
+<script type="text/JavaScript">
+<!--
+
+function changeMove()
+{
+
+	var img1 = document.getElementById("dog");
+	
+	var myBorderColor = img1.style.borderColor;
+	
+	
+	if(myBorderColor == "blue")
+	{
+		img1.setAttribute("style", "border-style: dotted; border-width: .25em; border-color: red; background-color: lightgrey; position: absolute; top:0px; right:0px;"); 
+		img1.src = "imageCat.png";
+	}
+	else if(myBorderColor == "red")
+	{
+		img1.setAttribute("style", "border-style: dashed; border-width: .25em; border-color: green; background-color: lightblue; position: absolute; bottom:0px; right:0px;"); 
+		img1.src = "imageBird.png";
+	}
+	else if(myBorderColor == "green")
+	{
+		img1.setAttribute("style", "border-style: inset; border-width: .25em; border-color: black; background-color: lightpink; position: absolute; bottom:0px; left:0px;"); 
+		img1.src = "imageFish.png";
+
+	}
+	else
+	{
+		img1.setAttribute("style", "border-style:solid; border-width:0.25em; border-color:blue; position:absolute; top:0px; left:0px"); 
+		img1.src = "imageDog.png";
+	}
+
+
+} // end changeMove()
+
+// -->
+
+</script>
+
+</head>
+
+<body style="background-color:lightgreen">
+
+<div>
+
+<img onmouseover="changeMove()" id="dog"
+	 src="imageDog.png" 
+     alt="My Dog" 
+	 height="300px" 
+     style="border-style:solid; border-width:0.25em; border-color:blue; position:absolute; top:0px; left:0px"  
+/>
+
+
+</div>
+
+</body>
+
+</html>

@@ -31,7 +31,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     //redirect if loggedin
     if(isAuthenticated){
-        return <Navigate to ="/dashboard" />
+        return <Navigate to ="/createProfile" />
       }
 
   return (

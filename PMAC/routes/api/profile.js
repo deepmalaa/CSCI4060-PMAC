@@ -6,7 +6,7 @@ const request = require('request');
 const config = require('config');
 
 const Profile = require('../../models/Profile');
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 // @route   GET api/profile/me
 // @desc    Get current user profile

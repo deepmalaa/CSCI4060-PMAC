@@ -12,10 +12,11 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         name: '',
         email: '',
         password: '',
-        password2: ''
+        password2: '',
+        type: ''
     });
 
-    const{name,email,password,password2} = formData;
+    const{name,email,password,password2, type} = formData;
 
     const onChange = e =>setFormData({...formData, [e.target.name]:e.target.value});
 
@@ -25,7 +26,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
            setAlert('Passwords do not match', 'danger');
         }
         else{
-            register({ name, email, password });
+            register({ name, email, password, type });
         }
     }
 
@@ -65,7 +66,14 @@ const Register = ({setAlert, register, isAuthenticated}) => {
             minLength={8}
             value ={password2} onChange={e=> onChange(e)} 
           />
-        </div>
+        </div >
+        <div className="form-group">
+        <select name="type" required onChange={e=> onChange(e)}>
+    <option value="Student">Student</option>
+    <option value="Faculty">Faculty</option>
+    <option value="Committe">Commitee Member</option>
+    </select>
+    </div>
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const {check, validationResult} = require('express-validator');
 
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 // @route   POST api/users
 // @desc    Register user
@@ -22,7 +22,7 @@ async (req,res) => {
         return res.status(400).json({errors: errors.array()});
     }
 
-    const {name, email, password} = req.body;
+    const {name, email, password, type} = req.body;
 
     try{
         //see if the user exists
@@ -34,7 +34,8 @@ async (req,res) => {
         user = new User({
             name,
             email,
-            password
+            password,
+            type
         });
 
         //encrypt password

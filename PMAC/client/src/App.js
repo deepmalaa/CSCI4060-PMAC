@@ -6,6 +6,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import CreateProfile from './pages/CreateProfile';
+import Student from './pages/student';
 
 
 //Redux
@@ -43,6 +44,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/createProfile" element={<CreateProfile />} />
+      <Route path="/student" element={<Student /> } />
       </Routes>
     </section>
     </Fragment>

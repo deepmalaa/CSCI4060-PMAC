@@ -1,22 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-//import ulmLogo from 'images./ulmLogo.png'
-import '../styles/student.css';
+import ulmLogo from '../img/ulmLogo.png';
+import studentCSS from '../styles/student.module.css';
 
 const elementOne = <h1> PMAC SITE </h1>
 
 function FormOne() {
     return (
-        <div className="App"> 
-            <header className="App-header">
-                <h1> University of Louisiana at Monroe</h1>
+        <body className={studentCSS.App}>
+            <span className={studentCSS.Logo}>
+                <img src={ulmLogo} alt="ULM Logo" height={200} width={200} />
+            </span>
+
+            <header className={studentCSS.Header}>
                 <h3> Pre-Medical Advisory Committee - Student View</h3>
             </header>
-            {/*<img src={ulmLogo} alt="ULM Logo" height={200} width={200 } />*/}
 
-           
+            <div className={studentCSS.navBar}>
+                
+            </div>
 
-        </div>
+            <div className={studentCSS.footer}>
+                <a href="https://www.ulm.edu/" >@ The University of Louisiana Monroe</a>
+            </div>
+
+        </body>
+       
     )
 }
 

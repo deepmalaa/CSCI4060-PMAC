@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import ulmLogo from '../img/ulmLogo.png';
 import studentCSS from '../styles/student.module.css';
 
-const elementOne = <h1> PMAC SITE </h1>
 
 function FormOne() {
     return (
         <body className={studentCSS.App}>
+
+            <div className={studentCSS.topBar}>
+                <a href="#">Apply Now </a>
+                <a href="#">Application Status </a>
+                <a href="#">Practice Interview</a>
+            </div>
+
+
             <span className={studentCSS.Logo}>
                 <img src={ulmLogo} alt="ULM Logo" height={200} width={200} />
             </span>
@@ -15,6 +22,7 @@ function FormOne() {
             <header className={studentCSS.Header}>
                 <h3> Pre-Medical Advisory Committee - Student View</h3>
             </header>
+
 
             <div className={studentCSS.navBar}>
                 

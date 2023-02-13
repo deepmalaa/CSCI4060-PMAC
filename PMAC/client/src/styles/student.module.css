@@ -3,18 +3,17 @@
     background-color : grey;
     margin : 0;
     width : 100%;
-    height : 100%;
+    height : 150%;
     position : absolute;
     left : 0;
 }
 
-body {
-    background-color : grey;
-}
 
 .Header {
     background-color : #840029;
     color: white;
+    position : relative;
+    top:22px;
 }
 
     .Header h3 {
@@ -34,6 +33,8 @@ body {
     left : 0;
     right: 0;
     text-align : center;
+    position : relative;
+    top : 22px;
 }
 
     .Logo img {
@@ -79,6 +80,20 @@ body {
     bottom : 20%;
     left : 8px;
 }
+
+.topBar {
+    background-color: white;
+    text-align : center;
+    overflow : hidden;
+    position : fixed;
+    width : 100%;
+    z-index : 1;
+}
+
+    .topBar a {
+        color : #840029;
+        margin : 10px;
+    }
 
 .app-button {
     position: absolute;

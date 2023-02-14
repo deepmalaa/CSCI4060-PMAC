@@ -3,6 +3,8 @@ import {Link, Navigate} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
+import jwt from 'jwt-decode';
+
 
 const Login = ({login, isAuthenticated}) => {
     const [formData, setFormData] =useState({
@@ -25,7 +27,12 @@ const Login = ({login, isAuthenticated}) => {
 
     //redirect if loggedin
     if(isAuthenticated){
-      return <Navigate to ="/dashboard" />
+      const user = jwt(localStorage.token);
+      console.log(user.role);
+      if(user.user.role === "Student")
+        return <Navigate to ="/dashboardStudent" />
+      if(user.user.role === "Faculty")
+        return <Navigate to ="/dashboardFaculty" />
     }
 
   return (

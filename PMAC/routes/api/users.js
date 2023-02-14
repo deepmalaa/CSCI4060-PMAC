@@ -48,7 +48,8 @@ async (req,res) => {
         //return jsonwebtoken for user to be logged in as soon as registering
         const payload = {
             user: {
-                id : user.id
+                id : user.id,
+                role: user.type
             }
         }
 

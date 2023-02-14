@@ -7,6 +7,9 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import CreateProfile from './pages/CreateProfile';
 import FacultyLanding from './pages/FacultyLanding';
+import StudentLanding from './pages/StudentLanding';
+import PrivateRoute from './components/auth/PrivateRoute';
+
 
 //Redux
 import { Provider } from 'react-redux';
@@ -35,15 +38,21 @@ const App = () => {
 
     <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/createProfile" element={<CreateProfile/>} />
+        <Route path="/dashboardFaculty" element={<FacultyLanding />} />
+        <Route path="/dashboardStudent" element={<StudentLanding />} />
+        
     </Routes>
     
     <section className="container">
       { <Alert /> }
       <Routes>  
+      
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/createProfile" element={<CreateProfile />} />
-      <Route path="/FacultyLanding" element={<FacultyLanding />} />
+      
+      
+      
       </Routes>
     </section>
     </Fragment>

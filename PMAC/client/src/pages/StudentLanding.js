@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ulmLogo from '../img/ulmLogo.png';
+import ulmLogo from '../img/showcase.jpeg';
 import studentCSS from '../styles/student.module.css';
 
 
-function FormOne() {
+function StudentLanding() {
     return (
         <body className={studentCSS.App}>
 
@@ -38,5 +38,5 @@ function FormOne() {
 }
 
 
-export default FormOne;
+export default StudentLanding;
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import {setAlert} from './alert';
+import api from '../utils/api';
 import{
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -33,16 +34,10 @@ export const loadUser = () => async dispatch => {
 }
 
 //Register USer
-export const register = ({name, email, password, type}) => async dispatch =>{
-    const config ={
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    }
+export const register = (formData) => async dispatch =>{
 
-    const body = JSON.stringify({name,email,password, type});
     try {
-        const res = await axios.post('api/users', body, config);
+        const res = await api.post('/users', formData);
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data

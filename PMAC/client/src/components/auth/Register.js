@@ -4,6 +4,7 @@ import {Link, Navigate} from 'react-router-dom';
 import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 import propTypes from 'prop-types';
+import jwt from 'jwt-decode';
 
 
 
@@ -32,13 +33,23 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     //redirect if loggedin
     if(isAuthenticated){
-        return <Navigate to ="/createProfile" />
+      const user = jwt(localStorage.token);
+      console.log(user.role);
+    
+      if(user.user.role === "Faculty")
+        return <Navigate to ="/dashboardFaculty" />
+
+
+      return <Navigate to ="/createProfile" />
       }
+
+    
 
   return (
     <Fragment>
         <h1 className="large text-primary">Sign Up</h1>
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+      
       <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
           <input type="text" placeholder="Name" name="name" value ={name} onChange={e=> onChange(e)} required />

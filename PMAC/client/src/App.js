@@ -39,8 +39,8 @@ const App = () => {
     <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/createProfile" element={<CreateProfile/>} />
-        <Route path="/dashboardFaculty" element={<FacultyLanding />} />
-        <Route path="/dashboardStudent" element={<StudentLanding />} />
+        <Route path="/dashboardFaculty" element={<PrivateRoute component ={FacultyLanding} />} />
+        <Route path="/dashboardStudent" element={<PrivateRoute component ={StudentLanding} />} />
         
     </Routes>
     

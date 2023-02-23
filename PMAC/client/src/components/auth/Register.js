@@ -79,7 +79,8 @@ const Register = ({setAlert, register, isAuthenticated}) => {
           />
         </div >
         <div className="form-group">
-        <select name="type" required onChange={e=> onChange(e)}>
+        <select name="type" placeholder="Choose a role" required onChange={e=> onChange(e)}>
+          <option value="">Select role</option>
     <option value="Student">Student</option>
     <option value="Faculty">Faculty</option>
     <option value="Committe">Commitee Member</option>

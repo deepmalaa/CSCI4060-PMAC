@@ -182,6 +182,7 @@ img {
 .alert-dark {
   background: var(--dark-color);
   color: #fff;
+  height: 6%; 
 }
 
 .btn-danger,

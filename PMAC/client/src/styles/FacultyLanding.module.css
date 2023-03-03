@@ -25,9 +25,7 @@ body {
 }
 
 .bottomPage img {
-    
-    height: 100%;
-    
+    width: 50%;
     display: block;
     position: absolute;
     left: 25%;
@@ -55,6 +53,15 @@ body {
     color: white;
     margin: 20px; 
 
+}
+
+.home {
+    position: absolute;
+    left : 0%;
+    width : 10%;
+    top : 30%;
+    font-size : 20px;
+    color : yellow;
 }
 
 .anything { 

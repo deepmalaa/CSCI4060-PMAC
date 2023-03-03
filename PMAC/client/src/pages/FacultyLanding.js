@@ -7,9 +7,15 @@ function FormOne() {
     return (     
         <body>
             <div className={s.anything}>
-                <div class={s.navbar}>
+
+                
+                <div class={s.navbar}>  
+                    <div className={s.home}>
+                        <a href="/dashboardFaculty">HOME</a>
+                    </div>
                     <p>
-                        <a href="#">Submitted Letters</a>
+                        <a href="/FacultyLetter">Letter Submission</a>
+                        <a href="/FacultyAdvisoryForm">Pre-Med Advisory Form</a>
                         <a href="#">Pending Requests</a>
                         <a href="#">User Account</a>
                         <a href="#">Settings</a>

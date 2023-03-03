@@ -7,7 +7,6 @@ function FormOne() {
     return (     
         <body>
             <div className={s.anything}>
-
                 <div class={s.navbar}>
                     <p>
                         <a href="#">Submitted Letters</a>

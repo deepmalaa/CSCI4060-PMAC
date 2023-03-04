@@ -15,7 +15,7 @@ function FormOne() {
                     </div>
                     <p>
                         <a href="/FacultyLetter">Letter Submission</a>
-                        <a href="/FacultyAdvisoryForm">Pre-Med Advisory Form</a>
+                        <a href="/FacultyAdvisoryForm">Faculty Form</a>
                         <a href="#">Pending Requests</a>
                         <a href="#">User Account</a>
                         <a href="#">Settings</a>

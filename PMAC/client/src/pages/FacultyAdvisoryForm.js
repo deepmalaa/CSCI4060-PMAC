@@ -1,18 +1,29 @@
 import React from 'react';
 
-import CSS from '../styles/facultyadvisory.css';
+import CSS from '../styles/facultyadvisory.module.css';
 
 
 function FacultyAdvisoryForm() {
     return (
         <body className={CSS.body}>
-            <div className={CSS.home}>
-                <a href="/dashboardFaculty">HOME</a>
+
+
+            <div class={CSS.navbar}>  
+                <div className={CSS.home}>
+                    <a href="/dashboardFaculty">HOME</a>
+                </div>
+                <p>
+                    <a href="/FacultyLetter">Letter Submission</a>
+                    <a href="/FacultyAdvisoryForm">Faculty Form</a>
+                    <a href="#">Pending Requests</a>
+                    <a href="#">User Account</a>
+                    <a href="#">Settings</a>
+                </p>
             </div>
-            <h1 className={CSS.h1}>Pre-Medical Advisory Form</h1>
+            <h1 className={CSS.h1}>Faculty Recommendation Form</h1>
             <form>
 
-                <label for="name_applicant">Name of Applicant:</label>
+                <label for="name_applicant">Name of Applicant (Student):</label>
                 <input type="text" id="name_applicant" name="name_applicant"/>
                 <label for="name_evaluator">Name of Evaluator:</label>
                 <input type="text" id="name_evaluator" name="name_evaluator"/>
@@ -125,6 +136,9 @@ function FacultyAdvisoryForm() {
 
                 <button type="submit">Submit</button>
             </form>
+            <div className={CSS.foot}>
+                <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+            </div>
         </body>
     )
 }

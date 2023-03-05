@@ -1,7 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {connect} from 'react-redux';
+import {Link, Navigate} from 'react-router-dom';
+import {setAlert} from '../actions/alert';
+import {applicantRelease} from '../actions/applicantRelease';
+import propTypes from 'prop-types';
 import s from '../styles/ApplicantInformation.module.css';
 
-function Form1() {
+
+const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [formData, setFormData] = useState({
+        authorize:"",
+        evaluate:"",
+        name_release:"",
+        name:"",
+        cwid:"",
+        signature:"",
+        date:""
+    });
+
+    const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
+    const onSubmit = async (e) =>{
+        e.preventDefault();
+        applicantRelease(formData);
+        setIsSubmitted(true);
+      }
+
+      if(isSubmitted){
+        return <Navigate to ="/dashboardStudent" />
+        }
+
     return (      
         <body>
             <div className={s.body}>
@@ -18,7 +46,8 @@ function Form1() {
 
                         <p>Please check the box for all that you agree to:</p>
                     </div>
-                    <form className={s.form}>
+                    <form onSubmit={e => onSubmit(e)} className={s.form} onChange={e=> onChange(e)}
+          required>
                     <label>
                         <input type="checkbox" name="authorize" value="true"/>
                         I hereby authorize the Pre-Medical Advisory Committee of the University of Louisiana at Monroe
@@ -26,7 +55,8 @@ function Form1() {
                     </label>
 
                     <label>
-                        <input type="checkbox" name="evaluate" value="true"/>
+                        <input type="checkbox" name="evaluate" value="true" onChange={e=> onChange(e)}
+          required/>
                                     I will allow the committee members to evaluate my performance based on my academic record,
                         submitted materials, and the committee interview. I authorize the committee to prepare an evaluation
                         letter for me for the purposes of applying to the professional schools and/or programs listed below. I
@@ -35,7 +65,8 @@ function Form1() {
                     </label>
 
                     <label>
-                        <input type="checkbox" name="name_release" value="true"/>
+                        <input type="checkbox" name="name_release" value="true" onChange={e=> onChange(e)}
+          required/>
                             I will allow my name to be released to the University if accepted to a professional school. The
                             University may use my name and the name of the professional school/ and or program for statistics and
                             recruitment endeavors. These statistics will be gathered for the Biology Program, Pre-Medical Interview
@@ -43,10 +74,14 @@ function Form1() {
                     </label>
 
                     <label>
-                        Name (Print): <input type="text" name="name"/>
-                        CWID Number: <input type="text" name="cwid"/>
-                        Signature: <input type="text" name="signature"/>
-                        Date: <input type="text" name="date"/>
+                        Name (Print): <input type="text" name="name" value={formData.name} onChange={e=> onChange(e)}
+          required/>
+                        CWID Number: <input type="text" name="cwid" value={formData.cwid} onChange={e=> onChange(e)}
+          required/>
+                        Signature: <input type="text" name="signature" value={formData.signature} onChange={e=> onChange(e)}
+          required/>
+                        Date: <input type="text" name="date" value={formData.date} onChange={e=> onChange(e)}
+          required/>
                     </label>
 
 
@@ -102,10 +137,26 @@ function Form1() {
                     <input type="text" id="deadline6" name="deadline6"/>
                 </div>
 
+                <div className='app-submit'>
+        <button type="submit" style={{ fontSize: 20, width: 150, height: 50 }}>
+          Submit
+        </button>
+      </div>
+
             </form>
             </div>
         </body>
         )
-    }
+    };
+
+    ApplicantInformation.propTypes ={
+        setAlert: propTypes.func.isRequired,
+        applicantRelease:propTypes.func.isRequired,
+        isAuthenticated: propTypes.bool
+      }
+
+    const mapStateToProps = (state) => ({
+        isAuthenticated: state.auth.isAuthenticated
+      });
     
-    export default Form1;        
+      export default connect(mapStateToProps, {setAlert, applicantRelease})(ApplicantInformation);

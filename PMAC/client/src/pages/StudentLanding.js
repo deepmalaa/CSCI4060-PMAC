@@ -13,7 +13,7 @@ function StudentLanding() {
                 <a href="#">Application Status </a>
                 <a href="#">Practice Interview</a>
                 <a href="/ApplicantInformation"> Applicant Form</a>
-                <a href="/ApplicantInformationRelease"> Waiver Form</a>
+                <a href="/ApplicantRelease"> Waiver Form</a>
             </div>
 
 

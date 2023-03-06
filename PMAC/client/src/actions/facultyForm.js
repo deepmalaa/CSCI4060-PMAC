@@ -1,13 +1,14 @@
 import axios from 'axios';
 import {setAlert} from './alert';
-import {GET_PROFILE} from './types';
+import {USER_LOADED} from './types';
+import api from '../utils/api';
 
 export const facultyForm = (formData) =>
 async(dispatch) => {
     
     const config = {
         headers:{
-            'Content-Type': 'faculty/json'
+            'Content-Type': 'application/json'
         }
     }
     const body = JSON.stringify(formData);
@@ -16,7 +17,7 @@ async(dispatch) => {
         const res = await axios.post('api/faculty', body, config);
 
         dispatch({
-            type: GET_PROFILE,
+            type: USER_LOADED,
             payload: res.data
         });
 

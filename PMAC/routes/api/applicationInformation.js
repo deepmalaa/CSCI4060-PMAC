@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth');
 const {check, validationResult} = require('express-validator');
 
 
-const ApplicationInformation = require('../../models/ApplicationInformation');
+const ApplicationInformation = require('../../models/ApplicantInformation');
 
 
 // @route   POST api/apprelease

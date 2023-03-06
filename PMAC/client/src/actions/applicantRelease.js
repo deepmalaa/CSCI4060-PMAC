@@ -2,6 +2,7 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import { GET_PROFILE } from './types';
 
+
 export const applicantRelease = (formData) =>
 async (dispatch) => {
 

@@ -8,9 +8,12 @@ import Alert from './components/layout/Alert';
 import CreateProfile from './pages/CreateProfile';
 import FacultyLanding from './pages/FacultyLanding';
 import StudentLanding from './pages/StudentLanding';
+import UploadPicture from './pages/UploadPicture';
+import ApplicantInformationRelease from './pages/ApplicantInformationRelease';
 import PrivateRoute from './components/auth/PrivateRoute';
 import ApplicantInformation from './pages/ApplicantInformation';
-import ApplicantInformationRelease from './pages/ApplicantInformationRelease';
+import FacultyAdvisoryForm from './pages/FacultyAdvisoryForm';
+
 
 //Redux
 import { Provider } from 'react-redux';
@@ -19,6 +22,7 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 import './styles/App.css';
+
 
 
 if(localStorage.token){
@@ -42,8 +46,10 @@ const App = () => {
         <Route path="/createProfile" element={<CreateProfile/>} />
         <Route path="/dashboardFaculty" element={<PrivateRoute component ={FacultyLanding} />} />
         <Route path="/dashboardStudent" element={<PrivateRoute component ={StudentLanding} />} />
+        <Route path="/applicantRelease" element={<ApplicantInformationRelease/>} />
+        
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
-        <Route path="/ApplicantInformationRelease" element={<ApplicantInformationRelease/>} />
+        <Route path="/facultyForm" element={<FacultyAdvisoryForm/>} />
     </Routes>
     
     <section className="container">
@@ -54,7 +60,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       
       
-      
+      <Route path="/test" element={<UploadPicture/>} />
       </Routes>
     </section>
     </Fragment>

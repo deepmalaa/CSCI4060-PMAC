@@ -23,7 +23,8 @@ app.use('/api/apprelease', require('./routes/api/applicationInformationRelease')
 app.use('/api/appInfo', require('./routes/api/applicationInformation'));
 
 
-app.use('/api/faculty', require('.routes/api/faculty'));
+app.use('/api/faculty', require('./routes/api/faculty'));
+
 
 
 //look for env variable called PORT

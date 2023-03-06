@@ -34,8 +34,7 @@ const ApplicationReleaseSchema = new mongoose.Schema({
         
     },
     date: {
-        type: Date,
-        default: Date.now
+        type: String,
     },
     school1:{
         type: String,

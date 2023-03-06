@@ -19,6 +19,7 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/photo', require('./routes/api/photo'));
 app.use('/api/apprelease', require('./routes/api/applicationInformationRelease'));
+app.use('/api/appInfo', require('./routes/api/applicationInformation'));
 
 
 //look for env variable called PORT

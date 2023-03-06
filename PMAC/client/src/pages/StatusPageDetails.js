@@ -1,5 +1,5 @@
 import React from 'react';
-import './CSCI4060-PMAC/PMAC/client/src/pages/App.css';
+import '../styles/StatusPage.css';
 
 function Details({ application }) {
 

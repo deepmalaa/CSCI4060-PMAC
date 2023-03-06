@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CSCI4060-PMAC/PMAC/client/src/pages/App.css';
+import '../styles/StatusPage.css';
 
 //Calendar function for Accepted application
 function Calendar(props) {

@@ -13,6 +13,7 @@ import ApplicantInformationRelease from './pages/ApplicantInformationRelease';
 import PrivateRoute from './components/auth/PrivateRoute';
 import ApplicantInformation from './pages/ApplicantInformation';
 import FacultyAdvisoryForm from './pages/FacultyAdvisoryForm';
+import StatusPage from './pages/StatusPage';
 
 
 //Redux
@@ -50,6 +51,7 @@ const App = () => {
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/facultyForm" element={<FacultyAdvisoryForm/>} />
+        <Route path="/statusPage" element={<StatusPage/>} />
     </Routes>
     
     <section className="container">

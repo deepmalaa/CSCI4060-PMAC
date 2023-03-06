@@ -1,13 +1,14 @@
- import ApplicationSelector from './CSCI4060-PMAC/PMAC/client/src/pages/ApplicationSelector';
-  import hawk from './CSCI4060-PMAC/PMAC/client/src/img/Hawk.mp4';
-  import './App.css';
-  import allopathicIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/twosnakes.png';
-  import osteopathicIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/onesnake.png';
-  import physicianAssistantIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/physician.png';
-  import dentalIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/tooth.png';
-  import otherIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/other.png';
-  import Calendar from './CSCI4060-PMAC/PMAC/client/src/pages/Calendar';
-  import Details from './CSCI4060-PMAC/PMAC/client/src/pages/Details';
+  import React, { useState } from 'react';
+  import ApplicationSelector from './ApplicationSelector';
+  import hawk from '../img/Hawk.mp4';
+  import '../styles/StatusPage.css';
+  import allopathicIcon from '../img/StatusPageIcons/twosnakes.png';
+  import osteopathicIcon from '../img/StatusPageIcons/onesnake.png';
+  import physicianAssistantIcon from '../img/StatusPageIcons/physician.png';
+  import dentalIcon from '../img/StatusPageIcons/tooth.png';
+  import otherIcon from '../img/StatusPageIcons/other.png';
+  import Calendar from './Calendar';
+  import Details from './StatusPageDetails';
 
   //Days of the week
   const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];

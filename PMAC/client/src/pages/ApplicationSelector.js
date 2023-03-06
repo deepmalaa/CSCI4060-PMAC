@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import './App.css';
+import '././CSCI4060-PMAC/PMAC/client/src/pages/App.css';
 
 function ApplicationSelector(props) {
  

@@ -1,14 +1,13 @@
-  import React, { useState} from 'react';
-  import ApplicationSelector from './ApplicationSelector';
-  import hawk from './component/video/Hawk.mp4';
+ import ApplicationSelector from './CSCI4060-PMAC/PMAC/client/src/pages/ApplicationSelector';
+  import hawk from './CSCI4060-PMAC/PMAC/client/src/img/Hawk.mp4';
   import './App.css';
-  import allopathicIcon from './component/video/twosnakes.png';
-  import osteopathicIcon from './component/video/onesnake.png';
-  import physicianAssistantIcon from './component/video/physician.png';
-  import dentalIcon from './component/video/tooth.png';
-  import otherIcon from './component/video/other.png';
-  import Calendar from './Calendar';
-  import Details from './Details';
+  import allopathicIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/twosnakes.png';
+  import osteopathicIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/onesnake.png';
+  import physicianAssistantIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/physician.png';
+  import dentalIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/tooth.png';
+  import otherIcon from './CSCI4060-PMAC/PMAC/client/src/img/StatusPageIcons/other.png';
+  import Calendar from './CSCI4060-PMAC/PMAC/client/src/pages/Calendar';
+  import Details from './CSCI4060-PMAC/PMAC/client/src/pages/Details';
 
   //Days of the week
   const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];

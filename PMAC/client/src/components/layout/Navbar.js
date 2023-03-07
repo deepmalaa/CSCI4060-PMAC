@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {logout} from '../../actions/auth';
 
+import '../../styles/App.css';
+
 const Navbar = ({auth:{isAuthenticated, loading}, logout}) => {
 const authLinks=(
   <ul>

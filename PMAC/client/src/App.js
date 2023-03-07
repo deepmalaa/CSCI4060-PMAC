@@ -8,7 +8,7 @@ import Alert from './components/layout/Alert';
 import CreateProfile from './pages/CreateProfile';
 import FacultyLanding from './pages/FacultyLanding';
 import StudentLanding from './pages/StudentLanding';
-import UploadPicture from './pages/UploadPicture';
+import UploadPicture from './pages/Test';
 import ApplicantInformationRelease from './pages/ApplicantInformationRelease';
 import PrivateRoute from './components/auth/PrivateRoute';
 import ApplicantInformation from './pages/ApplicantInformation';

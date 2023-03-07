@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import '../../styles/CheckList.css'
 
@@ -134,7 +135,8 @@ function CheckList() {
             </div>
             
       </div>
-      <p>{`${clickedCount} of 8 completed`}</p>
+      <p className='text1'>{`${clickedCount} of 8 completed`}</p>
+      
       <div><ProgressBar striped variant="success" now = {clickedCount * 12.5} /></div>
     </div>
   );

@@ -157,22 +157,6 @@
     margin-left: 1px;
     margin-top: 2px;
   }
-
-  .cont{
-    margin-top: 3px;
-    height: 5px;
-    width: 5px;
-    margin-left: 2px;
-    border-radius: 50%;
-    border: 10px solid #CCCCCC;
-    margin-right: 2px;
-  }
-  .cont2{
-    margin-top: 3px;
-    height: 5px;
-    width: 5px;
-    margin-left: 2px;
-    border-radius: 50%;
-    border: 10px solid #50C878;
-    margin-right: 2px;
+  .text1{
+    text-align: center;
   }

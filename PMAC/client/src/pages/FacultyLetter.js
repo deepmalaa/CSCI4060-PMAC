@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import myCSS from '../styles/facultyletter.module.css';
 import filePic from '../img/FileUpload/fileSubmit.png';
-import facultyForm from '../img/pdf/FacultyForm.pdf';
 
 
 function FacultyLetter() {
@@ -41,11 +40,9 @@ function FacultyLetter() {
                     (a student) is in the process of applying to a pre-health professional program. 
                     The applicant has asked to be interviewed by ULM's Pre-Medical Advisory Committee.
                     The information you provide will be used only in the admissions/evalutation process. Please complete
-                    the Faculty Recommendation Form and submit it in the provided box. OR you can submit it as an online form. 
-                    At the top of the page, CLICK on Faculty Form to fill it out now.
+                    the <a href="/FacultyRecommendationForm">Faculty Recommendation Form</a> and submit it in the provided box. OR you can submit it as an online form. <a href="/FacultyAdvisoryForm">CLICK HERE</a> to fill it out now.
                 </div>
 
-            <iframe className={myCSS.thePage} src={facultyForm} />
 
                 
 

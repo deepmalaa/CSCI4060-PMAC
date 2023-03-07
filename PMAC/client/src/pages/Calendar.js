@@ -7,13 +7,10 @@ function Calendar(props) {
   const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   const timeSlots = [    
     "8:00am - 9:30am",    
-    "9:30am - 10:30am",    
-    "10:30am - 11:30am",    
-    "11:30am - 12:30pm",    
-    "12:30pm - 1:30pm",    
-    "1:30pm - 2:30pm",    
-    "2:30pm - 3:30pm",    
-    "3:30pm - 4:30pm",  
+    "10:00am - 11:30am",    
+    "12:00am - 1:30pm",    
+    "2:00am - 3:30pm",    
+    "4:00pm - 5:30pm",      
   ];
 
   //2D array to hold the state of each checkbox
@@ -93,7 +90,7 @@ function Calendar(props) {
         //Time slots for interview
         return (
           <tr key={timeSlot}>
-            <td style={{height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'center', color:'white', backgroundColor:'dimgrey'}}>
+            <td style={{fontSize:'12pt',height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'center', color:'white', backgroundColor:'dimgrey'}}>
               {timeSlot}
             </td>
             {cells}
@@ -103,9 +100,9 @@ function Calendar(props) {
 
       //Displays calandar
       return (
-        <div style={{display: 'flex', justifyContent: 'center', position:'relative', top:'-50px', right:'30%', textAlign: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'center', position:'absolute', right:'40%', textAlign: 'center'}}>
           {!formSubmitted && (
-            <form onSubmit={handleSubmit}>
+            <form style={{backgroundColor: 'grey'}} onSubmit={handleSubmit}>
               <table style={{backgroundColor: 'grey'}}>
                 <thead style={{border: '1px solid'}}>
                   <tr style={{backgroundColor:'grey', color:'white'}}>
@@ -119,18 +116,18 @@ function Calendar(props) {
                     ))}
                   </tr>
                 </thead>
-                <tbody style={{margin:'60px'}}>
+                <tbody>
                   {rows}
                 </tbody>
               </table>
-              <div style={{marginTop: '20px'}}>
-                <button style={{ transform: 'scale(2)', backgroundColor: 'grey'}} type="submit">Submit</button>
+              <div style={{marginTop: '20px', marginLeft:'400px'}}>
+                <button style={{ transform: 'scale(2)'}} type="submit">Submit</button>
               </div>
             </form>
           )}
-          {formSubmitted && (
-            <div style={{position:'relative', backgroundColor:'grey'}}>
-              <p>Selected options: {selectedOptions.join(", ")}</p>
+           {formSubmitted && (
+            <div style={{position:'relative', fontSize:'24pt', marginTop: '100px', marginLeft:'550px'}}>
+              <p>Your selections have been saved</p>
             </div>
           )}
         </div>

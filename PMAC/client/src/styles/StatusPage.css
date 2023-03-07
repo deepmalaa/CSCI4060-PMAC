@@ -4,7 +4,7 @@
   position: absolute;
   width: 100%;
   height: 3in;
-  top: 45px;
+  top: 40px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -25,15 +25,19 @@
 
 
 .App-background {
+  width: 100%;
+  top: 1in;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  object-fit: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: grey;
-  border: solid rgb(51, 51, 51) 2cm;
-  min-height: 150vh;
+  min-height: 175vh;
   font-size: 16pt;
-  color: white;
 }
 
 
@@ -41,7 +45,7 @@
   background-color: rgba(0, 0, 0, 0); /* black with 0 opacity */
   border-color: rgba(0, 0, 0, 0); /* black with 0 opacity */
   position: absolute;
-  top: 75px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   background-position-x: 50%;
@@ -69,39 +73,6 @@
   margin-top: auto;
   margin: 0.5in 20% 0;
   color: black;
-}
-
-.app-left {
-  position: absolute;
-  float: left;
-  margin: 2.5in 0 20px 10%;
-  justify-content: left;
-  align-items: left;
-  font-size: 16pt;
-  text-align: left;
-}
-
-.app-right {
-  float: right;
-  margin: 20px 15% 20px 0;
-  justify-content: left;
-  align-items: left;
-  font-size: 16pt;
-  text-align: left;
-}
-
-.app-border {
-  border-bottom: solid white 1cm;
-}
-
-.app-note {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 10vh;
-  text-align: center;
-  font-size: 16pt;
 }
 
 .calendar {
@@ -144,6 +115,7 @@
   
   
 .application-container-style {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   gap: 35px;
@@ -172,6 +144,8 @@
 }
 
 .details-container {
+  margin-top: 75px;
+  min-height: max-content;
   background-color: #fff;
   border-radius: 45px;
   padding: 20px;
@@ -209,3 +183,14 @@
   margin-bottom: 5px;
 }
 
+.month-table td {
+  border: 1px solid #ccc;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.month-table td.selected {
+  background-color: #008000;
+  color: #fff;
+}

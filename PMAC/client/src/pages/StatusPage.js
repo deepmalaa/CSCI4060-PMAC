@@ -29,7 +29,7 @@
         title: 'Osteopathic Medical Application',
         status: 'Accepted',
         icon: osteopathicIcon,
-        interviewStatus: true,
+        interviewStatus: false,
         submissionDate: 'month/day/year',
       },
       application3: {
@@ -100,17 +100,18 @@
             <ApplicationSelector onChange={handleSelect} applications={submittedApplications} />
           )}
           
-          {selectedApplication && !interviewStatus && (
-            <div>
-              <button style={{width:'100px'}} onClick={() => setSelectedApplication('')}>Done</button>
-            </div>
-          )}
           {selectedApplication && interviewStatus && (
             <div>
-              <button style={{width:'100px'}} onClick={() => setSelectedApplication('')}>Done</button>
+              <button style={{width:'100px', borderRadius:'45px'}} onClick={() => setSelectedApplication('')}>Done</button>
+            </div>
+          )}
+          {selectedApplication && !interviewStatus && (
+            <div>
+              <button style={{width:'100px', borderRadius:'45px',position:'absolute', top:'147%', left:'175px' , borderColor: 'rgba(0, 0, 0, 0)'}} onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
         </div>
+        <a style={{color:'black', backgroundColor:'white', width:'100px', borderRadius:'45px', marginLeft:'900px'}}href="/StudentLanding"> Back</a>
       </body>
     );
   }

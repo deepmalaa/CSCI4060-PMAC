@@ -30,7 +30,7 @@ function ApplicationSelector(props) {
                     {props.applications[application].status}
                   </div>
                   
-                  <button style={{marginRight: '10px', fontStyle:'bold', width: '120px', height: '50px'}}>
+                  <button style={{marginRight: '10px', fontStyle:'bold', width: '120px', height: '50px', borderRadius:'10px', borderColor: 'rgba(0, 0, 0, 0)'}}>
                     {props.applications[application].status === 'Pending' ? 'Details' : props.applications[application].status === 'Denied' ? 'Details' : props.applications[application].status === 'Incomplete' ? 'Details' : props.applications[application].status === 'Complete' ? 'Details' : props.applications[application].status === 'Accepted' && props.applications[application].interviewStatus === false ? 'Schedule Interview' :'Details'}
                   </button>
                 </div>

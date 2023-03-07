@@ -103,7 +103,7 @@ function Calendar(props) {
 
       //Displays calandar
       return (
-        <div style={{ position:'relative', top:'-150px', textAlign: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'center', position:'relative', top:'-50px', right:'30%', textAlign: 'center'}}>
           {!formSubmitted && (
             <form onSubmit={handleSubmit}>
               <table style={{backgroundColor: 'grey'}}>
@@ -112,26 +112,25 @@ function Calendar(props) {
                     <th></th>
                     {weekdays.map((day) => (
                       <th key={day} style={{backgroundColor:'dimgrey'}}>
-                        <div style={{ transform: 'rotate(-35deg)', height: '40px', width: '175px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid', marginLeft:'-10px'}}>
+                        <div style={{ height: '40px', width: '175px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft:'-10px'}}>
                           {day}
                         </div>
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody>
+                <tbody style={{margin:'60px'}}>
                   {rows}
                 </tbody>
               </table>
-              <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
-                <button style={{ transform: 'scale(2)'}} type="submit">Submit</button>
+              <div style={{marginTop: '20px'}}>
+                <button style={{ transform: 'scale(2)', backgroundColor: 'grey'}} type="submit">Submit</button>
               </div>
             </form>
           )}
           {formSubmitted && (
             <div style={{position:'relative', backgroundColor:'grey'}}>
               <p>Selected options: {selectedOptions.join(", ")}</p>
-              <button onClick={handleReset}>Done</button>
             </div>
           )}
         </div>

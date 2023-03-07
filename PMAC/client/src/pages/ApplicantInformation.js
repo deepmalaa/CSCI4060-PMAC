@@ -17,7 +17,7 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
         address:"",
         cellphone:"",
         ulmEmail:"",
-        atlEmail:"",
+        altEmail:"",
         major:"",
         minor:"",
         expectedGraduation:"",
@@ -47,7 +47,7 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
                 <form onSubmit={e => onSubmit(e)} className={s.form} onChange={e=> onChange(e)}
           required>
                     <label>Full Name (Print):</label>
-                    <input type="text" name="fullName" value={formData.fullName} onChange={e=> onChange(e)}
+                    <input type="text" name="fullname" value={formData.fullname} onChange={e=> onChange(e)}
           required/> 
 
                     <label>Date:</label>
@@ -63,7 +63,7 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
           required/>
 
                     <label>Cell Phone:</label>
-                    <input type="tel" name="cellPhone" value={formData.cellPhone} onChange={e=> onChange(e)}
+                    <input type="tel" name="cellphone" value={formData.cellphone} onChange={e=> onChange(e)}
           required/>
 
                     <label>ULM E-mail Address:</label>

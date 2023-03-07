@@ -4,15 +4,15 @@ const auth = require('../../middleware/auth');
 const {check, validationResult} = require('express-validator');
 
 
-const ApplicationInformation = require('../../models/ApplicantInformation');
+const ApplicantInformation = require('../../models/ApplicantInformation');
 
 
-// @route   POST api/apprelease
+// @route   POST api/appInfo
 // @desc    Application release
 // @access  Private
 router.post('/',[auth,[
-    check('name', 'Name is required').not().isEmpty(),
-    check('signature', 'Signature is required').not().isEmpty(),
+    check('fullname', 'Fullname is required').not().isEmpty(),
+    check('cwid', 'CWID is required').not().isEmpty(),
 ]],async (req,res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -41,33 +41,33 @@ router.post('/',[auth,[
     } = req.body;
 
     //build app release obj
-    const appreleaseFields ={};
-    appreleaseFields.user = req.user.id;
-    if(fullname) appreleaseFields.fullname = fullname;
-    if(date) appreleaseFields.date = date;
-    if(cwid) appreleaseFields.cwid = cwid;
-    if(address) appreleaseFields.address = address;
-    if(cellphone) appreleaseFields.cellphone = cellphone;
-    if(ulmEmail) appreleaseFields.ulmEmail = ulmEmail;
-    if(atlEmail) appreleaseFields.atlEmail = atlEmail;
+    const appInfoFields ={};
+    appInfoFields.user = req.user.id;
+    if(fullname) appInfoFields.fullname = fullname;
+    if(date) appInfoFields.date = date;
+    if(cwid) appInfoFields.cwid = cwid;
+    if(address) appInfoFields.address = address;
+    if(cellphone) appInfoFields.cellphone = cellphone;
+    if(ulmEmail) appInfoFields.ulmEmail = ulmEmail;
+    if(atlEmail) appInfoFields.atlEmail = atlEmail;
 
-    if(major) appreleaseFields.major = major;
-    if(minor) appreleaseFields.minor = minor;
-    if(expectedGraduation) appreleaseFields.expectedGraduation = cexpectedGraduationwid;
-    if(collegiateGpa) appreleaseFields.collegiateGpa = collegiateGpa;
-    if(proposedEntrance) appreleaseFields.proposedEntrance = proposedEntrance;
-    if(examScores) appreleaseFields.examScores = examScores;
-    if(examDate) appreleaseFields.examDate = examDate;
+    if(major) appInfoFields.major = major;
+    if(minor) appInfoFields.minor = minor;
+    if(expectedGraduation) appInfoFields.expectedGraduation = expectedGraduation;
+    if(collegiateGpa) appInfoFields.collegiateGpa = collegiateGpa;
+    if(proposedEntrance) appInfoFields.proposedEntrance = proposedEntrance;
+    if(examScores) appInfoFields.examScores = examScores;
+    if(examDate) appInfoFields.examDate = examDate;
 
-    if(schoolApplication) appreleaseFields.schoolApplication = schoolApplication;
-    if(AMCASletterID) appreleaseFields.AMCASletterID = AMCASletterID;
+    if(schoolApplication) appInfoFields.schoolApplication = schoolApplication;
+    if(AMCASletterID) appInfoFields.AMCASletterID = AMCASletterID;
     
     try{
     
         //Create
-        let appInfo = new ApplicationInformation(appreleaseFields);
-        await appInfo.save();
-        res.json(appInfo);
+        let appinfo = new ApplicantInformation(appInfoFields);
+        await appinfo.save();
+        res.json(appinfo);
     }
     catch(err){
         console.error(err.message);

@@ -84,7 +84,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="mname">Middle Name: <br></br></label>
@@ -97,7 +97,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           />
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="lname">Last Name: <br></br></label>
@@ -110,7 +110,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="cwid">ULM CWID #: <br></br></label>
@@ -123,7 +123,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           />
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="address">Local Address: <br></br></label>
@@ -136,7 +136,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="phone">Phone: <br></br></label>
@@ -164,7 +164,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
         />
       </div>  
-      <br></br>
+      
 
       <div>
         <label htmlFor="altEmail">Alternate Email: <br></br></label>
@@ -177,7 +177,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="majors">Major(s): <br></br></label>
@@ -190,7 +190,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="minors">Minor(s): <br></br></label>
@@ -203,7 +203,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           />
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="expGraduation">Date of Expected Graduation from ULM: <br></br></label>
@@ -216,7 +216,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="gpa">Overall Collegiate GPA: <br></br></label>
@@ -229,11 +229,11 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
       </div>
     <div>
     </div>
-    <br></br>
+    
     
     <div>
       <div>
@@ -248,6 +248,8 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             required/>
       </div>
       <br></br>
+      <br></br>
+      <br></br>
 
       <div>
           <label htmlFor="MCAT">MCAT: <br></br></label>
@@ -260,7 +262,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             />
       </div>
-      <br></br>
+      
 
       <div>
           <label htmlFor="DAT">DAT: <br></br></label>
@@ -273,7 +275,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             />
       </div>
-      <br></br>
+      
 
       <div>
           <label htmlFor="OAT">OAT: <br></br></label>
@@ -286,7 +288,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             />
       </div>
-      <br></br>
+      
 
       <div>
           <label htmlFor="GRE">GRE: <br></br></label>
@@ -299,7 +301,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             />
       </div>
-      <br></br>
+      
     </div>
 
   <div>
@@ -335,7 +337,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
+      
 
       <div>
         <label htmlFor="schoolType">Type of School Application will be sent: <br></br></label>
@@ -348,6 +350,8 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           required/>
       </div>
+      <br></br>
+      <br></br>
       <br></br>
 
       <span>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
@@ -363,7 +367,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
           onChange={e=> onChange(e)}
           /> 
       </div>
-        <br></br>
+        
 
 
         <div>
@@ -377,7 +381,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             /> 
         </div>
-        <br></br>
+        
 
     </div>
 
@@ -394,7 +398,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             /> 
         </div>
-        <br></br>
+        
 
         <div>
           <label htmlFor="caspa">CASPA CAS #:<br></br></label>  
@@ -407,7 +411,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             onChange={e=> onChange(e)}
             /> 
         </div>
-        <br></br>
+        
 
         <div>
           <label htmlFor="aadsas">AADSAS ID #:<br></br></label> 
@@ -421,7 +425,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             /> 
         </div>
       </div>
-      <br></br>
+      
     
     <br></br>
     <span>Faculty Members Submitting Evaluations on your Behalf: </span>

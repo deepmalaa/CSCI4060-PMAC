@@ -4,6 +4,7 @@ import {
     FaBars,
     FaUserAlt,
     FaCommentAlt,
+    FaThList,
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'
@@ -14,28 +15,39 @@ const Sidebar = ({children}) => {
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
-            path:"/",
-            name:"Dashboard",
+            path:"/status",
+            name:"Status",
             icon:<FaTh/>
         },
         {
-            path:"/about",
-            name:"About",
+            path:"/applyNow",
+            name:"Apply Now",
             icon:<FaUserAlt/>
         },
         {
-            path:"/comment",
-            name:"Comment",
+            path:"/practiceInterview",
+            name:"Practice Interview",
             icon:<FaCommentAlt/>
+        },
+        {
+            path:"/ApplicantInformation",
+            name:"Applicant Form",
+            icon:<FaThList/>
+        },
+        {
+            path:"/ApplicantRelease",
+            name:"Wavier Form",
+            icon:<FaThList/>
         }
     ]
     return (
-        <div className="container">
-           <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
+        
+            <div className='box'>
+           <div style={{width: isOpen ? "250px" : "50px"}} className="sidebar">
                <div className="top_section">
                     
                    <img src = {logo} alt ="logo" style={{display: isOpen ? "block" : "none"}} className="logo"></img>
-                   <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
+                   <div style={{marginLeft: isOpen ? "150px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
                </div>
@@ -47,9 +59,10 @@ const Sidebar = ({children}) => {
                        </NavLink>
                    ))
                }
+               </div>
+               <main>{children}</main>
            </div>
-           <main>{children}</main>
-        </div>
+        
     );
 };
 

@@ -1,0 +1,48 @@
+
+.box{
+    display:flex;
+    position: absolute;
+    left : 2%;
+    top: 20%;
+}
+
+.sidebar{
+    background: #a9a8a9;
+    color: #840029;
+    height: 60vh;
+    width: 200px;
+    transition: all 0.5s;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+}
+.logo{
+    width: 30px;
+}
+.bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+}
+.link:hover{
+    background: #840029;
+    color: #000;
+    transition: all 0.5s;
+}
+.active{
+    
+    background:#840029;
+    color: #000;
+}
+.icon, .link_text{
+    font-size: 20px;
+}

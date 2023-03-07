@@ -63,6 +63,14 @@
 
     color : black;
 }
+    .instruction a {
+        color : blue;
+        text-decoration: underline;
+    }
+    .instruction a {
+        color : blue;
+        text-decoration: underline;
+    }
 
 .thePage {
     position : absolute;
@@ -113,9 +121,7 @@
         
     }
     
-    .pic img {
-        
-    }
+
     .Form button {
         position : absolute;
         width : 100px;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ApplicationReleaseSchema = new mongoose.Schema({
+const ApplicationInfoSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
@@ -29,6 +29,11 @@ const ApplicationReleaseSchema = new mongoose.Schema({
         
     },
     ulmEmail:{
+        type: String,
+        required: true
+        
+    },
+    altEmail:{
         type: String,
         required: true
         
@@ -78,4 +83,4 @@ const ApplicationReleaseSchema = new mongoose.Schema({
     },
 });
 
-module.exports = ApplicationRelease = mongoose.model('applicationInformation', ApplicationReleaseSchema);
+module.exports = ApplicantInformation = mongoose.model('applicantInformation', ApplicationInfoSchema);

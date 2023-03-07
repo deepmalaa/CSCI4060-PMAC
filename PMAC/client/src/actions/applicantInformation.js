@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFILE } from './types';
+import { USER_LOADED } from './types';
 
 export const applicantInformation = (formData) =>
 async (dispatch) => {
@@ -13,10 +13,10 @@ async (dispatch) => {
     const body = JSON.stringify(formData);
     try {
         // May have to change apprelease
-        const res = await axios.post('api/apprelease', body, config);
+        const res = await axios.post('api/appInfo', body, config);
 
       dispatch({
-        type: GET_PROFILE,
+        type: USER_LOADED,
         payload: res.data
       });
       

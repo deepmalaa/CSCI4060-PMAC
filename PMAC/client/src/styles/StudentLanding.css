@@ -1,0 +1,19 @@
+
+.StudentPage1{
+    margin: 0;
+    height: 100vh;
+    background-color: #840029;
+    background-image: url(../img/showcase.jpeg);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center;
+  }
+
+  .dashboard{
+    background-color:#FDB913;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    text-align: center;
+    color:#840029;
+    
+  }

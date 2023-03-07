@@ -1,44 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import ulmLogo from '../img/showcase.jpeg';
-import studentCSS from '../styles/student.module.css';
-
+import React, { useState } from 'react';
+import '../styles/StudentLanding.css';
+import CheckList from '../components/layout/CheckList';
+import Sidebar from '../components/layout/Sidebar';
 
 function StudentLanding() {
     return (
-        <body className={studentCSS.App}>
-
-            <div className={studentCSS.topBar}>
-                <a href="#">Apply Now </a>
-                <a href="#">Application Status </a>
-                <a href="#">Practice Interview</a>
-                <a href="/ApplicantInformation"> Applicant Form</a>
-                <a href="/ApplicantRelease"> Waiver Form</a>
-            </div>
-
-
-            <span className={studentCSS.Logo}>
-                <img src={ulmLogo} alt="ULM Logo" height={200} width={200} />
-            </span>
-
-            <header className={studentCSS.Header}>
-                <h3> Pre-Medical Advisory Committee - Student View</h3>
-            </header>
-
-
-            <div className={studentCSS.navBar}>
-                
-            </div>
-
-            <div className={studentCSS.footer}>
-                <a href="https://www.ulm.edu/" >@ The University of Louisiana Monroe</a>
-            </div>
-
-        </body>
-       
+        <>
+        <div className = "dashboard ">Student Dashboard</div>
+        <div className = "StudentPage1">    
+          
+        <Sidebar />
+        <CheckList/>
+        
+        </div>
+        </>
     )
 }
 
-
 export default StudentLanding;
-

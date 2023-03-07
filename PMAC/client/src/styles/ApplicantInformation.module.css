@@ -21,6 +21,14 @@
     text-align: center;
   }
 
+  .subTitle {
+    padding: 0% 0% 0% 2%;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10%;
+  }
+
   .instructions {
     padding: 1% 0% 0% 0%;
     text-align: center;

@@ -4,9 +4,10 @@ import {Link, Navigate} from 'react-router-dom';
 import {setAlert} from '../actions/alert';
 import {profile} from '../actions/profile';
 import propTypes from 'prop-types';
-
+import s from '../styles/ApplicantInformation.module.css';
 //styles
-import '../styles/CreateProfile.css';
+
+
 
 const CreateProfile = ({profile, isAuthenticated}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -62,11 +63,15 @@ const CreateProfile = ({profile, isAuthenticated}) => {
         <p>Form submitted successfully!</p>
       ) : (
 
-    <form onSubmit={e => onSubmit(e)} className='App-background'>
+    <body className={s.body}>
 
-      <span className='App-header'>Applicant Information</span>
+    <div className={s.subTitle}>Applicant Information</div>
 
-      <div className='app-left'>
+    <form onSubmit={e => onSubmit(e)} className={s.form}>
+
+      
+
+      <div>
 
       <div>
         <label htmlFor="fname">First Name: <br></br></label>
@@ -146,7 +151,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
       </div>
       </div>
 
-      <div className='app-right'>
+      <div>
 
       <div>
         <label htmlFor="email">ULM Email: <br></br></label>
@@ -229,8 +234,8 @@ const CreateProfile = ({profile, isAuthenticated}) => {
     <div>
     </div>
     <br></br>
-    <p>***********************************************************************************************************************************************</p>
-    <div className='app-left'>
+    
+    <div>
       <div>
           <label htmlFor="profSchoolDate">Date of Proposed Entrance to Professional School: <br></br></label>
           <input
@@ -297,7 +302,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
       <br></br>
     </div>
 
-  <div className='app-right'>
+  <div>
       <div>
           <label htmlFor="scoreBreakdown">Please include your breakdown scores: <br></br></label>
           <textarea
@@ -315,10 +320,9 @@ const CreateProfile = ({profile, isAuthenticated}) => {
             />
       </div>
   </div>
-    <p>***********************************************************************************************************************************************</p>
-    <span className='app-note'>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
-
-    <div className='app-left'>  
+    
+    
+    <div>  
 
       <div>
         <label htmlFor="examDate">Date of exam taken or expected date of exam: <br></br></label>
@@ -346,6 +350,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
       </div>
       <br></br>
 
+      <span>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
 
       <div>
         <label htmlFor="amca">AMCAS Letter ID:<br></br></label>
@@ -377,7 +382,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
     </div>
 
 
-    <div className='app-right'>
+    <div>
         <div>
           <label htmlFor="aacomas">AACOMAS CAS #:<br></br></label>  
           <input
@@ -417,11 +422,11 @@ const CreateProfile = ({profile, isAuthenticated}) => {
         </div>
       </div>
       <br></br>
-    <p>***********************************************************************************************************************************************</p>
+    
     <br></br>
-    <span className='app-note'>Faculty Members Submitting Evaluations on your Behalf: </span>
+    <span>Faculty Members Submitting Evaluations on your Behalf: </span>
 
-      <div className='app-note'>
+      <div>
         <label htmlFor="falcultyEval">Name / Title/ Department<br></br></label> 
         <textarea
           type="text"
@@ -446,6 +451,7 @@ const CreateProfile = ({profile, isAuthenticated}) => {
       </div>
 
     </form>
+    </body>
     )}
     </>
   );  

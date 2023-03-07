@@ -43,7 +43,10 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
     return (
     
         <body>
+            
             <div className={s.body}>
+            <div className={s.subTitle}>Applicant Information Form</div>
+
                 <form onSubmit={e => onSubmit(e)} className={s.form} onChange={e=> onChange(e)}
           required>
                     <label>Full Name (Print):</label>
@@ -110,7 +113,7 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
                     <input type="text" name="AMCASletterID" value={formData.AMCASletterID} onChange={e=> onChange(e)}
           required/>
 
-                    <div className='app-submit'>
+                    <div>
                         <button type="submit" style={{ fontSize: 20, width: 150, height: 50 }}>
                         Submit
                         </button>

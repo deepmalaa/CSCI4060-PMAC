@@ -54,7 +54,7 @@ const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
                         to release the evaluation of the undersigned to the below listed professional schools and/or programs.
                     </label>
 
-                    <label>
+                    <label >
                         <input type="checkbox" name="evaluate" value="true" onChange={e=> onChange(e)}
           required/>
                                     I will allow the committee members to evaluate my performance based on my academic record,
@@ -136,12 +136,12 @@ const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
                     <label for="deadline6">Letter Deadline Date:</label>
                     <input type="text" id="deadline6" name="deadline6"/>
                 </div>
-
-                <div className='app-submit'>
-        <button type="submit" style={{ fontSize: 20, width: 150, height: 50 }}>
-          Submit
-        </button>
-      </div>
+                
+                <div >
+                    <button type="submit" style={{ fontSize: 20, width: 150, height: 50 }}>
+                        Submit
+                    </button>
+                </div>
 
             </form>
             </div>

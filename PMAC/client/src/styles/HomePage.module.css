@@ -1,0 +1,54 @@
+.container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 6%;
+}
+
+.navBar {
+    
+}
+
+.goldBars {
+    width: 1883px;
+    height: 7px;
+    
+    background-color: #BD955A;
+}
+
+.whiteBar{
+    width: 1883px;
+    height: 57px;
+    background: white;
+}
+
+.mainText{
+    
+}
+
+.contentBoxW{
+    width: 1165px;
+    height: 188px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    background: white;
+    color: black;
+}
+
+.contentBoxG{
+    width: 1165px;
+    height: 188px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    background: #dad8d6;
+    color: black;
+    opacity: .30;
+}

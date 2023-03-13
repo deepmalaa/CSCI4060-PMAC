@@ -16,7 +16,7 @@ import FacultyAdvisoryForm from './pages/FacultyAdvisoryForm';
 import FacultyLetter from './pages/FacultyLetter';
 import StatusPage from './pages/StatusPage';
 import FacultyRecommendationForm from './pages/FacultyRecommendationForm';
-
+import HomePage from './pages/HomePage';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -56,6 +56,7 @@ const App = () => {
         <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
+        <Route path="/HomePage" element={<HomePage/>} />
     </Routes>
     
     <section className="container">

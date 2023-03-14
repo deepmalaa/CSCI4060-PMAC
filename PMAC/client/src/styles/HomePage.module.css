@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 .container {
     height: 100%;
     width: 100%;
@@ -5,12 +7,18 @@
     top: 6%;
 }
 
-.navBar {
-    
+.whiteBar li{
+    float: left;
+    margin: 10px;
+}
+
+.whiteBar ul {
+    text-align: center;
 }
 
 .goldBars {
     width: 1883px;
+    max-width: 100%;
     height: 7px;
     
     background-color: #BD955A;
@@ -18,17 +26,57 @@
 
 .whiteBar{
     width: 1883px;
+    max-width: 100%;
     height: 57px;
     background: white;
+    text-align: center;
 }
 
-.mainText{
+.textTitle{
     
+    position: relative;
+    top: 125px;
+    width: 100%;
+    height: 58px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 15px;
+    font-family:'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 48px;
+    line-height: 58px;
+    
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #000000;   
+}
+
+.textBox{
+    text-align: left;
+    position: relative;
+    top: 123px;
+    
+    margin-left: auto;
+    margin-right: auto;    
+    width: 1165px;
+    
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+
+    
+    color: #000000;
 }
 
 .contentBoxW{
-    width: 1165px;
-    height: 188px;
+    width: 100%;
+    height: 500px;
 
     font-family: 'Lato';
     font-style: normal;
@@ -40,15 +88,87 @@
 }
 
 .contentBoxG{
-    width: 1165px;
-    height: 188px;
+    width: 100%;
+    height: 500px;
 
     font-family: 'Lato';
     font-style: normal;
     font-weight: 300;
     font-size: 22px;
     line-height: 26px;
-    background: #dad8d6;
+    background: rgb(218, 216, 214, .30);
     color: black;
-    opacity: .30;
+    
+}
+
+.goldBoxLeft {
+    position: relative;
+    top: 92px;
+    width: 45%;
+    height: 316px;
+    float: left;
+    background: #BD955A;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    line-height: 30px;
+}
+
+
+
+.goldBoxLeft a {
+    color: white;
+    text-decoration: underline;
+}
+
+.goldBoxLeft p {
+    color: white;
+    text-decoration: none;
+}
+
+.goldBoxLeft span {
+    position: relative;
+    left: 15%;
+    top: 0%;
+    
+}
+
+.goldBoxLeft img {
+    margin: 5px;
+    width: 56px;
+    height: 56px;
+
+}
+
+.goldBoxRight {
+    position: relative;
+    top: 92px;
+    width: 45%;
+    height: 316px;
+    float: left;
+    background: #BD955A;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    line-height: 30px;
+}
+
+.goldBoxRight img {
+    margin: 5px;
+    width: 56px;
+    height: 56px;
+
+}
+
+.goldBoxRight span {
+    position: relative;
+    left: 15%;
+    top: 0%;
+    color: white;
 }

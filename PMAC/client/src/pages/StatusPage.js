@@ -1,6 +1,5 @@
   import React, { useState } from 'react';
   import ApplicationSelector from './ApplicationSelector';
-  import hawk from '../img/Hawk.mp4';
   import '../styles/StatusPage.css';
   import allopathicIcon from '../img/StatusPageIcons/twosnakes.png';
   import osteopathicIcon from '../img/StatusPageIcons/onesnake.png';
@@ -9,6 +8,10 @@
   import otherIcon from '../img/StatusPageIcons/other.png';
   import Calendar from './Calendar';
   import Details from './StatusPageDetails';
+  import s from '../styles/HomePage.module.css';
+
+
+
 
   function StatusPage() {
     const [selectedApplication, setSelectedApplication] = useState('');
@@ -79,16 +82,12 @@
     const days = ['Monday', 'Wednesday', 'Thursday', 'Friday'];
     
     return (
-      <body className='App-background'>
-        <div>
-          <video className='video-player' autoPlay loop muted>
-            <source src={hawk} type="video/mp4" />
-          </video>
-          <div className='App-header'>
-            Application Status
-          </div>
-        </div>
-        <div className='down'>
+      <body>
+          <div style={{fontSize:'16pt'}}> Application Status </div>
+          <div className={s.goldBars}></div>
+          
+          
+        <div className="background">
           {selectedApplication ? (
             <>
               <applicationStatus title={title} status={applicationStatus} interviewStatus={interviewStatus} submissionDate={submissionDate} onClose={() => setSelectedApplication('')} />
@@ -107,15 +106,14 @@
           )}
           {selectedApplication && !interviewStatus && (
             <div>
-              <button style={{width:'100px', borderRadius:'45px',position:'absolute', top:'147%', left:'175px' , borderColor: 'rgba(0, 0, 0, 0)'}} onClick={() => setSelectedApplication('')}>Done</button>
+              <button onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
         </div>
-        <a style={{color:'black', backgroundColor:'white', width:'100px', borderRadius:'45px', marginLeft:'900px'}}href="/StudentLanding"> Back</a>
+        <div className={s.goldBars}></div>
       </body>
     );
   }
 
   export default StatusPage;
-  //application-sign release-review-recomendation-interview-package
 

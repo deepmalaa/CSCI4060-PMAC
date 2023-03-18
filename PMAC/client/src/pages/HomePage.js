@@ -3,6 +3,8 @@ import s from '../styles/HomePage.module.css';
 import campus from '../img/HomePage/campus.jpg';
 import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 import profile from '../img/HomePage/Profile.png';
+import bottomBanner from '../img/HomePage/library.jpg';
+
 function FormOne() {
     return ( 
 
@@ -16,6 +18,7 @@ function FormOne() {
                             <li><a href="#news">News</a></li>
                             <li><a href="#contact">Contact</a></li>
                             <li><a href="#about">About</a></li>
+                            <li><a href="#Help">Help</a></li>
                         </ul>
 
                     </div>
@@ -99,15 +102,49 @@ function FormOne() {
                     </span>
                 </div>
             </div>
+            {/* break */}
 
             <div className={s.contentBoxG}>
-            
+                <div className={s.textTitle}>
+                    APPLY TO THE COMMITTEE
+                </div>
+
+                <div className={s.textBox}>
+                    The committee is available to interview students during their 
+                    application process. Each student that wishes to be interviewed 
+                    by the committee must create a student account and complete
+                    the required application forms to set an appointment. 
+                </div>
             </div>
             {/* break */}
 
 
+            <div className={s.bottomBanner}>
+                <div className={s.img}>
+                    <img src={bottomBanner} alt="Backdrop of ULM Campus"/>  
+                </div>
+
+                <div className={s.bottomTitle}>
+                    REQUEST MORE INFORMATION    
+                </div>
+    
+                <div className={s.bottomText}>
+                    If you want to know more about the PMAC committe, 
+                    please contact us or see our frequently asked questions page   
+                </div>
+                
+                {/*<div className={s.FQA}>*/}
+                    <a className={s.FQA} href="https://www.ulm.edu/biology/">
+                        <div>Frequent Questions</div>
+                    </a>
+                {/*</div>*/}
+
+                {/* goldBar */}
+                
+            </div>
 
 
+            <div className={s.redBar}></div>
 
         </div>
 

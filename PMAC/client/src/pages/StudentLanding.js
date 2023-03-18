@@ -20,7 +20,7 @@ const StudentLanding = ({
         <div className = "dashboard ">Welcome {user && user.name}</div>
         <div className = "StudentPage1">    
           
-        <Sidebar />
+        <Sidebar role="student" />
         <CheckList/>
         
         </div>

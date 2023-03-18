@@ -4,15 +4,17 @@ import campus from '../img/HomePage/campus.jpg';
 import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 import profile from '../img/HomePage/Profile.png';
 import bottomBanner from '../img/HomePage/library.jpg';
+import Sidebar from '../components/layout/Sidebar';
 
 function FormOne() {
     return ( 
-
+        
         <div className={s.container}>
             
             <div className={s.navBar}>
                 <div className={s.goldBars}> </div>
                     <div className={s.whiteBar}>
+                    <Sidebar role="guest" />
                         <ul>
                             <li><a href="#home">Home</a></li>
                             <li><a href="#news">News</a></li>

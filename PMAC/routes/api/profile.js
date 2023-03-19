@@ -195,11 +195,11 @@ router.put(
   // @desc     Delete experience from profile
   // @access   Private
   
-  router.delete('/work-experience/:exp_id', auth, async (req, res) => {
+  router.delete('/:experience/:exp_id', auth, async (req, res) => {
     try {
       const foundProfile = await Profile.findOne({ user: req.user.id });
-  
-      foundProfile.work_experience = foundProfile.work_experience.filter(
+      const experience = req.params.experience;
+      foundProfile.experience = foundProfile.experience.filter(
         (exp) => exp._id.toString() !== req.params.exp_id
       );
   

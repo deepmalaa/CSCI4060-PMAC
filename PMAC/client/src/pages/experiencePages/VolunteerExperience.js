@@ -22,7 +22,7 @@ const Experience = ({
     experiences = profile.volunteer_experience.map((exp) => (
         <tr key={exp._id}>
           <td>{exp.company}</td>
-          <td className="hide-sm">{exp.title}</td>
+          <td >{exp.title}</td>
           <td>
             {exp.years}
           </td>
@@ -44,18 +44,18 @@ const Experience = ({
   return (
     <Fragment>
       <h2 className="my-2">Volunteer Experience</h2>
-      <table className="table">
+      <div className="table">
         <thead>
           <tr>
             <th>Company</th>
-            <th className="hide-sm">Title</th>
-            <th className="hide-sm">Years</th>
-            <th className="hide-sm">Description</th>
+            <th >Title</th>
+            <th >Years</th>
+            <th >Description</th>
             <th />
           </tr>
         </thead>
         <tbody>{experiences}</tbody>
-      </table>
+      </div>
 
 
       <br />

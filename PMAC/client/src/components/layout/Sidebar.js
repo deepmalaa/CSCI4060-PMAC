@@ -30,7 +30,7 @@ const Sidebar = ({children}) => {
             icon:<FaCommentAlt/>
         },
         {
-            path:"/ApplicantInformation",
+            path:"/ApplicationForm",
             name:"Applicant Form",
             icon:<FaThList/>
         },

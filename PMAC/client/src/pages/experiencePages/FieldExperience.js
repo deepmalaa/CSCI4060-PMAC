@@ -21,7 +21,7 @@ const Experience = ({
     experiences = profile.field_experience.map((exp) => (
         <tr key={exp._id}>
           <td>{exp.company}</td>
-          <td className="hide-sm">{exp.title}</td>
+          <td >{exp.title}</td>
           <td>
             {exp.years}
           </td>
@@ -43,18 +43,18 @@ const Experience = ({
   return (
     <Fragment>
       <h2 className="my-2">Experiences within Chosen Field</h2>
-      <table className="table">
+      <div className="table">
         <thead>
           <tr>
             <th>Company</th>
-            <th className="hide-sm">Title</th>
-            <th className="hide-sm">Years</th>
-            <th className="hide-sm">Description</th>
+            <th >Title</th>
+            <th >Years</th>
+            <th >Description</th>
             <th />
           </tr>
         </thead>
         <tbody>{experiences}</tbody>
-      </table>
+      </div>
 
       <br />
       <Link to='/AddfieldExperience' className='btn btn-primary'>

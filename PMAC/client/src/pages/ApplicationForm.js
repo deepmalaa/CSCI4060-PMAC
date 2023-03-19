@@ -72,7 +72,7 @@ const ApplicationForm = ({
     const editing = profile ? true : false;
     e.preventDefault();
     createProfile(formData, editing).then(() => {
-      //if (!editing) navigate('/clubExperience');
+      if (!editing) navigate('/clubExperience');
     });
   };
 
@@ -462,9 +462,7 @@ const ApplicationForm = ({
       </div>
       <br></br>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <h5>Please submit the form to save changes!</h5>
 
 
       

@@ -273,20 +273,44 @@ button {
 .table {
   border-collapse: collapse;
   border-color: grey;
-  margin: 10x;
-  
+  margin-left: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: auto;
+  width : 90%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
 }
 
 .table th,
-.table td {
+.table td{
   padding: 1rem;
   text-align: left;
-  border: 2px solid;
+  
+  background-color: #ffffff;
+  width: 100%;
+  
 }
 
 .table th {
   background: lightslategray;
-  border: 2px solid;
+
+}
+
+.table tr:nth-child(even) {
+  background: #eceaea;
+}
+
+.table td:nth-child(even) {
+  background: #32603b1e;
+}
+.table td:nth-child(odd) {
+  background: #90a1b211;
+}
+
+.table thead th:nth-child(odd) {
+  color: #ffffff;
+  background: #324960;
 }
 
 /* Navbar */

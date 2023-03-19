@@ -1,22 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux';
 import {Link, Navigate} from 'react-router-dom';
 import {setAlert} from '../actions/alert';
 import {applicantRelease} from '../actions/applicantRelease';
 import propTypes from 'prop-types';
 import s from '../styles/ApplicantInformation.module.css';
+import { getCurrentProfile } from '../actions/profile';
 
 
-const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
+const ApplicantInformation =({applicantRelease, getCurrentProfile,
+    auth: { user },
+    profile: { profile }
+  }) => {
+    useEffect(() => {
+      getCurrentProfile();
+    }, [getCurrentProfile]); 
+   
+
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
         authorize:"",
         evaluate:"",
         name_release:"",
-        name:"",
-        cwid:"",
+        name: profile.fname +" "+  profile.mname +" "+ profile.lname,
+        cwid: profile.cwid,
         signature:"",
-        date:""
+        date: ""
     });
 
     const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
@@ -80,6 +89,7 @@ const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
           required/>
                         Signature: <input type="text" name="signature" value={formData.signature} onChange={e=> onChange(e)}
           required/>
+          
                         Date: <input type="date" name="date" value={formData.date} onChange={e=> onChange(e)}
           required/>
                     </label>
@@ -152,11 +162,14 @@ const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
     ApplicantInformation.propTypes ={
         setAlert: propTypes.func.isRequired,
         applicantRelease:propTypes.func.isRequired,
-        isAuthenticated: propTypes.bool
+        auth: propTypes.object.isRequired,
+        profile: propTypes.object.isRequired
       }
 
     const mapStateToProps = (state) => ({
-        isAuthenticated: state.auth.isAuthenticated
+        auth: state.auth,
+        profile: state.profile
+
       });
     
-      export default connect(mapStateToProps, {setAlert, applicantRelease})(ApplicantInformation);
+      export default connect(mapStateToProps, {setAlert, applicantRelease, getCurrentProfile})(ApplicantInformation);

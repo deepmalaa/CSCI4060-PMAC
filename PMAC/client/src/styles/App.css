@@ -268,15 +268,25 @@ button {
   font: inherit;
 }
 
+/*Table*/
+
+.table {
+  border-collapse: collapse;
+  border-color: grey;
+  margin: 10x;
+  
+}
 
 .table th,
 .table td {
   padding: 1rem;
   text-align: left;
+  border: 2px solid;
 }
 
 .table th {
-  background: var(--light-color);
+  background: lightslategray;
+  border: 2px solid;
 }
 
 /* Navbar */
@@ -329,6 +339,8 @@ button {
   justify-content: center;
   text-align: center;
 }
+
+
 
 /* Mobile Styles */
 @media (max-width: 700px) {

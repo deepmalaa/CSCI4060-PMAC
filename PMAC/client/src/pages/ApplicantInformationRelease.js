@@ -80,7 +80,7 @@ const ApplicantInformation =({applicantRelease, isAuthenticated}) =>{
           required/>
                         Signature: <input type="text" name="signature" value={formData.signature} onChange={e=> onChange(e)}
           required/>
-                        Date: <input type="text" name="date" value={formData.date} onChange={e=> onChange(e)}
+                        Date: <input type="date" name="date" value={formData.date} onChange={e=> onChange(e)}
           required/>
                     </label>
 

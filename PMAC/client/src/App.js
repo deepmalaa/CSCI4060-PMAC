@@ -25,6 +25,25 @@ import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
 import './styles/App.css';
+import ApplicationForm from './pages/ApplicationForm';
+
+import ClubExperience from './pages/experiencePages/ClubExperience';
+import AddClubExperience from './pages/experiencePages/AddClubExperience';
+
+import FieldExperience from './pages/experiencePages/FieldExperience';
+import AddFieldExperience from './pages/experiencePages/AddFieldExperience';
+
+import HonorsExperience from './pages/experiencePages/Honors';
+import AddHonorsExperience from './pages/experiencePages/AddHonors';
+
+import LabExperience from './pages/experiencePages/LabExperience';
+import AddLabExperience from './pages/experiencePages/AddLabExperience';
+
+import VolunteerExperience from './pages/experiencePages/VolunteerExperience';
+import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperience';
+
+import WorkExperience from './pages/experiencePages/WorkExperience';
+import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 
 
 
@@ -50,12 +69,34 @@ const App = () => {
         <Route path="/dashboardFaculty" element={<PrivateRoute component ={FacultyLanding} />} />
         <Route path="/dashboardStudent" element={<PrivateRoute component ={StudentLanding} />} />
         <Route path="/applicantRelease" element={<ApplicantInformationRelease/>} />
+        <Route path="/ApplicationForm" element={<ApplicationForm/>} />
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/FacultyLetter" element={<FacultyLetter/>} />
         <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
+
+
+
+        {/* experiencePages */}
+        <Route path="/clubExperience" element={<ClubExperience/>} />
+        <Route path="/addClubExperience" element={<AddClubExperience/>} />
+
+        <Route path="/fieldExperience" element={<FieldExperience/>} />
+        <Route path="/addFieldExperience" element={<AddFieldExperience/>} />
+
+        <Route path="/honorsExperience" element={<HonorsExperience/>} />
+        <Route path="/addHonorsExperience" element={<AddHonorsExperience/>} />
+
+        <Route path="/labExperience" element={<LabExperience/>} />
+        <Route path="/addLabExperience" element={<AddLabExperience/>} />
+
+        <Route path="/volunteerExperience" element={<VolunteerExperience/>} />
+        <Route path="/addVolunteerExperience" element={<AddVolunteerExperience/>} />
+
+        <Route path="/workExperience" element={<WorkExperience/>} />
+        <Route path="/addWorkExperience" element={<AddWorkExperience/>} />
         <Route path="/HomePage" element={<HomePage/>} />
     </Routes>
     

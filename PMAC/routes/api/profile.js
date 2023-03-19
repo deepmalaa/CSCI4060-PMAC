@@ -129,4 +129,86 @@ router.post('/',[auth,[
     
 });
 
+// // @route    PUT api/profile/work-experience
+// // @desc     Add profile experience
+// // @access   Private
+// router.put(
+//     '/work-experience',
+//     auth,
+//     check('title', 'Title is required').notEmpty(),
+//     check('company', 'Company is required').notEmpty(),
+    
+//     async (req, res) => {
+//       const errors = validationResult(req);
+//       if (!errors.isEmpty()) {
+//         return res.status(400).json({ errors: errors.array() });
+//       }
+  
+//       try {
+//         const profile = await Profile.findOne({ user: req.user.id });
+  
+//         profile.work_experience.unshift(req.body);
+  
+//         await profile.save();
+  
+//         res.json(profile);
+//       } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send('Server app Error');
+//       }
+//     }
+//   );
+
+  // @route    PUT api/profile/work-experience
+// @desc     Add profile experience
+// @access   Private
+router.put(
+  '/:experience',
+  auth,
+  check('title', 'Title is required').notEmpty(),
+  check('company', 'Company is required').notEmpty(),
+  
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      const a = req.params.experience
+      console.log(profile[a])
+      profile[a].unshift(req.body);
+      
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server app Error');
+    }
+  }
+);
+  
+  // @route    DELETE api/profile/work-experience/:exp_id
+  // @desc     Delete experience from profile
+  // @access   Private
+  
+  router.delete('/:experience/:exp_id', auth, async (req, res) => {
+    try {
+      const foundProfile = await Profile.findOne({ user: req.user.id });
+      const experience = req.params.experience;
+      foundProfile.experience = foundProfile.experience.filter(
+        (exp) => exp._id.toString() !== req.params.exp_id
+      );
+  
+      await foundProfile.save();
+      return res.status(200).json(foundProfile);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ msg: 'Server error' });
+    }
+  });
+
 module.exports = router;

@@ -40,7 +40,7 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         return <Navigate to ="/dashboardFaculty" />
 
 
-      return <Navigate to ="/createProfile" />
+      return <Navigate to ="/ApplicationForm" />
       }
 
     

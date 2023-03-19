@@ -107,6 +107,93 @@ const ProfileSchema = new mongoose.Schema({
         type:String,
     },
 
+    work_experience:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+    club_experience:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+    field_experience:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+    honors:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+    lab_experience:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+    volunteer_experience:[{
+        title:{
+            type:String
+        },
+        company:{
+            type:String
+        },
+        years:{
+            type:String
+        },
+        description:{
+
+        }
+    }],
+
+
+
     date:{
         type: Date,
         default: Date.now

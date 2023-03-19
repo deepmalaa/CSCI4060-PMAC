@@ -1,61 +1,80 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux';
-import {Link, Navigate} from 'react-router-dom';
-import {setAlert} from '../actions/alert';
-import {createProfile} from '../actions/profile';
-import propTypes from 'prop-types';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link, useMatch, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createProfile, getCurrentProfile } from '../actions/profile';
 import s from '../styles/ApplicantInformation.module.css';
-//styles
+import moment from "moment";
 
-
-
-const CreateProfile = ({createProfile, isAuthenticated}) => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
+const initialState = {
     fname:"",
-        lname:"",
-        mname:"",
-        cwid:"",
-        cell:"",
-        address:"",
-        ulm_email:"",
-        alt_email:"",
-        bdate:"",
-        major:"",
-        minor:"",
-        grad_date:"",
-        gpa:"",
-        entrance_date:"",
-        mcat:"",
-        dat:"",
-        oat:"",
-        gre:"",
-        scoreBreakdown: '',
-        exam_date:"",
-        amcas_id:"",
-        aacomas_id:"",
-        aadsas_id:"",
-        aamc_id:"",
-        caspa_id:"",
-        falcultyEval: ''
+    lname:"",
+    mname:"",
+    cwid:"",
+    cell:"",
+    address:"",
+    ulm_email:"",
+    alt_email:"",
+    bdate:"",
+    major:"",
+    minor:"",
+    grad_date:"",
+    gpa:"",
+    entrance_date:"",
+    mcat:"",
+    dat:"",
+    oat:"",
+    gre:"",
+    scoreBreakdown: '',
+    exam_date:"",
+    amcas_id:"",
+    aacomas_id:"",
+    aadsas_id:"",
+    aamc_id:"",
+    caspa_id:"",
+    falcultyEval: '',
+    schoolType:''
+};
 
-  });
+const ApplicationForm = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile
+}) => {
+  const [formData, setFormData] = useState(initialState);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const navigate = useNavigate();
 
-  const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
+  useEffect(() => {
+    // if there is no profile, attempt to fetch one
+    if (!profile) getCurrentProfile();
 
-  const onSubmit = async (e) =>{
+    // if we finished loading and we do have a profile
+    // then build our profileData
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+    
+      // set local state with the profileData
+      setFormData(profileData);
+    }
+  }, [loading, getCurrentProfile, profile]);
+
+  
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    const editing = profile ? true : false;
     e.preventDefault();
-    createProfile(formData);
-    setIsSubmitted(true);
-  }
-
-  if(isSubmitted){
-  return <Navigate to ="/dashboardStudent" />
-  }
-
- 
-
+    createProfile(formData, editing).then(() => {
+      if (!editing) navigate('/clubExperience');
+    });
+  };
 
   return (
     <>
@@ -212,7 +231,7 @@ const CreateProfile = ({createProfile, isAuthenticated}) => {
           id="expGraduation"
           name="grad_date"
           size = "50"
-          value={formData.grad_date}
+          value={moment(formData.grad_date).utc().format('YYYY-MM-DD')}
           onChange={e=> onChange(e)}
           required/>
       </div>
@@ -243,7 +262,7 @@ const CreateProfile = ({createProfile, isAuthenticated}) => {
             id="profSchoolDate"
             name="entrance_date"
             size = "50"
-            value={formData.entrance_date}
+            value={moment(formData.entrance_date).utc().format('YYYY-MM-DD')}
             onChange={e=> onChange(e)}
             required/>
       </div>
@@ -333,7 +352,7 @@ const CreateProfile = ({createProfile, isAuthenticated}) => {
           id="examDate"
           name="exam_date"
           size = "50"
-          value={formData.exam_date}
+          value={moment(formData.exam_date).utc().format('YYYY-MM-DD')}
           onChange={e=> onChange(e)}
           required/>
       </div>
@@ -443,16 +462,22 @@ const CreateProfile = ({createProfile, isAuthenticated}) => {
       </div>
       <br></br>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      <h5>Please submit the form to save changes!</h5>
 
 
-      <div className='app-submit'>
-        <button type="submit" style={{ fontSize: 20, width: 150, height: 50 }}>
+      
+        <button type="submit" className='btn btn-primary'>
           Submit
         </button>
-      </div>
+      
+      
+      <button className="btn btn-light my-1" >
+        <Link to="/clubExperience" >Next Page</Link>
+        </button>
+        
+           
+            
+
 
     </form>
     </body>
@@ -461,14 +486,16 @@ const CreateProfile = ({createProfile, isAuthenticated}) => {
   );  
 };
 
-CreateProfile.propTypes ={
-  setAlert: propTypes.func.isRequired,
-  createProfile:propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool
-}
+ApplicationForm.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, {setAlert, createProfile})(CreateProfile);
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  ApplicationForm
+);

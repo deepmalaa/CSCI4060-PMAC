@@ -46,7 +46,7 @@
       application4: {
         verified: true,
         title: 'Dental Application',
-        status: 'Incomplete',
+        status: 'Interview',
         icon: dentalIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
@@ -83,7 +83,7 @@
     
     return (
       <body>
-          <div style={{fontSize:'16pt'}}> Application Status </div>
+          <div style={{fontSize:'16pt', fontFamily:'Arial'}}> Application Status </div>
           <div className={s.goldBars}></div>
           
           
@@ -91,7 +91,7 @@
           {selectedApplication ? (
             <>
               <applicationStatus title={title} status={applicationStatus} interviewStatus={interviewStatus} submissionDate={submissionDate} onClose={() => setSelectedApplication('')} />
-              {applicationStatus === 'Accepted' && interviewStatus === false && <Calendar days={days}/>}
+              {applicationStatus === 'Accepted' && interviewStatus === false && <Details application={submittedApplications[selectedApplication]}/>}
               {applicationStatus !== 'Accepted' && <Details application={submittedApplications[selectedApplication]} />}
               {applicationStatus === 'Accepted' && interviewStatus === true &&<Details application={submittedApplications[selectedApplication]} />}
             </>
@@ -117,3 +117,4 @@
 
   export default StatusPage;
 
+//<Calendar days={days}/>

@@ -5,7 +5,7 @@ function ApplicationSelector(props) {
 
   const statusClassNames = {
     Pending: 'status--pending',
-    Incomplete: 'status--incomplete',
+    Interview: 'status--interview',
     Denied: 'status--denied',
     Complete: 'status--complete',
     Accepted: 'status--accepted',

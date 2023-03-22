@@ -7,12 +7,12 @@ const {check, validationResult} = require('express-validator');
 const ApplicantInformation = require('../../models/ApplicantInformation');
 
 
-// @route   POST api/appInfo
+// @route   POST api/applicationInformation
 // @desc    Application release
 // @access  Private
-router.post('/',[auth,[
+router.post('/', [auth,[
     check('fullname', 'Fullname is required').not().isEmpty(),
-    check('cwid', 'CWID is required').not().isEmpty(),
+
 ]],async (req,res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -71,7 +71,7 @@ router.post('/',[auth,[
     }
     catch(err){
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).send('Server Errors');
     }
     
 });

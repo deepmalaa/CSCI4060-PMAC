@@ -1,17 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux';
 import {Link, Navigate} from 'react-router-dom';
 import {setAlert} from '../actions/alert';
 import {applicantInformation} from '../actions/applicantInformation';
 import propTypes from 'prop-types';
 import s from '../styles/ApplicantInformation.module.css';
+import { getCurrentProfile } from '../actions/profile';
 
 
+const ApplicantInfo =({applicantInformation, getCurrentProfile,
+    auth: { user },
+    profile: { profile }
 
-const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
+
+}) =>{
+    useEffect(() => {
+        getCurrentProfile();
+      }, [getCurrentProfile]); 
+
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
-        fullname:"",
+        fullname: profile.fname,
         date:"",
         cwid:"",
         address:"",
@@ -51,7 +60,7 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
           required>
                     <label>Full Name (Print):</label>
                     <input type="text" name="fullname" value={formData.fullname} onChange={e=> onChange(e)}
-          required/> 
+          required/>  
 
                     <label>Date:</label>
                     <input type="date" name="date" value={formData.date} onChange={e=> onChange(e)}
@@ -125,15 +134,17 @@ const ApplicantInformation =({applicantInformation, isAuthenticated}) =>{
     )
     };
 
-    ApplicantInformation.propTypes ={
+    ApplicantInfo.propTypes ={
         setAlert: propTypes.func.isRequired,
         applicantInformation:propTypes.func.isRequired,
-        isAuthenticated: propTypes.bool
+        auth: propTypes.object.isRequired,
+        profile: propTypes.object.isRequired
       }
 
       const mapStateToProps = (state) => ({
-        isAuthenticated: state.auth.isAuthenticated
+        auth: state.auth,
+        profile: state.profile
       });
 
 
-      export default connect(mapStateToProps, {setAlert, applicantInformation})(ApplicantInformation);
+      export default connect(mapStateToProps, {setAlert, applicantInformation, getCurrentProfile})(ApplicantInfo);

@@ -1,17 +1,31 @@
-  import React, { useState } from 'react';
+  import React, {useState, useEffect} from 'react';
   import ApplicationSelector from './ApplicationSelector';
   import '../styles/StatusPage.css';
   import Details from './StatusPageDetails';
   import s from '../styles/HomePage.module.css';
+  import topBanner from '../img/HomePage/library.jpg';
+  import { getCurrentProfile } from '../actions/profile';
+  import {applicantRelease} from '../actions/applicantRelease';
+  import { connect } from 'react-redux';
+  import PropTypes from 'prop-types';
+  import Sidebar from '../components/layout/Sidebar';
 
 
+  function StatusPage(props) {
+    useEffect(() => {
+      props.getCurrentProfile();
+    }, [props.getCurrentProfile]);
 
-
-  function StatusPage() {
+    StatusPage.propTypes = {
+      getCurrentProfile: PropTypes.func.isRequired,
+    };
+    
     const [selectedApplication, setSelectedApplication] = useState('');
     const [status, setStatus] = useState('');
     const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
-  
+
+
+
     const submittedApplications = {
       application1: {
         verified: true,
@@ -20,6 +34,7 @@
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+
       application2: {
         verified: true,
         title: 'Osteopathic Medical Application',
@@ -71,11 +86,34 @@
     return (
       <body>
 
-        <div style={{fontSize:'16pt', fontFamily:'Arial'}}> Application Status </div>
-        <div className={s.goldBars}></div>
+        <div className={s.container}>    
+          <Sidebar/>
+        </div>  
+
+        <div>
+            <div className={s.whiteBar} style={{marginTop:'-42px'}}>
+            <div className={s.goldBars}> </div>
+                <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#account">Account</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#Help">Help</a></li>
+                </ul>
+            </div>
+            <div className={s.goldBars}> </div>
+          </div>
+
+        <div className={s.topBanner}>
+          <div className={s.img}>
+            <img src={topBanner} alt="Backdrop of ULM Campus"/>  
+          </div>
+          <div className={s.bottomTitle} style={{fontSize:'64pt', fontWeight:'400'}}>
+            Application Status    
+          </div>
+          <div className={s.goldBars}></div>        
+        </div>
           
         <div className="background">
-        
           {selectedApplication ? (
             <>
               <applicationStatus title={title} status={applicationStatus} interviewStatus={interviewStatus} submissionDate={submissionDate} onClose={() => setSelectedApplication('')} />
@@ -87,16 +125,15 @@
           )}
           
           {selectedApplication && (
-            <div>
+            <div style={{marginTop:'10px'}}>
               <button onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
         </div> 
         <div className={s.goldBars}></div>
+        <div className={s.redBar}></div>
       </body>
     );
   }
-
-  export default StatusPage;
-
-//<Calendar days={days}/>
+  
+  export default connect(null, { getCurrentProfile })(StatusPage);

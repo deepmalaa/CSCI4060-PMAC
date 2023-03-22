@@ -28,6 +28,7 @@ function Details({ application }) {
       <>
         <p style={{margin:'20px'}}> Note: No Interview times have been selected for this application. Please select avaliable Interview times! If no interview time is selected, interview scheduling cannot proceed</p>
         <Calendar days={days}/>
+ 
       </>
       );
     }
@@ -114,7 +115,7 @@ function Details({ application }) {
   
   return (
     <div className="process-container">
-      <ul className="process-steps">
+      <ul className="process-steps" style={{marginTop:'20px'}}>
         <li className={`step pending ${status === 'Pending' ? 'active' : ''}`}>Pending</li>
         <li className={`step accepted ${status === 'Accepted' ? 'active' : ''}`}>Accepted</li>
         <li className={`step interview ${status === 'Interview' ? 'active' : ''}`}>Interview</li>

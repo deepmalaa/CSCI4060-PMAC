@@ -34,7 +34,7 @@ const Sidebar = ({ children, role }) => {
             roles: ['student'] 
         },
         {
-            path:"/ApplicantInformation",
+            path:"/ApplicationForm",
             name:"Applicant Form",
             icon:<FaThList/>,
             roles: ['student'] 

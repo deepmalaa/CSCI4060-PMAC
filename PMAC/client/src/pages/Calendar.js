@@ -1,138 +1,55 @@
 import React, { useState } from 'react';
-import '../styles/StatusPage.css';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 
-//Calendar function for Accepted application
-function Calendar(props) {
-  const { days } = props;
-  const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  const timeSlots = [    
-    "8:00am - 9:30am",    
-    "10:00am - 11:30am",    
-    "12:00am - 1:30pm",    
-    "2:00am - 3:30pm",    
-    "4:00pm - 5:30pm",      
-  ];
+const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const timeSlots = [
+  '8:00 AM - 9:30 AM',
+  '9:30 AM - 11:00 AM',
+  '11:00 AM - 12:30 PM',
+  '12:30 PM - 2:00 PM',
+  '2:00 PM - 3:30 PM',
+  '3:30 PM - 5:00 PM'
+];
 
-  //2D array to hold the state of each checkbox
-  const [checkboxState, setCheckboxState] = useState(
-    Array(weekdays.length)
-      .fill()
-      .map(() => Array(timeSlots.length).fill(false))
-  );
+const Calendar = () => {
+  const [selectedSlots, setSelectedSlots] = useState([]);
 
-  //State variable to store the selected options
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  //State variable to track if the form has been submitted
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
-  //State of a checkbox when it is clicked
-  const handleClick = (row, col) => {
-    const newCheckboxState = [...checkboxState];
-    newCheckboxState[row][col] = !checkboxState[row][col];
-    setCheckboxState(newCheckboxState);
-
-    //Update the selected options state variable
-    const selectedOption = `${timeSlots[col]} on ${days[row].toLocaleDateString()}`;
-    setSelectedOptions(prevOptions => {
-      if (newCheckboxState[row][col]) {
-        return [...prevOptions, selectedOption];
-      } else {
-        return prevOptions.filter(option => option !== selectedOption);
-      }
-    });
-  };
-
-  //Displays alert window when options are sumbitted
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const selectedDays = weekdays.filter((_, rowIndex) => {
-      return checkboxState[rowIndex].some((isChecked) => isChecked);
-    });
-    const selectedTimes = timeSlots.filter((_, colIndex) => {
-      return checkboxState.some((row) => row[colIndex]);
-    });
-    const selectedOptions = selectedDays.flatMap((day) => {
-      return selectedTimes.map((time) => {
-        return `${time} on ${day}`;
-      });
-    });
-    alert(`Selected options: ${selectedOptions.join(", ")}`);
-    setFormSubmitted(true);
-  };
-
-  //Resets Date Options
-  const handleReset = () => {
-    setSelectedOptions([]);
-    setCheckboxState(Array(weekdays.length).fill().map(() => Array(timeSlots.length).fill(false)));
-    setFormSubmitted(false);
-  };
-  //Keeps track of option button selection
-  const rows = timeSlots.map((timeSlot, colIndex) => {
-    const cells = weekdays.map((day, rowIndex) => {
-      const date = days.find((date) => date && date.toLocaleString("en-us", { weekday: "long" }).toLowerCase() === day.toLowerCase());
-
-          //CkeckBox button 
-          return (
-            <td style={{borderBottom:'1px solid'}} key={day}>
-              <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <input
-                  type="checkbox"
-                  onClick={() => handleClick(rowIndex, colIndex)}
-                  checked={checkboxState[rowIndex][colIndex]}
-                  style={{ transform: 'scale(4)'}}
-                />
-              </label>
-            </td>
-          );
-        });
-
-        //Time slots for interview
-        return (
-          <tr key={timeSlot}>
-            <td style={{fontSize:'12pt',height: '75px', display: 'flex', alignItems: 'center', justifyContent: 'center', color:'white', backgroundColor:'dimgrey'}}>
-              {timeSlot}
-            </td>
-            {cells}
-          </tr>
-        );
-      });
-
-      //Displays calandar
-      return (
-        <div style={{display: 'flex', justifyContent: 'center', position:'absolute', right:'40%', textAlign: 'center'}}>
-          {!formSubmitted && (
-            <form style={{backgroundColor: 'grey'}} onSubmit={handleSubmit}>
-              <table style={{backgroundColor: 'grey'}}>
-                <thead style={{border: '1px solid'}}>
-                  <tr style={{backgroundColor:'grey', color:'white'}}>
-                    <th></th>
-                    {weekdays.map((day) => (
-                      <th key={day} style={{backgroundColor:'dimgrey'}}>
-                        <div style={{ height: '40px', width: '175px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft:'-10px'}}>
-                          {day}
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows}
-                </tbody>
-              </table>
-              <div style={{marginTop: '20px', marginLeft:'400px'}}>
-                <button style={{ transform: 'scale(2)'}} type="submit">Submit</button>
-              </div>
-            </form>
-          )}
-           {formSubmitted && (
-            <div style={{position:'relative', fontSize:'24pt', marginTop: '100px', marginLeft:'550px'}}>
-              <p>Your selections have been saved</p>
-            </div>
-          )}
-        </div>
-      );
+  const toggleSlot = (day, slot) => {
+    const index = selectedSlots.findIndex((item) => item.day === day && item.slot === slot);
+    if (index !== -1) {
+      setSelectedSlots((prev) => prev.filter((item) => item.day !== day || item.slot !== slot));
+    } else {
+      setSelectedSlots((prev) => [...prev, { day, slot }]);
     }
+  };
+
+  return (
+    <Container className="py-5">
+      <h1 className="text-center mb-5">Select your availability</h1>
+      <Row className="justify-content-center">
+        {daysOfWeek.map((day) => (
+          <Col md={3} className="mb-5" key={day}>
+            <h3 className="text-center">{day}</h3>
+            <Form>
+              {timeSlots.map((slot) => (
+                <Form.Check
+                  type="checkbox"
+                  label={slot}
+                  key={`${day}-${slot}`}
+                  checked={selectedSlots.some((item) => item.day === day && item.slot === slot)}
+                  onChange={() => toggleSlot(day, slot)}
+                />
+              ))}
+            </Form>
+          </Col>
+        ))}
+      </Row>
+      <div className="d-flex justify-content-center">
+        <Button variant="primary" onClick={() => console.log(selectedSlots)}>Save</Button>
+      </div>
+    </Container>
+  );
+};
 
 export default Calendar;
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteExperience } from '../../actions/profile';
+import Sidebar from '../../components/layout/Sidebar';
 
 
 const Experience = ({
@@ -43,6 +44,7 @@ const Experience = ({
   return (
     <Fragment>
       <h2 className="my-2">Experiences within Chosen Field</h2>
+      <Sidebar />
       <div className="table">
         <thead>
           <tr>

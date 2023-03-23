@@ -1,9 +1,9 @@
 
 .box{
     display:flex;
-    position: absolute;
+    position: fixed;
     left : 0%;
-    top: 4%;
+    top: 20%;
 }
 
 .sidebar{

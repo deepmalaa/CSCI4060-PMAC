@@ -102,6 +102,10 @@
 }
 /* end general text */
 
+.picture img{
+    object-fit: contain;
+    
+}
 
 .contentBox{
     width: 100%;

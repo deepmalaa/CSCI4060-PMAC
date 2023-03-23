@@ -17,6 +17,7 @@ import FacultyLetter from './pages/FacultyLetter';
 import StatusPage from './pages/StatusPage';
 import FacultyRecommendationForm from './pages/FacultyRecommendationForm';
 import HomePage from './pages/HomePage';
+import CommitteeLanding from './pages/DashboardCommittee';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -77,6 +78,7 @@ const App = () => {
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
 
+        <Route path="/DashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
 
 
         {/* experiencePages */}

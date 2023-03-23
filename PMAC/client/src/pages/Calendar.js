@@ -55,6 +55,15 @@ export default class DemoApp extends React.Component {
             weekends={false}
             slotMinTime="08:00:00"
             slotMaxTime="18:00:00"
+            views={{
+              dayGridWeek: {
+                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+              },
+              dayGridDay: {
+                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+              },
+            }}
+            
           
             select={this.handleDateSelect}
             eventContent={renderEventContent} // custom render function
@@ -103,9 +112,9 @@ export default class DemoApp extends React.Component {
 
     if (title) {
         let start = new Date(selectInfo.startStr) // create Date object from startStr
-        let hoursAndMinutes = start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        let hoursAndMinutes = start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23'})
         let finish = new Date(selectInfo.endStr) // create Date object from startStr
-        let hoursAndMinutes2 = finish.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        let hoursAndMinutes2 = finish.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23'})
         let dayWeek = new Date(selectInfo.endStr) // create Date object from startStr
         //let thisDay = dayWeek.toLocaleTimeString([], {day: 'numeric'})
         let thisDay = dayWeek.getDay()

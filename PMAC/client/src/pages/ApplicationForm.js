@@ -473,9 +473,8 @@ const ApplicationForm = ({
         </button>
       
       
-      <button className="btn btn-light my-1" >
-        <Link to="/clubExperience" >Next Page</Link>
-        </button>
+      
+        <Link to="/clubExperience" className="btn btn-light my-1">Next Page</Link>
         
            
             

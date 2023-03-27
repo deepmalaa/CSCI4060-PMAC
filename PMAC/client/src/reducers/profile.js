@@ -1,13 +1,15 @@
-import{
+import {
     GET_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
     UPDATE_PROFILE,
+    GET_PROFILES
 } from '../actions/types';
 
-const initialState ={
+const initialState = {
     token: localStorage.getItem('token'),
     profile: null,
+    profiles: [],
     loading: true,
     error: {},
     isAuthenticated: null,
@@ -17,18 +19,25 @@ const initialState ={
 function profileReducer(state = initialState, action) {
     const { type, payload } = action;
 
-    switch (type){
+    switch (type) {
         case GET_PROFILE:
         case UPDATE_PROFILE:
-            return{
+            return {
                 ...state,
-                loading:false,
-                profile:payload,
+                loading: false,
+                profile: payload,
                 isAuthenticated: true,
             };
 
+        case GET_PROFILES:
+            return {
+                ...state,
+                profiles: payload,
+                loading: false
+            };
+
         case PROFILE_ERROR:
-            return{
+            return {
                 ...state,
                 error: payload,
                 loading: false,
@@ -36,11 +45,11 @@ function profileReducer(state = initialState, action) {
                 isAuthenticated: false,
             };
 
-            case CLEAR_PROFILE:
-                return {
-                  ...state,
-                  profile: null,
-                };
+        case CLEAR_PROFILE:
+            return {
+                ...state,
+                profile: null,
+            };
         default:
             return state;
     }

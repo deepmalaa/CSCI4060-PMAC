@@ -36,8 +36,8 @@ const Register = ({setAlert, register, isAuthenticated}) => {
       const user = jwt(localStorage.token);
       console.log(user.role);
     
-      if(user.user.role === "Faculty")
-        return <Navigate to ="/dashboardFaculty" />
+      if(user.user.role === "Committee")
+        return <Navigate to ="/dashboardCommittee" />
 
 
       return <Navigate to ="/ApplicationForm" />
@@ -82,8 +82,8 @@ const Register = ({setAlert, register, isAuthenticated}) => {
         <select name="type" placeholder="Choose a role" required onChange={e=> onChange(e)}>
           <option value="">Select role</option>
     <option value="Student">Student</option>
-    <option value="Faculty">Faculty</option>
-    <option value="Committe">Commitee Member</option>
+
+    <option value="Committee">Committee Member</option>
     </select>
     </div>
         <input type="submit" className="btn btn-primary" value="Register" />

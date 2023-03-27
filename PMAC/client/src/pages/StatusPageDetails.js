@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/StatusPage.css';
+import Calendar from './Calendar';
 
 function Details({ application }) {
   const {
@@ -12,15 +13,36 @@ function Details({ application }) {
     interviewScheduled,
     interviewDate,
     interviewTime,
-    interviewLocation,
     score,
   } = application;
 
+  // Used to create checkbox placement buttons. Allows for checkbox selection identification
+  const days = ['Monday', 'Wednesday', 'Thursday', 'Friday'];
   const steps = ['Pending', 'Accepted', 'Interview', 'Complete'];
 
-  const activeStepIndex = steps.indexOf(status);
-  const completedSteps = steps.slice(0, activeStepIndex);
-  const remainingSteps = steps.slice(activeStepIndex);
+
+  let calendarOption;
+  if(status === 'Accepted') {
+    if(interviewStatus === false) {
+      calendarOption = (
+      <>
+        <p style={{margin:'20px'}}> Note: No Interview times have been selected for this application. Please select avaliable Interview times! If no interview time is selected, interview scheduling cannot proceed</p>
+        <Calendar days={days}/>
+ 
+      </>
+      );
+    }
+    else {
+      calendarOption = (
+      <>
+        <p style={{marginTop:'20px'}}> Note: Your interview avaliability has been submitted for this application. An offical interview schedule is being proccessed at this time.</p>
+      </>
+      );
+    }
+  }
+  else {
+    calendarOption = ('');
+  }
 
   let content;
   switch (status) {
@@ -28,30 +50,35 @@ function Details({ application }) {
     case 'Pending':
       content = (
         <>
-          <p>{application.title}</p>
-          <p>Status: {status}</p>
-          <p>Submission Date: {submissionDate}</p>
+          <p className='content'>Application: {application.title}</p>
+          <p className='content'>Name: </p>
+          <p className='content'>Status: {status}</p>
+          <p className='content'>Submission Date: {submissionDate}</p>
         </>
       );
+      break;
 
     case 'Denied':
       content = (
         <>
-          <p>{application.title}</p>
-          <p>Status: {status}</p>
-          <p>Submission Date: {submissionDate}</p>
-          <p>Feedback: {feedback}</p>
+          <p className='content'> Application: {application.title}</p>
+          <p className='content'>Name: </p>
+          <p className='content'>Status: {status}</p>
+          <p className='content'>Submission Date: {submissionDate}</p>
+          <p className='content'>Feedback: {feedback}</p>
         </>
       );
       break;
 
     case 'Accepted':
       content = (
+
         <>
-          <p>{application.title}</p>
-          <p>Status: {status}</p>
-          <p>Submission Date: {submissionDate}</p>
-          {interviewStatus }
+          <p className='content'> Application: {application.title}</p>
+          <p className='content'>Name: </p>
+          <p className='content'>Status: {status}</p>
+          <p className='content'>Submission Date: {submissionDate}</p>
+          <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
         </>
       );
       break;
@@ -59,13 +86,13 @@ function Details({ application }) {
       case 'Interview':
         content = (
           <>
-            <p>{application.title}</p>
-            <p>Status: {status}</p>
-            <p>Submission Date: {submissionDate}</p>
-            <p>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
-            <p>Overall Score: {score}</p>
-            <p>Interview Date: {interviewDate}</p>
-            <p>Interview Time: {interviewTime}</p>
+            <p className='content'>{application.title}</p>
+            <p className='content'>Name: </p>
+            <p className='content'>Status: {status}</p>
+            <p className='content'>Submission Date: {submissionDate}</p>
+            <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
+            <p className='content'>Interview Date: {interviewDate}</p>
+            <p className='content'>Interview Time: {interviewTime}</p>
           </>
         );
         break;
@@ -73,38 +100,22 @@ function Details({ application }) {
     case 'Complete':
       content = (
         <>
-          <p>{application.title}</p>
-          <p>Status: {status}</p>
-          <p>Submission Date: {submissionDate}</p>
-          <p>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
-          <p>Overall Score: {score}</p>
-          <p>Interview Date: {interviewDate}</p>
-          <p>Interview Time: {interviewTime}</p>
+          <p className='content'>{application.title}</p>
+          <p className='content'>Name: </p>
+          <p className='content'>Status: {status}</p>
+          <p className='content'>Submission Date: {submissionDate}</p>
+          <p className='content'>Overall Score: {score}</p>
+          <p className='content'>Interview Date: {interviewDate}</p>
+          <p className='content'>Interview Time: {interviewTime}</p>
         </>
       );
       break;
-    default:
-      content = (
-        <>
-          <p>Status: {status}</p>
-          <p>Submission Date: {submissionDate}</p>
-        </>
-      );
   }
 
-  if (status === 'Denied') {
-    return (
-      <div className="process-container">
-        <div className="content-container" style={{margin:'20px'}}>
-          {content}
-        </div>
-      </div>
-    );
-  }
-
+  
   return (
     <div className="process-container">
-      <ul className="process-steps">
+      <ul className="process-steps" style={{marginTop:'20px'}}>
         <li className={`step pending ${status === 'Pending' ? 'active' : ''}`}>Pending</li>
         <li className={`step accepted ${status === 'Accepted' ? 'active' : ''}`}>Accepted</li>
         <li className={`step interview ${status === 'Interview' ? 'active' : ''}`}>Interview</li>
@@ -112,6 +123,7 @@ function Details({ application }) {
       </ul>
       <div className="content-container">
         {content}
+        {calendarOption}
       </div>
     </div>
   );

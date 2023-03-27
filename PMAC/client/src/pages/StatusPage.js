@@ -1,37 +1,44 @@
-  import React, { useState } from 'react';
+  import React, {useState, useEffect} from 'react';
   import ApplicationSelector from './ApplicationSelector';
   import '../styles/StatusPage.css';
-  import allopathicIcon from '../img/StatusPageIcons/twosnakes.png';
-  import osteopathicIcon from '../img/StatusPageIcons/onesnake.png';
-  import physicianAssistantIcon from '../img/StatusPageIcons/physician.png';
-  import dentalIcon from '../img/StatusPageIcons/tooth.png';
-  import otherIcon from '../img/StatusPageIcons/other.png';
-  import Calendar from './Calendar';
   import Details from './StatusPageDetails';
   import s from '../styles/HomePage.module.css';
+  import topBanner from '../img/HomePage/library.jpg';
+  import { getCurrentProfile } from '../actions/profile';
+  import {applicantRelease} from '../actions/applicantRelease';
+  import { connect } from 'react-redux';
+  import PropTypes from 'prop-types';
+  import Sidebar from '../components/layout/Sidebar';
 
 
+  function StatusPage(props) {
+    useEffect(() => {
+      props.getCurrentProfile();
+    }, [props.getCurrentProfile]);
 
-
-  function StatusPage() {
+    StatusPage.propTypes = {
+      getCurrentProfile: PropTypes.func.isRequired,
+    };
+    
     const [selectedApplication, setSelectedApplication] = useState('');
     const [status, setStatus] = useState('');
     const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
-  
+
+
+
     const submittedApplications = {
       application1: {
         verified: true,
         title: 'Allopathic Medical Application',
         status: 'Pending',
-        icon: allopathicIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+
       application2: {
         verified: true,
         title: 'Osteopathic Medical Application',
         status: 'Accepted',
-        icon: osteopathicIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
@@ -39,7 +46,6 @@
         verified: true,
         title: 'Physician Assistant Application',
         status: 'Denied',
-        icon: physicianAssistantIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
@@ -47,7 +53,6 @@
         verified: true,
         title: 'Dental Application',
         status: 'Interview',
-        icon: dentalIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
@@ -55,7 +60,6 @@
         verified: true,
         title: 'Other(ex: Podiatry) Application',
         status: 'Complete',
-        icon: otherIcon,
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
@@ -78,43 +82,58 @@
     const interviewStatus = submittedApplications[selectedApplication]?.interviewStatus;
     const submissionDate = submittedApplications[selectedApplication]?.submissionDate;
   
-    // Used to create checkbox placement buttons. Allows for checkbox selection identification
-    const days = ['Monday', 'Wednesday', 'Thursday', 'Friday'];
     
     return (
       <body>
-          <div style={{fontSize:'16pt', fontFamily:'Arial'}}> Application Status </div>
-          <div className={s.goldBars}></div>
-          
+
+        <div className={s.container}>    
+          <Sidebar/>
+        </div>  
+
+        <div>
+            <div className={s.whiteBar} style={{marginTop:'-42px'}}>
+            <div className={s.goldBars}> </div>
+                <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#account">Account</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#Help">Help</a></li>
+                </ul>
+            </div>
+            <div className={s.goldBars}> </div>
+          </div>
+
+        <div className={s.topBanner}>
+          <div className={s.img}>
+            <img src={topBanner} alt="Backdrop of ULM Campus"/>  
+          </div>
+          <div className={s.bottomTitle} style={{fontSize:'64pt', fontWeight:'400'}}>
+            Application Status    
+          </div>
+          <div className={s.goldBars}></div>        
+        </div>
           
         <div className="background">
           {selectedApplication ? (
             <>
               <applicationStatus title={title} status={applicationStatus} interviewStatus={interviewStatus} submissionDate={submissionDate} onClose={() => setSelectedApplication('')} />
-              {applicationStatus === 'Accepted' && interviewStatus === false && <Details application={submittedApplications[selectedApplication]}/>}
+              {applicationStatus === 'Accepted' && (!interviewStatus || selectedApplication) && <Details application={submittedApplications[selectedApplication]} />}
               {applicationStatus !== 'Accepted' && <Details application={submittedApplications[selectedApplication]} />}
-              {applicationStatus === 'Accepted' && interviewStatus === true &&<Details application={submittedApplications[selectedApplication]} />}
             </>
           ) : (
             <ApplicationSelector onChange={handleSelect} applications={submittedApplications} />
           )}
           
-          {selectedApplication && interviewStatus && (
-            <div>
-              <button style={{width:'100px', borderRadius:'45px'}} onClick={() => setSelectedApplication('')}>Done</button>
-            </div>
-          )}
-          {selectedApplication && !interviewStatus && (
-            <div>
+          {selectedApplication && (
+            <div style={{marginTop:'10px'}}>
               <button onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
-        </div>
+        </div> 
         <div className={s.goldBars}></div>
+        <div className={s.redBar}></div>
       </body>
     );
   }
-
-  export default StatusPage;
-
-//<Calendar days={days}/>
+  
+  export default connect(null, { getCurrentProfile })(StatusPage);

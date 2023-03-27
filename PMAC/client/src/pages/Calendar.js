@@ -1,55 +1,185 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import React from 'react'
+import FullCalendar, { formatDate } from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import mongoose from 'mongoose';
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-const timeSlots = [
-  '8:00 AM - 9:30 AM',
-  '9:30 AM - 11:00 AM',
-  '11:00 AM - 12:30 PM',
-  '12:30 PM - 2:00 PM',
-  '2:00 PM - 3:30 PM',
-  '3:30 PM - 5:00 PM'
-];
+// create a schema for the event
+const eventSchema = new mongoose.Schema({
+  title: String,
+  start: Date,
+  end: Date,
+  daysOfWeek: [Number],
+  startTime: String,
+  endTime: String,
+});
 
-const Calendar = () => {
-  const [selectedSlots, setSelectedSlots] = useState([]);
+// create a model for the event
+const Event = mongoose.model('Event', eventSchema);
 
-  const toggleSlot = (day, slot) => {
-    const index = selectedSlots.findIndex((item) => item.day === day && item.slot === slot);
-    if (index !== -1) {
-      setSelectedSlots((prev) => prev.filter((item) => item.day !== day || item.slot !== slot));
-    } else {
-      setSelectedSlots((prev) => [...prev, { day, slot }]);
-    }
-  };
+// connect to the MongoDB database
+//mongoose.connect('mongodb+srv://bhomid:fX5HerW8ghGLvncr@pmac.gxzhf9r.mongodb.net/myDatabase?retryWrites=true&w=majority', {
+ // useNewUrlParser: true,
+ // useUnifiedTopology: true,
+//});
 
-  return (
-    <Container className="py-5">
-      <h1 className="text-center mb-5">Select your availability</h1>
-      <Row className="justify-content-center">
-        {daysOfWeek.map((day) => (
-          <Col md={3} className="mb-5" key={day}>
-            <h3 className="text-center">{day}</h3>
-            <Form>
-              {timeSlots.map((slot) => (
-                <Form.Check
-                  type="checkbox"
-                  label={slot}
-                  key={`${day}-${slot}`}
-                  checked={selectedSlots.some((item) => item.day === day && item.slot === slot)}
-                  onChange={() => toggleSlot(day, slot)}
-                />
-              ))}
-            </Form>
-          </Col>
-        ))}
-      </Row>
-      <div className="d-flex justify-content-center">
-        <Button variant="primary" onClick={() => console.log(selectedSlots)}>Save</Button>
+
+
+
+export default class DemoApp extends React.Component {
+
+  state = {
+   
+    currentEvents: []
+  }
+
+  render() {
+    return (
+      <div className='demo-app'>
+        {this.renderSidebar()}
+        <div className='demo-app-main'>
+          <FullCalendar
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            headerToolbar={{
+              
+              left: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
+              
+            }}
+            initialView='dayGridMonth'
+            editable={true}
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            weekends={false}
+            slotMinTime="08:00:00"
+            slotMaxTime="18:00:00"
+            views={{
+              dayGridWeek: {
+                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+              },
+              dayGridDay: {
+                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+              },
+            }}
+            
+          
+            select={this.handleDateSelect}
+            eventContent={renderEventContent} // custom render function
+            eventClick={this.handleEventClick}
+            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            /* you can update a remote database when these fire:
+            eventAdd={function(){}}
+            eventChange={function(){}}
+            eventRemove={function(){}}
+            */
+          />
+        </div>
       </div>
-    </Container>
-  );
-};
+    )
+  }
 
-export default Calendar;
+  renderSidebar() {
+    return (
+      <div className='demo-app-sidebar'>
+        <div className='demo-app-sidebar-section'>
+          <h2>Instructions</h2>
+          <ul>
+            <li>Select dates and you will be prompted to create a new event</li>
+            <li>Drag, drop, and resize events</li>
+            <li>Click an event to delete it</li>
+          </ul>
+        </div>
+        
+        <div className='demo-app-sidebar-section'>
+          <h2>All Events ({this.state.currentEvents.length})</h2>
+          <ul>
+            
+          </ul>
+        </div>
+      </div>
+    )
+  }
+
+  
+
+  handleDateSelect = (selectInfo) => {
+    let title = prompt('Please enter a new title for your event')
+    let calendarApi = selectInfo.view.calendar
+
+    calendarApi.unselect() // clear date selection
+
+    if (title) {
+        let start = new Date(selectInfo.startStr) // create Date object from startStr
+        let hoursAndMinutes = start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23'})
+        let finish = new Date(selectInfo.endStr) // create Date object from startStr
+        let hoursAndMinutes2 = finish.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23'})
+        let dayWeek = new Date(selectInfo.endStr) // create Date object from startStr
+        //let thisDay = dayWeek.toLocaleTimeString([], {day: 'numeric'})
+        let thisDay = dayWeek.getDay()
+      calendarApi.addEvent({
+        //id: createEventId(),
+        groupId: 'test',
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        daysOfWeek:  [ thisDay ],
+        startTime: hoursAndMinutes,
+        endTime: hoursAndMinutes2,
+      })
+
+      const event = new Event({
+        groupId: 'test',
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        daysOfWeek:  [ thisDay ],
+        startTime: hoursAndMinutes,
+        endTime: hoursAndMinutes2,
+      })
+
+
+      // save the event to the database
+      event.save()
+        .then(() => {
+          console.log('Event saved successfully!');
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+
+      calendarApi.addEvent({
+        groupId: 'test',
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        daysOfWeek: [thisDay],
+        startTime: hoursAndMinutes,
+        endTime: hoursAndMinutes2,
+      });
+
+
+      
+    }
+  }
+
+  
+
+  handleEvents = (events) => {
+    this.setState({
+      currentEvents: events
+    })
+  }
+
+}
+
+function renderEventContent(eventInfo) {
+  return (
+    <>
+      <b>{eventInfo.timeText}</b>
+      <i>{eventInfo.event.title}</i>
+    </>
+  )
+}
 

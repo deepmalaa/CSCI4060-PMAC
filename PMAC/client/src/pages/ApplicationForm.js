@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../actions/profile';
 import s from '../styles/ApplicantInformation.module.css';
 import moment from "moment";
+import Sidebar from '../components/layout/Sidebar';
 
 const initialState = {
     fname:"",
@@ -72,7 +73,7 @@ const ApplicationForm = ({
     const editing = profile ? true : false;
     e.preventDefault();
     createProfile(formData, editing).then(() => {
-      if (!editing) navigate('/clubExperience');
+      //if (!editing) navigate('/clubExperience');
     });
   };
 
@@ -83,6 +84,7 @@ const ApplicationForm = ({
       ) : (
 
     <body className={s.body}>
+      <Sidebar />
 
     <div className={s.subTitle}>Applicant Information</div>
 

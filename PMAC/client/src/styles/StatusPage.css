@@ -179,11 +179,10 @@
 .background {
   background-color: lightgray;
   margin: 0;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size:contain;
+  min-height: 150vh;
+  height: cover;
+  background-size: cover;
   background-position: center;
-  opacity: 0.;
 }
 
 .container {
@@ -202,7 +201,7 @@
 
 .application-container {
   position: absolute;
-  top:30%;
+  top:75%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -420,10 +419,27 @@
 }
 
 .content-container {
+  font-size: large;
   background-color: #f5f5f5;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   padding: 20px;
   width: 100%;
   max-width: 1000px;
+}
+
+.content {
+  padding-left: 10%;
+  margin-left: 0;
+  text-align: left;
+  margin-right: auto;
+  margin-left: -5%;
+  max-width: 900px;
+}
+
+.sidebar.container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
 }

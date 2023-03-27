@@ -31,8 +31,8 @@ const Login = ({login, isAuthenticated}) => {
       console.log(user.role);
       if(user.user.role === "Student")
         return <Navigate to ="/dashboardStudent" />
-      if(user.user.role === "Faculty")
-        return <Navigate to ="/dashboardFaculty" />
+      if(user.user.role === "Committee")
+        return <Navigate to ="/dashboardCommittee" />
     }
 
   return (

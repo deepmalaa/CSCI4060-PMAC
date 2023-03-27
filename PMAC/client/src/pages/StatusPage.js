@@ -1,30 +1,23 @@
-  import React, {useState, useEffect} from 'react';
-  import ApplicationSelector from './ApplicationSelector';
-  import '../styles/StatusPage.css';
-  import Details from './StatusPageDetails';
-  import s from '../styles/HomePage.module.css';
-  import topBanner from '../img/HomePage/library.jpg';
-  import { getCurrentProfile } from '../actions/profile';
-  import {applicantRelease} from '../actions/applicantRelease';
-  import { connect } from 'react-redux';
-  import PropTypes from 'prop-types';
-  import Sidebar from '../components/layout/Sidebar';
+import React, { useState, useEffect } from 'react';
+import {connect} from 'react-redux';
+import {Link, Navigate} from 'react-router-dom';
+import ApplicationSelector from './ApplicationSelector';
+import '../styles/StatusPage.css';
+import Details from './StatusPageDetails';
+import s from '../styles/HomePage.module.css';
+import topBanner from '../img/HomePage/library.jpg';
+import { getCurrentProfile } from '../actions/profile';
+import { applicantRelease } from '../actions/applicantRelease';
+import PropTypes from 'prop-types';
+import Sidebar from '../components/layout/Sidebar';
 
 
-  function StatusPage(props) {
-    useEffect(() => {
-      props.getCurrentProfile();
-    }, [props.getCurrentProfile]);
+const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
+  useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
 
-    StatusPage.propTypes = {
-      getCurrentProfile: PropTypes.func.isRequired,
-    };
-    
-    const [selectedApplication, setSelectedApplication] = useState('');
-    const [status, setStatus] = useState('');
-    const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
-
-
+  const [selectedApplication, setSelectedApplication] = useState('');
+  const [status, setStatus] = useState('');
+  const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
 
     const submittedApplications = {
       application1: {
@@ -135,5 +128,20 @@
       </body>
     );
   }
-  
-  export default connect(null, { getCurrentProfile })(StatusPage);
+
+  StatusPage.propTypes = {
+    getCurrentProfile: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired
+
+  };
+
+  const mapStateToProps = (state) => ({
+    auth: state.auth,
+    profile: state.profile
+  });
+
+
+  export default connect(mapStateToProps, { getCurrentProfile })(
+    StatusPage
+  );

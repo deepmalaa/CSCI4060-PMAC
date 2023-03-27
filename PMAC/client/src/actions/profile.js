@@ -1,7 +1,7 @@
 import api from '../utils/api';
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import { GET_PROFILE, GET_PROFILES, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // Get current users profile
@@ -102,6 +102,42 @@ export const deleteExperience = (id, exp) => async (dispatch) => {
     });
 
     dispatch(setAlert('Work Experience Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get current users profile
+export const getAllProfile = () => async (dispatch) => {
+
+  dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get('http://localhost:5001/api/profile');
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get search profile
+export const getSearchProfile = () => async (dispatch) => {
+  try {
+    const res = await axios.get('api/profile/search');
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

@@ -45,6 +45,7 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
+import Search from './components/layout/Search';
 
 
 
@@ -78,8 +79,10 @@ const App = () => {
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
 
-        <Route path="/DashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
+        <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
 
+
+        <Route path="/search" element={<Search/>} />
 
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
@@ -108,6 +111,7 @@ const App = () => {
       
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      
       
       
       <Route path="/test" element={<UploadPicture/>} />

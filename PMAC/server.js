@@ -30,6 +30,6 @@ app.use('/api/image', require('./routes/api/image'));
 
 
 //look for env variable called PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, ()=>console.log(`Server started on port ${PORT}`));

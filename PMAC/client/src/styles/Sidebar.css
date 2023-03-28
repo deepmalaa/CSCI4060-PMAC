@@ -1,27 +1,24 @@
 
-.box{
+.box {
     display: flex;
     position: relative;
     top: 80px;
+    height: 100%;
   }
-  .sidebar{
+  .sidebar {
     position: fixed;
-    top: 45px;
+    top:6%;
     bottom: 0;
     left: 0;
     width: 200px;
-    display:flex;
-    position: fixed;
-    left : 0%;
-    top: 20%;
-}
-
-.sidebar{
+    
     background: #a9a8a9;
     color: #840029;
     transition: all 0.5s;
     z-index: 9999;
+    overflow-y: auto;
   }
+
 .top_section{
     display: flex;
     align-items:center;

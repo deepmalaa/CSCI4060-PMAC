@@ -13,18 +13,27 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
   try {
-    const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name']);
+    const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'email', 'userRole']);
 
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
-    res.json(profile);
+
+    const { fname, lname, mname, cwid, address, cell, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval } = profile;
+
+    const email = profile.user.email;
+    const userRole = profile.user.userRole;
+
+    const profileFields = { fname, lname, mname, cwid, address, cell, ulm_email: email, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, userRole };
+
+    res.json(profileFields);
   }
   catch (err) {
     console.error(err.message);
     res.status(500).send('server error');
   }
 });
+
 
 
 

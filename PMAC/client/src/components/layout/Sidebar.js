@@ -46,15 +46,21 @@ const Sidebar = ({ children, role }) => {
             roles: ['student'] 
         },
         {
-            path: "/adminPage",
-            name: "Admin Page",
-            icon: <FaTh />,
+            path: "/dashboardChair",
+            name: "Home",
+            icon: <FaTh/>,
             roles: ['admin']
           },
           {
             path: "/manageUsers",
             name: "Manage Users",
             icon: <FaUserAlt />,
+            roles: ['admin']
+          },
+          {
+            path: "/settings",
+            name: "Settings",
+            icon: <FaTh />,
             roles: ['admin']
           },
           {

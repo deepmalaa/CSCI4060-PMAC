@@ -1,0 +1,45 @@
+
+.adminHeader {
+    border: 3px solid gold;
+    height: 100%;
+    position: relative;
+    font-size: large;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: #c62828;
+  }
+  
+  .adminContainer {
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+  .adminImage{
+    height: 400px;
+    left: 0;
+    object-fit: cover;
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+
+
+  .adminInfo {
+    width:800px;
+    position: relative;
+    left: 50vh;
+  }
+  
+  .adminInfo h2 {
+    margin-bottom: 20px;
+  }
+  
+  .websiteStatus {
+    position: fixed;
+    bottom: 0;
+    right: 88%;
+  }
+ 
+  
+ 

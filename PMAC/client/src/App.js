@@ -17,7 +17,9 @@ import FacultyLetter from './pages/FacultyLetter';
 import StatusPage from './pages/StatusPage';
 import FacultyRecommendationForm from './pages/FacultyRecommendationForm';
 import HomePage from './pages/HomePage';
-import CommitteeLanding from './pages/DashboardCommittee';
+import CommitteeMemberLanding from './pages/CommitteeMemberLanding';
+import ChairLanding from './pages/ChairLanding';
+import ManageUsers from './pages/ManageUsers';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -46,6 +48,7 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
+
 
 
 
@@ -79,9 +82,10 @@ const App = () => {
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
 
-        <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
-
-
+        <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
+        
+        <Route path="/dashboardChair" element={<ChairLanding/>} />
+        <Route path="/manageUsers" element={<ManageUsers/>} />
         <Route path="/search" element={<Search/>} />
 
         {/* experiencePages */}

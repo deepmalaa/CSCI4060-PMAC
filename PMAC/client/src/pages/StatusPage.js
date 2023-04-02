@@ -22,7 +22,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     const submittedApplications = {
       application1: {
         verified: true,
-        title: props.amcas_id,
+        title: "title",
         status: 'Pending',
         interviewStatus: false,
         submissionDate: 'month/day/year',

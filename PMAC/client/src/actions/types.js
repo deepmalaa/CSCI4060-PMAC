@@ -12,3 +12,6 @@ export const PROFILE_ERROR ='PROFILE_ERROR';
 export const UPDATE_PROFILE ='UPDATE_PROFILE';
 export const CLEAR_PROFILE ='CLEAR_PROFILE';
 export const GET_PROFILES ='GET_PROFILES';
+export const GET_WAIVERS = 'GET_WAIVERS';
+export const CLEAR_WIAVER = 'CLEAR_WAIVER';
+export const WAIVER_ERROR = 'WAIVER_ERROR';

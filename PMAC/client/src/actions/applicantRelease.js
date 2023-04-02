@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFILE } from './types';
+import { GET_PROFILE, GET_WAIVERS, CLEAR_WIAVER, WAIVER_ERROR} from './types';
 
 
 export const applicantRelease = (formData) =>
@@ -34,3 +34,23 @@ async (dispatch) => {
       }
     }
 }
+
+
+// Get current users profile
+export const getWaiver = () => async (dispatch) => {
+
+  dispatch({ type: CLEAR_WIAVER });
+  try {
+    const res = await axios.get('http://localhost:5001/api/apprelease');
+
+    dispatch({
+      type: GET_WAIVERS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: WAIVER_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

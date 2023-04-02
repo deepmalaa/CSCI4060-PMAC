@@ -39,6 +39,7 @@ const Sidebar = ({children}) => {
             name:"Wavier Form",
             icon:<FaThList/>
         }
+        
     ]
     return (
         

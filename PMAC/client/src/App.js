@@ -46,7 +46,8 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
-
+import Status from './components/layout/StatusBar';
+import Check from './components/layout/CheckList';
 
 
 if(localStorage.token){
@@ -83,7 +84,8 @@ const App = () => {
 
 
         <Route path="/search" element={<Search/>} />
-
+        <Route path="/status" element={<Status/>} />
+        <Route path="/checkList" element={<Check/>} />
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />

@@ -56,4 +56,15 @@ router.post('/',[auth,[
     
 });
 
+
+router.get('/', async (req, res) => {
+    try {
+      const waivers = await ApplicationRelease.find().populate('user', ['authorize', 'evaluate', 'name_release']);
+      res.json(waivers);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
 module.exports = router;

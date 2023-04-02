@@ -7,6 +7,7 @@ import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
 import student from '../img/landingPages/student.jpg';
+import Status from '../components/layout/StatusBar';
 
 const StudentLanding = ({
     getCurrentProfile,
@@ -25,6 +26,7 @@ const StudentLanding = ({
         <div className={s.container}>
         <div className={s.StudentPage1}>    
           <Sidebar />
+          
         </div>    
             <div className={s.navBar}>
                 <div className={s.goldBars}> </div>

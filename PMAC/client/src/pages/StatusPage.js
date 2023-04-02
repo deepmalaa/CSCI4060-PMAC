@@ -29,7 +29,7 @@
     const submittedApplications = {
       application1: {
         verified: true,
-        title: 'Allopathic Medical Application',
+        title: props.amcas_id,
         status: 'Pending',
         interviewStatus: false,
         submissionDate: 'month/day/year',

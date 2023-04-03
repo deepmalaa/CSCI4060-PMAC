@@ -14,8 +14,8 @@ function FormOne() {
                 <div className={s.goldBars}> </div>
                     <div className={s.whiteBar}>
                         <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#news">Create Account</a></li>
+                            <li><a href="/HomePage">Home</a></li>
+                            <li><a href="/createAccount">Create Account</a></li>
                             <li><a href="#contact">Contact</a></li>
                             
                             <li><a href="#Help">Help</a></li>
@@ -26,7 +26,7 @@ function FormOne() {
             </div>
 
             <div className={s.picture}>
-                <img src={campus} alt="file submit"/>
+                <img src={campus} alt="campus picture"/>
                 <div className={s.goldBars}> </div>
             </div>
             
@@ -96,7 +96,7 @@ function FormOne() {
                         <br/><br/>
                         Dr. Burton Ashworth - Dr. Kristi Davis - Dr. El-Giar
                         <br/>
-                        Mr. Joshua Gann Dr. Ron Hil - Dr. Siva Murru - Dr. Matt Overturf 
+                        Mr. Joshua Gann - Dr. Ron Hil - Dr. Siva Murru - Dr. Matt Overturf 
                         <br/>
                         Ms. Kristin Chandler - Dr. Allison Wiedemeier
                     </span>
@@ -134,7 +134,7 @@ function FormOne() {
                 </div>
                 
                 {/*<div className={s.FQA}>*/}
-                    <a className={s.FQA} href="https://www.ulm.edu/biology/">
+                    <a className={s.FQA} href="/QuestionsPage">
                         <div>Frequent Questions</div>
                     </a>
                 {/*</div>*/}

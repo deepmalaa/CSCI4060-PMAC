@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
+import Landing from './pages/HomePage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
@@ -18,6 +18,8 @@ import StatusPage from './pages/StatusPage';
 import FacultyRecommendationForm from './pages/FacultyRecommendationForm';
 import HomePage from './pages/HomePage';
 import CommitteeLanding from './pages/DashboardCommittee';
+import QuestionsPage from './pages/QuestionsPage';
+import CreateAccount from './components/layout/CreateAccount';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -46,8 +48,7 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
-import Status from './components/layout/StatusBar';
-import Check from './components/layout/CheckList';
+
 
 
 if(localStorage.token){
@@ -80,12 +81,15 @@ const App = () => {
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
 
+        <Route path="/QuestionsPage" element={<QuestionsPage/>} />
+
+        <Route path="/CreateAccount" element={<CreateAccount/>} />
+
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
 
 
         <Route path="/search" element={<Search/>} />
-        <Route path="/status" element={<Status/>} />
-        <Route path="/checkList" element={<Check/>} />
+
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />

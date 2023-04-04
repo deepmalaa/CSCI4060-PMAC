@@ -42,7 +42,6 @@ const Sidebar = ({ children, role }) => {
         {
             path:"/ApplicantRelease",
             name:"Wavier Form",
-<<<<<<< HEAD
             icon:<FaThList/>,
             roles: ['student'] 
         },
@@ -104,12 +103,6 @@ const Sidebar = ({ children, role }) => {
 
     const filteredMenuItems = menuItem.filter(item => item.roles.includes(role));
 
-=======
-            icon:<FaThList/>
-        }
-        
-    ]
->>>>>>> 7b668e17747c60974b638da43e6be653534612d0
     return (
         <div className='box'>
             <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">

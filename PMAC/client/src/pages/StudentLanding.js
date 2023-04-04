@@ -31,10 +31,6 @@ const StudentLanding = ({
         
         <div className={s.container}>
         <div className={s.StudentPage1}>    
-<<<<<<< HEAD
-=======
-          <Sidebar />
->>>>>>> 7b668e17747c60974b638da43e6be653534612d0
           
         </div>    
             <div className={s.navBar}>

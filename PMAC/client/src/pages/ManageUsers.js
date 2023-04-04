@@ -19,7 +19,7 @@ const ManageUsers = ({
     <><div >
       <Sidebar role="admin" />
       
-      <h1 style={{ color: 'red', fontSize: '36px', textAlign: 'center' }}>Search For Users</h1>
+      <h1 style={{ color: 'red', fontSize: '36px', textAlign: 'center' }}>Search For Students</h1>
         <Search />
       </div>
     </>

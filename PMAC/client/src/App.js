@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect} from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
+import Landing from './pages/HomePage';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
@@ -17,9 +17,15 @@ import FacultyLetter from './pages/FacultyLetter';
 import StatusPage from './pages/StatusPage';
 import FacultyRecommendationForm from './pages/FacultyRecommendationForm';
 import HomePage from './pages/HomePage';
+<<<<<<< HEAD
 import CommitteeMemberLanding from './pages/CommitteeMemberLanding';
 import ChairLanding from './pages/ChairLanding';
 import ManageUsers from './pages/ManageUsers';
+=======
+import CommitteeLanding from './pages/DashboardCommittee';
+import QuestionsPage from './pages/QuestionsPage';
+import CreateAccount from './components/layout/CreateAccount';
+>>>>>>> 7b668e17747c60974b638da43e6be653534612d0
 
 //Redux
 import { Provider } from 'react-redux';
@@ -82,10 +88,20 @@ const App = () => {
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
 
+<<<<<<< HEAD
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
         
         <Route path="/dashboardChair" element={<ChairLanding/>} />
         <Route path="/manageUsers" element={<ManageUsers/>} />
+=======
+        <Route path="/QuestionsPage" element={<QuestionsPage/>} />
+
+        <Route path="/CreateAccount" element={<CreateAccount/>} />
+
+        <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeLanding} />} />
+
+
+>>>>>>> 7b668e17747c60974b638da43e6be653534612d0
         <Route path="/search" element={<Search/>} />
 
         {/* experiencePages */}

@@ -2,13 +2,13 @@ import React, { useEffect  } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
-import s from '../styles/StudentLanding.module.css';
+import s from '../styles/CommitteeMemberLanding.module.css';
 import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
 import medical from '../img/landingPages/medical.png';
 
-const CommitteeLanding = ({
+const CommitteeMemberLanding = ({
     getCurrentProfile,
     auth: { user },
     profile: { profile }
@@ -21,7 +21,7 @@ const CommitteeLanding = ({
         
         
         
-        
+        <Sidebar role="committe" />
         <div className={s.container}>
         <div className={s.StudentPage1}>    
           
@@ -93,7 +93,7 @@ const CommitteeLanding = ({
               <div className={s.grayRight}>
                 <span>Links</span>
                 <ul>
-                  <li><a href="#Home">Application Form</a></li>
+                  <li><a href="/ApplicationForm">Application Form</a></li>
                   <li><a href="#account">Release Form</a></li>
                   <li><a href="#contact">Personal Statement</a></li>
                   <li><a href="#Help">Unofficial Transcript</a></li>
@@ -139,20 +139,17 @@ const CommitteeLanding = ({
     )
 };
 
-CommitteeLanding.propTypes = {
-    getCurrentProfile: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
-
-
-  };
+CommitteeMemberLanding.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile
   });
 
-export default connect(mapStateToProps, { getCurrentProfile})(
-  CommitteeLanding
-  
+export default connect(mapStateToProps, { getCurrentProfile })(
+  CommitteeMemberLanding
 );

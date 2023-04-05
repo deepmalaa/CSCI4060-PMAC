@@ -13,6 +13,19 @@ export const getCurrentProfile = () => async (dispatch) => {
       type: GET_PROFILE,
       payload: res.data
     });
+    // Extract email and userRole from the profile data
+    const { email, userRole } = res.data;
+
+    // Dispatch actions to add email and userRole to the state
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: { email }
+    });
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: { userRole }
+    });
+
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

@@ -18,14 +18,19 @@ const StudentLanding = ({
       getCurrentProfile();
     }, [getCurrentProfile]);
     return (
-        <>
+      
+      <>
+        <Sidebar role="student" />
+        <div className = "dashboard ">Welcome {user && user.name}</div>
+        <div className = "StudentPage1">    
+          
         
+        <CheckList/>
         
         
         
         <div className={s.container}>
         <div className={s.StudentPage1}>    
-          <Sidebar />
           
         </div>    
             <div className={s.navBar}>
@@ -130,6 +135,7 @@ const StudentLanding = ({
 
             <div className={s.redBar}></div>
 
+        </div>
         </div>
         </>
     )

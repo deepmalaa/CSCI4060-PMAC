@@ -33,6 +33,8 @@ const Login = ({login, isAuthenticated}) => {
         return <Navigate to ="/dashboardStudent" />
       if(user.user.role === "Committee")
         return <Navigate to ="/dashboardCommittee" />
+      if(user.user.role === "admin")
+      return <Navigate to ="/dashboardChair" />
     }
 
   return (

@@ -1,26 +1,14 @@
 import React from 'react'
 import s from '../styles/FacultyLanding.module.css'
 import ulmLogo from '../img/showcase.jpeg';
-
+import Sidebar from '../components/layout/Sidebar';
 
 function FormOne() {
     return (     
         <body>
+            <Sidebar role = "faculty"/>
             <div className={s.anything}>
-
                 
-                <div class={s.navbar}>  
-                    <div className={s.home}>
-                        <a href="/dashboardFaculty">HOME</a>
-                    </div>
-                    <p>
-                        <a href="/FacultyLetter">Letter Submission</a>
-                        <a href="/FacultyAdvisoryForm">Faculty Form</a>
-                        <a href="#">Pending Requests</a>
-                        <a href="#">User Account</a>
-                        <a href="#">Settings</a>
-                    </p>
-                </div>
                 
 
                 <div className={s.topPage}>

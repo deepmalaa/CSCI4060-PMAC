@@ -1,18 +1,24 @@
 
-.box{
-    display:flex;
+.box {
+    display: flex;
+    position: relative;
+    top: 80px;
+    height: 100%;
+  }
+  .sidebar {
     position: fixed;
-    left : 0%;
-    top: 20%;
-}
-
-.sidebar{
+    top:6%;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    
     background: #a9a8a9;
     color: #840029;
-    height: 60vh;
-    width: 200px;
     transition: all 0.5s;
-}
+    z-index: 9999;
+    overflow-y: auto;
+  }
+
 .top_section{
     display: flex;
     align-items:center;
@@ -46,3 +52,7 @@
 .icon, .link_text{
     font-size: 20px;
 }
+.main{
+    margin-left: 200px;
+    padding: 20px;
+  }

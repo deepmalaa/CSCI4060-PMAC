@@ -5,6 +5,8 @@ const File = require('../../models/Photo');
 const router = express.Router();
 
 
+/////// NOT USED RN 
+
 const upload = multer({
     storage: multer.diskStorage({
       destination(req, file, cb) {

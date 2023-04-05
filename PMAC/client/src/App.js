@@ -48,6 +48,7 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
+import Headshot from './pages/Headshot';
 
 
 
@@ -113,6 +114,8 @@ const App = () => {
         <Route path="/workExperience" element={<WorkExperience/>} />
         <Route path="/addWorkExperience" element={<AddWorkExperience/>} />
         <Route path="/HomePage" element={<HomePage/>} />
+
+        <Route path="/headshot" element={<Headshot/>} />
     </Routes>
     
     <section className="container">

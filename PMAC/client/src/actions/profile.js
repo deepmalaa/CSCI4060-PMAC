@@ -4,6 +4,7 @@ import { setAlert } from './alert';
 import { GET_PROFILE, GET_PROFILES, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
+
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
@@ -13,18 +14,7 @@ export const getCurrentProfile = () => async (dispatch) => {
       type: GET_PROFILE,
       payload: res.data
     });
-    // Extract email and userRole from the profile data
-    const { email, userRole } = res.data;
-
-    // Dispatch actions to add email and userRole to the state
-    dispatch({
-      type: UPDATE_PROFILE,
-      payload: { email }
-    });
-    dispatch({
-      type: UPDATE_PROFILE,
-      payload: { userRole }
-    });
+    
 
   } catch (err) {
     dispatch({
@@ -54,6 +44,7 @@ export const createProfile =
         type: GET_PROFILE,
         payload: res.data
       });
+   
       
       dispatch(
         setAlert(edit ? 'Profile Updated':'Profile Created', 'success')

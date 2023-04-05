@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import {photo} from '../actions/photo';
 
+////NOT IN USE RN
+
 
 const UploadPicture = (props) => {
   const [file, setFile] = useState(null); // state for storing actual image

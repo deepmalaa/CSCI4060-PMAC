@@ -7,7 +7,9 @@ const router = require('express').Router();
 const multer = require('multer');
 const crypto = require('crypto');
 const path = require('path');
-
+const auth = require('../../middleware/auth');
+const Profile = require('../../models/Profile')
+const User = require('../../models/User')
 
 const mongoURI = "mongodb+srv://bhomid:fX5HerW8ghGLvncr@pmac.gxzhf9r.mongodb.net/?retryWrites=true&w=majority";
 const conn = mongoose.createConnection(mongoURI, {
@@ -104,6 +106,51 @@ router.post('/upload/', uploadMiddleware, async (req, res) => {
   return res.send(file.id);
 });
 
+router.post('/headshot', auth, uploadMiddleware, async (req, res) => {
+  // get the .file property from req that was added by the upload middleware
+  const { file } = req;
+  // and the id of that new image file
+  const { id } = file;
+  const {userId} = req.user.id;
+
+  if (file.size > 5000000) {
+    // if the file is too large, delete it and send an error
+    deleteImage(id);
+    return res.status(400).send('file may not exceed 5mb');
+  }
+  
+  const foundUser = await Profile.findOne({user: req.user.id });
+  if(!foundUser) return res.status(400).send('user not found');
+
+  const profileId = foundUser.id;
+  console.log(profileId)
+
+  //check if user already has a headshot
+  let currentPic = foundUser.headshot;
+
+  if (currentPic){
+    let currentPicId;
+
+    try{
+        currentPicId = new mongoose.Types.ObjectId(currentPic);
+    }
+    catch (err)
+    {
+      console.log('invalid id: ', currentPic)
+    }
+
+    gfs.delete(currentPicId, (err) =>{
+      if(err) return res.status(500).send('database error');
+    })
+  }
+
+  Profile.findByIdAndUpdate(profileId ,{headshot: id}, {userFindAndModify: true, new:true})
+  .then(profile => res.send(profile.headshot))
+  .catch((err) =>{
+    console.log('db error in updating headshot', err)
+  });
+});
+
 const deleteImage = (id) => {
   if (!id || id === 'undefined') return res.status(400).send('no image id');
   const _id = new mongoose.Types.ObjectId(id);
@@ -119,6 +166,7 @@ const deleteImage = (id) => {
 router.get('/:id', ({ params: { id } }, res) => {
   // if no id return error
   if (!id || id === 'undefined') return res.status(400).send('no image id');
+  console.log("from backend",id);
   // if there is an id string, cast it to mongoose's objectId type
   const _id = new mongoose.Types.ObjectId(id);
   // search for the image by id

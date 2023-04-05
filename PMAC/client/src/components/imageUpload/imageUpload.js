@@ -58,7 +58,7 @@ const MuiVersion = () => {
     const fd = new FormData();
     fd.append('image', file, file.name);
     axios
-      .post('api/image/upload', fd, {
+      .post('api/image/headshot', fd, {
         onUploadProgress: (progressEvent) => {
           setProgress((progressEvent.loaded / progressEvent.total) * 100);
           console.log(

@@ -192,6 +192,11 @@ const ProfileSchema = new mongoose.Schema({
         }
     }],
 
+    headshot:{
+        type: String
+
+    },
+
 
 
     date:{

@@ -20,6 +20,9 @@ import HomePage from './pages/HomePage';
 import CommitteeMemberLanding from './pages/CommitteeMemberLanding';
 import ChairLanding from './pages/ChairLanding';
 import ManageUsers from './pages/ManageUsers';
+import QuestionsPage from './pages/QuestionsPage';
+import CreateAccount from './components/layout/CreateAccount';
+import ContactPage from './pages/ContactPage';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -76,6 +79,9 @@ const App = () => {
         <Route path="/dashboardStudent" element={<PrivateRoute component ={StudentLanding} />} />
         <Route path="/applicantRelease" element={<ApplicantInformationRelease/>} />
         <Route path="/ApplicationForm" element={<ApplicationForm/>} />
+        <Route path="/QuestionsPage" element={<QuestionsPage/>} />
+        <Route path="/CreateAccount" element={<CreateAccount/>} />
+        <Route path="/ContactPage" element={<ContactPage/>} />
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/FacultyLetter" element={<FacultyLetter/>} />

@@ -31,30 +31,52 @@ const ChairLanding = ({
     <>
       <Sidebar role="admin" />
       
-      <div className={s.adminHeader}>
-      Admin Page for ULM PMAC 
-     </div>
-     <div className={s.adminContainer}>
-    <div className={s.adminHeader}>
-      <img src={building} alt="Your Image" className={s.adminImage} />
-    </div>
-    
-    <div className={s.adminInfo}>
-      ULM PMAC admin page is a web-based interface designed to manage the ULM PMAC system. 
-      It provides the administrators with the ability to perform various tasks such as managing 
-      user accounts, monitoring system performance, configuring system settings, managing data backups,
-      and more. The admin page allows the ULM PMAC system to be easily managed, ensuring smooth and 
-      efficient system operation.
-    </div>
-    
-    <div className={s.websiteStatus}>
-      <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-      <Button variant="success">Quick Check</Button>
-      </OverlayTrigger>
-    </div>
-    
-  </div>
-     
+      <div className={s.container}> 
+      
+        <div className={s.navBar}>
+            <div className={s.goldBars}> </div>
+                <div className={s.whiteBar}>
+                    <ul>
+                        <li><a href="/HomePage">Home</a></li>
+                        <li><a href="/createAccount">Create Account</a></li>
+                        <li><a href="/ContactPage">Contact</a></li>
+                        <li><a href="#Help">Help</a></li>
+                    </ul>
+                </div>
+            <div className={s.goldBars}> </div>
+        </div>
+        <div className={s.picture}>
+                <img src={building} alt="building picture"/>
+                <div className={s.goldBars}> </div>
+        </div>
+      
+      </div>
+
+      <div className={s.contentBoxW}>
+        <div className={s.textTitle}>
+            Admin Page for ULM PMAC
+
+        </div>
+
+        <div className={s.textBox}>
+          ULM PMAC admin page is a web-based interface designed to manage the ULM PMAC system. 
+          It provides the administrators with the ability to perform various tasks such as managing 
+          user accounts, monitoring system performance, configuring system settings, managing data backups,
+          and more. The admin page allows the ULM PMAC system to be easily managed, ensuring smooth and 
+          efficient system operation.
+        </div>
+
+        <div className={s.websiteStatus}>
+          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <Button variant="success">Quick Check</Button>
+          </OverlayTrigger>
+        </div>
+
+        <div className={s.foot}>
+            <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+        </div>
+
+      </div>
     </>
   );
 };

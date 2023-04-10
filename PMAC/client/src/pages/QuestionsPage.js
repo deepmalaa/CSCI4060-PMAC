@@ -74,6 +74,10 @@ function Questions() {
                 </div>
             </div>
 
+            <div className={css.foot}>
+                <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+            </div>
+
         </div>
     )
 } 

@@ -1,84 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-
-
-
-.App-background {
+.redBar {
+  margin-bottom: -150px;
   width: 100%;
-  top: 1in;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  object-fit: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: grey;
+  height: 89px;
+  background: #840029;
+  border-style: solid solid solid solid;
+  border-color: white;
+}
+
+.background {
+  background-color: lightgray;
+  margin-Top: 0px;
   min-height: 175vh;
-  font-size: 16pt;
-}
-
-
-.App-header {
-  background-color: rgba(0, 0, 0, 0); /* black with 0 opacity */
-  border-color: rgba(0, 0, 0, 0); /* black with 0 opacity */
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-position-x: 50%;
-  color: white;
-  font-size: 58pt;
-  font-weight: bold;
-  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
-}
-
-.App-list {
-  background-color: white;
-  width: 80%;
-  height: 80%;
-  color: black;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.down {
-  justify-content: center;
-  align-Items: center;
-  height: 100vh;
-  margin-top: auto;
-  margin: 0.5in 20% 0;
-  color: black;
-}
-
-.calendar {
-  
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 10px;
-  border: 1px solid black;
-  padding: 10px;
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-  font-family: sans-serif;
-}
-
-.header {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.weekday {
-  font-weight: bold;
-  text-align: center;
-  padding: 5px;
-  background-color: #ddd;
+  height: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 .day {
@@ -122,9 +60,6 @@
   font-weight: bold;
 }
 
-.details-content {
-  
-}
 
 .details-icon-container {
   width: 150px;
@@ -141,10 +76,6 @@
 .details-icon {
   max-width: 100%;
   max-height: 100%;
-}
-
-.details-info-container {
- 
 }
 
 .details-info {
@@ -166,30 +97,11 @@
   color: #fff;
 }
 
-
-
-
-
-
-
-
-
-
-
-.background {
-  background-color: lightgray;
-  margin: 0;
-  min-height: 150vh;
-  height: cover;
-  background-size: cover;
-  background-position: center;
-}
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 0px;
 }
 
 .no-applications {
@@ -201,7 +113,6 @@
 
 .application-container {
   position: absolute;
-  top:75%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -218,8 +129,8 @@
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  width: 300px;
-  height: 250px;
+  width: 700px;
+  height: 150px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 20px;
@@ -236,14 +147,20 @@
   font-size: 20pt;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: -20px;
 }
 
 .date {
   font-size: 16pt;
   font-style: oblique;
-  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-left: 0%;
+}
+.name {
+  font-size: 16pt;
+  text-align: left;
+  margin-top: 5px;
 }
 
 .status {

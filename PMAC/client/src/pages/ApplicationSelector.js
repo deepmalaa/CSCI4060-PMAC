@@ -30,8 +30,11 @@ function ApplicationSelector(props) {
                 
                 <div className='title'>{props.applications[application].title}</div>
                 
+           
                 <div className='date'>Date: {props.applications[application].submissionDate}</div>
-                
+                <div className='name'>Name: {props.applications[application].name}</div>
+
+
                 <div className={`status ${statusClassNames[props.applications[application].status]}`}>
                   {props.applications[application].status}
                 </div>

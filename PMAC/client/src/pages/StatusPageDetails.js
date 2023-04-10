@@ -51,7 +51,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'>Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
         </>
@@ -62,7 +62,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'> Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Feedback: {feedback}</p>
@@ -75,7 +75,7 @@ function Details({ application }) {
 
         <>
           <p className='content'> Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
@@ -87,7 +87,7 @@ function Details({ application }) {
         content = (
           <>
             <p className='content'>{application.title}</p>
-            <p className='content'>Name: </p>
+            <p className='content'>Name: {application.name}</p>
             <p className='content'>Status: {status}</p>
             <p className='content'>Submission Date: {submissionDate}</p>
             <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
@@ -101,7 +101,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'>{application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Overall Score: {score}</p>
@@ -125,7 +125,7 @@ function Details({ application }) {
         {content}
         {calendarOption}
       </div>
-    </div>
+    </div> 
   );
 }
 

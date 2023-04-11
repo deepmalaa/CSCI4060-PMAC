@@ -37,6 +37,7 @@ const StatusBar = ({
  // console.log(src);
 
   // State Handler  
+  {/*
   const circleElements = document.querySelectorAll(`.${s.circle}`);
 
   var waiver = waivers.authorize;
@@ -52,7 +53,7 @@ const StatusBar = ({
   if (profile != null && circleElements[0]) {
     circleElements[0].style.backgroundColor = 'green';
   }
-
+*/}
   return (
     <div>
       

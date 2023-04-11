@@ -3,6 +3,7 @@ import wied from '../img/HomePage/drwied.jpg';
 import email from '../img/HomePage/email.png';
 import qmark from '../img/HomePage/qmark.png';
 
+
 import css from '../styles/ContactPage.module.css';
 
 
@@ -26,13 +27,15 @@ function Contact() {
             </div>
 
             <div className={css.contentBoxW}>
+
+
                 <div className={css.textTitle}>
                     Contact Us!
                 </div>  
 
                 <div className={css.contactBox}>
                     <div className={css.picture}>
-                    <img src={wied} alt="Dr. Wiedemeier Contact"/>
+                        <img src={wied} alt="Dr. Wiedemeier Contact"/>
                     </div>
                     <br/>
                     <div className={css.contactText}>

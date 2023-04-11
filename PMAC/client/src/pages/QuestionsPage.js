@@ -13,7 +13,7 @@ function Questions() {
                         <ul>
                             <li><a href="/HomePage">Home</a></li>
                             <li><a href="#news">Create Account</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="/ContactPage">Contact</a></li>
                             
                             <li><a href="#Help">Help</a></li>
                         </ul>
@@ -27,9 +27,25 @@ function Questions() {
                     Frequently Asked Questions
 
                 </div>  
+                <div className={css.goldBar2}> </div>
 
 
                 <div className={css.textBox}>
+
+                    <span className={css.questionsBox}>Q. What is the purpose of the Committee? </span>
+                    <br/>
+                    <br/>
+                    <div className={css.answersBox}> 
+                    Faculty members from across ULM's campus comprise the Pre-Medical Advisory Committee. 
+                    The faculty members work with pre-medical students during their junior and senior year 
+                    at ULM to prepare for the Medical School application process. Students from multiple
+                     disciplines can take advantage of the committee. Any student applying to Medical 
+                     School, Dental School, Physician Assistant School, Physical Therapy, Occupational 
+                     Therapy, Optometry School or Veterinary School can utilize the committee. </div>
+
+                    <br/>
+
+
                     <span className={css.questionsBox}>Q. When should I apply to the Committee? </span>
                     <br/>
                     <br/>

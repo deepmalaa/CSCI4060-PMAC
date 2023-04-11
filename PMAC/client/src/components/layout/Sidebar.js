@@ -105,6 +105,12 @@ const Sidebar = ({ children, role }) => {
             icon: <FaUserAlt />,
             roles: ['guest'] 
           },
+          {
+            path:"/StatusBar",
+            name:"Status",
+            icon:<FaTh/>,
+            roles: ['student'] 
+        }
     ];
 
     const filteredMenuItems = menuItem.filter(item => item.roles.includes(role));

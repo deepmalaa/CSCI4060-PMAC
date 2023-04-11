@@ -5,7 +5,7 @@ const {check, validationResult} = require('express-validator');
 
 
 const ApplicationRelease = require('../../models/ApplicationRelease');
-
+const User = require('../../models/User');
 
 // @route   POST api/apprelease
 // @desc    Application release
@@ -18,7 +18,7 @@ router.post('/',[auth,[
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
-
+    
     const {
         authorize,
         evaluate,
@@ -57,9 +57,12 @@ router.post('/',[auth,[
 });
 
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
+    //console.log("HERERERERERERERE");
+    //console.log(req.user);
     try {
-      const waivers = await ApplicationRelease.find().populate('user', ['authorize', 'evaluate', 'name_release']);
+      const waivers = await ApplicationRelease.findOne({user: req.user.id }).populate('user', ['authorize', 'evaluate', 'name_release']);
+      
       res.json(waivers);
     } catch (err) {
       console.error(err.message);

@@ -53,7 +53,7 @@ import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
 import Headshot from './pages/Headshot';
 
-
+import StatusBar from './components/layout/StatusBar';
 
 
 if(localStorage.token){
@@ -100,6 +100,8 @@ const App = () => {
         <Route path="/dashboardChair" element={<PrivateRoute component ={ChairLanding} />} />
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
+        {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
+
 
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />

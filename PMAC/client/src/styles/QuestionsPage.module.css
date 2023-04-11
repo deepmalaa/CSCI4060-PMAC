@@ -25,6 +25,15 @@
     background-color: #BD955A;
 }
 
+.goldBar2 {
+    position: relative;
+    top: -15px;
+    width: 100%;
+    max-width: 100%;
+    height: 7px;
+    background-color: #BD955A;
+}
+
 .whiteBar{
     width: 100%;
     max-width: 100%;
@@ -41,7 +50,6 @@
 .textTitle{
     
     position: relative;
-    top: 60px;
     width: 100%;
     height: 58px;
     margin-left: auto;
@@ -64,7 +72,7 @@
 .textBox{
     text-align: left;
     position: relative;
-    top: 10px;
+    top: -70px;
     
     margin-left: auto;
     margin-right: auto;    

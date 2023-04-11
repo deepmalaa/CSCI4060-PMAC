@@ -40,15 +40,16 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   if(profile.aacomas_id !== null && profile.aacomas_id !== '') {
     Verified2 = true;  
   }
-  if(profile.aadsas_id !== null && profile.aadsas_id !== '') {
+  if(profile.caspa_id != null && profile.caspa_id !== '') {
     Verified3 = true;  
   }
-  if(profile.aamc_id_id != null && profile.aamc_id !== '') {
+  if(profile.aadsas_id !== null && profile.aadsas_id !== '') {
     Verified4 = true;  
   }
-  if(profile.caspa_id != null && profile.caspa_id !== '') {
+  if(profile.aamc_id_id != null && profile.aamc_id !== '') {
     Verified5 = true;  
   }
+  
 
 
     const submittedApplications = {

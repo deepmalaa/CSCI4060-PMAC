@@ -40,7 +40,7 @@ const StatusBar = ({
   const circleElements = document.querySelectorAll(`.${s.circle}`);
 
   var waiver = waivers.authorize;
-  if (waiver != null){
+  if (waiver != null && circleElements[1]){
     circleElements[1].style.backgroundColor = 'green';
   }
   

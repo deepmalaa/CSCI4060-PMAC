@@ -14,7 +14,7 @@ async (dispatch) => {
     const body = JSON.stringify(formData);
     try {
         const res = await axios.post('api/apprelease', body, config);
-
+        
       dispatch({
         type: GET_PROFILE,
         payload: res.data
@@ -36,17 +36,21 @@ async (dispatch) => {
 }
 
 
-// Get current users profile
+// Get current users waiver
 export const getWaiver = () => async (dispatch) => {
 
   dispatch({ type: CLEAR_WIAVER });
   try {
-    const res = await axios.get('http://localhost:5001/api/apprelease');
+    const res = await axios.get('/api/apprelease');
 
     dispatch({
       type: GET_WAIVERS,
+      
       payload: res.data
     });
+    //console.log('Waiver data:', res.data);
+    return res.data;
+    
   } catch (err) {
     dispatch({
       type: WAIVER_ERROR,

@@ -1,0 +1,37 @@
+.container{
+    text-align: center;
+    position: relative;
+    margin-left: 5%;
+    margin-right: 3%;
+    overflow-x: auto;
+    height: 1000px;
+}
+
+table{
+    border-collapse: collapse;
+    border: 1px solid;
+}
+
+thead{
+    background: #840029;
+    color: #fff;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #fff;
+}
+
+tbody tr:nth-child(even){
+    background-color: #eee;
+}
+
+th{
+    margin: 1px;
+}
+
+td{
+    border-color: black;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding: 10px 5px;
+}

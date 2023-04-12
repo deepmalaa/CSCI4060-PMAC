@@ -21,11 +21,15 @@ function ApplicationSelector(props) {
     props.onChange(application);
   };
 
+  const hasReleaseSignature = Object.values(props.applications).some(application => application.release);
+  const message = hasReleaseSignature ? 'No applications found' : 'No Release Signature';
+
+  
   return (
     <body className='background'>
       <div className='container'>
         {submittedApplicationList.length === 0 ? (
-          <p className='no-applications'>No applications found.</p>
+          <p className='no-applications'>{message}</p>
         ) : (
           <div className='application-container'>
             {submittedApplicationList.map(application => (

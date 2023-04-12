@@ -15,7 +15,7 @@ import PropTypes from 'prop-types';
 import Sidebar from '../components/layout/Sidebar';
 
 
-
+// Pulling User profile information
 const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
   useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
   
@@ -51,44 +51,50 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   }
   
 
-
+    // Medical Application info
     const submittedApplications = {
       application1: {
         name: Fullname,
-        verified: Verified1,
+        verified: Verified1, // if verified = true means candidate applied
         title: "Medical Application",
         status: 'Pending',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
-
+      
+      // Osteopathic Medical Application info
       application2: {
         name: Fullname,
-        verified: Verified2,
-        title: 'Osteopathic Medical Application',
+        verified: Verified2, // if verified = true means candidate applied
+        title: 'Osteopathic Medical Application', 
         status: 'Accepted',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+      // Physician Assistant Application info
       application3: {
         name: Fullname,
-        verified: Verified3,
+        verified: Verified3, // if verified = true means candidate applied
         title: 'Physician Assistant Application',
         status: 'Denied',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+      
+      //Dental Application info
       application4: {
         name: Fullname,
-        verified: Verified4,
+        verified: Verified4, // if verified = true means candidate applied
         title: 'Dental Application',
         status: 'Interview',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+
+      // Other(ex: Podiatry) Application info
       application5: {
         name: Fullname,
-        verified: Verified5,
+        verified: Verified5, // if verified = true means candidate applied
         title: 'Other(ex: Podiatry) Application',
         status: 'Complete',
         interviewStatus: false,
@@ -108,6 +114,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
       setShowApplicationSelector(true); // show ApplicationSelector component
     }
   
+    // Used to pull application info for StatusPageDetails and ApplicationSelector
     const title = submittedApplications[selectedApplication]?.title;
     const applicationStatus = submittedApplications[selectedApplication]?.status;
     const interviewStatus = submittedApplications[selectedApplication]?.interviewStatus;
@@ -118,21 +125,18 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     return (
       <>
       <div>
-
-        <div className={s.container}>
-        <Sidebar role="student" />    
-        </div> 
-
+        <div className={s.container}> <Sidebar role="student" /> </div> 
+        
         <div>
             <div className={s.whiteBar} style={{marginTop:'-6px'}}>
-            <div className={s.goldBars}> </div>
-                <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#account">Account</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#Help">Help</a></li>
-                </ul>
-            </div>
+              <div className={s.goldBars}> </div>
+              <ul>
+              <li><a href="#Home">Home</a></li>
+              <li><a href="#account">Account</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#Help">Help</a></li>
+              </ul>
+            </div> 
             <div className={s.goldBars}> </div>
           </div>
 
@@ -140,12 +144,15 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           <div className={s.img}>
             <img src={topBanner} alt="Backdrop of ULM Campus"/>  
           </div>
+
           <div className={s.bottomTitle} style={{fontSize:'40pt'}}>
             Application Status    
           </div>
+
           <div className={s.goldBars}></div>        
         </div>
       </div>
+
         <div className="background">
           {selectedApplication ? (
             <>
@@ -170,7 +177,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         <div className={s.goldBars}></div>
         <div className='redBar'></div>
       </div>
-
       </> 
     );
   }
@@ -181,12 +187,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     profile: PropTypes.object.isRequired
 
   };
-
   const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile
   });
-
 
   export default connect(mapStateToProps, { getCurrentProfile })(
     StatusPage

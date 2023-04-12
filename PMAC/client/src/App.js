@@ -25,7 +25,10 @@ import QuestionsPage from './pages/QuestionsPage';
 import CreateAccount from './components/layout/CreateAccount';
 import ContactPage from './pages/ContactPage';
 import StudentContactPage from './pages/StudentContactPage';
+import CommitteeContactPage from './pages/CommitteeContactPage';
 import Calendar from './pages/Calendar';
+import CommitteeCalendar from './pages/CommitteeCalendar';
+import ReviewApplications from './pages/ReviewApplications';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -78,7 +81,6 @@ const App = () => {
     <Navbar />
 
     <Routes>
-
         <Route path="/transcript" element={<Transcript/>} />
         <Route path="/" element={<Landing />} />
         <Route path="/createProfile" element={<CreateProfile/>} />
@@ -90,6 +92,7 @@ const App = () => {
         <Route path="/CreateAccount" element={<CreateAccount/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
         <Route path="/StudentContactPage" element={<StudentContactPage/>} />
+        <Route path="/CommitteeContactPage" element={<CommitteeContactPage/>} />
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/FacultyLetter" element={<FacultyLetter/>} />
@@ -109,8 +112,10 @@ const App = () => {
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
         <Route path="/manageApplications" element={<PrivateRoute component ={ManageApplications} />} />
+        <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
         <Route path="/Calendar" element={<PrivateRoute component ={Calendar} />} />
+        <Route path="/CommitteeCalendar" element={<PrivateRoute component ={CommitteeCalendar} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
 

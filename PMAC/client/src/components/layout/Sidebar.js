@@ -45,6 +45,12 @@ const Sidebar = ({ children, role }) => {
           icon:<FaUserAlt/>,
           roles: ['student'] 
       },
+      {
+        path:"/transcript",
+        name:"Upload Transcript",
+        icon:<FaThList/>,
+        roles: ['student'] 
+    },
         {
             path:"/ApplicantRelease",
             name:"Wavier Form",

@@ -196,7 +196,10 @@ const ProfileSchema = new mongoose.Schema({
         type: String
 
     },
+    transcript:{
+        type: String
 
+    },
 
 
     date:{

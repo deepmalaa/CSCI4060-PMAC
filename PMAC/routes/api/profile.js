@@ -19,12 +19,12 @@ router.get('/me', auth, async (req, res) => {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
 
-    const { fname, lname, mname, cwid, address, cell, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, headshot } = profile;
+    const { fname, lname, mname, cwid, address, cell, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, headshot, transcript } = profile;
 
     const email = profile.user.email;
     const userRole = profile.user.userRole;
 
-    const profileFields = { fname, lname, mname, cwid, address, cell, ulm_email: email, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, userRole , headshot};
+    const profileFields = { fname, lname, mname, cwid, address, cell, ulm_email: email, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, userRole , headshot, transcript};
 
     res.json(profileFields);
   }

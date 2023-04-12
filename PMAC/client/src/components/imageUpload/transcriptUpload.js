@@ -56,9 +56,9 @@ const MuiVersion = () => {
   const handleDelete = () => setImageFile(null);
   const handleSubmit = ([file]) => {
     const fd = new FormData();
-    fd.append('image', file, file.name);
+    fd.append('transcript', file, file.name);
     axios
-      .post('api/image/headshot', fd, {
+      .post('api/transcript/upload', fd, {
         onUploadProgress: (progressEvent) => {
           setProgress((progressEvent.loaded / progressEvent.total) * 100);
           console.log(
@@ -84,7 +84,7 @@ const MuiVersion = () => {
           console.log('db error');
           alert('db error');
         } else {
-          console.log('other error');
+          console.log(err.response);
         }
         setCurrentlyUploading(false);
         setShow(false);
@@ -93,34 +93,33 @@ const MuiVersion = () => {
   return (
     <div className={classes.muiVersion}>
       <div className={classes.imageSection}>
-        {imageId ? (
-          <>
-            <img
-              className={classes.img}
-              src={`/api/image/${imageId}`}
-              alt=' preview'
-            />
-            <a
-              className={classes.link}
-              href={`/api/image/${imageId}`}
-              target='_blank'
-            >
-              link
-            </a>
-          </>
+      {imageId ? (
+        <>
+        <a
+          className={classes.link}
+          href={`api/transcript/${imageId}`}
+          target='_blank'
+        >
+          Click to preview
+        </a>
+      </>
+          
         ) : (
-          <p className={classes.nopic}>no image uploaded yet</p>
+          <p></p>
         )}
+        
+          
+        
       </div>
       <Button className={classes.btn} onClick={() => setShow(true)}>
-        Upload Picture
+        Upload Transcript
       </Button>
       <DropzoneDialog
         open={show}
         onChange={handleFile}
         onClose={() => setShow(false)}
         onDelete={handleDelete}
-        acceptedFiles={['image/jpeg', 'image/png']}
+        acceptedFiles={['application/pdf']}
         maxFileSize={5000000}
         filesLimit={1}
         showFileNamesInPreview={false}

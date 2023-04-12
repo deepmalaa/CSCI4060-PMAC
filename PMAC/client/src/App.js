@@ -58,6 +58,7 @@ import SearchApplication from './components/layout/SearchApplication';
 import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';
+import Transcript from './pages/Transcript';
 
 
 if(localStorage.token){
@@ -77,6 +78,8 @@ const App = () => {
     <Navbar />
 
     <Routes>
+
+        <Route path="/transcript" element={<Transcript/>} />
         <Route path="/" element={<Landing />} />
         <Route path="/createProfile" element={<CreateProfile/>} />
         <Route path="/dashboardFaculty" element={<PrivateRoute component ={FacultyLanding} />} />

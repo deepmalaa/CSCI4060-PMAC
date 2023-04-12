@@ -4,7 +4,7 @@ import email from '../img/HomePage/email.png';
 import qmark from '../img/HomePage/qmark.png';
 
 
-import css from '../styles/ContactPage.module.css';
+import css from '../styles/StudentContactPage.module.css';
 
 
 
@@ -15,11 +15,8 @@ function Contact() {
                 <div className={css.goldBars}> </div>
                     <div className={css.whiteBar}>
                         <ul>
-                            <li><a href="/HomePage">Home</a></li>
-                            <li><a href="#news">Create Account</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            
-                            <li><a href="#Help">Help</a></li>
+                            <li><a href="/dashboardStudent">Home</a></li>
+                            <li><a href="/StudentContactPage">Contact</a></li>
                         </ul>
 
                     </div>

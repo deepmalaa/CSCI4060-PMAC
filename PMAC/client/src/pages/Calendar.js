@@ -31,6 +31,7 @@ class DemoApp extends React.Component {
     this.state = {
       currentEvents: [],
       initialEvents: null,
+      load: true,
     };
   }
  
@@ -42,7 +43,9 @@ class DemoApp extends React.Component {
     var schemas = await this.props.getSchemas();
 
     //this.setState({ currentEvents: state });
-    this.setState({ currentEvents: schemas });
+    this.setState({ currentEvents: schemas,
+                    load: false });
+    
     //const events = await this.props.getSchemas();
     //this.setState({events: events });
 
@@ -60,7 +63,13 @@ class DemoApp extends React.Component {
 
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-
+    const { currentEvents, schemas, load } = this.state;
+    //this.state.currentEvents.length === 0
+    if (load) { 
+      // if currentEvents or schemas is not loaded, show a loading spinner or a message
+      console.log("Loading sir")
+      return <div>Loading...</div>;
+    }
 
 
     //var schemas = this.props.getSchemas();
@@ -74,7 +83,10 @@ class DemoApp extends React.Component {
     //const newStr = INITIAL_EVENTS2.replace(/(\r\n|\n|\r)/gm, "");
     
     // This line right here
-    //console.log(JSON.stringify(this.state.currentEvents));
+    console.log(JSON.stringify("Start: First is static"));
+    console.log(JSON.stringify(INITIAL_EVENTS1));
+
+    console.log(JSON.stringify(this.state.currentEvents));
 
     //var initialEvents = JSON.stringify(this.state.currentEvents);
     //initialEvents = this.state.currentEvents;
@@ -101,7 +113,7 @@ class DemoApp extends React.Component {
 
             //this.state.currentEvents
             
-            initialEvents={this.state.initialEvents}
+            initialEvents={this.state.currentEvents}
 
             editable={true}
             selectable={true}
@@ -134,14 +146,7 @@ class DemoApp extends React.Component {
         </div>
 
         
-        <div>
-          
-          {this.state.currentEvents ? (
-            <fullCalendar events={this.state.currentEvents} />
-          ) : (
-            <div>Loading...</div>
-          )}
-        </div>
+        
 
 
       </div>

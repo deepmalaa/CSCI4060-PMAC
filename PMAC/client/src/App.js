@@ -20,9 +20,11 @@ import HomePage from './pages/HomePage';
 import CommitteeMemberLanding from './pages/CommitteeMemberLanding';
 import ChairLanding from './pages/ChairLanding';
 import ManageUsers from './pages/ManageUsers';
+import ManageApplications from './pages/ManageApplications';
 import QuestionsPage from './pages/QuestionsPage';
 import CreateAccount from './components/layout/CreateAccount';
 import ContactPage from './pages/ContactPage';
+import StudentContactPage from './pages/StudentContactPage';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -51,6 +53,7 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
+import SearchApplication from './components/layout/SearchApplication';
 import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';
@@ -82,6 +85,7 @@ const App = () => {
         <Route path="/QuestionsPage" element={<QuestionsPage/>} />
         <Route path="/CreateAccount" element={<CreateAccount/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
+        <Route path="/StudentContactPage" element={<StudentContactPage/>} />
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/FacultyLetter" element={<FacultyLetter/>} />
@@ -100,6 +104,8 @@ const App = () => {
         <Route path="/dashboardChair" element={<PrivateRoute component ={ChairLanding} />} />
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
+        <Route path="/manageApplications" element={<PrivateRoute component ={ManageApplications} />} />
+        <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
 

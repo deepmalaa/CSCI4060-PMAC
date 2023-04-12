@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 
-const Headshot = ({getCurrentProfile, auth: { user },profile: { profile }}) => {
+const Headshot = ({getCurrentProfile,profile: { profile }}) => {
 
     useEffect(() => {
         getCurrentProfile();
       }, [getCurrentProfile]);
-    console.log("aaa");
-    console.log(profile.headshot);
-    console.log(user);
+    // console.log("aaa");
+    // console.log(profile.headshot);
+    // console.log(user);
     return(
         
         <div>

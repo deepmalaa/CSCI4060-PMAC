@@ -1,6 +1,3 @@
-// the code currently active in the demo,
-// sends back the id of the uploaded image, so the front-end can
-// display the uploaded image and a link to open it in a new tab
 const mongoose = require('mongoose');
 const {GridFsStorage} = require('multer-gridfs-storage');
 const router = require('express').Router();
@@ -64,13 +61,13 @@ function checkFileType(file, cb) {
   // https://youtu.be/9Qzmri1WaaE?t=1515
   // define a regex that includes the file types we accept
   const filetypes = /jpeg|jpg|png|gif/;
-  //check the file extention
+  //check the file extention and mimetype
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // more importantly, check the mimetype
+  
   const mimetype = filetypes.test(file.mimetype);
-  // if both are good then continue
+
   if (mimetype && extname) return cb(null, true);
-  // otherwise, return error message
+  
   cb('filetype');
 }
 
@@ -80,12 +77,10 @@ const uploadMiddleware = (req, res, next) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).send('File too large');
     } else if (err) {
-      // check if our filetype error occurred
       if (err === 'filetype') return res.status(400).send('Image files only');
       // An unknown error occurred when uploading.
       return res.sendStatus(500);
     }
-    // all good, proceed
     next();
   });
 };
@@ -95,10 +90,7 @@ router.post('/upload/', uploadMiddleware, async (req, res) => {
   const { file } = req;
   // and the id of that new image file
   const { id } = file;
-  // we can set other, smaller file size limits on routes that use the upload middleware
-  // set this and the multer file size limit to whatever fits your project
   if (file.size > 5000000) {
-    // if the file is too large, delete it and send an error
     deleteImage(id);
     return res.status(400).send('file may not exceed 5mb');
   }
@@ -114,7 +106,6 @@ router.post('/headshot', auth, uploadMiddleware, async (req, res) => {
   const {userId} = req.user.id;
 
   if (file.size > 5000000) {
-    // if the file is too large, delete it and send an error
     deleteImage(id);
     return res.status(400).send('file may not exceed 5mb');
   }

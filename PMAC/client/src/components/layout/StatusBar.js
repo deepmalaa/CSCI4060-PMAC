@@ -16,6 +16,7 @@ const StatusBar = ({
 }) => {
   const [waivers, setWaivers] = useState([]);
   const [facultyForms, setFacultyForms] = useState([]);
+  let count = 0;
 
 
   useEffect(() => {
@@ -42,16 +43,34 @@ const StatusBar = ({
   if (waivers != null && waivers.authorize && circleElements[1]){
     
     circleElements[1].style.backgroundColor = 'green';
+    count++;
   }
   
   var facultyForm = facultyForms;
   if (facultyForm != null && circleElements[6]) {
     circleElements[6].style.backgroundColor = 'green';
+    count++;
   }
 
-  if (profile != null && circleElements[0]) {
+  if (profile != null ) {
     circleElements[0].style.backgroundColor = 'green';
+    count++;
+
+    if (profile.headshot) {
+      circleElements[5].style.backgroundColor = 'green';
+      count++;
+    }
+    if (profile.transcript) {
+      circleElements[3].style.backgroundColor = 'green';
+      count++;
+    }
   }
+  
+      
+  
+  
+
+
 
   return (
     <div>
@@ -60,14 +79,8 @@ const StatusBar = ({
 
         <div className={s.grayRight}>
                 <span>Status</span>
-                <span> </span>
-                
-
-                
                 <ul>
-                  <li><div className = {s.circle}>{
-                    
-                  }</div><a href="#Home">Application Form</a></li>
+                  <li><div className = {s.circle}></div><a href="#Home">Application Form</a></li>
                   <li><div className = {s.circle}></div><a href="#account">Release Form</a></li>
                   <li><div className = {s.circle}></div><a href="#contact">Personal Statement</a></li>
                   <li><div className = {s.circle}></div><a href="#Help">Unofficial Transcript</a></li>
@@ -75,7 +88,9 @@ const StatusBar = ({
                   <li><div className = {s.circle}></div><a href="#account">Photo</a></li>
                   <li><div className = {s.circle}></div><a href="#Help">Recommendation Letter</a></li>
                 </ul>
+                <div><br />{count} of 8 completed</div>
               </div>
+              
         </div>
       
     </div>

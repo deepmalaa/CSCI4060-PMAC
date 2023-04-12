@@ -134,7 +134,7 @@ const App = () => {
         <Route path="/addWorkExperience" element={<AddWorkExperience/>} />
         <Route path="/HomePage" element={<HomePage/>} />
 
-        <Route path="/headshot" element={<Headshot/>} />
+        <Route path="/headshot" element={<PrivateRoute component ={Headshot}/>} />
     </Routes>
     
     <section className="container">

@@ -62,6 +62,7 @@ router.post('/',[auth,[
 });
 
 router.get('/',auth, async (req, res) => {
+    console.log(req.user.id)
     try {
       const form = await eventSchema.find({ user: req.user.id }).select('-__v -_id');
       res.json(form);

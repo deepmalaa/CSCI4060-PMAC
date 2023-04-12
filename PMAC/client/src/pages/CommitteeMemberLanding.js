@@ -32,7 +32,7 @@ const CommitteeMemberLanding = ({
                           <ul>
                               <li><a href="#Home">Home</a></li>
                               <li><a href="#account">Account</a></li>
-                              <li><a href="#contact">Contact</a></li>
+                              <li><a href="/CommitteeContactPage">Contact</a></li>
                               <li><a href="#Help">Help</a></li>
                           </ul>
 

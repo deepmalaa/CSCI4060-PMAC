@@ -82,8 +82,8 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
-            path: "/committePage",
-            name: "Committe Page",
+            path: "/dashboardCommittee",
+            name: "Committee Home",
             icon: <FaTh />,
             roles: ['committe']
           },
@@ -94,7 +94,7 @@ const Sidebar = ({ children, role }) => {
             roles: ['committe']
           },
           {
-            path: "/Calendar",
+            path: "/CommitteeCalendar",
             name: "Scheduling Calendar",
             icon: <FaCommentAlt />,
             roles: ['committe']

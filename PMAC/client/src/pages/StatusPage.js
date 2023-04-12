@@ -24,7 +24,17 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
 
   // Users full name
-  const Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
+  let Fullname = user && user.name;
+
+  if (profile.fname !== null) {
+    Fullname = profile.fname;
+    if (profile.mname !== null) {
+      Fullname = profile.fname + " " + profile.mname;
+      if (profile.lname !== null){
+        Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
+      }
+    }
+  }
   
   // Default verified false
   let Verified1 = false;

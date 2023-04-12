@@ -56,7 +56,7 @@ export const deleteSchema = (id) => async (dispatch) => {
   };
 
 
-  // Get current users waiver
+  // Get current users schema
 export const getSchemas = () => async (dispatch) => {
 
     dispatch({ type: CLEAR_SCHEMAS });

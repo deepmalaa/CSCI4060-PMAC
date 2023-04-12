@@ -14,22 +14,19 @@ function FormOne() {
             <div className={s.navBar}>
                 <div className={s.goldBars}> </div>
                     <div className={s.whiteBar}>
-                    <Sidebar role="guest" />
                         <ul>
                             <li><a href="/HomePage">Home</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            
+                            <li><a href="/ContactPage">Contact</a></li>
                             <li><a href="#Help">Help</a></li>
                         </ul>
-
                     </div>
                 <div className={s.goldBars}> </div>
             </div>
-
             <div className={s.picture}>
                 <img src={campus} alt="campus picture"/>
                 <div className={s.goldBars}> </div>
+                <Sidebar role="guest" />
             </div>
             
             <div className={s.contentBoxW}>
@@ -145,6 +142,9 @@ function FormOne() {
                 
             </div>
 
+            <div className={s.foot}>
+                <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+            </div>
 
             <div className={s.redBar}></div>
 

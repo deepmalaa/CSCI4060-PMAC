@@ -7,7 +7,7 @@ import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
 import student from '../img/landingPages/student.jpg';
-import Status from '../components/layout/StatusBar';
+import StatusBar from '../components/layout/StatusBar';
 
 const StudentLanding = ({
     getCurrentProfile,
@@ -25,10 +25,7 @@ const StudentLanding = ({
         <div className = "StudentPage1">    
           
         
-        <CheckList/>
-        
-        
-        
+       
         <div className={s.container}>
         <div className={s.StudentPage1}>    
           
@@ -91,19 +88,7 @@ const StudentLanding = ({
                 </div>
               </div>
 
-              <div className={s.grayRight}>
-                <span>Status</span>
-                <ul>
-                  <li><a href="#Home">Application Form</a></li>
-                  <li><a href="#account">Release Form</a></li>
-                  <li><a href="#contact">Personal Statement</a></li>
-                  <li><a href="#Help">Unofficial Transcript</a></li>
-                  <li><a href="#Home">Schedule</a></li>
-                  <li><a href="#account">Photo</a></li>
-                  <li><a href="#contact">ACMAS (if applicable)</a></li>
-                  <li><a href="#Help">Recommendation Letter</a></li>
-                </ul>
-              </div>
+              <StatusBar/>
 
             </div>
             <div className={s.contentBox}></div>

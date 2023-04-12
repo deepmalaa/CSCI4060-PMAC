@@ -3,6 +3,7 @@ import '../styles/StatusPage.css';
 
 function ApplicationSelector(props) {
 
+  // used for status box visuals on statusPage 
   const statusClassNames = {
     Pending: 'status--pending',
     Interview: 'status--interview',
@@ -11,9 +12,11 @@ function ApplicationSelector(props) {
     Accepted: 'status--accepted',
   };
 
+  // Determines what applications types are true for verified 
   const submittedApplicationList = Object.keys(props.applications)
     .filter(application => props.applications[application].verified);
-
+  
+    // Only displays true to verified 
   const handleSelect = (application) => {
     props.onChange(application);
   };
@@ -30,8 +33,11 @@ function ApplicationSelector(props) {
                 
                 <div className='title'>{props.applications[application].title}</div>
                 
+           
                 <div className='date'>Date: {props.applications[application].submissionDate}</div>
-                
+                <div className='name'>Name: {props.applications[application].name}</div>
+
+
                 <div className={`status ${statusClassNames[props.applications[application].status]}`}>
                   {props.applications[application].status}
                 </div>

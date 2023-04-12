@@ -26,6 +26,7 @@ app.use('/api/appInfo', require('./routes/api/applicationInformation'));
 app.use('/api/faculty', require('./routes/api/faculty'));
 
 app.use('/api/image', require('./routes/api/image'));
+app.use('/api/calendar', require('./routes/api/calendar'));
 
 
 

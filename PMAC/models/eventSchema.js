@@ -6,16 +6,16 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     start: {
-        type: Date,
+        type: String,
         required: true
 
     },
     end:{
-        type: Date,
+        type: String,
         required: true
     },
     daysOfWeek:{
-        type: Number,
+        type: Array,
         required: true
         
     },
@@ -25,6 +25,11 @@ const eventSchema = new mongoose.Schema({
         
     },
     endTime:{
+        type: String,
+        required: true
+        
+    },
+    id:{
         type: String,
         required: true
         

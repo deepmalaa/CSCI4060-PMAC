@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import '../styles/StatusPage.css';
 import Calendar from './Calendar';
 
+
 function Details({ application }) {
+  // Extra appication info (might add back to status page info to pull)
   const {
     title,
     status,
@@ -20,9 +22,11 @@ function Details({ application }) {
   const days = ['Monday', 'Wednesday', 'Thursday', 'Friday'];
   const steps = ['Pending', 'Accepted', 'Interview', 'Complete'];
 
-
+  // Calendar option to diplay (calendar/no calandar) depending on user
   let calendarOption;
+
   if(status === 'Accepted') {
+    // If no interview times are selected by candidate will display calendar
     if(interviewStatus === false) {
       calendarOption = (
       <>
@@ -32,6 +36,7 @@ function Details({ application }) {
       </>
       );
     }
+    // If interview times are selected by candidate normal information will appear
     else {
       calendarOption = (
       <>
@@ -44,6 +49,7 @@ function Details({ application }) {
     calendarOption = ('');
   }
 
+  // content to display certain content for viewer depending on status
   let content;
   switch (status) {
     
@@ -51,7 +57,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'>Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
         </>
@@ -62,7 +68,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'> Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Feedback: {feedback}</p>
@@ -75,7 +81,7 @@ function Details({ application }) {
 
         <>
           <p className='content'> Application: {application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
@@ -87,7 +93,7 @@ function Details({ application }) {
         content = (
           <>
             <p className='content'>{application.title}</p>
-            <p className='content'>Name: </p>
+            <p className='content'>Name: {application.name}</p>
             <p className='content'>Status: {status}</p>
             <p className='content'>Submission Date: {submissionDate}</p>
             <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
@@ -101,7 +107,7 @@ function Details({ application }) {
       content = (
         <>
           <p className='content'>{application.title}</p>
-          <p className='content'>Name: </p>
+          <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
           <p className='content'>Overall Score: {score}</p>
@@ -112,7 +118,7 @@ function Details({ application }) {
       break;
   }
 
-  
+  // Returns a visual guide on application process aswell as application info
   return (
     <div className="process-container">
       <ul className="process-steps" style={{marginTop:'20px'}}>
@@ -125,7 +131,7 @@ function Details({ application }) {
         {content}
         {calendarOption}
       </div>
-    </div>
+    </div> 
   );
 }
 

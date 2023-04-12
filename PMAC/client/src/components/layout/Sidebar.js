@@ -64,6 +64,12 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
+            path: "/manageApplications",
+            name: "View User Applications",
+            icon: <FaUserAlt />,
+            roles: ['admin']
+          },
+          {
             path: "/settings",
             name: "Settings",
             icon: <FaTh />,
@@ -105,6 +111,12 @@ const Sidebar = ({ children, role }) => {
             icon: <FaUserAlt />,
             roles: ['guest'] 
           },
+          {
+            path:"/StatusBar",
+            name:"Status",
+            icon:<FaTh/>,
+            roles: ['student'] 
+        }
     ];
 
     const filteredMenuItems = menuItem.filter(item => item.roles.includes(role));

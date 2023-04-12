@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert } from './alert';
+import { setAlert,GET_PHOTO,CLEAR_PHOTO,PHOTO_ERROR } from './alert';
 
 export const photo =
   (formData) =>
@@ -16,10 +16,7 @@ export const photo =
     try {
         
         const res = await axios.post('http://localhost:5001/api/photo', formData, config);
-
-      
-
-      
+   
     } catch (err) {
       const errors = err.response.data.errors;
 
@@ -31,3 +28,28 @@ export const photo =
       
     }
   };
+
+
+
+  // Get current user photo
+export const getWaiver = () => async (dispatch) => {
+
+  dispatch({ type: CLEAR_PHOTO });
+  try {
+    const res = await axios.get('/api/apprelease');
+
+    dispatch({
+      type: GET_PHOTO,
+      
+      payload: res.data
+    });
+    //console.log('Waiver data:', res.data);
+    return res.data;
+    
+  } catch (err) {
+    dispatch({
+      type: PHOTO_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

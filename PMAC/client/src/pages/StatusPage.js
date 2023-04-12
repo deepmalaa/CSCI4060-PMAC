@@ -1,56 +1,110 @@
+
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import {Link, Navigate} from 'react-router-dom';
 import ApplicationSelector from './ApplicationSelector';
+import user1 from './ApplicantInformation';
 import '../styles/StatusPage.css';
 import Details from './StatusPageDetails';
 import s from '../styles/HomePage.module.css';
-import topBanner from '../img/HomePage/library.jpg';
+import topBanner from '../img/StatusPage.jpg';
 import { getCurrentProfile } from '../actions/profile';
 import { applicantRelease } from '../actions/applicantRelease';
+import { ApplicantInfo } from '../actions/applicantInformation';
 import PropTypes from 'prop-types';
 import Sidebar from '../components/layout/Sidebar';
 
 
+// Pulling User profile information
 const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
   useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
-
+  
   const [selectedApplication, setSelectedApplication] = useState('');
   const [status, setStatus] = useState('');
   const [showApplicationSelector, setShowApplicationSelector] = useState(true); // new state variable
 
+  // Users full name
+  let Fullname = user && user.name;
+
+  if (profile.fname !== null) {
+    Fullname = profile.fname;
+    if (profile.mname !== null) {
+      Fullname = profile.fname + " " + profile.mname;
+      if (profile.lname !== null){
+        Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
+      }
+    }
+  }
+  
+  // Default verified false
+  let Verified1 = false;
+  let Verified2 = false;
+  let Verified3 = false;
+  let Verified4 = false;
+  let Verified5 = false;
+ 
+  // Checks to see what user is applying for
+  if(profile.amcas_id !== '' && profile.amcas_id !== '') {
+    Verified1 = true;  
+  }
+  if(profile.aacomas_id !== null && profile.aacomas_id !== '') {
+    Verified2 = true;  
+  }
+  if(profile.caspa_id != null && profile.caspa_id !== '') {
+    Verified3 = true;  
+  }
+  if(profile.aadsas_id !== null && profile.aadsas_id !== '') {
+    Verified4 = true;  
+  }
+  if(profile.aamc_id_id != null && profile.aamc_id !== '') {
+    Verified5 = true;  
+  }
+  
+
+    // Medical Application info
     const submittedApplications = {
       application1: {
-        verified: true,
-        title: "title",
+        name: Fullname,
+        verified: Verified1, // if verified = true means candidate applied
+        title: "Medical Application",
         status: 'Pending',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
-
+      
+      // Osteopathic Medical Application info
       application2: {
-        verified: true,
-        title: 'Osteopathic Medical Application',
+        name: Fullname,
+        verified: Verified2, // if verified = true means candidate applied
+        title: 'Osteopathic Medical Application', 
         status: 'Accepted',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+      // Physician Assistant Application info
       application3: {
-        verified: true,
+        name: Fullname,
+        verified: Verified3, // if verified = true means candidate applied
         title: 'Physician Assistant Application',
         status: 'Denied',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+      
+      //Dental Application info
       application4: {
-        verified: true,
+        name: Fullname,
+        verified: Verified4, // if verified = true means candidate applied
         title: 'Dental Application',
         status: 'Interview',
         interviewStatus: false,
         submissionDate: 'month/day/year',
       },
+
+      // Other(ex: Podiatry) Application info
       application5: {
-        verified: true,
+        name: Fullname,
+        verified: Verified5, // if verified = true means candidate applied
         title: 'Other(ex: Podiatry) Application',
         status: 'Complete',
         interviewStatus: false,
@@ -70,29 +124,29 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
       setShowApplicationSelector(true); // show ApplicationSelector component
     }
   
+    // Used to pull application info for StatusPageDetails and ApplicationSelector
     const title = submittedApplications[selectedApplication]?.title;
     const applicationStatus = submittedApplications[selectedApplication]?.status;
     const interviewStatus = submittedApplications[selectedApplication]?.interviewStatus;
     const submissionDate = submittedApplications[selectedApplication]?.submissionDate;
+    const name = submittedApplications[selectedApplication]?.name;
   
     
     return (
-      <body>
-
-        <div className={s.container}>    
-          <Sidebar/>
-        </div>  
-
+      <>
+      <div>
+        <div className={s.container}> <Sidebar role="student" /> </div> 
+        
         <div>
-            <div className={s.whiteBar} style={{marginTop:'-42px'}}>
-            <div className={s.goldBars}> </div>
-                <ul>
-                <li><a href="#Home">Home</a></li>
-                <li><a href="#account">Account</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#Help">Help</a></li>
-                </ul>
-            </div>
+            <div className={s.whiteBar} style={{marginTop:'-6px'}}>
+              <div className={s.goldBars}> </div>
+              <ul>
+              <li><a href="#Home">Home</a></li>
+              <li><a href="#account">Account</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#Help">Help</a></li>
+              </ul>
+            </div> 
             <div className={s.goldBars}> </div>
           </div>
 
@@ -100,12 +154,15 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           <div className={s.img}>
             <img src={topBanner} alt="Backdrop of ULM Campus"/>  
           </div>
-          <div className={s.bottomTitle} style={{fontSize:'64pt', fontWeight:'400'}}>
+
+          <div className={s.bottomTitle} style={{fontSize:'40pt'}}>
             Application Status    
           </div>
+
           <div className={s.goldBars}></div>        
         </div>
-          
+      </div>
+
         <div className="background">
           {selectedApplication ? (
             <>
@@ -117,15 +174,20 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
             <ApplicationSelector onChange={handleSelect} applications={submittedApplications} />
           )}
           
+          <>
           {selectedApplication && (
             <div style={{marginTop:'10px'}}>
               <button onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
+          </>
         </div> 
+
+      <div>
         <div className={s.goldBars}></div>
-        <div className={s.redBar}></div>
-      </body>
+        <div className='redBar'></div>
+      </div>
+      </> 
     );
   }
 
@@ -135,12 +197,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     profile: PropTypes.object.isRequired
 
   };
-
   const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile
   });
-
 
   export default connect(mapStateToProps, { getCurrentProfile })(
     StatusPage

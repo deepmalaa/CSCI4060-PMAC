@@ -65,4 +65,16 @@ catch(err){
 
 });
 
+
+router.get('/',auth, async (req, res) => {
+    try {
+      const form = await FacultyForm.findOne().populate('user', ['fname', 'lname']);
+      res.json(form);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
+
 module.exports = router;

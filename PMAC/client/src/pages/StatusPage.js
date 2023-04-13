@@ -230,14 +230,14 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   StatusPage.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
-
+    profile: PropTypes.object.isRequired,
+    getWaiver: PropTypes.object.isRequired
   };
   const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile
   });
 
-  export default connect(mapStateToProps, { getCurrentProfile })(
+  export default connect(mapStateToProps, { getCurrentProfile,getWaiver })(
     StatusPage
   );

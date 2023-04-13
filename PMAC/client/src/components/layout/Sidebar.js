@@ -124,7 +124,7 @@ const Sidebar = ({ children, role }) => {
             roles: ['guest'] 
           },
           {
-            path:"/StatusBar",
+            path:"/ScheduleAlg",
             name:"Status",
             icon:<FaTh/>,
             roles: ['student'] 

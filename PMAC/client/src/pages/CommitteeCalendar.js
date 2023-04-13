@@ -72,7 +72,7 @@ class DemoApp extends React.Component {
     //this.state.currentEvents.length === 0
     if (load) { 
       // if currentEvents or schemas is not loaded, show a loading spinner or a message
-      console.log("Loading sir")
+      //console.log("Loading sir")
       return <div>Loading...</div>;
     }
 
@@ -88,10 +88,10 @@ class DemoApp extends React.Component {
     //const newStr = INITIAL_EVENTS2.replace(/(\r\n|\n|\r)/gm, "");
     
     // This line right here
-    console.log(JSON.stringify("Start: First is static"));
-    console.log(JSON.stringify(INITIAL_EVENTS1));
+    //console.log(JSON.stringify("Start: First is static"));
+    //console.log(JSON.stringify(INITIAL_EVENTS1));
 
-    console.log(JSON.stringify(this.state.currentEvents));
+    //console.log(JSON.stringify(this.state.currentEvents));
 
     //var initialEvents = JSON.stringify(this.state.currentEvents);
     //initialEvents = this.state.currentEvents;
@@ -210,7 +210,7 @@ class DemoApp extends React.Component {
         const dayOfWeek = daysOfWeek[start.getDay()];
 
 
-      console.log(dayOfWeek)
+      //console.log(dayOfWeek)
       calendarApi.addEvent({
         id: ranId,
         groupId: 'test',
@@ -264,7 +264,7 @@ class DemoApp extends React.Component {
   handleEventClick = (clickInfo) => {
     if (window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
-      console.log(clickInfo.event.id);
+      //console.log(clickInfo.event.id);
       this.props.deleteSchema(clickInfo.event.id);
     }
   }

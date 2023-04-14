@@ -78,6 +78,12 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
+            path: "/AdminCalendar",
+            name: "Schedule Interview",
+            icon: <FaCalendarAlt />,
+            roles: ['admin']
+          },
+          {
             path: "/settings",
             name: "Settings",
             icon: <FaRegSun />,

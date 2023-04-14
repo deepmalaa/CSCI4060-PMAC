@@ -78,3 +78,26 @@ export const getSchemas = () => async (dispatch) => {
       });
     }
   };
+
+  // Get all users schema
+  export const getAllSchemas = () => async (dispatch) => {
+
+    dispatch({ type: CLEAR_SCHEMAS });
+    try {
+      const res = await axios.get('/api/calendar/all');
+  
+      dispatch({
+        type: GET_SCHEMAS,
+        
+        payload: res.data
+      });
+      //console.log('Schema data:', res.data);
+      return res.data;
+      
+    } catch (err) {
+      dispatch({
+        type: SCHEMA_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };

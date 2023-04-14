@@ -117,6 +117,7 @@ const App = () => {
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
         <Route path="/Calendar" element={<PrivateRoute component ={Calendar} />} />
         <Route path="/CommitteeCalendar" element={<PrivateRoute component ={CommitteeCalendar} />} />
+        <Route path="/Schedule" element={<PrivateRoute component ={Schedule} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
 

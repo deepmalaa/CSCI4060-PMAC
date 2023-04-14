@@ -62,9 +62,20 @@ router.post('/',[auth,[
 });
 
 router.get('/',auth, async (req, res) => {
-    console.log(req.user.id)
+    //console.log(req.user.id)
     try {
       const form = await eventSchema.find({ user: req.user.id }).select('-__v -_id');
+      res.json(form);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
+  router.get('/all',auth, async (req, res) => {
+    //console.log(req.user.id)
+    try {
+      const form = await eventSchema.find();
       res.json(form);
     } catch (err) {
       console.error(err.message);

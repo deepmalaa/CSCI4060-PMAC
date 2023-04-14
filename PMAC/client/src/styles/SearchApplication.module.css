@@ -7,14 +7,14 @@
     height: 1000px;
 }
 
-table{
+.table{
     border-collapse: collapse;
     border: 1px solid;
 }
 
-thead{
-    background: #840029;
-    color: #fff;
+.thead{
+    background-color: #840029;
+    color: white;
 }
 
 tbody tr:nth-child(odd){
@@ -25,11 +25,11 @@ tbody tr:nth-child(even){
     background-color: #eee;
 }
 
-th{
+.th{
     margin: 1px;
 }
 
-td{
+.td{
     border-color: black;
     border-left: 1px solid;
     border-right: 1px solid;

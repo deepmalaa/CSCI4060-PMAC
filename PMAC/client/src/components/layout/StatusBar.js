@@ -50,7 +50,6 @@ const StatusBar = ({
   const circleElements = document.querySelectorAll(`.${s.circle}`);
 
   if (waivers != null && waivers.authorize && circleElements[1]){
-    
     circleElements[1].style.backgroundColor = 'green';
     count++;
   }

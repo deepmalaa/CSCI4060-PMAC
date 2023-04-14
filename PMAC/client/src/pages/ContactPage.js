@@ -32,6 +32,8 @@ function Contact() {
                 <div className={css.textTitle}>
                     Contact Us!
                 </div>  
+
+            <div className={css.contentBoxTint}> 
                 <div className={css.goldBar2}> </div>
 
                 <div className={css.contactBox}>
@@ -68,6 +70,7 @@ function Contact() {
                         <div>Frequent Questions</div>
                     </a>
                 </div>
+            </div>
             </div>
 
             <div className={css.foot}>

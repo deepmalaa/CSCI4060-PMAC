@@ -16,7 +16,14 @@ const StatusBar = ({
 }) => {
   const [waivers, setWaivers] = useState([]);
   const [facultyForms, setFacultyForms] = useState([]);
-  let count = 0;
+  const [circle1Color, setCircle1Color] = useState('');
+  const [circle2Color, setCircle2Color] = useState('');
+  const [circle3Color, setCircle3Color] = useState('');
+  const [circle4Color, setCircle4Color] = useState('');
+  const [circle5Color, setCircle5Color] = useState('');
+  const [circle6Color, setCircle6Color] = useState('');
+  const [circle7Color, setCircle7Color] = useState('');
+  //let count = 0;
 
 
   useEffect(() => {
@@ -34,10 +41,12 @@ const StatusBar = ({
   }, [getWaiver, getCurrentProfile, getFacultyForms, facultyForms]);
 
 
-  
+  const count = [    circle1Color,    circle2Color,    circle3Color,    circle4Color,    circle5Color,    circle6Color,    circle7Color  ].filter(color => color === 'green').length;
+
  // console.log(src);
 
-  // State Handler  
+  // State Handler 
+  /* 
   const circleElements = document.querySelectorAll(`.${s.circle}`);
 
   if (waivers != null && waivers.authorize && circleElements[1]){
@@ -45,26 +54,25 @@ const StatusBar = ({
     circleElements[1].style.backgroundColor = 'green';
     count++;
   }
-  
-  var facultyForm = facultyForms;
-  if (facultyForm != null && circleElements[6]) {
-    circleElements[6].style.backgroundColor = 'green';
-    count++;
-  }
+  */
 
-  if (profile != null ) {
-    circleElements[0].style.backgroundColor = 'green';
-    count++;
-
-    if (profile.headshot) {
-      circleElements[5].style.backgroundColor = 'green';
-      count++;
+  useEffect(() => {
+    if (waivers != null && waivers.authorize) {
+      setCircle2Color('green');
     }
-    if (profile.transcript) {
-      circleElements[3].style.backgroundColor = 'green';
-      count++;
+    if (facultyForms != null) {
+      setCircle7Color('green');
     }
-  }
+    if (profile != null) {
+      setCircle1Color('green');
+      if (profile.headshot) {
+        setCircle6Color('green');
+      }
+      if (profile.transcript) {
+        setCircle4Color('green');
+      }
+    }
+  }, [waivers, facultyForms, profile]);
   
       
   
@@ -80,13 +88,13 @@ const StatusBar = ({
         <div className={s.grayRight}>
                 <span>Status</span>
                 <ul>
-                  <li><div className = {s.circle}></div><a href="#Home">Application Form</a></li>
-                  <li><div className = {s.circle}></div><a href="#account">Release Form</a></li>
-                  <li><div className = {s.circle}></div><a href="#contact">Personal Statement</a></li>
-                  <li><div className = {s.circle}></div><a href="#Help">Unofficial Transcript</a></li>
-                  <li><div className = {s.circle}></div><a href="#Home">Schedule</a></li>
-                  <li><div className = {s.circle}></div><a href="#account">Photo</a></li>
-                  <li><div className = {s.circle}></div><a href="#Help">Recommendation Letter</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="#Home">Application Form</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle2Color }}></div><a href="#account">Release Form</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="#contact">Personal Statement</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="#Help">Unofficial Transcript</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle5Color }}></div><a href="#Home">Schedule</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle6Color }}></div><a href="#account">Photo</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle7Color }}></div><a href="#Help">Recommendation Letter</a></li>
                 </ul>
                 <div><br />{count} of 8 completed</div>
               </div>

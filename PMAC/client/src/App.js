@@ -30,7 +30,8 @@ import Calendar from './pages/Calendar';
 import CommitteeCalendar from './pages/CommitteeCalendar';
 import ReviewApplications from './pages/ReviewApplications';
 import AdminCalendar from './pages/AdminCalendar';
-//import PersonalStatement from './pages/PersonalStatement';
+import PersonalStatementPage from './pages/PersonalStatementPage';
+import PersonalStatement from './pages/PersonalStatement';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -40,8 +41,6 @@ import setAuthToken from './utils/setAuthToken';
 
 import './styles/App.css';
 import ApplicationForm from './pages/ApplicationForm';
-import PersonalStatementPage from './pages/PersonalStatementPage';
-import PersonalStatement from './pages/PersonalStatement';
 
 import ClubExperience from './pages/experiencePages/ClubExperience';
 import AddClubExperience from './pages/experiencePages/AddClubExperience';
@@ -61,7 +60,6 @@ import AddVolunteerExperience from './pages/experiencePages/AddVolunteerExperien
 import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
-import SelectSearch from './components/layout/Search';
 import SearchApplication from './components/layout/SearchApplication';
 import Schedule from './components/layout/scheduleAlgorithm';
 import Headshot from './pages/Headshot';
@@ -95,8 +93,6 @@ const App = () => {
         <Route path="/dashboardStudent" element={<PrivateRoute component ={StudentLanding} />} />
         <Route path="/applicantRelease" element={<ApplicantInformationRelease/>} />
         <Route path="/ApplicationForm" element={<ApplicationForm/>} />
-        <Route path="/PersonalStatementPage" element={<PersonalStatementPage/>} />
-        <Route path="/PersonalStatement" element={<PersonalStatement/>} />
         <Route path="/QuestionsPage" element={<QuestionsPage/>} />
         <Route path="/CreateAccount" element={<CreateAccount/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
@@ -108,6 +104,8 @@ const App = () => {
         <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
+        <Route path="/PersonalStatementPage" element={<PersonalStatementPage/>} />
+        <Route path="/PersonalStatement" element={<PersonalStatement/>} />
 
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
         
@@ -121,7 +119,6 @@ const App = () => {
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
         <Route path="/student-profile/:userId" component={StudentProfile} />
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
-        <Route path="/selectSearch" element={<PrivateRoute component ={SelectSearch} />} />
         <Route path="/manageApplications" element={<PrivateRoute component ={ManageApplications} />} />
         <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />

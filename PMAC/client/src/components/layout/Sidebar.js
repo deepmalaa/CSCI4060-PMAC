@@ -57,7 +57,13 @@ const Sidebar = ({ children, role }) => {
         name:"Upload Transcript",
         icon:<FaUserGraduate/>,
         roles: ['student'] 
-    },
+    },{
+      path:"/schedule",
+      name:"TEMP ALG",
+      icon:<FaUserGraduate/>,
+      roles: ['student'] 
+  },
+    
         
         {
             path: "/dashboardChair",

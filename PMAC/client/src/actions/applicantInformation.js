@@ -2,6 +2,8 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import { USER_LOADED } from './types';
 
+
+
 export const applicantInformation = (formData) =>
 async (dispatch) => {
 

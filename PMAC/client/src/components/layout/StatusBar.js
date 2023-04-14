@@ -38,7 +38,7 @@ const StatusBar = ({
     };
     fetchWaivers();
     getCurrentProfile();
-  }, [getWaiver, getCurrentProfile, getFacultyForms, facultyForms]);
+  }, []);
 
 
   const count = [    circle1Color,    circle2Color,    circle3Color,    circle4Color,    circle5Color,    circle6Color,    circle7Color  ].filter(color => color === 'green').length;

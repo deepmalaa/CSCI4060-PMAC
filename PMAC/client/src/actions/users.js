@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { } from './types';
+import {CLEAR_SCHEMAS,GET_SCHEMAS,SCHEMA_ERROR } from './types';
 
   // Get current users schema
   export const getUserData= () => async (dispatch) => {
 
     dispatch({ type: CLEAR_SCHEMAS });
     try {
-      const res = await axios.get('/api/calendar');
+      const res = await axios.get('/api/users');
   
       dispatch({
         type: GET_SCHEMAS,

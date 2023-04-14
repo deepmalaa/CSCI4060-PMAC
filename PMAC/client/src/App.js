@@ -30,6 +30,8 @@ import Calendar from './pages/Calendar';
 import CommitteeCalendar from './pages/CommitteeCalendar';
 import ReviewApplications from './pages/ReviewApplications';
 import AdminCalendar from './pages/AdminCalendar';
+import PersonalStatementPage from './pages/PersonalStatementPage';
+import PersonalStatement from './pages/PersonalStatement';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -101,6 +103,8 @@ const App = () => {
         <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
+        <Route path="/PersonalStatementPage" element={<PersonalStatementPage/>} />
+        <Route path="/PersonalStatement" element={<PersonalStatement/>} />
 
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
         

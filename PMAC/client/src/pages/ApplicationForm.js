@@ -79,12 +79,24 @@ const ApplicationForm = ({
 
   return (
     <>
+      <Sidebar role="student" />
       {isSubmitted ? (
         <p>Form submitted successfully!</p>
       ) : (
 
     <body className={s.body}>
-      <Sidebar />
+
+    <div className={s.top2}>
+        <div className={s.goldBars}> </div>
+              <div className={s.whiteBar}>
+                  <ul>
+                      <li><a href="/dashboardStudent">Home</a></li>
+                      <li><a href="/StudentContactPage">Contact</a></li>
+                  </ul>
+
+              </div>
+        <div className={s.goldBars}> </div>
+    </div>  
 
     <div className={s.subTitle}>Applicant Information</div>
 

@@ -95,7 +95,7 @@ const CommitteeMemberLanding = ({
                 <ul>
                   <li><a href="/ApplicationForm">Application Form</a></li>
                   <li><a href="#account">Release Form</a></li>
-                  <li><a href="#contact">Personal Statement</a></li>
+                  <li><a href="/PersonalStatementPage">Personal Statement</a></li>
                   <li><a href="#Help">Unofficial Transcript</a></li>
                   <li><a href="#Home">Schedule</a></li>
                   <li><a href="#account">Photo</a></li>

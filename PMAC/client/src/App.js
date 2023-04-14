@@ -29,6 +29,7 @@ import CommitteeContactPage from './pages/CommitteeContactPage';
 import Calendar from './pages/Calendar';
 import CommitteeCalendar from './pages/CommitteeCalendar';
 import ReviewApplications from './pages/ReviewApplications';
+import AdminCalendar from './pages/AdminCalendar';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -117,6 +118,7 @@ const App = () => {
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
         <Route path="/Calendar" element={<PrivateRoute component ={Calendar} />} />
         <Route path="/CommitteeCalendar" element={<PrivateRoute component ={CommitteeCalendar} />} />
+        <Route path="/AdminCalendar" element={<PrivateRoute component ={AdminCalendar} />} />
         <Route path="/Schedule" element={<PrivateRoute component ={Schedule} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 

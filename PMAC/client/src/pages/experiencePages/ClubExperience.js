@@ -19,7 +19,7 @@ const Experience = ({
     console.log(getCurrentProfile);
     let experiences;
     
-    if (profile.club_experience){
+    if (profile &&profile.club_experience){
 
     
     experiences = profile.club_experience.map((exp) => (

@@ -13,6 +13,7 @@ const Transcript = ({getCurrentProfile,profile: { profile }}) => {
     // console.log("aaa");
     // console.log(profile.headshot);
     // console.log(user);
+    if(profile){
     return(
         
         <div>
@@ -22,7 +23,7 @@ const Transcript = ({getCurrentProfile,profile: { profile }}) => {
         <ImageUpload />
         </div>
       </div>
-    );
+    );}
 
 }
 Transcript.propTypes = {

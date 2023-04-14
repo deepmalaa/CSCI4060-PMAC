@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
+const checkObjectId = require('../../middleware/checkObjectId');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -18,15 +19,10 @@ router.get('/me', auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
-
-    const { fname, lname, mname, cwid, address, cell, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, headshot, transcript } = profile;
-
-    const email = profile.user.email;
+    res.json(profile);
     const userRole = profile.user.userRole;
 
-    const profileFields = { fname, lname, mname, cwid, address, cell, ulm_email: email, alt_email, bdate, major, minor, grad_date, gpa, entrance_date, mcat, dat, oat, gre, scoreBreakdown, schoolType, exam_date, amcas_id, aacomas_id, aadsas_id, aamc_id, caspa_id, facultyEval, userRole , headshot, transcript};
-
-    res.json(profileFields);
+    
   }
   catch (err) {
     console.error(err.message);
@@ -256,3 +252,26 @@ router.get('/search/:key', async (req, res) => {
 });
 
 module.exports = router;
+
+
+// @route    GET api/profile/user/:user_id
+// @desc     Get profile by user ID
+// @access   Private
+router.get(
+  '/user/:user_id',
+  checkObjectId('user_id'), auth,
+  async ({ params: { user_id } }, res) => {
+    try {
+      const profile = await Profile.findOne({
+        user: user_id
+      }).populate('user', ['name', 'avatar']);
+
+      if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+      return res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).json({ msg: 'Server error' });
+    }
+  }
+);

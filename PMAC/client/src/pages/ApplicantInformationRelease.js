@@ -8,26 +8,41 @@ import s from '../styles/ApplicantInformation.module.css';
 import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
 
+const initialState ={
+    authorize:"",
+    evaluate:"",
+    name_release:"",
+    name: "",
+    cwid: "",
+    signature:"",
+    date: ""
+}
 
 const ApplicantInformation =({applicantRelease, getCurrentProfile,
     auth: { user },
-    profile: { profile }
+    profile: { profile, loading }
   }) => {
-    useEffect(() => {
-      getCurrentProfile();
-    }, [getCurrentProfile]); 
+    
    
 
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
-        authorize:"",
-        evaluate:"",
-        name_release:"",
-        name: profile.fname +" "+  profile.mname +" "+ profile.lname,
-        cwid: profile.cwid,
-        signature:"",
-        date: ""
+        initialState
     });
+
+    useEffect(() => {
+        if (!profile) getCurrentProfile();
+
+        if (!loading && profile) {
+            setFormData({authorize:"",
+            evaluate:"",
+            name_release:"",
+            name: profile.fname +" "+  profile.mname +" "+ profile.lname,
+            cwid: profile.cwid,
+            signature:"",
+            date: ""})
+        }
+      }, [getCurrentProfile, loading]); 
 
     const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
     const onSubmit = async (e) =>{

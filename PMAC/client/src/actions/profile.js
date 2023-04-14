@@ -114,7 +114,7 @@ export const deleteExperience = (id, exp) => async (dispatch) => {
   }
 };
 
-// Get current users profile
+// Get all user profiles
 export const getAllProfile = () => async (dispatch) => {
 
   dispatch({ type: CLEAR_PROFILE });
@@ -140,6 +140,23 @@ export const getSearchProfile = () => async (dispatch) => {
 
     dispatch({
       type: GET_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get profile by ID
+export const getProfileById = (userId) => async (dispatch) => {
+  try {
+    const res = await api.get(`/profile/user/${userId}`);
+
+    dispatch({
+      type: GET_PROFILE,
       payload: res.data
     });
   } catch (err) {

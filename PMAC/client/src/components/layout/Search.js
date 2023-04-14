@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Link } from 'react';
 
 import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
@@ -76,7 +76,10 @@ const Search = ({
               })
               .map((item, index) => (
                 <tr key={index}>
-                  <td>{item.fname}</td>
+                  
+          
+        
+                  <td><a href={`api/profile/user/${item._id}`} >{item.fname} </a></td>
                   <td>{item.lname}</td>
                   <td>{item.email}</td>
                   <td>{item.cwid}</td>

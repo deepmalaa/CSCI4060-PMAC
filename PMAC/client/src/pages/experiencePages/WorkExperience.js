@@ -18,7 +18,7 @@ const Experience = ({
 
     let experiences;
     
-    if (profile.club_experience){
+    if (profile && profile.club_experience){
 
     experiences = profile.work_experience.map((exp) => (
       

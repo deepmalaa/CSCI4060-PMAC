@@ -58,7 +58,7 @@ import WorkExperience from './pages/experiencePages/WorkExperience';
 import AddWorkExperience from './pages/experiencePages/AddWorkExperience';
 import Search from './components/layout/Search';
 import SearchApplication from './components/layout/SearchApplication';
-import Schedule from './components/layout/ScheduleAlgorithm';
+import Schedule from './components/layout/scheduleAlgorithm';
 import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';

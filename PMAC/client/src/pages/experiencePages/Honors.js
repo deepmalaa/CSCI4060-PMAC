@@ -17,7 +17,7 @@ const Experience = ({
 
     let experiences;
     
-    if (profile.club_experience){
+    if (profile &&profile.club_experience){
 
     experiences = profile.honors.map((exp) => (
         <tr key={exp._id}>

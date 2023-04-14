@@ -34,10 +34,8 @@ const StudentLanding = ({
                 <div className={s.goldBars}> </div>
                       <div className={s.whiteBar}>
                           <ul>
-                              <li><a href="#Home">Home</a></li>
-                              <li><a href="#account">Account</a></li>
+                              <li><a href="/dashboardStudent">Home</a></li>
                               <li><a href="/StudentContactPage">Contact</a></li>
-                              <li><a href="#Help">Help</a></li>
                           </ul>
 
                       </div>
@@ -75,17 +73,50 @@ const StudentLanding = ({
             <div className={s.contentBox}>
 
               <div className={s.grayLeft}>
-                <div className={s.textTitle}>HOW TO APPLY</div>
+                <div className={s.textTitle1}>HOW TO APPLY</div>
                 
-                <div className={s.textBox}>
-                  <p>
+                <div className={s.textBox1}>
+
                   The committee is available to interview students during their 
                   application process. Each student that wishes to be interviewed 
                   by the committee must fill out a set of forms to set up an interview. 
 
-                  
-                  </p>
+
                 </div>
+                <div className={s.textBox2}>
+
+                  1. Navigate to 'Waiver Form' in the sidebar. Be sure to fill out all necessary information and then click 'Submit'.
+
+
+                </div>
+                <div className={s.textBox2}>
+
+                  2. Navigate to 'Application Form' in the sidebar. Be sure to fill out all necessary information and then click 'Submit'.
+
+
+                </div>
+
+                <div className={s.textBox2}>
+
+                  3. Once both forms have been submitted, navigate to 'Status' in the Sidebar. From here, you can see your progress in the application process, as well as, schedule your times for interview.
+
+
+                </div>
+
+                <div className={s.textBox2}>
+
+                  4. After scheduling your times, you may need to wait for your interview to be scheduled.
+
+
+                </div>
+
+                <div className={s.textBox2}>
+
+                  5. You can always check the status of your interview by navigating to 'Status' in the sidebar.
+
+
+                </div>
+                
               </div>
 
               <StatusBar/>

@@ -84,7 +84,7 @@ const SelectSearch = ({
                 {/* Add the button that will redirect to the user's personal statement page */}
                 <button
                 onClick={() => {
-                  window.location.href = `/PersonalStatement/${item.cwid}`;
+                  window.location.href = `/PersonalStatement`; //${item.cwid}
                 }}>
                 Personal Statement
               </button>

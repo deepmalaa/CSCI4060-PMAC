@@ -57,7 +57,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
 
   // Default status
   let status1 = 'Pending';
-  let status2 = 'Pending';
+  let status2 = 'Accepted';
   let status3 = 'Pending';
   let status4 = 'Pending';
   let status5 = 'Pending';

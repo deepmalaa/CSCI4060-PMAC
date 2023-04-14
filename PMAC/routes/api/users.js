@@ -73,9 +73,21 @@ async (req,res) => {
         res.status(500).send('Server error');
     }
 
-    
+    router.get('/', async (req, res) => {
+        //console.log(req.user.id)
+        try {
+          const form = await eventSchema.find();
+          res.json(form);
+        } catch (err) {
+          console.error(err.message);
+          res.status(500).send('Server Error');
+        }
+      });
 
     
 });
+
+
+
 
 module.exports = router;

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import {
     FaTh,
+    FaWpforms,
+    FaHouseUser,
+    FaClipboardList,
+    FaFileSignature,
     FaBars,
     FaUserAlt,
     FaCommentAlt,
     FaThList,
+    FaRegSun,
+    FaCalendarAlt,
+    FaUserGraduate
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'
@@ -15,28 +22,28 @@ const Sidebar = ({ children, role }) => {
     const toggle = () => setIsOpen(!isOpen);
 
     const menuItem = [
+          {
+            path:"/dashboardStudent",
+            name:"Home",
+            icon:<FaHouseUser/>,
+            roles: ['student'] 
+        },
+          {
+            path:"/ApplicantRelease",
+            name:"Wavier Form",
+            icon:<FaFileSignature/>,
+            roles: ['student'] 
+        },
+          {
+            path:"/ApplicationForm",
+            name:"Applicant Form",
+            icon:<FaClipboardList/>,
+            roles: ['student'] 
+        },
         {
             path:"/StatusPage",
             name:"Status",
-            icon:<FaTh/>,
-            roles: ['student'] 
-        },
-        {
-            path:"/applyNow",
-            name:"Apply Now",
-            icon:<FaUserAlt/>,
-            roles: ['student'] 
-        },
-        {
-            path:"/practiceInterview",
-            name:"Practice Interview",
-            icon:<FaCommentAlt/>,
-            roles: ['student'] 
-        },
-        {
-            path:"/ApplicationForm",
-            name:"Applicant Form",
-            icon:<FaThList/>,
+            icon:<FaWpforms/>,
             roles: ['student'] 
         },
         {
@@ -48,19 +55,14 @@ const Sidebar = ({ children, role }) => {
       {
         path:"/transcript",
         name:"Upload Transcript",
-        icon:<FaThList/>,
+        icon:<FaUserGraduate/>,
         roles: ['student'] 
     },
-        {
-            path:"/ApplicantRelease",
-            name:"Wavier Form",
-            icon:<FaThList/>,
-            roles: ['student'] 
-        },
+        
         {
             path: "/dashboardChair",
             name: "Home",
-            icon: <FaTh/>,
+            icon: <FaHouseUser/>,
             roles: ['admin']
           },
           {
@@ -71,32 +73,38 @@ const Sidebar = ({ children, role }) => {
           },
           {
             path: "/manageApplications",
-            name: "View User Applications",
-            icon: <FaUserAlt />,
+            name: "View Applications",
+            icon: <FaClipboardList />,
+            roles: ['admin']
+          },
+          {
+            path: "/AdminCalendar",
+            name: "Schedule Interview",
+            icon: <FaCalendarAlt />,
             roles: ['admin']
           },
           {
             path: "/settings",
             name: "Settings",
-            icon: <FaTh />,
+            icon: <FaRegSun />,
             roles: ['admin']
           },
           {
-            path: "/committePage",
-            name: "Committe Page",
-            icon: <FaTh />,
+            path: "/dashboardCommittee",
+            name: "Home",
+            icon: <FaHouseUser />,
             roles: ['committe']
           },
           {
             path: "/reviewApplications",
             name: "Review Applications",
-            icon: <FaCommentAlt />,
+            icon: <FaClipboardList />,
             roles: ['committe']
           },
           {
-            path: "/Calendar",
+            path: "/CommitteeCalendar",
             name: "Scheduling Calendar",
-            icon: <FaCommentAlt />,
+            icon: <FaCalendarAlt />,
             roles: ['committe']
           },
           {
@@ -123,12 +131,6 @@ const Sidebar = ({ children, role }) => {
             icon: <FaUserAlt />,
             roles: ['guest'] 
           },
-          {
-            path:"/StatusBar",
-            name:"Status",
-            icon:<FaTh/>,
-            roles: ['student'] 
-        }
     ];
 
     const filteredMenuItems = menuItem.filter(item => item.roles.includes(role));

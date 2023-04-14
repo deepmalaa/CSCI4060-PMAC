@@ -15,7 +15,7 @@ export const photo =
     const body = JSON.stringify(formData);
     try {
         
-        const res = await axios.post('http://localhost:5001/api/photo', formData, config);
+        const res = await axios.post('/api/photo', formData, config);
    
     } catch (err) {
       const errors = err.response.data.errors;

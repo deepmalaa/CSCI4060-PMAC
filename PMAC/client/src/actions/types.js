@@ -26,3 +26,6 @@ export const UPDATE_SCHEMA = 'UPDATE_SCHEMA';
 export const SCHEMA_ERROR = 'SCHEMA_ERROR';
 export const CLEAR_SCHEMAS = 'CLEAR_SCHEMAS';
 export const GET_SCHEMAS = 'GET_SCHEMAS';
+export const CLEAR_USERS = 'CLEAR_USERS';
+export const USERS_ERROR = 'USERS_ERROR';
+export const GET_USERS = 'GET_USERS';

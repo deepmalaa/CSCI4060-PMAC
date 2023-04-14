@@ -4,7 +4,13 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import Sidebar from '../components/layout/Sidebar';
+
+import css from '../styles/AdminCalendar.module.css';
+
 import mongoose from 'mongoose';
+import styled from "@emotion/styled";
+
 
 
 import { connect } from 'react-redux';
@@ -14,7 +20,6 @@ import {setAlert} from '../actions/alert';
 
 import { postSchedule, deleteSchema,getSchemas } from '../actions/calendar';
 // create a schema for the event
-
 
 
 
@@ -86,7 +91,7 @@ class DemoApp extends React.Component {
     //console.log(JSON.stringify("Start: First is static"));
     //console.log(JSON.stringify(INITIAL_EVENTS1));
 
-   // console.log(JSON.stringify(this.state.currentEvents));
+    //console.log(JSON.stringify(this.state.currentEvents));
 
     //var initialEvents = JSON.stringify(this.state.currentEvents);
     //initialEvents = this.state.currentEvents;
@@ -99,50 +104,55 @@ class DemoApp extends React.Component {
       <div className='demo-app'>
         
         {this.renderSidebar()}
+        <Sidebar role="admin" />
         <div className='demo-app-main'>
-          <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              
-              left: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
-              
-            }}
-            initialView='dayGridMonth'
+          <div className={css.cal}>
+            <div className={css.cal1}>
+                    <FullCalendar
+                    plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                    headerToolbar={{
+                        
+                        left: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
+                        
+                    }}
+                    initialView='dayGridMonth'
 
 
-            //this.state.currentEvents
-            
-            initialEvents={this.state.currentEvents}
-
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            weekends={false}
-            slotMinTime="08:00:00"
-            slotMaxTime="18:00:00"
-            views={{
-              dayGridWeek: {
-                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
-              },
-              dayGridDay: {
-                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
-              },
-            }}
-            
-          
-            select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
-            eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            
-            // you can update a remote database when these fire:
-            //eventAdd={function(){}}
-            //eventChange={function(){}}
-            //eventRemove={function(){}}
-            
-          />
+                    //this.state.currentEvents
+                    
+                    initialEvents={this.state.currentEvents}
+                    
+                    editable={true}
+                    selectable={true}
+                    selectMirror={true}
+                    dayMaxEvents={true}
+                    weekends={false}
+                    slotMinTime="08:00:00"
+                    slotMaxTime="18:00:00"
+                    views={{
+                        dayGridWeek: {
+                        timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                        },
+                        dayGridDay: {
+                        timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                        },
+                    }}
+                    
+                    
+                    select={this.handleDateSelect}
+                    eventContent={renderEventContent} // custom render function
+                    eventClick={this.handleEventClick}
+                    eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+                    
+                    // you can update a remote database when these fire:
+                    //eventAdd={function(){}}
+                    //eventChange={function(){}}
+                    //eventRemove={function(){}}
+                    
+                    />
+                </div>
+            </div>
         </div>
 
         
@@ -163,8 +173,8 @@ class DemoApp extends React.Component {
           <h2> Instructions</h2>
           <ul>
             <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
             <li>Click an event to delete it</li>
+            <li>Schedule an Event!</li>
           </ul>
         </div>
         

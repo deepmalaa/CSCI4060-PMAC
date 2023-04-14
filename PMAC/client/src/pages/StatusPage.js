@@ -13,11 +13,28 @@ import { applicantRelease } from '../actions/applicantRelease';
 import { ApplicantInfo } from '../actions/applicantInformation';
 import PropTypes from 'prop-types';
 import Sidebar from '../components/layout/Sidebar';
+import { getWaiver } from '../actions/applicantRelease';
 
 
 // Pulling User profile information
 const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
   useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
+
+  const [waivers, setWaivers] = useState([]);
+  const [facultyForms, setFacultyForms] = useState([]);
+
+  useEffect(() => {
+    const fetchWaivers = async () => {
+      //Waivers
+
+      //FacultyForms
+      //const data1 = await getFacultyForms();
+      //setFacultyForms(data1);
+    };
+    fetchWaivers();
+    getCurrentProfile();
+  });
+
   
   const [selectedApplication, setSelectedApplication] = useState('');
   const [status, setStatus] = useState('');
@@ -25,16 +42,11 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
 
   // Users full name
   let Fullname = user && user.name;
-
-  if (profile.fname !== null) {
-    Fullname = profile.fname;
-    if (profile.mname !== null) {
-      Fullname = profile.fname + " " + profile.mname;
-      if (profile.lname !== null){
-        Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
-      }
-    }
+  // If name is not null displays name
+  if (profile.fname !== null && profile.mname !== null && profile.lname !== null) {
+    Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
   }
+  
   
   // Default verified false
   let Verified1 = false;
@@ -42,24 +54,42 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   let Verified3 = false;
   let Verified4 = false;
   let Verified5 = false;
+
+  // Default status
+  let status1 = 'Pending';
+  let status2 = 'Pending';
+  let status3 = 'Pending';
+  let status4 = 'Pending';
+  let status5 = 'Pending';
+
+  // Default release
+  let releaseForm = false;
+  // Default message
+  let message = 'No release signature';
  
-  // Checks to see what user is applying for
-  if(profile.amcas_id !== '' && profile.amcas_id !== '') {
-    Verified1 = true;  
-  }
-  if(profile.aacomas_id !== null && profile.aacomas_id !== '') {
-    Verified2 = true;  
-  }
-  if(profile.caspa_id != null && profile.caspa_id !== '') {
-    Verified3 = true;  
-  }
-  if(profile.aadsas_id !== null && profile.aadsas_id !== '') {
-    Verified4 = true;  
-  }
-  if(profile.aamc_id_id != null && profile.aamc_id !== '') {
-    Verified5 = true;  
-  }
-  
+  // Ensures release form is submitted
+  //if(waivers != null && waivers.authorize) {
+    // Allows release of status
+    releaseForm = true;
+    // Allows next default message
+    message = 'No applications found';
+    // Checks to see what user is applying for
+    if(profile.amcas_id !== '' && profile.amcas_id !== '') {
+      Verified1 = true;  
+    }
+    if(profile.aacomas_id !== null && profile.aacomas_id !== '') {
+      Verified2 = true;  
+    }
+    if(profile.caspa_id != null && profile.caspa_id !== '') {
+      Verified3 = true;  
+    }
+    if(profile.aadsas_id !== null && profile.aadsas_id !== '') {
+      Verified4 = true;  
+    }
+    if(profile.aamc_id_id != null && profile.aamc_id !== '') {
+      Verified5 = true;  
+    }
+  //}
 
     // Medical Application info
     const submittedApplications = {
@@ -67,9 +97,11 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified1, // if verified = true means candidate applied
         title: "Medical Application",
-        status: 'Pending',
+        status: status1,
         interviewStatus: false,
         submissionDate: 'month/day/year',
+        //release: releaseForm,
+        //Statusmessage: message,
       },
       
       // Osteopathic Medical Application info
@@ -77,18 +109,22 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified2, // if verified = true means candidate applied
         title: 'Osteopathic Medical Application', 
-        status: 'Accepted',
+        status: status2,
         interviewStatus: false,
         submissionDate: 'month/day/year',
+        //release: releaseForm,
+        //Statusmessage: message,
       },
       // Physician Assistant Application info
       application3: {
         name: Fullname,
         verified: Verified3, // if verified = true means candidate applied
         title: 'Physician Assistant Application',
-        status: 'Denied',
+        status: status3,
         interviewStatus: false,
         submissionDate: 'month/day/year',
+        //release: releaseForm,
+        //Statusmessage: message,
       },
       
       //Dental Application info
@@ -96,9 +132,11 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified4, // if verified = true means candidate applied
         title: 'Dental Application',
-        status: 'Interview',
+        status: status4,
         interviewStatus: false,
         submissionDate: 'month/day/year',
+        //release: releaseForm,
+        //Statusmessage: message,
       },
 
       // Other(ex: Podiatry) Application info
@@ -106,9 +144,11 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified5, // if verified = true means candidate applied
         title: 'Other(ex: Podiatry) Application',
-        status: 'Complete',
+        status: status5,
         interviewStatus: false,
         submissionDate: 'month/day/year',
+        //release: releaseForm,
+        //Statusmessage: message,
       },
     };
   
@@ -130,6 +170,8 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     const interviewStatus = submittedApplications[selectedApplication]?.interviewStatus;
     const submissionDate = submittedApplications[selectedApplication]?.submissionDate;
     const name = submittedApplications[selectedApplication]?.name;
+    //const release = submittedApplications[selectedApplication]?.releaseForm;
+    //const Statusmessage = submittedApplications[selectedApplication]?.Statusmessage;
   
     
     return (
@@ -141,7 +183,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
             <div className={s.whiteBar} style={{marginTop:'-6px'}}>
               <div className={s.goldBars}> </div>
               <ul>
-              <li><a href="#Home">Home</a></li>
+              <li><a href="/dashboardStudent">Home</a></li>
               <li><a href="#account">Account</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="#Help">Help</a></li>
@@ -195,7 +237,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
-
   };
   const mapStateToProps = (state) => ({
     auth: state.auth,

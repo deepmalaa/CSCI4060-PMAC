@@ -17,7 +17,7 @@ import { getWaiver } from '../actions/applicantRelease';
 
 
 // Pulling User profile information
-const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }, getWaiver}) =>{
+const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
   useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
 
   const [waivers, setWaivers] = useState([]);
@@ -26,8 +26,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   useEffect(() => {
     const fetchWaivers = async () => {
       //Waivers
-      const data = await getWaiver();
-      setWaivers(data);
 
       //FacultyForms
       //const data1 = await getFacultyForms();
@@ -35,7 +33,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     };
     fetchWaivers();
     getCurrentProfile();
-  }, [getWaiver]);
+  });
 
   
   const [selectedApplication, setSelectedApplication] = useState('');
@@ -49,6 +47,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     Fullname = profile.fname + " " + profile.mname + " " + profile.lname;
   }
   
+  
   // Default verified false
   let Verified1 = false;
   let Verified2 = false;
@@ -56,13 +55,20 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   let Verified4 = false;
   let Verified5 = false;
 
+  // Default status
+  let status1 = 'Pending';
+  let status2 = 'Pending';
+  let status3 = 'Pending';
+  let status4 = 'Pending';
+  let status5 = 'Pending';
+
   // Default release
   let releaseForm = false;
   // Default message
   let message = 'No release signature';
  
   // Ensures release form is submitted
-  if(waivers != null && waivers.authorize) {
+  //if(waivers != null && waivers.authorize) {
     // Allows release of status
     releaseForm = true;
     // Allows next default message
@@ -83,7 +89,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     if(profile.aamc_id_id != null && profile.aamc_id !== '') {
       Verified5 = true;  
     }
-  }
+  //}
 
     // Medical Application info
     const submittedApplications = {
@@ -91,10 +97,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified1, // if verified = true means candidate applied
         title: "Medical Application",
-        status: 'Pending',
+        status: status1,
         interviewStatus: false,
         submissionDate: 'month/day/year',
-        release: releaseForm,
+        //release: releaseForm,
         //Statusmessage: message,
       },
       
@@ -103,10 +109,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified2, // if verified = true means candidate applied
         title: 'Osteopathic Medical Application', 
-        status: 'Accepted',
+        status: status2,
         interviewStatus: false,
         submissionDate: 'month/day/year',
-        release: releaseForm,
+        //release: releaseForm,
         //Statusmessage: message,
       },
       // Physician Assistant Application info
@@ -114,10 +120,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified3, // if verified = true means candidate applied
         title: 'Physician Assistant Application',
-        status: 'Denied',
+        status: status3,
         interviewStatus: false,
         submissionDate: 'month/day/year',
-        release: releaseForm,
+        //release: releaseForm,
         //Statusmessage: message,
       },
       
@@ -126,10 +132,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified4, // if verified = true means candidate applied
         title: 'Dental Application',
-        status: 'Interview',
+        status: status4,
         interviewStatus: false,
         submissionDate: 'month/day/year',
-        release: releaseForm,
+        //release: releaseForm,
         //Statusmessage: message,
       },
 
@@ -138,10 +144,10 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         name: Fullname,
         verified: Verified5, // if verified = true means candidate applied
         title: 'Other(ex: Podiatry) Application',
-        status: 'Complete',
+        status: status5,
         interviewStatus: false,
         submissionDate: 'month/day/year',
-        release: releaseForm,
+        //release: releaseForm,
         //Statusmessage: message,
       },
     };
@@ -177,7 +183,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
             <div className={s.whiteBar} style={{marginTop:'-6px'}}>
               <div className={s.goldBars}> </div>
               <ul>
-              <li><a href="#Home">Home</a></li>
+              <li><a href="/dashboardStudent">Home</a></li>
               <li><a href="#account">Account</a></li>
               <li><a href="#contact">Contact</a></li>
               <li><a href="#Help">Help</a></li>
@@ -230,14 +236,13 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   StatusPage.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired,
-    getWaiver: PropTypes.object.isRequired
+    profile: PropTypes.object.isRequired
   };
   const mapStateToProps = (state) => ({
     auth: state.auth,
     profile: state.profile
   });
 
-  export default connect(mapStateToProps, { getCurrentProfile,getWaiver })(
+  export default connect(mapStateToProps, { getCurrentProfile })(
     StatusPage
   );

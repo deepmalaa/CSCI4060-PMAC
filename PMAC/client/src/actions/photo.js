@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setAlert,GET_PHOTO,CLEAR_PHOTO,PHOTO_ERROR } from './alert';
+import { setAlert, GET_PHOTO,CLEAR_PHOTO,PHOTO_ERROR } from './alert';
 
 export const photo =
   (formData) =>
@@ -32,7 +32,7 @@ export const photo =
 
 
   // Get current user photo
-export const getWaiver = () => async (dispatch) => {
+export const getPhoto = () => async (dispatch) => {
 
   dispatch({ type: CLEAR_PHOTO });
   try {

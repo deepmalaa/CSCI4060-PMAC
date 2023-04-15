@@ -7,6 +7,7 @@ import ImageUpload from '../components/imageUpload/transcriptUpload'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getProfileById } from '../actions/profile';
+import '../styles/StudentProfile.css';
 
 const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
     const { userid } = useParams();
@@ -17,16 +18,16 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
       },[getProfileById, userid]);
       console.log(profile)
       
-    let experiences;
-    let club_experiences;
-    let field_experiences;
-    let lab_experiences;
-    let volunteer_experiences;
-    let honors;
+    let experiences = "No Work Experience Added";
+    let club_experiences = "No Club Experience Added";
+    let field_experiences = "No Field Experience Added";
+    let lab_experiences = "No Lab Experience Added";
+    let volunteer_experiences = "No volunteer Experience Added";
+    let honors = "No Honors Added";
 
     if (profile && profile.club_experience){
 
-    experiences = profile.work_experience.map((exp) => (
+    if(profile.work_experience.length !== 0) {experiences = profile.work_experience.map((exp) => (
 
         <tr key={exp._id}>
           <td >{exp.title}</td>
@@ -34,19 +35,10 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
           <td>{exp.years}</td>
           <td>{exp.description}</td>
         </tr>
-    ))
+    ))}
+    
 
-    club_experiences = profile.club_experience.map((exp) => (
-
-        <tr key={exp._id}>
-          <td >{exp.title}</td>
-          <td>{exp.company}</td>
-          <td>{exp.years}</td>
-          <td>{exp.description}</td>
-        </tr>
-    ))
-
-    field_experiences = profile.field_experience.map((exp) => (
+    if (profile.club_experience.length !== 0){club_experiences = profile.club_experience.map((exp) => (
 
         <tr key={exp._id}>
           <td >{exp.title}</td>
@@ -54,19 +46,9 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
           <td>{exp.years}</td>
           <td>{exp.description}</td>
         </tr>
-    ))
+    ))}
 
-    lab_experiences = profile.lab_experience.map((exp) => (
-
-        <tr key={exp._id}>
-          <td >{exp.title}</td>
-          <td>{exp.company}</td>
-          <td>{exp.years}</td>
-          <td>{exp.description}</td>
-        </tr>
-    ))
-
-    volunteer_experiences = profile.volunteer_experience.map((exp) => (
+    if (profile.field_experience.length !== 0){field_experiences = profile.field_experience.map((exp) => (
 
         <tr key={exp._id}>
           <td >{exp.title}</td>
@@ -74,9 +56,9 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
           <td>{exp.years}</td>
           <td>{exp.description}</td>
         </tr>
-    ))
+    ))}
 
-    honors = profile.honors.map((exp) => (
+    if (profile.lab_experience.length !== 0){lab_experiences = profile.lab_experience.map((exp) => (
 
         <tr key={exp._id}>
           <td >{exp.title}</td>
@@ -84,104 +66,156 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
           <td>{exp.years}</td>
           <td>{exp.description}</td>
         </tr>
-    ))
+    ))}
+
+    if (profile.volunteer_experience.length !== 0){volunteer_experiences = profile.volunteer_experience.map((exp) => (
+
+        <tr key={exp._id}>
+          <td >{exp.title}</td>
+          <td>{exp.company}</td>
+          <td>{exp.years}</td>
+          <td>{exp.description}</td>
+        </tr>
+    ))}
+
+    if (profile.honors.length !== 0){honors = profile.honors.map((exp) => (
+
+        <tr key={exp._id}>
+        <td >{exp.title}</td>
+        <td>{exp.company}</td>
+        <td>{exp.years}</td>
+        <td>{exp.description}</td>
+      </tr>
+      ))
+      }
+
 }
-
+  
     if(profile){
     return(
-        <div>
-        <Sidebar />
-        <p>Application Submitted Date: {profile.date}</p>
-        <p>First Name: {profile.fname} </p>
-        <p>Middle Name: {profile.mname}</p>
-        <p>Last Name: {profile.lname} </p>
-        <p>Email: {profile.email}</p>
-        <p>Phone: {profile.cell}</p>
-        <p>Address: {profile.address}</p>
-        <p>CWID: {profile.cwid}</p>
-        <p>Cell Phone: {profile.phone}</p>
-        <p>ULM E-mail Address: {profile.ulm_email}</p>
-        <p>Alternate email: {profile.alt_email}</p>
-        <p>Major: {profile.major}</p>
-        <p>Minor: {profile.minor}</p>
-        <p>Date of Expected Graduation from ULM: {profile.grad_date}</p>
-        <p>Overall Collegiate GPA: {profile.gpa}</p>
-      
-        <p>Date of Proposed Entrance to Professional School: {profile.entrance_date}</p>
-        <p>Score of your most recent professional entry exam (MCAT, DAT, OAT, GRE): </p>
-        <p>Date of exam taken or expected date of exam: {profile.exam_date}</p>
-        <p>Type of School Application will be sent: {profile.schoolType}</p>
-        <p>AMCAS Letter ID:{profile.amcas_id}</p>
-        <p>AAMC ID#:{profile.aamc_id}</p>
-        <p>AACOMAS CAS#:{profile.aacomas_id}</p>
-        <p>CASPA CAS#:{profile.caspa_id}</p>
-        <p>AADSAS ID#:{profile.aadsas_id}</p>
-        <p>Faculty Members Submitting Evaluations on Behalf(Name/Title/Department): {profile.facultyEval}</p>
-        <p>Honors:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
-        
-        {honors}
-        </p>
-       
-        <p>Work Experience:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
-        
-        {experiences}
-        </p>
+    
+        <div className="profile-container">
+          <Sidebar role ="admin"/>
+      <h2>Application Information</h2>
+      <p>Application Submitted Date: {profile.date}</p>
+      <p>First Name: {profile.fname}</p>
+      <p>Middle Name: {profile.mname}</p>
+      <p>Last Name: {profile.lname}</p>
+      <p>Email: {profile.email}</p>
+      <p>Phone: {profile.cell}</p>
+      <p>Address: {profile.address}</p>
+      <p>CWID: {profile.cwid}</p>
+      <p>Cell Phone: {profile.phone}</p>
+      <p>ULM E-mail Address: {profile.ulm_email}</p>
+      <p>Alternate email: {profile.alt_email}</p>
+      <p>Major: {profile.major}</p>
+      <p>Minor: {profile.minor}</p>
+      <p>Date of Expected Graduation from ULM: {profile.grad_date}</p>
+      <p>Overall Collegiate GPA: {profile.gpa}</p>
+      <p>Date of Proposed Entrance to Professional School: {profile.entrance_date}</p>
+      <p>Score of your most recent professional entry exam (MCAT, DAT, OAT, GRE): </p>
+      <p>Date of exam taken or expected date of exam: {profile.exam_date}</p>
+      <p>Type of School Application will be sent: {profile.schoolType}</p>
+      <p>AMCAS Letter ID:{profile.amcas_id}</p>
+      <p>AAMC ID#:{profile.aamc_id}</p>
+      <p>AACOMAS CAS#:{profile.aacomas_id}</p>
+      <p>CASPA CAS#:{profile.caspa_id}</p>
+      <p>AADSAS ID#:{profile.aadsas_id}</p>
+      <br />
+      <h2>Honors</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {honors}
+        </tbody>
+      </table>
+      <br />
 
-        <p>Club Experience:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
-        
-        {club_experiences}
-        </p>
+      <h2>Work Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {experiences}
+        </tbody>
+      </table>
+      <br />
 
-        <p>Field Experience:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
-        
+      <h2>Club Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {club_experiences}
+        </tbody>
+      </table>
+      <br />
+
+      <h2>Field Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
         {field_experiences}
-        </p>
+        </tbody>
+        </table> 
+        <br />
 
-        <p>Lab Experience:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
-        
+        <h2>Lab Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
         {lab_experiences}
-        </p>
-
-        <p>Volunteer Experience:
-        <tr>
-            <td>Title</td>
-            <td>Company</td>
-            <td>Years</td>
-            <td>Description</td>
-        </tr>
+        </tbody>
+        </table> 
+        <br />
         
+        <h2>Volunteer Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Years</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
         {volunteer_experiences}
-        </p>
+        </tbody>
+        </table> 
         <div>
         <a href={`http://localhost:5001/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
         <a href={`http://localhost:5001/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>

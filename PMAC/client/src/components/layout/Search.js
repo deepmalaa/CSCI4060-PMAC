@@ -79,7 +79,7 @@ const Search = ({
         
                   <td><Link to={`/studentProfile/${item._id}`}>{item.fname}</Link></td>
                   <td>{item.lname}</td>
-                  <td>{item.email}</td>
+                  <td>{item.ulm_email}</td>
                   <td>{item.cwid}</td>
 
                   {/* <td><button className="btn btn-danger" onClick={navigate(`/StudentProfile/${item._id}`)}>View</button></td> */}

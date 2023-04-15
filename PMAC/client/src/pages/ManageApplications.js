@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 
 import Sidebar from '../components/layout/Sidebar';
-import SearchApplication from '../components/layout/SearchApplication';
+import SearchApplication from '../components/layout/Search';
 
 const ManageApplications = ({
   getCurrentProfile,

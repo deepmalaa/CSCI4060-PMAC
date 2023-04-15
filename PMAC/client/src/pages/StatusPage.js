@@ -184,9 +184,9 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
               <div className={s.goldBars}> </div>
               <ul>
               <li><a href="/dashboardStudent">Home</a></li>
-              <li><a href="#account">Account</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><a href="#Help">Help</a></li>
+              <li><a href="/StudentProfile">Account</a></li>
+              <li><a href="/StudentContactPage">Contact</a></li>
+              <li><a href="/StudentQuestionsPage">Help</a></li>
               </ul>
             </div> 
             <div className={s.goldBars}> </div>
@@ -218,8 +218,8 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           
           <>
           {selectedApplication && (
-            <div style={{marginTop:'10px'}}>
-              <button onClick={() => setSelectedApplication('')}>Done</button>
+            <div style={{marginTop:'50px'}}>
+              <button className="btn btn-primary" onClick={() => setSelectedApplication('')}>Done</button>
             </div>
           )}
           </>

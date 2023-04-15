@@ -104,7 +104,7 @@ class DemoApp extends React.Component {
       <div className='demo-app'>
         
         {this.renderSidebar()}
-        <Sidebar role="student" />
+        <Sidebar role="admin" />
         <div className='demo-app-main'>
           <div className={css.cal}>
             <div className={css.cal1}>

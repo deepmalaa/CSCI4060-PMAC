@@ -17,7 +17,7 @@ const Transcript = ({getCurrentProfile,profile: { profile }}) => {
     return(
         
         <div>
-        <Sidebar />
+        <Sidebar role = "student"/>
         <div>
         <a href={`http://localhost:5001/api/personalstatement/${profile.personal_statement}`}>Click to preview</a>
         <ImageUpload />

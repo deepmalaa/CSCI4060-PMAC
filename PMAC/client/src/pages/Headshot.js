@@ -17,7 +17,7 @@ const Headshot = ({getCurrentProfile,profile: { profile }}) => {
     return(
         
         <div>
-        <Sidebar />
+        <Sidebar role = "student" />
 
         <div className='picturebox'>
         <img src={`api/image/${profile.headshot}`} alt="headshot"/>

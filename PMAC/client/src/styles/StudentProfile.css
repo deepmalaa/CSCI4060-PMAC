@@ -1,35 +1,96 @@
+/* Style for the main container */
 .profile-container {
-    width: 50%;
-    margin: auto;
-  }
-  
-.profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-.profile-info label {
-    margin-right: 1em;
-    font-weight: bold;
-  }
-  
-.profile-info input[type="text"],
-.profile-info input[type="number"],
-.profile-info input[type="email"] {
-    margin-bottom: 1em;
-    padding: 0.5em;
-    border: none;
-    border-bottom: 1px solid black;
-    width: 100%;
-    font-size: 1em;
-  }
-  
-.profile-info input[type="text"]:disabled,
-.profile-info input[type="number"]:disabled,
-.profile-info input[type="email"]:disabled {
-    border-bottom: none;
-    background-color: transparent;
-    font-weight: bold;
-  }
-  
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+/* Style for the headings */
+h1, h2, h3 {
+  font-weight: bold;
+  text-align: center;
+  color: #444;
+}
+
+/* Style for the main paragraphs */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Style for the table headers */
+th {
+  text-align: left;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Style for the table rows */
+td {
+  padding: 5px;
+}
+
+/* Style for the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Style for the table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for the honours and experience tables */
+table.honors, table.experience {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Style for the honours and experience table headers */
+table.honors th, table.experience th {
+  text-align: left;
+  font-weight: bold;
+  color: #444;
+  background-color: #f7f7f7;
+}
+
+/* Style for the honours and experience table rows */
+table.honors td, table.experience td {
+  padding: 5px;
+}
+
+/* Style for the honours and experience table rows */
+table.honors tr:nth-child(even), table.experience tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for the table head */
+thead {
+  display: table;
+  width: 100%;
+}
+
+/* Style for the table head cells */
+th {
+  text-align: center;
+}
+
+/* Style for the table body */
+tbody {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Style for the table body cells */
+td {
+  text-align: center;
+  word-wrap: break-word;
+}
+

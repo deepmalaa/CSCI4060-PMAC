@@ -48,7 +48,7 @@ const Experience = ({
     <Fragment>
       
       <h2 className="my-2">Work Experience</h2>
-      <Sidebar />
+      <Sidebar role = "student"/>
       <div className="table">
         <thead>
           <tr>

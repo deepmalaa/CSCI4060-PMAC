@@ -27,6 +27,7 @@ function ApplicationSelector(props) {
   
   return (
     <body className='background'>
+      
       <p className='no-applications'> Note: Lack of signed contract WILL NOT allow progression</p>
       <div className='container'>
         {submittedApplicationList.length === 0 ? (

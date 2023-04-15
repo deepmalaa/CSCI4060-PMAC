@@ -6,6 +6,7 @@ import {applicantInformation} from '../actions/applicantInformation';
 import propTypes from 'prop-types';
 import s from '../styles/ApplicantInformation.module.css';
 import { getCurrentProfile } from '../actions/profile';
+import Sidebar from '../components/layout/Sidebar';
 
 
 const ApplicantInfo =({applicantInformation, getCurrentProfile,
@@ -52,7 +53,7 @@ const ApplicantInfo =({applicantInformation, getCurrentProfile,
     return (
     
         <body>
-            
+            <Sidebar role="student" />
             <div className={s.body}>
             <div className={s.subTitle}>Applicant Information Form</div>
 

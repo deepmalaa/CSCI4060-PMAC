@@ -45,7 +45,7 @@ const Experience = ({
   return (
     <Fragment>
       <h2 className="my-2">Volunteer Experience</h2>
-      <Sidebar />
+      <Sidebar role ="student"/>
       <div className="table">
         <thead>
           <tr>

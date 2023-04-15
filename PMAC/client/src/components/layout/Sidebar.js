@@ -90,12 +90,6 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
-            path: "/settings",
-            name: "Settings",
-            icon: <FaRegSun />,
-            roles: ['admin']
-          },
-          {
             path: "/dashboardCommittee",
             name: "Home",
             icon: <FaHouseUser />,

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
   },
   imageSection: {
-    height: '20em',
+    height: '5em',
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -108,9 +108,7 @@ const MuiVersion = () => {
               link
             </a>
           </>
-        ) : (
-          <p className={classes.nopic}>no image uploaded yet</p>
-        )}
+        ):(<p></p>)}
       </div>
       <Button className={classes.btn} onClick={() => setShow(true)}>
         Upload Picture

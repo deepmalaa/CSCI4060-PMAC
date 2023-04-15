@@ -155,8 +155,8 @@ const App = () => {
         <Route path="/addWorkExperience" element={<AddWorkExperience/>} />
         <Route path="/HomePage" element={<HomePage/>} />
 
-        <Route path="/headshot" element={<PrivateRoute component ={Headshot}/>} />
-        <Route path="/uploadpersonalstatement" element={<PrivateRoute component ={UploadPersonalStatement}/>} />
+        <Route path="/headshot" element={<Headshot/>} />
+        <Route path="/uploadpersonalstatement" element={<UploadPersonalStatement/>} />
     </Routes>
     
     <section className="container">

@@ -1,20 +1,24 @@
 import React, { useEffect  }  from 'react';
+import { Link, useParams } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import ImageUpload from '../components/imageUpload/transcriptUpload'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { getCurrentProfile, getProfileById } from '../actions/profile';
 
-const StudentProfile = ({getProfileById,nprofile: {profile}, auth, match}) => {
-
+const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
+    const { userid } = useParams();
+    console.log(userid);
     useEffect(() => {
-        getProfileById(match.params.id)
-      });
-    
+        if(!profile){
+            getProfileById(userid)}
+      },[getProfileById, userid]);
+      console.log(profile)
+       
     return(
-        
         <div>
         <Sidebar />
+        <p>hi {profile.fname} </p>
         <div>
         </div>
       </div>

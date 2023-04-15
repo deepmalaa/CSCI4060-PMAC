@@ -1,8 +1,9 @@
-import React, { useState, useEffect, Link } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 
 
 const Search = ({
@@ -19,9 +20,7 @@ const Search = ({
 
   useEffect(() => {
     getAllProfile();
-
-    
-  }, [profiles, getAllProfile]);
+  }, []);
   
 
   // const sortName = () => {
@@ -35,6 +34,9 @@ const Search = ({
   //     })
   //   );
   // };
+
+  const navigate = useNavigate();
+  const handleOnClick = () => navigate(`/studentProfile`);
 
   return (
     <div>
@@ -76,13 +78,14 @@ const Search = ({
               })
               .map((item, index) => (
                 <tr key={index}>
-                  
-          
+                
         
-                  <td><a href={`/studentProfile/${item._id}`} >{item.fname} </a></td>
+                  <td><Link to={`/studentProfile/${item._id}`}>{item.fname}</Link></td>
                   <td>{item.lname}</td>
                   <td>{item.email}</td>
                   <td>{item.cwid}</td>
+
+                  {/* <td><button className="btn btn-danger" onClick={navigate(`/StudentProfile/${item._id}`)}>View</button></td> */}
                 </tr>
               ))}
               

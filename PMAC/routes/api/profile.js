@@ -204,9 +204,10 @@ router.delete('/:experience/:exp_id', auth, async (req, res) => {
   try {
     const foundProfile = await Profile.findOne({ user: req.user.id });
     const experience = req.params.experience;
-    foundProfile.experience = foundProfile.experience.filter(
+    foundProfile[experience] = foundProfile[experience].filter(
       (exp) => exp._id.toString() !== req.params.exp_id
     );
+    console.log(foundProfile[experience])
 
     await foundProfile.save();
     return res.status(200).json(foundProfile);
@@ -259,7 +260,7 @@ module.exports = router;
 // @access   Private
 router.get(
   '/user/:user_id',
-  checkObjectId('user_id'), auth,
+  checkObjectId('user_id'), 
   async ({ params: { user_id } }, res) => {
     try {
       const profile = await Profile.findOne({

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
+import Sidebar from '../../components/layout/Sidebar';
 
 const AddExperience = ({ addExperience }) => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const AddExperience = ({ addExperience }) => {
 
   return (
     <section className="container">
+      <Sidebar role="student" />
       <h1 className="large text-primary">Add Memberships/ Academic Clubs Experience</h1>
       <p className="lead">
         <i className="fas fa-code-branch" /> Indicate appropiate leadership position (if any) in description field

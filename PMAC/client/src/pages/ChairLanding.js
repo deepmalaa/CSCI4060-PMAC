@@ -8,6 +8,7 @@ import s from '../styles/ChairLanding.module.css';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import StudentProfile from '../components/layout/StudentProfile';
 
 const popover = (
   <Popover id="popover-basic">
@@ -65,7 +66,7 @@ const ChairLanding = ({
           and more. The admin page allows the ULM PMAC system to be easily managed, ensuring smooth and 
           efficient system operation.
         </div>
-
+        <StudentProfile/>
         <div className={s.websiteStatus}>
           <OverlayTrigger trigger="click" placement="right" overlay={popover}>
           <Button variant="success">Quick Check</Button>

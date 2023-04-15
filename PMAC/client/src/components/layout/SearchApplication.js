@@ -4,6 +4,7 @@ import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import css from '../../styles/SearchApplication.module.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import StudentProfile from './StudentProfile';
 
 
 const SearchApplication = ({
@@ -130,7 +131,7 @@ const SearchApplication = ({
               
           </tbody>
         </table>
-      
+       
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect} from 'react';
+import { Link } from "react-router-dom";
 import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 
 
 const Search = ({
@@ -35,8 +34,6 @@ const Search = ({
   //   );
   // };
 
-  const navigate = useNavigate();
-  const handleOnClick = () => navigate(`/studentProfile`);
 
   return (
     <div>

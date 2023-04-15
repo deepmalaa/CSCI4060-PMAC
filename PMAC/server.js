@@ -6,6 +6,7 @@ var cors = require('cors');
 const app = express();
 
 //Connect DB
+/////lalalalallala
 connectDB();
 app.use(cors());
 //Innit middleware

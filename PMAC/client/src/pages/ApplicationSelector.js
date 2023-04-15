@@ -27,6 +27,7 @@ function ApplicationSelector(props) {
   
   return (
     <body className='background'>
+      
       <p className='no-applications'> Note: Lack of signed contract WILL NOT allow progression</p>
       <div className='container'>
         {submittedApplicationList.length === 0 ? (
@@ -40,7 +41,7 @@ function ApplicationSelector(props) {
                   <div className='title'>{props.applications[application].title}</div>
 
 
-                  <div className='date'>Date: {props.applications[application].submissionDate}</div>
+                  
                   <div className='name'>Name: {props.applications[application].name}</div>
 
 
@@ -58,3 +59,5 @@ function ApplicationSelector(props) {
 }
 
 export default ApplicationSelector;
+
+//<div className='date'>Date: {props.applications[application].submissionDate}</div>

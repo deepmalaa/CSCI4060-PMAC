@@ -7,7 +7,7 @@ import ImageUpload from '../components/imageUpload/transcriptUpload'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getProfileById } from '../actions/profile';
-import '../styles/StudentProfile.css';
+import s from '../styles/StudentProfile.module.css';
 
 const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
     const { userid } = useParams();
@@ -94,7 +94,7 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
     if(profile){
     return(
     
-        <div className="profile-container">
+        <div className={s.profile}>
           <Sidebar role ="admin"/>
       <h2>Application Information</h2>
       <p>Application Submitted Date: {profile.date}</p>

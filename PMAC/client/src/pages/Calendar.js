@@ -97,7 +97,6 @@ class DemoApp extends React.Component {
 
     return (
       <div className='demo-app'>
-        
         {this.renderSidebar()}
         <div className='demo-app-main'>
           <FullCalendar

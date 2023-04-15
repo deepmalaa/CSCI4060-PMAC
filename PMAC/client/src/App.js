@@ -68,11 +68,7 @@ import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';
 import Transcript from './pages/Transcript';
-<<<<<<< HEAD
 import StudentProfile from './components/layout/StudentProfile';
-=======
-import StudentProfile from './pages/StudentProfile';
->>>>>>> e10fb9c13dc52a7345bc59b9399de0ef8486213e
 
 
 if(localStorage.token){

@@ -1,23 +1,18 @@
 import React from 'react';
-import Sidebar from '../components/layout/Sidebar';
+
 import css from '../styles/QuestionsPage.module.css';
 
 
 
 function Questions() {
     return (
-        <>
-        
-        
-        
-        <Sidebar role="guest" />
         <div className={css.container}> 
             <div className={css.navBar}>
                 <div className={css.goldBars}> </div>
                     <div className={css.whiteBar}>
                         <ul>
-                            <li><a href="/HomePage">Home</a></li>
-                            <li><a href="/ContactPage">Contact</a></li>            
+                            <li><a href="/dashboardStudent">Home</a></li>
+                            <li><a href="/StudentContactPage">Contact</a></li>            
                         </ul>
 
                     </div>
@@ -110,7 +105,6 @@ function Questions() {
             </div>
 
         </div>
-        </>
     )
 } 
 

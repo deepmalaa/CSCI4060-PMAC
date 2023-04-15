@@ -18,7 +18,6 @@ function FormOne() {
                             <li><a href="/HomePage">Home</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
                             <li><a href="/ContactPage">Contact</a></li>
-                            <li><a href="#Help">Help</a></li>
                         </ul>
                     </div>
                 <div className={s.goldBars}> </div>

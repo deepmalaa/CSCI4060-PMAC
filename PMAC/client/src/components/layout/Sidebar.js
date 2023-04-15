@@ -126,7 +126,13 @@ const Sidebar = ({ children, role }) => {
             roles: ['faculty']
           },
           {
-            path: "/applyNow",
+            path:"/HomePage",
+            name:"Home",
+            icon:<FaHouseUser/>,
+            roles: ['guest'] 
+        },
+          {
+            path: "/register",
             name: "Apply Now",
             icon: <FaUserAlt />,
             roles: ['guest'] 

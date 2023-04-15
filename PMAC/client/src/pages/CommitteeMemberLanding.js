@@ -30,10 +30,8 @@ const CommitteeMemberLanding = ({
                 <div className={s.goldBars}> </div>
                       <div className={s.whiteBar}>
                           <ul>
-                              <li><a href="#Home">Home</a></li>
-                              <li><a href="#account">Account</a></li>
+                              <li><a href="/dashboardCommittee">Home</a></li>
                               <li><a href="/CommitteeContactPage">Contact</a></li>
-                              <li><a href="#Help">Help</a></li>
                           </ul>
 
                       </div>
@@ -123,7 +121,7 @@ const CommitteeMemberLanding = ({
                 </div>
                 
                 {/*<div className={s.FQA}>*/}
-                    <a className={s.FQA} href="https://www.ulm.edu/biology/">
+                    <a className={s.FQA} href="/CommitteeQuestionsPage">
                         <div>Frequent Questions</div>
                     </a>
                 {/*</div>*/}

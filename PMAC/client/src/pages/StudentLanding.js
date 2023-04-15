@@ -70,7 +70,7 @@ const StudentLanding = ({
             {/* break */}
 
 
-            <div className={s.contentBox}>
+            <div className={s.contentBox1}>
 
               <div className={s.grayLeft}>
                 <div className={s.textTitle1}>HOW TO APPLY</div>
@@ -140,7 +140,7 @@ const StudentLanding = ({
                 </div>
                 
                 {/*<div className={s.FQA}>*/}
-                    <a className={s.FQA} href="https://www.ulm.edu/biology/">
+                    <a className={s.FQA} href="/StudentQuestionsPage">
                         <div>Frequent Questions</div>
                     </a>
                 {/*</div>*/}

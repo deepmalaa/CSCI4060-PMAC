@@ -2,7 +2,7 @@ import React from 'react';
 import wied from '../img/HomePage/drwied.jpg';
 import email from '../img/HomePage/email.png';
 import qmark from '../img/HomePage/qmark.png';
-
+import Sidebar from '../components/layout/Sidebar';
 
 import css from '../styles/ContactPage.module.css';
 
@@ -10,16 +10,16 @@ import css from '../styles/ContactPage.module.css';
 
 function Contact() {
     return (
+        <>
+        
+        <Sidebar role="guest" />
         <div className={css.container}> 
             <div className={css.navBar}>
                 <div className={css.goldBars}> </div>
                     <div className={css.whiteBar}>
                         <ul>
                             <li><a href="/HomePage">Home</a></li>
-                            <li><a href="#news">Create Account</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            
-                            <li><a href="#Help">Help</a></li>
+                            <li><a href="/ContactPage">Contact</a></li>
                         </ul>
 
                     </div>
@@ -78,6 +78,7 @@ function Contact() {
             </div>
 
         </div>
+        </>
     )
 }
 

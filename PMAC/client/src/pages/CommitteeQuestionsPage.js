@@ -10,14 +10,14 @@ function Questions() {
         
         
         
-        <Sidebar role="guest" />
+        <Sidebar role="committe" />
         <div className={css.container}> 
             <div className={css.navBar}>
                 <div className={css.goldBars}> </div>
                     <div className={css.whiteBar}>
                         <ul>
-                            <li><a href="/HomePage">Home</a></li>
-                            <li><a href="/ContactPage">Contact</a></li>            
+                            <li><a href="/dashboardCommittee">Home</a></li>
+                            <li><a href="/CommitteeContactPage">Contact</a></li>            
                         </ul>
 
                     </div>

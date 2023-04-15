@@ -2,6 +2,7 @@ import React from 'react';
 import wied from '../img/HomePage/drwied.jpg';
 import email from '../img/HomePage/email.png';
 import qmark from '../img/HomePage/qmark.png';
+import Sidebar from '../components/layout/Sidebar';
 
 
 import css from '../styles/ContactPage.module.css';
@@ -10,16 +11,16 @@ import css from '../styles/ContactPage.module.css';
 
 function Contact() {
     return (
+        <>
+
+        <Sidebar role="committe" />
         <div className={css.container}> 
             <div className={css.navBar}>
                 <div className={css.goldBars}> </div>
                     <div className={css.whiteBar}>
                         <ul>
-                            <li><a href="/HomePage">Home</a></li>
-                            <li><a href="#news">Create Account</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            
-                            <li><a href="#Help">Help</a></li>
+                            <li><a href="/dashboardCommittee">Home</a></li>
+                            <li><a href="/CommitteeContactPage">Contact</a></li>
                         </ul>
 
                     </div>
@@ -32,6 +33,8 @@ function Contact() {
                 <div className={css.textTitle}>
                     Contact Us!
                 </div>  
+
+            <div className={css.contentBoxTint}> 
                 <div className={css.goldBar2}> </div>
 
                 <div className={css.contactBox}>
@@ -69,12 +72,14 @@ function Contact() {
                     </a>
                 </div>
             </div>
+            </div>
 
             <div className={css.foot}>
                 <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
             </div>
 
         </div>
+        </>
     )
 }
 

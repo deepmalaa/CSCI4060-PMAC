@@ -217,9 +217,9 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
         </tbody>
         </table> 
         <div>
-        <a href={`http://localhost:5001/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
-        <a href={`http://localhost:5001/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
-        <a href={`http://localhost:5001/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
+        <a href={`http://18.209.133.89:5001/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
+        <a href={`http://18.209.133.89:5001/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
+        <a href={`http://18.209.133.89:5001/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
         </div>
 
       </div>

@@ -32,6 +32,8 @@ import ReviewApplications from './pages/ReviewApplications';
 import AdminCalendar from './pages/AdminCalendar';
 import PersonalStatementPage from './pages/PersonalStatementPage';
 import PersonalStatement from './pages/PersonalStatement';
+import StudentQuestionsPage from './pages/StudentQuestionsPage';
+import CommitteeQuestionsPage from './pages/CommitteeQuestionsPage';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -66,7 +68,6 @@ import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';
 import Transcript from './pages/Transcript';
-import StudentProfile from './pages/StudentProfile';
 
 
 if(localStorage.token){
@@ -94,6 +95,8 @@ const App = () => {
         <Route path="/applicantRelease" element={<ApplicantInformationRelease/>} />
         <Route path="/ApplicationForm" element={<ApplicationForm/>} />
         <Route path="/QuestionsPage" element={<QuestionsPage/>} />
+        <Route path="/StudentQuestionsPage" element={<StudentQuestionsPage/>} />
+        <Route path="/CommitteeQuestionsPage" element={<CommitteeQuestionsPage/>} />
         <Route path="/CreateAccount" element={<CreateAccount/>} />
         <Route path="/ContactPage" element={<ContactPage/>} />
         <Route path="/StudentContactPage" element={<StudentContactPage/>} />
@@ -118,7 +121,6 @@ const App = () => {
         <Route path="/dashboardChair" element={<PrivateRoute component ={ChairLanding} />} />
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
-        <Route path= "/studentProfile/:userid" element ={<StudentProfile/>} />
         <Route path="/manageApplications" element={<PrivateRoute component ={ManageApplications} />} />
         <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />

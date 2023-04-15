@@ -68,6 +68,8 @@ import Headshot from './pages/Headshot';
 
 import StatusBar from './components/layout/StatusBar';
 import Transcript from './pages/Transcript';
+import StudentProfile from './pages/StudentProfile';
+import UploadPersonalStatement from './pages/UploadPersonalStatement';
 
 
 if(localStorage.token){
@@ -130,7 +132,7 @@ const App = () => {
         <Route path="/Schedule" element={<PrivateRoute component ={Schedule} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
-
+        <Route path="/studentProfile/:userid" element={<StudentProfile/>} />
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />
@@ -152,6 +154,7 @@ const App = () => {
         <Route path="/HomePage" element={<HomePage/>} />
 
         <Route path="/headshot" element={<PrivateRoute component ={Headshot}/>} />
+        <Route path="/uploadpersonalstatement" element={<PrivateRoute component ={UploadPersonalStatement}/>} />
     </Routes>
     
     <section className="container">

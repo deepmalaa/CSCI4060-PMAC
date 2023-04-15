@@ -27,6 +27,7 @@ app.use('/api/faculty', require('./routes/api/faculty'));
 
 app.use('/api/image', require('./routes/api/image'));
 app.use('/api/transcript', require('./routes/api/transcript'));
+app.use('/api/personalstatement', require('./routes/api/personalStatement'));
 app.use('/api/calendar', require('./routes/api/calendar'));
 
 

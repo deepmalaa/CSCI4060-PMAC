@@ -1,11 +1,11 @@
 import React, { useEffect  }  from 'react';
 import Sidebar from '../components/layout/Sidebar';
-import ImageUpload from '../components/imageUpload/imageUpload'
+import ImageUpload from '../components/imageUpload/personalStatementUpload'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 
-const Headshot = ({getCurrentProfile,profile: { profile }}) => {
+const Transcript = ({getCurrentProfile,profile: { profile }}) => {
 
     useEffect(() => {
         getCurrentProfile();
@@ -18,18 +18,15 @@ const Headshot = ({getCurrentProfile,profile: { profile }}) => {
         
         <div>
         <Sidebar />
-
-        <div className='picturebox'>
-        <img src={`api/image/${profile.headshot}`} alt="headshot"/>
-        </div>
         <div>
+        <a href={`http://localhost:5001/api/personalstatement/${profile.personal_statement}`}>Click to preview</a>
         <ImageUpload />
         </div>
       </div>
     );}
 
 }
-Headshot.propTypes = {
+Transcript.propTypes = {
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 
@@ -42,6 +39,6 @@ const mapStateToProps = (state) => ({
   });
 
 export default connect(mapStateToProps, {getCurrentProfile})(
-  Headshot
+  Transcript
   
 );

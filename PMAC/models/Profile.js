@@ -200,6 +200,10 @@ const ProfileSchema = new mongoose.Schema({
         type: String
 
     },
+    personal_statement:{
+        type: String
+
+    },
 
 
     date:{

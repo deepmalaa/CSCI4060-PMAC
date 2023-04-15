@@ -70,6 +70,9 @@ const StatusBar = ({
       if (profile.transcript) {
         setCircle4Color('green');
       }
+      if (profile.personal_statement) {
+        setCircle3Color('green');
+      }
     }
   }, [waivers, facultyForms, profile]);
   

@@ -79,7 +79,7 @@ const Search = ({
                   
           
         
-                  <td><a href={`api/profile/user/${item._id}`} >{item.fname} </a></td>
+                  <td><a href={`/studentProfile/${item._id}`} >{item.fname} </a></td>
                   <td>{item.lname}</td>
                   <td>{item.email}</td>
                   <td>{item.cwid}</td>

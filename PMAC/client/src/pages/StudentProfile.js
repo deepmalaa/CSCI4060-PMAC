@@ -21,7 +21,7 @@ const StudentProfile = ({getProfileById,nprofile: {profile}, auth, match}) => {
     );
 
 }
-Transcript.propTypes = {
+StudentProfile.propTypes = {
     getProfileById: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired

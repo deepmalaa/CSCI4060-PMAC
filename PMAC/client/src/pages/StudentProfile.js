@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
+=======
+import React, { useEffect  }  from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Sidebar from '../components/layout/Sidebar';
+import ImageUpload from '../components/imageUpload/transcriptUpload'
+>>>>>>> 6979255021846a518a723bb24f45b6639d067f1f
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
 
+<<<<<<< HEAD
 function StudentProfile() {
   const { id } = useParams();
   const [userData, setUserData] = useState(null);
@@ -32,6 +40,25 @@ function StudentProfile() {
     </div>
   );
 };
+=======
+const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
+    const { userid } = useParams();
+    console.log(userid);
+    useEffect(() => {
+        if(!profile){
+            getProfileById(userid)}
+      },[getProfileById, userid]);
+      console.log(profile)
+       
+    return(
+        <div>
+        <Sidebar />
+        <p>hi {profile.fname} </p>
+        <div>
+        </div>
+      </div>
+    );
+>>>>>>> 6979255021846a518a723bb24f45b6639d067f1f
 
 StudentProfile.propTypes = {
   profile: PropTypes.object.isRequired,

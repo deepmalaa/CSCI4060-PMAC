@@ -147,8 +147,9 @@
     text-align: left;
     position: relative;
     top: 120px;
+
     
-    margin-left: 30%;
+    margin-left: auto;
     margin-right: auto;    
     width: 900px;
     
@@ -204,6 +205,18 @@
     color: black;
 }
 
+.contentBox1{
+    width: 100%;
+    height: 500px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 26px;
+    background: white;
+    color: black;
+}
 
 
 .grayLeft {

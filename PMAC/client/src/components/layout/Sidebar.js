@@ -62,12 +62,6 @@ const Sidebar = ({ children, role }) => {
       name:"Upload Personal Statement",
       icon:<FaUserGraduate/>,
       roles: ['student'] 
-  }
-    ,{
-      path:"/schedule",
-      name:"TEMP ALG",
-      icon:<FaUserGraduate/>,
-      roles: ['student'] 
   },
     
         
@@ -90,11 +84,18 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
+            path:"/schedule",
+            name:"Find Meetings",
+            icon:<FaCalendarAlt />,
+            roles: ['admin'] 
+        },
+          {
             path: "/AdminCalendar",
-            name: "Schedule Interview",
+            name: "Schedule Availability",
             icon: <FaCalendarAlt />,
             roles: ['admin']
           },
+          
           {
             path: "/dashboardCommittee",
             name: "Home",

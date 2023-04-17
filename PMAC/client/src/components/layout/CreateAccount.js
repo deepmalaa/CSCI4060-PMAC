@@ -7,7 +7,8 @@ const CreateAccount = () => {
 
 
   return (
-    <section className="landing">
+    <div classNmae="fit-screen">
+    <div className="landing">
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">ULM PMAC</h1>
@@ -21,7 +22,8 @@ const CreateAccount = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
+    </div>
   )
 }
 

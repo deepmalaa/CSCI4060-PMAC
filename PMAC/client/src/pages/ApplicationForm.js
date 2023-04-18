@@ -104,172 +104,179 @@ const ApplicationForm = ({
 
       
 
-      <div>
+      <div className={s.entire}>
+      <div className={s.firstArea}>
+        <div className={s.left}>
+          <label htmlFor="fname">First Name: <br></br></label>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            size = "50"
+            value={formData.fname}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+        
 
-      <div>
-        <label htmlFor="fname">First Name: <br></br></label>
-        <input
-          type="text"
-          id="fname"
-          name="fname"
-          size = "50"
-          value={formData.fname}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
+        <div className={s.left}>
+          <label htmlFor="mname">Middle Name: <br></br></label>
+          <input
+            type="text"
+            id="mname"
+            name="mname"
+            size = "50"
+            value={formData.mname}
+            onChange={e=> onChange(e)}
+            />
+        </div>
+
+        
+
+        <div className={s.left}>
+          <label htmlFor="lname">Last Name: <br></br></label>
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            size = "50"
+            value={formData.lname}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+        
+
+        <div className={s.left3}>
+          <label htmlFor="cwid">ULM CWID #: <br></br></label>
+          <input
+            type="text"
+            id="cwid"
+            name="cwid"
+            size = "50"
+            value={formData.cwid}
+            onChange={e=> onChange(e)}
+            />
+        </div>
+        
+
+        <div className={s.left2}>
+          <label htmlFor="address">Local Address: (Ex. 3425 Stone Street, Apt. 2A, Jacksonville, FL 39404) <br></br></label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            size = "50"
+            value={formData.address}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+
+        <div className={s.clear}> </div>
+        
+
+        <div className={s.left}>
+          <label htmlFor="phone">Phone: <br></br></label>
+          <input
+            type="text"
+            id="phone"
+            name="cell"
+            size = "50"
+            value={formData.cell}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
       
 
-      <div>
-        <label htmlFor="mname">Middle Name: <br></br></label>
-        <input
-          type="text"
-          id="mname"
-          name="mname"
-          size = "50"
-          value={formData.mname}
-          onChange={e=> onChange(e)}
+        <div>
+
+        <div className={s.left}>
+          <label htmlFor="email">ULM Email: <br></br></label>
+          <input
+            type="text"
+            id="email"
+            name="ulm_email"
+            size = "50"
+            value={formData.ulm_email}
+            onChange={e=> onChange(e)}
           />
+        </div>  
+        
+
+        <div className={s.left}>
+          <label htmlFor="altEmail">Alternate Email: <br></br></label>
+          <input
+            type="text"
+            id="altEmail"
+            name="alt_email"
+            size = "50"
+            value={formData.alt_email}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+      </div>
+
+      <div className={s.clear}> </div>
+      
+      <div className={s.secondArea}>
+        <div className={s.left}>
+          <label htmlFor="majors">Major(s): <br></br></label>
+          <input
+            type="text"
+            id="majors"
+            name="major"
+            size = "50"
+            value={formData.major}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+        
+
+        <div className={s.left}>
+          <label htmlFor="minors">Minor(s): <br></br></label>
+          <input
+            type="text"
+            id="minors"
+            name="minor"
+            size = "50"
+            value={formData.minor}
+            onChange={e=> onChange(e)}
+            />
+        </div>
+
+        <div className={s.left}>
+          <label htmlFor="gpa">Overall Collegiate GPA: <br></br></label>
+          <input
+            type="text"
+            id="gpa"
+            name="gpa"
+            size = "50"
+            value={formData.gpa}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
+        
+
+        <div className={s.grad}>
+          <label htmlFor="expGraduation">Date of Expected Graduation from ULM: <br></br></label>
+          <input
+            type="date"
+            id="expGraduation"
+            name="grad_date"
+            size = "50"
+            value={moment(formData.grad_date).utc().format('YYYY-MM-DD')}
+            onChange={e=> onChange(e)}
+            required/>
+        </div>
       </div>
       
 
-      <div>
-        <label htmlFor="lname">Last Name: <br></br></label>
-        <input
-          type="text"
-          id="lname"
-          name="lname"
-          size = "50"
-          value={formData.lname}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
       
-
-      <div>
-        <label htmlFor="cwid">ULM CWID #: <br></br></label>
-        <input
-          type="text"
-          id="cwid"
-          name="cwid"
-          size = "50"
-          value={formData.cwid}
-          onChange={e=> onChange(e)}
-          />
-      </div>
-      
-
-      <div>
-        <label htmlFor="address">Local Address: <br></br></label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          size = "50"
-          value={formData.address}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
-      
-
-      <div>
-        <label htmlFor="phone">Phone: <br></br></label>
-        <input
-          type="text"
-          id="phone"
-          name="cell"
-          size = "50"
-          value={formData.cell}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
-      </div>
-
-      <div>
-
-      <div>
-        <label htmlFor="email">ULM Email: <br></br></label>
-        <input
-          type="text"
-          id="email"
-          name="ulm_email"
-          size = "50"
-          value={formData.ulm_email}
-          onChange={e=> onChange(e)}
-        />
-      </div>  
-      
-
-      <div>
-        <label htmlFor="altEmail">Alternate Email: <br></br></label>
-        <input
-          type="text"
-          id="altEmail"
-          name="alt_email"
-          size = "50"
-          value={formData.alt_email}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
-      
-
-      <div>
-        <label htmlFor="majors">Major(s): <br></br></label>
-        <input
-          type="text"
-          id="majors"
-          name="major"
-          size = "50"
-          value={formData.major}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
-      
-
-      <div>
-        <label htmlFor="minors">Minor(s): <br></br></label>
-        <input
-          type="text"
-          id="minors"
-          name="minor"
-          size = "50"
-          value={formData.minor}
-          onChange={e=> onChange(e)}
-          />
-      </div>
-      
-
-      <div>
-        <label htmlFor="expGraduation">Date of Expected Graduation from ULM: <br></br></label>
-        <input
-          type="date"
-          id="expGraduation"
-          name="grad_date"
-          size = "50"
-          value={moment(formData.grad_date).utc().format('YYYY-MM-DD')}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
-      
-
-      <div>
-        <label htmlFor="gpa">Overall Collegiate GPA: <br></br></label>
-        <input
-          type="text"
-          id="gpa"
-          name="gpa"
-          size = "50"
-          value={formData.gpa}
-          onChange={e=> onChange(e)}
-          required/>
-      </div>
       
       </div>
-    <div>
-    </div>
     
     
-    <div>
-      <div>
+    <div className={s.thirdArea}>
+      <div className={s.profGrad}>
           <label htmlFor="profSchoolDate">Date of Proposed Entrance to Professional School: <br></br></label>
           <input
             type="date"
@@ -280,11 +287,8 @@ const ApplicationForm = ({
             onChange={e=> onChange(e)}
             required/>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
 
-      <div>
+      <div className={s.left1}>
           <label htmlFor="MCAT">MCAT: <br></br></label>
           <input
             type="text"
@@ -297,7 +301,7 @@ const ApplicationForm = ({
       </div>
       
 
-      <div>
+      <div className={s.left1}>
           <label htmlFor="DAT">DAT: <br></br></label>
           <input
             type="text"
@@ -310,7 +314,7 @@ const ApplicationForm = ({
       </div>
       
 
-      <div>
+      <div className={s.left1}>
           <label htmlFor="OAT">OAT: <br></br></label>
           <input
             type="text"
@@ -323,7 +327,7 @@ const ApplicationForm = ({
       </div>
       
 
-      <div>
+      <div className={s.left1}>
           <label htmlFor="GRE">GRE: <br></br></label>
           <input
             type="text"
@@ -334,11 +338,11 @@ const ApplicationForm = ({
             onChange={e=> onChange(e)}
             />
       </div>
-      
-    </div>
+    
+    
 
-  <div>
-      <div>
+
+      <div className={s.scores}>
           <label htmlFor="scoreBreakdown">Please include your breakdown scores: <br></br></label>
           <textarea
             style={{
@@ -354,12 +358,10 @@ const ApplicationForm = ({
 
             />
       </div>
-  </div>
     
     
-    <div>  
 
-      <div>
+      <div className={s.examTaken}>
         <label htmlFor="examDate">Date of exam taken or expected date of exam: <br></br></label>
         <input
           type="date"
@@ -370,9 +372,11 @@ const ApplicationForm = ({
           onChange={e=> onChange(e)}
           required/>
       </div>
+    </div>
+    
       
-
-      <div>
+    <div className={s.fourthArea}>         
+      <div className={s.apply}>
         <label htmlFor="schoolType">Type of School Application will be sent: <br></br></label>
         <input
           type="text"
@@ -383,13 +387,11 @@ const ApplicationForm = ({
           onChange={e=> onChange(e)}
           required/>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
 
-      <span>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
-
-      <div>
+      <span className={s.note}>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
+      
+      <div className={s.clear}> </div>
+      <div className={s.left}>
         <label htmlFor="amca">AMCAS Letter ID:<br></br></label>
         <input
           type="text"
@@ -403,7 +405,7 @@ const ApplicationForm = ({
         
 
 
-        <div>
+      <div className={s.left}>
           <label htmlFor="aamc">AAMC ID:<br></br></label>
           <input
             type="text"
@@ -416,11 +418,8 @@ const ApplicationForm = ({
         </div>
         
 
-    </div>
 
-
-    <div>
-        <div>
+        <div className={s.left}>
           <label htmlFor="aacomas">AACOMAS CAS #:<br></br></label>  
           <input
             type="text"
@@ -432,8 +431,9 @@ const ApplicationForm = ({
             /> 
         </div>
         
+        <div className={s.clear}> </div>
 
-        <div>
+        <div className={s.left}>
           <label htmlFor="caspa">CASPA CAS #:<br></br></label>  
           <input
             type="text"
@@ -446,7 +446,7 @@ const ApplicationForm = ({
         </div>
         
 
-        <div>
+        <div className={s.left}>
           <label htmlFor="aadsas">AADSAS ID #:<br></br></label> 
           <input
             type="text"
@@ -457,13 +457,15 @@ const ApplicationForm = ({
             onChange={e=> onChange(e)}
             /> 
         </div>
-      </div>
       
+      
+    <div className={s.clear}> </div>
     
-    <br></br>
-    <span>Faculty Members Submitting Evaluations on your Behalf: </span>
+    <div className={s.fifthArea}>
+    <span className={s.note}>Faculty Members Submitting Evaluations on your Behalf: </span>
+    <div className={s.clear}> </div>
 
-      <div>
+      <div className={s.fac}>
         <label htmlFor="falcultyEval">Name / Title/ Department<br></br></label> 
         <textarea
           type="text"
@@ -474,8 +476,13 @@ const ApplicationForm = ({
           onChange={e=> onChange(e)}
           /> 
       </div>
+    </div>
+      </div>
+      </div> 
       <br></br>
       <br></br>
+
+      <div className={s.lastArea}>
       <h5>Please submit the form to save changes!</h5>
 
 
@@ -488,7 +495,7 @@ const ApplicationForm = ({
       
         <Link to="/clubExperience" className="btn btn-light my-1">Next Page</Link>
         
-           
+      </div>
             
 
 

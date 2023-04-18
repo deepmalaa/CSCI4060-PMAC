@@ -63,6 +63,13 @@ const Sidebar = ({ children, role }) => {
       icon:<FaUserGraduate/>,
       roles: ['student'] 
   },
+  {
+    path:"/Calendar",
+    name:"Interview Availability",
+    icon:<FaUserGraduate/>,
+    roles: ['student'] 
+},
+  
     
         
         {

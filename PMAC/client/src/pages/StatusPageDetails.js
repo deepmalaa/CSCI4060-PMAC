@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../styles/StatusPage.css';
-import Calendar from './Calendar';
 
 
 function Details({ application }) {
@@ -31,7 +30,6 @@ function Details({ application }) {
       calendarOption = (
       <>
         <p style={{margin:'20px'}}> Note: No Interview times have been selected for this application. Please select avaliable Interview times! If no interview time is selected, interview scheduling cannot proceed</p>
-        <Calendar days={days}/>
  
       </>
       );

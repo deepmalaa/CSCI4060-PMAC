@@ -48,9 +48,9 @@ const Experience = ({
       <div className="table">
         <thead>
           <tr>
-            <th>Company</th>
-            <th >Title</th>
-            <th >Years</th>
+            <th>Organization/Institution</th>
+            <th>Honors/Awards Name</th>
+            <th >Year Awarded</th>
             <th >Description</th>
             <th />
           </tr>

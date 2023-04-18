@@ -8,13 +8,13 @@ import Sidebar from '../../components/layout/Sidebar';
 const AddExperience = ({ addExperience }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    company: '',
     title: '',
+    company: '',
     years: '',
     description: ''
   });
 
-  const { company, title, years, description } = formData;
+  const { title, company, years, description } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +37,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Job Title"
+            placeholder="* Honors/Awards Name"
             name="title"
             value={title}
             onChange={onChange}
@@ -47,7 +47,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Company"
+            placeholder="* Organization/Institution"
             name="company"
             value={company}
             onChange={onChange}
@@ -57,7 +57,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Years or Total Hours"
+            placeholder="Year Awarded"
             name="years"
             value={years}
             onChange={onChange}

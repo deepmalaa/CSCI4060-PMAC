@@ -52,8 +52,8 @@ const Experience = ({
       <div className="table">
         <thead>
           <tr>
-            <th>Company</th>
-            <th >Title</th>
+            <th>Club Name</th>
+            <th >Role</th>
             <th >Years</th>
             <th >Description</th>
             <th />

@@ -37,7 +37,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Job Title"
+            placeholder="* Club Name"
             name="title"
             value={title}
             onChange={onChange}
@@ -47,7 +47,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Company"
+            placeholder="* Role"
             name="company"
             value={company}
             onChange={onChange}
@@ -57,7 +57,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Years or Total Hours"
+            placeholder="Years Involved"
             name="years"
             value={years}
             onChange={onChange}

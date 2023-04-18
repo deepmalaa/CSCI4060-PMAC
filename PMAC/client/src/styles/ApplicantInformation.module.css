@@ -55,7 +55,14 @@
     border: 2px solid #ccc;
     border-radius: 5px;
     width: 100%;
-    max-width: 80%;
+    max-width: 60%;
+    height: 1950px;
+  }
+
+  .entire{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
   }
 
   .title {
@@ -70,7 +77,7 @@
     font-size: 30px;
     font-weight: bold;
     text-align: left;
-    margin-left: 10%;
+    margin-left: 20%;
   }
 
   .instructions {
@@ -93,6 +100,133 @@
     
   }
 
+  .firstArea{
+    position: relative;
+    top: 10px;
+  }
+
+  .secondArea{
+    position: relative;
+    top: 70px;
+  }
+
+  .thirdArea{
+    position: relative;
+    top: 140px;
+  }
+
+  .fourthArea{
+    position: relative;
+    top: 210px;
+  }
+
+  .fifthArea{
+    position: relative;
+    top: 70px;
+  }
+
+  .lastArea{
+    position: relative;
+    top: 235px;
+  }
+  
+  .left{
+    float: left;
+    margin-right: 5%;
+    width: 28%;
+  }
+
+  .left1{
+    float: left;
+    margin-right: 5%;
+    width: 19.7%;
+  }
+
+  .left2{
+    float: left;
+    margin-right: 5%;
+    width: 61%;
+  }
+
+  .left3{
+    float: left;
+    margin-right: 5%;
+    width: 28%;
+  }
+  
+  .note{
+    float: left;
+    font-size: 14px;
+  }
+
+  .clear{
+    clear: both;
+  }
+
+
+
+
+  .cwid{
+    clear: both;
+
+    width: 15%;
+
+  }
+  
+  .major{
+    clear: both;
+
+    width: 15%;
+
+  }
+
+  .address{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .grad{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .profGrad{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .examTaken{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .apply{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .fac{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .scores{
+    clear: both;
+
+    width: 94%;
+  }
+
+ 
+
+
+
+
   label {
     display: block;
     margin-top: 10px;
@@ -104,7 +238,7 @@
   input[type=tel],
   input[type=email] {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;

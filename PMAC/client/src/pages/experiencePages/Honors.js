@@ -18,7 +18,7 @@ const Experience = ({
     const dispatch = useDispatch();
     let experiences;
     
-    if (profile && profile.honors_experience){
+    if (profile && profile.honors){
 
       
 

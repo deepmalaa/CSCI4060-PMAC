@@ -493,7 +493,7 @@ const ApplicationForm = ({
       <br></br>
 
       <div className={s.lastArea}>
-      <h5>Please submit the form to save changes!</h5>
+      <h5>Missing information? Save for later and submit when completed!!</h5>
 
 
       
@@ -512,7 +512,7 @@ const ApplicationForm = ({
         
           
            
-            <button type="submit">Save</button>
+            <button type="submit" className="btn btn-primary">Save and Finish Later </button>
           
 
           

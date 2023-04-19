@@ -31,7 +31,7 @@ const AddExperience = ({ addExperience }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          addExperience(formData, "honors").then(() => navigate('/honorsExperience'));
+          addExperience(formData, "honors").then(() => navigate('/HonorsExperience'));
         }}
       >
         <div className="form-group">

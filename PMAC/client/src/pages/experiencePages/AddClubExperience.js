@@ -57,7 +57,7 @@ const AddExperience = ({ addExperience }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="Years Involved"
+            placeholder="Time Involved"
             name="years"
             value={years}
             onChange={onChange}

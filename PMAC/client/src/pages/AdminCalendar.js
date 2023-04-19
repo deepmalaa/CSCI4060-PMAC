@@ -9,8 +9,6 @@ import Sidebar from '../components/layout/Sidebar';
 import css from '../styles/CommitteeCalendar.module.css';
 
 
-import styled from "@emotion/styled";
-
 
 
 import { connect } from 'react-redux';

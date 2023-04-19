@@ -12,6 +12,9 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../actions/profile';
 import {setAlert} from '../actions/alert';
 
+import Sidebar from '../components/layout/Sidebar';
+import css from '../styles/CommitteeCalendar.module.css';
+
 import { postSchedule, deleteSchema,getSchemas } from '../actions/calendar';
 // create a schema for the event
 
@@ -98,50 +101,62 @@ class DemoApp extends React.Component {
     return (
       <div className='demo-app'>
         {this.renderSidebar()}
+        <Sidebar role="student" />
         <div className='demo-app-main'>
-          <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              
-              left: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
-              
-            }}
-            initialView='dayGridMonth'
+          <div className={css.cal}>
+              <div className={css.cal1}>
+                <FullCalendar
+                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                  headerToolbar={{
+                    
+                    left: 'title',
+                    right: 'timeGridWeek,timeGridDay,prev,next',
+                  }}
 
 
-            //this.state.currentEvents
-            
-            initialEvents={this.state.currentEvents}
+                  
 
-            editable={true}
-            selectable={true}
-            selectMirror={true}
-            dayMaxEvents={true}
-            weekends={false}
-            slotMinTime="08:00:00"
-            slotMaxTime="18:00:00"
-            views={{
-              dayGridWeek: {
-                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
-              },
-              dayGridDay: {
-                timeFormat: 'HH:mm', // set timeFormat to 24-hour format
-              },
-            }}
-            
-          
-            select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
-            eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            
-            // you can update a remote database when these fire:
-            //eventAdd={function(){}}
-            //eventChange={function(){}}
-            //eventRemove={function(){}}
-            
-          />
+
+                  height={687}
+
+                  
+                  initialView='timeGridWeek'
+
+
+                  //this.state.currentEvents
+                  
+                  initialEvents={this.state.currentEvents}
+
+                  editable={true}
+                  selectable={true}
+                  selectMirror={true}
+                  dayMaxEvents={true}
+                  weekends={false}
+                  slotMinTime="08:00:00"
+                  slotMaxTime="18:00:00"
+                  views={{
+                    dayGridWeek: {
+                      timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                    },
+                    dayGridDay: {
+                      timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                    },
+                  }}
+                  
+                
+                  select={this.handleDateSelect}
+                  eventContent={renderEventContent} // custom render function
+                  eventClick={this.handleEventClick}
+                  eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+                  
+                  // you can update a remote database when these fire:
+                  //eventAdd={function(){}}
+                  //eventChange={function(){}}
+                  //eventRemove={function(){}}
+                  
+                />
+              </div>
+          </div>
         </div>
 
         
@@ -156,21 +171,18 @@ class DemoApp extends React.Component {
     const { profile } = this.props.profile;
     return (
       <div>
-      <div className='demo-app-sidebar'>
-        <div className='demo-app-sidebar-section'>
+      <div className={css.allInstructions}>
+        <div className={css.instructions}>
           
-          <h2> Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
-        </div>
-        
-        <div className='demo-app-sidebar-section'>
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>
-            
+          <h2 className={css.instructionHeader}> Instructions</h2>
+          <ul className={css.instructionList}>
+            <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
+            <li>2. To select a time, click and drag your mouse until the desired time is reached. 
+              Give your event a name then click 'OK'. </li>
+            <li>3. If done correctly, you should now see your event. </li> 
+            <li>4. If you'd like to edit your event, you can make the event longer or 
+              shorter by moving your cursor to the bottom edge and dragging either up or down.</li>
+            <li>5. If you'd like to delete an event, you can click it once and then confirm that you would like to delete the event.</li>
           </ul>
         </div>
       </div>

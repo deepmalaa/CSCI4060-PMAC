@@ -137,8 +137,10 @@ export const addExperience = (formData, exp) => async (dispatch) => {
 };
 
 // Delete experience
-export const deleteExperience = (id, exp) => async (dispatch) => {
+export const deleteExperience = (exp, id) => async (dispatch) => {
   try {
+
+    console.log("I am a delete action")
     let experience = exp;
     const res = await axios.delete(`api/profile/${experience}/${id}`);
 

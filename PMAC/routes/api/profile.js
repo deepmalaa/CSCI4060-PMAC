@@ -320,6 +320,7 @@ router.put(
 
 router.delete('/:experience/:exp_id', auth, async (req, res) => {
   try {
+    console.log("API: :experience :exp_id")
     const foundProfile = await Profile.findOne({ user: req.user.id });
     const experience = req.params.experience;
     foundProfile[experience] = foundProfile[experience].filter(

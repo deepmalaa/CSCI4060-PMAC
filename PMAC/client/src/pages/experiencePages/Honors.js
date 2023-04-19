@@ -1,4 +1,5 @@
 import React, {useEffect, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,10 +15,12 @@ const Experience = ({
         getCurrentProfile();
     }, [getCurrentProfile]);
     if (!profile) getCurrentProfile();
-
+    const dispatch = useDispatch();
     let experiences;
     
-    if (profile &&profile.club_experience){
+    if (profile && profile.honors_experience){
+
+      
 
     experiences = profile.honors.map((exp) => (
         <tr key={exp._id}>
@@ -31,7 +34,7 @@ const Experience = ({
           </td>
           <td>
             <button
-              onClick={() => deleteExperience(exp._id)}
+              onClick={() => dispatch(deleteExperience("honors", exp._id))}
               className="btn btn-danger"
             >
               Delete

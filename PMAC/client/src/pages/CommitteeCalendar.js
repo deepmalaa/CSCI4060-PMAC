@@ -8,7 +8,7 @@ import Sidebar from '../components/layout/Sidebar';
 
 import css from '../styles/CommitteeCalendar.module.css';
 
-import mongoose from 'mongoose';
+
 import styled from "@emotion/styled";
 
 

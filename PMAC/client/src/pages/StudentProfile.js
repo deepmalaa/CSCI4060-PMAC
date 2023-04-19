@@ -7,14 +7,21 @@ import ImageUpload from '../components/imageUpload/transcriptUpload'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getProfileById } from '../actions/profile';
+import {loadUser} from '../actions/auth';
 import s from '../styles/StudentProfile.module.css';
 
-const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
+const StudentProfile = ({getProfileById, loadUser, profile: {profile}, auth}) => {
     const { userid } = useParams();
     console.log(userid);
+    console.log(auth);
     useEffect(() => {
-        if(!profile){
-            getProfileById(userid)}
+      getProfileById(userid)
+
+      if(!auth){
+        loadUser();
+      }
+        // if(!profile){
+        //     getProfileById(userid)}
       },[getProfileById, userid]);
       console.log(profile)
       
@@ -238,7 +245,7 @@ const StudentProfile = ({getProfileById, profile: {profile}, auth}) => {
       profile: state.profile
     });
   
-  export default connect(mapStateToProps, {getProfileById})(
+  export default connect(mapStateToProps, {getProfileById, loadUser})(
       StudentProfile
     
   );

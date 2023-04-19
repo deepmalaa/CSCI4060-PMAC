@@ -59,7 +59,7 @@ const Sidebar = ({ children, role }) => {
         roles: ['student'] 
     },{
       path:"/uploadpersonalstatement",
-      name:"Upload Personal Statement",
+      name:"Personal Statement",
       icon:<FaUserGraduate/>,
       roles: ['student'] 
   },

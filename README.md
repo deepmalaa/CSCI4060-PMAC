@@ -9,4 +9,4 @@
 ## Launching PMAC
     Web: http://18.209.133.89/
 ## Install for Dropping Forms
-npm install @material-ui/core
+npm link client/node_modules/react

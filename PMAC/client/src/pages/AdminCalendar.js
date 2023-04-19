@@ -6,7 +6,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import Sidebar from '../components/layout/Sidebar';
 
-import css from '../styles/AdminCalendar.module.css';
+import css from '../styles/CommitteeCalendar.module.css';
 
 import mongoose from 'mongoose';
 import styled from "@emotion/styled";
@@ -112,11 +112,13 @@ class DemoApp extends React.Component {
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     headerToolbar={{
                         
-                        left: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
-                        
-                    }}
-                    initialView='dayGridMonth'
+                      left: 'title',
+                      right: 'timeGridWeek,timeGridDay,prev,next'
+                      
+                  }}
+                  initialView='timeGridWeek'
+
+                  height={687}
 
 
                     //this.state.currentEvents
@@ -167,21 +169,18 @@ class DemoApp extends React.Component {
     const { profile } = this.props.profile;
     return (
       <div>
-      <div className='demo-app-sidebar'>
-        <div className='demo-app-sidebar-section'>
+      <div className={css.allInstructions}>
+        <div className={css.instructions}>
           
-          <h2> Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Click an event to delete it</li>
-            <li>Schedule an Event!</li>
-          </ul>
-        </div>
-        
-        <div className='demo-app-sidebar-section'>
-          <h2>All Events ({this.state.currentEvents.length})</h2>
-          <ul>
-            
+          <h2 className={css.instructionHeader}> Instructions</h2>
+          <ul className={css.instructionList}>
+            <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
+            <li>2. To select a time, click and drag your mouse until the desired time is reached. 
+              Give your event a name then click 'OK'. </li>
+            <li>3. If done correctly, you should now see your event. </li> 
+            <li>4. If you'd like to edit your event, you can make the event longer or 
+              shorter by moving your cursor to the bottom edge and dragging either up or down.</li>
+            <li>5. If you'd like to delete an event, you can click it once and then confirm that you would like to delete the event.</li>
           </ul>
         </div>
       </div>

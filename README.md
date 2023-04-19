@@ -8,3 +8,5 @@
     https://github.com/deepmalaa/CSCI4060-PMAC
 ## Launching PMAC
     Web: http://18.209.133.89/
+## Install for Dropping Forms
+npm link client/node_modules/react

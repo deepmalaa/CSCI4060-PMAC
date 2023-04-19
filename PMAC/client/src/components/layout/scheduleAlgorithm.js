@@ -10,7 +10,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-
+import Sidebar from './Sidebar';
 
 import styles from '../../styles/MyCalendar.module.css';
 
@@ -184,45 +184,58 @@ const ScheduleAlg = ({
         <p>Loading data...</p>
       ) : (
         <div className={styles.myCalendarAdmin}>
-            <br/><br/><br/><br/><br/>
-        <FullCalendar 
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            headerToolbar={{
-              
-              left: 'title',
-              right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
-              
-            }}
-            //themeSystem= 'bootstrap'
-            initialView="dayGridMonth"
-            weekends={false}
-            events={events}
-            slotMinTime="08:00:00"
-            slotMaxTime="18:00:00"
-            eventLimit = {1}
-            
-            eventRender={(info) => {
-                const handleMouseEnter = () => {
-                  info.el.innerHTML = `<div style="position:absolute;z-index:100;background:white;padding:5px;border:1px solid black">${info.event.title}</div>`;
-                };
-                const handleMouseLeave = () => {
-                  info.el.innerHTML = info.event.title;
-                };
-                info.el.addEventListener("mouseenter", handleMouseEnter);
-                info.el.addEventListener("mouseleave", handleMouseLeave);
-              }}
-            
-        />
-
+            <h2 className={styles.instructionHeader}> Instructions</h2>
+            <ul className={styles.instructionList}>
+              <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
+              <li>2. To select a time, click and drag your mouse until the desired time is reached. 
+                Give your event a name then click 'OK'. </li>
+              <li>3. If done correctly, you should now see your event. </li> 
+              <li>4. If you'd like to edit your event, you can make the event longer or 
+                shorter by moving your cursor to the bottom edge and dragging either up or down.</li>
+              <li>5. If you'd like to delete an event, you can click it once and then confirm that you would like to delete the event.</li>
+            </ul>
+            <div className={styles.cal1}>
+              <Sidebar role="admin" />
+                  <br/><br/><br/><br/><br/>
+              <FullCalendar 
+                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                  headerToolbar={{
+                    
+                    left: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,prev,next'
+                    
+                  }}
+                  //themeSystem= 'bootstrap'
+                  height={1000}
+                  initialView="dayGridMonth"
+                  weekends={false}
+                  events={events}
+                  slotMinTime="08:00:00"
+                  slotMaxTime="18:00:00"
+                  eventLimit = {1}
+                  
+                  eventRender={(info) => {
+                      const handleMouseEnter = () => {
+                        info.el.innerHTML = `<div style="position:absolute;z-index:100;background:white;padding:5px;border:1px solid black">${info.event.title}</div>`;
+                      };
+                      const handleMouseLeave = () => {
+                        info.el.innerHTML = info.event.title;
+                      };
+                      info.el.addEventListener("mouseenter", handleMouseEnter);
+                      info.el.addEventListener("mouseleave", handleMouseLeave);
+                    }}
+                  
+              />
+          </div>
         </div>
         
       )}
     </>
-  );
+  )
+  
 
-
-    }
-
+                    
+  } 
 
     ScheduleAlg.propTypes = {
         profile: PropTypes.object.isRequired,

@@ -66,6 +66,48 @@ export const createProfile =
     }
   };
 
+  export const saveProfile =
+  (formData, edit = false) =>
+  async (dispatch) => {
+
+    const config ={
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const body = JSON.stringify(formData);
+    try {
+        const res = await axios.post('api/profile/save', body, config);
+
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      });
+   
+      
+      dispatch(
+        setAlert(edit ? 'Profile Updated':'Profile Saved', 'success')
+      );
+
+      
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+        console.log("hi");
+      }
+
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
+
+
+
 
 // Add Experience
 export const addExperience = (formData, exp) => async (dispatch) => {

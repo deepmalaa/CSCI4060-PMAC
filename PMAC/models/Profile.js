@@ -103,7 +103,7 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         
     },
-    falcultyEval:{
+    facultyEval:{
         type:String,
     },
 

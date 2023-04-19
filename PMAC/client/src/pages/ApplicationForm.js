@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link, useMatch, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../actions/profile';
+import { createProfile, getCurrentProfile, saveProfile } from '../actions/profile';
 import s from '../styles/ApplicantInformation.module.css';
 import moment from "moment";
 import Sidebar from '../components/layout/Sidebar';
@@ -33,14 +33,15 @@ const initialState = {
     aadsas_id:"",
     aamc_id:"",
     caspa_id:"",
-    falcultyEval: '',
+    facultyEval: '',
     schoolType:''
 };
 
 const ApplicationForm = ({
   profile: { profile, loading },
   createProfile,
-  getCurrentProfile
+  getCurrentProfile,
+  saveProfile
 }) => {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -76,6 +77,15 @@ const ApplicationForm = ({
       //if (!editing) navigate('/clubExperience');
     });
   };
+
+
+  const saveData = () => {
+    // Call the saveProfile action or any other logic you want to perform to save the data
+  
+    saveProfile(formData);
+  };
+
+
 
   return (
     <>
@@ -466,13 +476,13 @@ const ApplicationForm = ({
     <div className={s.clear}> </div>
 
       <div className={s.fac}>
-        <label htmlFor="falcultyEval">Name / Title/ Department<br></br></label> 
+        <label htmlFor="facultyEval">Name / Title/ Department<br></br></label> 
         <textarea
           type="text"
-          id="falcultyEval"
-          name="falcultyEval"
+          id="facultyEval"
+          name="facultyEval"
           size = "500"
-          value={formData.falcultyEval}
+          value={formData.facultyEval}
           onChange={e=> onChange(e)}
           /> 
       </div>
@@ -495,6 +505,21 @@ const ApplicationForm = ({
       
         <Link to="/clubExperience" className="btn btn-light my-1">Next Page</Link>
         
+          {/* Form fields */}
+          
+
+
+        
+          
+           
+            <button type="submit">Save</button>
+          
+
+          
+            
+            
+          
+        
       </div>
             
 
@@ -509,13 +534,14 @@ const ApplicationForm = ({
 ApplicationForm.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  saveProfile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile , saveProfile })(
   ApplicationForm
 );

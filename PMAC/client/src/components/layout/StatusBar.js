@@ -90,11 +90,11 @@ const StatusBar = ({
         <div className={s.grayRight}>
                 <span>Status</span>
                 <ul>
-                  <li><div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="#Home">Application Form</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle2Color }}></div><a href="#account">Release Form</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="/ApplicationForm">Application Form</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle2Color }}></div><a href="/ApplicantRelease">Release Form</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="#contact">Personal Statement</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="#Help">Unofficial Transcript</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle5Color }}></div><a href="#Home">Schedule</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle5Color }}></div><a href="/Calendar">Schedule</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle6Color }}></div><a href="#account">Photo</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle7Color }}></div><a href="#Help">Recommendation Letter</a></li>
                 </ul>

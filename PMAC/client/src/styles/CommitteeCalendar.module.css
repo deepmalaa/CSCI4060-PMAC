@@ -1,9 +1,33 @@
 .cal{
     position: relative;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 110px;
+    margin-right: 110px;
 }
 
 .cal1{
     width: 100%;
+}
+
+.allInstructions{
+    position: relative;
+    top: 20px;
+}
+
+.instructionHeader{
+    text-align: left;
+    font-size: 28px;
+    color: #840029;
+}
+
+.instructionList{
+    text-align: left;
+    margin-left: 25px;
+    line-height: 28px;
+    font-weight: bold;
+    color: #840029;
+}
+
+.instructions{
+    margin-left: 110px;
+    text-align: left;
 }

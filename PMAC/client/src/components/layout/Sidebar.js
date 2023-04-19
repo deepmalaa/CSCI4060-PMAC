@@ -8,6 +8,8 @@ import {
     FaBars,
     FaUserAlt,
     FaCommentAlt,
+    FaIdCard,
+    FaRegEdit,
     FaThList,
     FaRegSun,
     FaCalendarAlt,
@@ -47,9 +49,15 @@ const Sidebar = ({ children, role }) => {
             roles: ['student'] 
         },
         {
+          path:"/Calendar",
+          name:"Interview Availability",
+          icon:<FaCalendarAlt/>,
+          roles: ['student'] 
+      },
+        {
           path:"/headshot",
           name:"Upload Headshot",
-          icon:<FaUserAlt/>,
+          icon:<FaIdCard/>,
           roles: ['student'] 
       },
       {
@@ -59,16 +67,10 @@ const Sidebar = ({ children, role }) => {
         roles: ['student'] 
     },{
       path:"/uploadpersonalstatement",
-      name:"Personal Statement",
-      icon:<FaUserGraduate/>,
+      name:"Upload Personal Statement",
+      icon:<FaRegEdit/>,
       roles: ['student'] 
   },
-  {
-    path:"/Calendar",
-    name:"Interview Availability",
-    icon:<FaUserGraduate/>,
-    roles: ['student'] 
-},
   
     
         

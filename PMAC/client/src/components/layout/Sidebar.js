@@ -67,15 +67,13 @@ const Sidebar = ({ children, role }) => {
       icon:<FaRegEdit/>,
       roles: ['student'] 
   },
-<<<<<<< HEAD
   {
     path:"/Calendar",
     name:"Schedule Availability",
     icon:<FaUserGraduate/>,
     roles: ['student'] 
 },
-=======
->>>>>>> a4d74671b7992495c902d49315557858a2f52793
+
   
     
         

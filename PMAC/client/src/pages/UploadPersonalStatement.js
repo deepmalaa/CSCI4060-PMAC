@@ -19,7 +19,7 @@ const Transcript = ({getCurrentProfile,profile: { profile }}) => {
         <div>
         <Sidebar role = "student"/>
         <div>
-        <a href={`http://18.209.133.89:5001/api/personalstatement/${profile.personal_statement}`}>Click to preview</a>
+        <a href={`/api/personalstatement/${profile.personal_statement}`}>Click to preview</a>
         <ImageUpload />
         </div>
       </div>

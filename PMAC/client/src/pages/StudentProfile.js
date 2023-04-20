@@ -2,7 +2,6 @@
 import React, { useEffect  }  from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
-import ImageUpload from '../components/imageUpload/transcriptUpload'
 
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -10,18 +9,11 @@ import {getProfileById } from '../actions/profile';
 import {loadUser} from '../actions/auth';
 import s from '../styles/StudentProfile.module.css';
 
-const StudentProfile = ({getProfileById, loadUser, profile: {profile}, auth}) => {
+const StudentProfile = ({getProfileById, profile: {profile},}) => {
     const { userid } = useParams();
-    console.log(userid);
-    console.log(auth);
     useEffect(() => {
       getProfileById(userid)
 
-      if(!auth){
-        loadUser();
-      }
-        // if(!profile){
-        //     getProfileById(userid)}
       },[getProfileById, userid]);
       console.log(profile)
       
@@ -32,7 +24,7 @@ const StudentProfile = ({getProfileById, loadUser, profile: {profile}, auth}) =>
     let volunteer_experiences = "No volunteer Experience Added";
     let honors = "No Honors Added";
 
-    if (profile && profile.club_experience){
+    if (profile){
 
     if(profile.work_experience.length !== 0) {experiences = profile.work_experience.map((exp) => (
 
@@ -96,9 +88,6 @@ const StudentProfile = ({getProfileById, loadUser, profile: {profile}, auth}) =>
       ))
       }
 
-}
-  
-    if(profile){
     return(
     
         <div className={s.profile}>
@@ -224,9 +213,10 @@ const StudentProfile = ({getProfileById, loadUser, profile: {profile}, auth}) =>
         </tbody>
         </table> 
         <div>
-        <a href={`http://18.209.133.89:5001/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
-        <a href={`http://18.209.133.89:5001/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
-        <a href={`http://18.209.133.89:5001/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
+        <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
+        <Link to={`/api/image/${profile.headshot}`} className="btn btn-light my-1"> View </Link>
+        <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
+        <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
         </div>
 
       </div>

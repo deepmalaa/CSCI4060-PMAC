@@ -52,7 +52,7 @@ const Experience = ({
           <tr>
             <th>Company</th>
             <th >Title</th>
-            <th >Time Involved</th>
+            <th >Volunteer Duration</th>
             <th >Description</th>
             <th />
           </tr>

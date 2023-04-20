@@ -21,7 +21,8 @@
 
 .grayRight span{
     position: relative;
-    left: 32%;
+    top: 35px;
+    left: 40%;
     font-size: 30px;
 }
 .grayRight ul{
@@ -34,10 +35,10 @@
     display:inline-table;
     position: relative;
     top: 8px;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     margin-right: 5px;
-    background: #840029;
-    border: 1px solid #840029;
+    background: #cf142b;
+    border: 1px solid black;
     border-radius: 50%;
 }

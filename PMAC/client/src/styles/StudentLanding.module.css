@@ -128,10 +128,13 @@
     text-align: center;
     position: relative;
     top: 75px;
+
+    padding-left: 5%;
+    padding-right: 1%;
     
     margin-left: auto;
     margin-right: auto;    
-    width: 1165px;
+    width: 100%;
     
     vertical-align: middle;
     font-family: 'Roboto', sans-serif;
@@ -139,20 +142,24 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 26px;
-    max-width: 1000px;
+
     
     color: #000000;
     
 }
 .textBox2{
-    text-align: left;
+    text-align: center;
     position: relative;
     top: 120px;
 
     
+
+    padding-left: 5%;
+    padding-right: 1%;
+    
     margin-left: auto;
     margin-right: auto;    
-    width: 900px;
+    width: 100%;
     
     vertical-align: middle;
     font-family: 'Roboto', sans-serif;
@@ -160,7 +167,6 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 36px;
-    max-width: 1000px;
     
     color: #000000;
     
@@ -233,6 +239,7 @@
     text-align: left;
     color: black;
     line-height: 30px;
+
 }
 
 .grayLeft p{

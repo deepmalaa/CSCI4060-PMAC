@@ -30,8 +30,8 @@ import Calendar from './pages/Calendar';
 import CommitteeCalendar from './pages/CommitteeCalendar';
 import ReviewApplications from './pages/ReviewApplications';
 import AdminCalendar from './pages/AdminCalendar';
-import PersonalStatementPage from './pages/PersonalStatementPage';
-import PersonalStatement from './pages/PersonalStatement';
+import EvaluationSelectUser from './pages/EvaluationSelectUser';
+import InterviewEvaluation from './pages/InterviewEvaluation';
 import StudentQuestionsPage from './pages/StudentQuestionsPage';
 import CommitteeQuestionsPage from './pages/CommitteeQuestionsPage';
 
@@ -109,8 +109,8 @@ const App = () => {
         <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
         <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
-        <Route path="/PersonalStatementPage" element={<PersonalStatementPage/>} />
-        <Route path="/PersonalStatement" element={<PersonalStatement/>} />
+        <Route path="/EvaluationSelectUser" element={<EvaluationSelectUser/>} />
+        <Route path="/InterviewEvaluation" element={<InterviewEvaluation/>} />
 
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
         

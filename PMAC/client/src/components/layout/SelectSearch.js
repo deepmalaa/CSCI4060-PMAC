@@ -29,7 +29,7 @@ const SelectSearch = ({
   };
 
   return (
-    <div>
+    <div className='table-container' style={{ height: '400px', overflow: 'scroll' }}>
       <h1 className='text-center mt-4'></h1>
       <form>
         {/* onChange for search */}
@@ -84,9 +84,9 @@ const SelectSearch = ({
                 {/* Add the button that will redirect to the user's personal statement page */}
                 <button
                 onClick={() => {
-                  window.location.href = `/PersonalStatement`; //${item.cwid}
+                  window.location.href = `/InterviewEvaluation`; //${item.cwid}
                 }}>
-                Personal Statement
+                Evaluate
               </button>
             </td>
           </tr>

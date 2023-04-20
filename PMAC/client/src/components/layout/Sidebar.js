@@ -127,6 +127,12 @@ const Sidebar = ({ children, role }) => {
             roles: ['committe']
           },
           {
+            path: "/EvaluationSelectUser",
+            name: "Interview Evaluation",
+            icon: <FaCalendarAlt />,
+            roles: ['committe']
+          },
+          {
             path: "/FacultyLetter",
             name: "Letter Submission",
             icon: <FaUserAlt />,

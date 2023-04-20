@@ -183,14 +183,13 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           <div className={s.top}>
               <div className={s.goldBars}> </div>
               <div className={s.whiteBar}>
-                                <ul>
-                                    <li><a href="/dashboardStudent">Home</a></li>
-                                    <li><a href="/StudentContactPage">Contact</a></li>
-                                </ul>
-
-                            </div>
-                        <div className={s.goldBars}> </div>
-                    </div>
+                <ul>
+                  <li><a href="/dashboardStudent">Home</a></li>
+                  <li><a href="/StudentContactPage">Contact</a></li>
+                </ul>
+              </div>
+              <div className={s.goldBars}> </div>
+            </div>
           
 
           <div className='header'>

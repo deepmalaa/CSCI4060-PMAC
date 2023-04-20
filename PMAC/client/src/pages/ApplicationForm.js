@@ -79,9 +79,9 @@ const ApplicationForm = ({
   };
 
 
-  const saveData = () => {
+  const onSaveData = (e) => {
     // Call the saveProfile action or any other logic you want to perform to save the data
-  
+    e.preventDefault();
     saveProfile(formData);
   };
 
@@ -510,11 +510,11 @@ const ApplicationForm = ({
               
 
 
-            
-              
-              
-                <button type="submit" className="btn btn-primary">Save and Finish Later </button>
-              
+        
+          
+           
+            <button onClick={e => onSaveData(e)} className="btn btn-primary">Save and Finish Later </button>
+          
 
               
                 

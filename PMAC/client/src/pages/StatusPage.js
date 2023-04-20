@@ -6,7 +6,7 @@ import ApplicationSelector from './ApplicationSelector';
 import user1 from './ApplicantInformation';
 import '../styles/StatusPage.css';
 import Details from './StatusPageDetails';
-import s from '../styles/HomePage.module.css';
+import s from '../styles/ApplicantInformation.module.css';
 import topBanner from '../img/StatusPage.jpg';
 import { getCurrentProfile } from '../actions/profile';
 import { applicantRelease } from '../actions/applicantRelease';
@@ -179,29 +179,23 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
       <div>
         <div className={s.container}> <Sidebar role="student" /> </div> 
         
-        <div>
-            <div className={s.whiteBar} style={{marginTop:'-6px'}}>
+        <div className={s.body}>
+          <div className={s.top}>
               <div className={s.goldBars}> </div>
-              <ul>
-              <li><a href="/dashboardStudent">Home</a></li>
-              <li><a href="/StudentProfile">Account</a></li>
-              <li><a href="/StudentContactPage">Contact</a></li>
-              <li><a href="/StudentQuestionsPage">Help</a></li>
-              </ul>
-            </div> 
-            <div className={s.goldBars}> </div>
-          </div>
+              <div className={s.whiteBar}>
+                                <ul>
+                                    <li><a href="/dashboardStudent">Home</a></li>
+                                    <li><a href="/StudentContactPage">Contact</a></li>
+                                </ul>
 
-        <div className={s.topBanner}>
-          <div className={s.img}>
-            <img src={topBanner} alt="Backdrop of ULM Campus"/>  
-          </div>
+                            </div>
+                        <div className={s.goldBars}> </div>
+                    </div>
+          
 
-          <div className={s.bottomTitle} style={{fontSize:'40pt'}}>
+          <div className='header'>
             Application Status    
-          </div>
-
-          <div className={s.goldBars}></div>        
+          </div>      
         </div>
       </div>
 
@@ -225,10 +219,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           </>
         </div> 
 
-      <div>
-        <div className={s.goldBars}></div>
-        <div className='redBar'></div>
-      </div>
       </> 
     );
   }
@@ -246,3 +236,8 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   export default connect(mapStateToProps, { getCurrentProfile })(
     StatusPage
   );
+
+
+  //<div className={s.img}>
+  //<img src={topBanner} alt="Backdrop of ULM Campus"/>  
+  //</div>

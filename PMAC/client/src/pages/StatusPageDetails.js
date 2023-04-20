@@ -119,13 +119,14 @@ function Details({ application }) {
   // Returns a visual guide on application process aswell as application info
   return (
     <div className="process-container">
-      <ul className="process-steps" style={{marginTop:'20px'}}>
+      <div className="content-container">
+      <ul className="process-steps">
         <li className={`step pending ${status === 'Pending' ? 'active' : ''}`}>Pending</li>
         <li className={`step accepted ${status === 'Accepted' ? 'active' : ''}`}>Accepted</li>
         <li className={`step interview ${status === 'Interview' ? 'active' : ''}`}>Interview</li>
         <li className={`step complete ${status === 'Complete' ? 'active' : ''}`}>Complete</li>
       </ul>
-      <div className="content-container">
+      
         {content}
         {calendarOption}
       </div>

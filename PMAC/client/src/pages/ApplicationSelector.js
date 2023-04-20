@@ -23,12 +23,12 @@ function ApplicationSelector(props) {
 
   const hasReleaseSignature = Object.values(props.applications).some(application => application.release);
   //const message = hasReleaseSignature ? 'No applications found' : 'No Release Signature';
-
+  //<p className='no-applications'> Note: Lack of signed contract WILL NOT allow progression</p>
   
   return (
     <body className='background'>
       
-      <p className='no-applications'> Note: Lack of signed contract WILL NOT allow progression</p>
+      
       <div className='container'>
         {submittedApplicationList.length === 0 ? (
           <p className='no-applications'> No Applications Submissions Found</p>

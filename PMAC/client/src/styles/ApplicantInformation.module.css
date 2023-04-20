@@ -1,21 +1,17 @@
   .body {
-    position: relative;
-    top: -165px;
+    position: absolute;
+    top: 187px;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 7% 0% 0% 0%;
     text-align: left;
+    width: 100%;
   }
 
   .top{
     position: relative;
-    top: -128px;
+    top: -110px;
   }
 
-  .top2{
-    position: relative;
-    top: -51px;
-  }
 
   .whiteBar li{
     margin: 35px;

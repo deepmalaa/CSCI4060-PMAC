@@ -41,7 +41,7 @@ const StatusBar = ({
   }, []);
 
 
-  const count = [    circle1Color,    circle2Color,    circle3Color,    circle4Color,    circle5Color,    circle6Color,    circle7Color  ].filter(color => color === 'green').length;
+  const count = [    circle1Color,    circle2Color,    circle3Color,    circle4Color,    circle5Color,    circle6Color,    circle7Color  ].filter(color => color === '#009E60').length;
 
  // console.log(src);
 
@@ -57,21 +57,21 @@ const StatusBar = ({
 
   useEffect(() => {
     if (waivers != null && waivers.authorize) {
-      setCircle2Color('green');
+      setCircle2Color('#009E60');
     }
     if (facultyForms != null) {
-      setCircle7Color('green');
+      setCircle7Color('#009E60');
     }
     if (profile != null) {
-      setCircle1Color('green');
+      setCircle1Color('#009E60');
       if (profile.headshot) {
-        setCircle6Color('green');
+        setCircle6Color('#009E60');
       }
       if (profile.transcript) {
-        setCircle4Color('green');
+        setCircle4Color('#009E60');
       }
       if (profile.personal_statement) {
-        setCircle3Color('green');
+        setCircle3Color('#009E60');
       }
     }
   }, [waivers, facultyForms, profile]);
@@ -92,13 +92,13 @@ const StatusBar = ({
                 <ul>
                   <li><div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="/ApplicationForm">Application Form</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle2Color }}></div><a href="/ApplicantRelease">Release Form</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="#contact">Personal Statement</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="#Help">Unofficial Transcript</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="/uploadpersonalstatement">Personal Statement</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="/transcript">Unofficial Transcript</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle5Color }}></div><a href="/Calendar">Schedule</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle6Color }}></div><a href="#account">Photo</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle7Color }}></div><a href="#Help">Recommendation Letter</a></li>
                 </ul>
-                <div><br />{count} of 8 completed</div>
+                <div><br />{count} of 7 completed</div>
               </div>
               
         </div>

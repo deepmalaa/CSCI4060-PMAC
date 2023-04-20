@@ -11,15 +11,19 @@ import { connect } from 'react-redux';
 function FormOne({isAuthenticated}) {
 
     var link = "/HomePage";
+    var name = "Home";
     if(isAuthenticated){
         const user = jwt(localStorage.token);
         console.log(user.role);
-        if(user.user.role === "Student")
+        if(user.user.role === "Student") {
            link = "/dashboardStudent" ;
-        if(user.user.role === "Committee")
+           name = "Student Home"; }
+        if(user.user.role === "Committee") {
            link ="/dashboardCommittee";
-        if(user.user.role === "admin")
-          link ="/dashboardChair" ;
+           name = "Committee Home"; }
+        if(user.user.role === "admin") {
+          link ="/dashboardChair";
+          name = "Admin Home"; }
       }
 
     return ( 
@@ -30,7 +34,7 @@ function FormOne({isAuthenticated}) {
                 <div className={s.goldBars}> </div>
                     <div className={s.whiteBar}>
                         <ul>
-                            <li><a href= {link} >Home</a></li>
+                            <li><a href= {link} >{name}</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
                             <li><a href="/ContactPage">Contact</a></li>
                         </ul>

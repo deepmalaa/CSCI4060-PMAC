@@ -5,8 +5,23 @@ import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 import profile from '../img/HomePage/Profile.png';
 import bottomBanner from '../img/HomePage/library.jpg';
 import Sidebar from '../components/layout/Sidebar';
+import jwt from 'jwt-decode';
+import { connect } from 'react-redux';
 
-function FormOne() {
+function FormOne({isAuthenticated}) {
+
+    var link = "/HomePage";
+    if(isAuthenticated){
+        const user = jwt(localStorage.token);
+        console.log(user.role);
+        if(user.user.role === "Student")
+           link = "/dashboardStudent" ;
+        if(user.user.role === "Committee")
+           link ="/dashboardCommittee";
+        if(user.user.role === "admin")
+          link ="/dashboardChair" ;
+      }
+
     return ( 
         
         <div className={s.container}>
@@ -15,7 +30,7 @@ function FormOne() {
                 <div className={s.goldBars}> </div>
                     <div className={s.whiteBar}>
                         <ul>
-                            <li><a href="/HomePage">Home</a></li>
+                            <li><a href= {link} >Home</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
                             <li><a href="/ContactPage">Contact</a></li>
                         </ul>
@@ -154,5 +169,8 @@ function FormOne() {
             )
 
 }
-
-export default FormOne;
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+  });
+  
+  export default connect(mapStateToProps)(FormOne);

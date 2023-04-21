@@ -9,7 +9,7 @@ import {getProfileById } from '../actions/profile';
 import {loadUser} from '../actions/auth';
 import s from '../styles/StudentProfile.module.css';
 
-const StudentProfile = ({getProfileById, profile: {profile},}) => {
+const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
     const { userid } = useParams();
     useEffect(() => {
       getProfileById(userid)

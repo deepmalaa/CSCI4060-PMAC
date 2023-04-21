@@ -77,7 +77,7 @@ const Search = ({
                 <tr key={index}>
                 
         
-                  <td><Link to={`/studentProfile/${item._id}`}>{item.fname}</Link></td>
+                  <td><Link to={`/${item._id}`}>{item.fname}</Link></td>
                   <td>{item.lname}</td>
                   <td>{item.ulm_email}</td>
                   <td>{item.cwid}</td>

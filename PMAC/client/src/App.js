@@ -123,9 +123,8 @@ const App = () => {
 
         <Route path="/dashboardChair" element={<PrivateRoute component ={ChairLanding} />} />
         <Route path="/manageUsers" element={<PrivateRoute component ={ManageUsers} />} />
-        <Route path="/student-profile/:userId" component={StudentProfile} />
+        {/* <Route path="/student-profile/:userId" component={StudentProfile} /> */}
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
-        <Route path= "/studentProfile/:userid" element={<StudentProfile/>}  />
         <Route path="/manageApplications" element={<ManageApplications/>} />
         <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
         <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
@@ -135,7 +134,7 @@ const App = () => {
         <Route path="/Schedule" element={<PrivateRoute component ={Schedule} />} />
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
-        <Route path="/studentProfile/:userid" element={<StudentProfile/>} />
+        <Route path="/:userid" element={<StudentProfile/>} />
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />

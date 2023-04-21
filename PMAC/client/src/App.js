@@ -70,6 +70,7 @@ import StatusBar from './components/layout/StatusBar';
 import Transcript from './pages/Transcript';
 import StudentProfile from './pages/StudentProfile';
 import UploadPersonalStatement from './pages/UploadPersonalStatement';
+import ChangePassword from './components/auth/ChangePassword';
 
 
 if(localStorage.token){
@@ -167,6 +168,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       
       
+      <Route path="/changepassword" element={<ChangePassword/>} />
       
       <Route path="/test" element={<UploadPicture/>} />
       </Routes>

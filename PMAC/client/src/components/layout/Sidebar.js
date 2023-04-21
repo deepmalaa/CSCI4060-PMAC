@@ -84,12 +84,6 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
-            path: "/manageUsers",
-            name: "Manage Users",
-            icon: <FaUserAlt />,
-            roles: ['admin']
-          },
-          {
             path: "/manageApplications",
             name: "View Applications",
             icon: <FaClipboardList />,

@@ -48,19 +48,6 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
     return (
         <body className={CSS.body}>
 
-
-            <div class={CSS.navbar}>  
-                <div className={CSS.home}>
-                    <a href="/dashboardFaculty">HOME</a>
-                </div>
-                <p>
-                    <a href="/FacultyLetter">Letter Submission</a>
-                    <a href="/FacultyAdvisoryForm">Faculty Form</a>
-                    <a href="#">Pending Requests</a>
-                    <a href="#">User Account</a>
-                    <a href="#">Settings</a>
-                </p>
-            </div>
             <h1 className={CSS.h1}>Faculty Recommendation Form</h1>
 
             <form onSubmit={e => onSubmit(e)} onChange={e=> onChange(e)} required>

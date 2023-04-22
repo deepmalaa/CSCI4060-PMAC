@@ -40,7 +40,7 @@ function ApplicationSelector(props) {
 
                   <div className='title'>{props.applications[application].title}</div>
 
-
+                  <div className='name'>Submission Date: {props.applications[application].submissionDate}</div>
                   
                   <div className='name'>Name: {props.applications[application].name}</div>
 

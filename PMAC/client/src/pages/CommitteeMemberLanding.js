@@ -6,8 +6,7 @@ import s from '../styles/CommitteeMemberLanding.module.css';
 import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
-//import medical from '../img/landingPages/medical.png';
-import medical from '../img/landingPages/Park.jpg';
+import medical from '../img/landingPages/medical.png';
 
 const CommitteeMemberLanding = ({
     getCurrentProfile,
@@ -73,25 +72,32 @@ const CommitteeMemberLanding = ({
             <div className={s.contentBox}>
 
               <div className={s.grayLeft}>
-                <div className={s.textTitle}>INTERVIEW PROCESS</div>
+                <div className={s.textTitle1}>What can I do?</div>
                 
-                <div className={s.textBox}>
-                  <p>
-                  Each interview will last one hour. At the conclusion of 
-                  the interview, the committee will meet with each candidate. 
-                  A formal letter of evaluation will be written and can be 
-                  used in support of each student's application. Many medical 
-                  schools prefer committee letters of evaluation. It is the 
-                  student's responsibility to determine if committee letters 
-                  are preferred.
-                  
-                  </p>
+                <div className={s.textBox1}>
+                  <b>1.</b> Be sure to schedule the times you are available for a student's interview. 
+                  Navigate to your sidebar and click on 'Scheduling Calendar'. Follow the instructions,
+                  and this will allow the Committee Chair to start scheduling you for interviews.
                 </div>
+
+                <div className={s.textBox1}>
+                  <b>2.</b> You can review student's submitted applications by navigating to your sidebar
+                  and clicking on 'Review Applications'.
+                </div>
+
+                <div className={s.textBox1}>
+                  <b>3.</b> You can submit your evaluation for student's that have completed their interviews.
+                  Navigate to your sidebar and click on 'Interview Evaluation'
+                </div>
+
               </div>
 
               <div className={s.grayRight}>
                 <span>Links</span>
                 <ul>
+                    <li><a href="/reviewApplications">Review Applications</a></li>
+                    <li><a href="/CommitteeCalendar">Scheduling Calendar</a></li>
+                    <li><a href="/EvaluationSelectUser">Evaluate Student Interview</a></li>
                 </ul>
               </div>
 

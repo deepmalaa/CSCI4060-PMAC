@@ -1,8 +1,11 @@
 import React from 'react';
 import s from '../styles/HomePage.module.css';
-import campus from '../img/HomePage/campus.jpg';
+//import campus from '../img/HomePage/campus.jpg';
 import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 import profile from '../img/HomePage/Profile.png';
+
+import campus from '../img/HomePage/Best.jpg';
+
 import bottomBanner from '../img/HomePage/library.jpg';
 import Sidebar from '../components/layout/Sidebar';
 import jwt from 'jwt-decode';
@@ -42,7 +45,7 @@ function FormOne({isAuthenticated}) {
                 <div className={s.goldBars}> </div>
             </div>
             <div className={s.picture}>
-                <img src={campus} alt="campus picture"/>
+                <img src={campus} alt="campus picture" className={s.pic}/>
                 <div className={s.goldBars}> </div>
                 <Sidebar role="guest" />
             </div>

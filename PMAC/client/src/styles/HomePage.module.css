@@ -20,6 +20,20 @@
     font-size: 18px;
 }
 
+.picture {
+    
+    
+}
+.pic {
+    
+     /* or any other desired width */
+     max-width: 100%; /* Set the maximum width to 100% of the parent container */
+     height: 100%; /* Set the height to 50% of the viewport height */
+     object-fit: contain;
+}
+
+
+
 .goldBars {
     width: 100%;
     max-width: 100%;

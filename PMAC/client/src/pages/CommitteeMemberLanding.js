@@ -6,7 +6,8 @@ import s from '../styles/CommitteeMemberLanding.module.css';
 import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
-import medical from '../img/landingPages/medical.png';
+//import medical from '../img/landingPages/medical.png';
+import medical from '../img/landingPages/Park.jpg';
 
 const CommitteeMemberLanding = ({
     getCurrentProfile,

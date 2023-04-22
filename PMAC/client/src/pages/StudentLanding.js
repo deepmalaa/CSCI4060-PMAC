@@ -6,7 +6,8 @@ import s from '../styles/StudentLanding.module.css';
 import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
 import bottomBanner from '../img/HomePage/library.jpg';
-import student from '../img/landingPages/student.jpg';
+//import student from '../img/landingPages/student.jpg';
+import student from '../img/landingPages/students.jpg';
 import StatusBar from '../components/layout/StatusBar';
 
 const StudentLanding = ({

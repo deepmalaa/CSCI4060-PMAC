@@ -407,18 +407,48 @@ const ApplicationForm = ({
         
           
         <div className={s.fourthArea}>         
-          <div className={s.apply}>
-            <label htmlFor="schoolType">Type of School Application will be sent: <br></br></label>
-            <input
-              type="text"
-              id="schoolType"
-              name="schoolType"
-              size = "50"
-              value={formData.schoolType}
-              onChange={e=> onChange(e)}
-              required/>
+        <div className={s.apply} style={{marginTop:'-55px'}}>
+          <div>
+            <label htmlFor="medicalFields">Select Medical Field(s):</label>
           </div>
-
+          <div>
+            <div className={s.column_left}>
+              <div>
+                <label htmlFor="medicalField1">
+                  <input type="checkbox" id="medicalField1" name="medical_field[]" value="Medical Application" onChange={e => onChange(e)} />
+                  <span>  Medical Application</span>
+                </label>
+              </div>
+              <div>
+                <label htmlFor="medicalField2">
+                  <input type="checkbox" id="medicalField2" name="medical_field[]" value="Osteopathic Medical Application" onChange={e => onChange(e)} />
+                  <span> Osteopathic Medical Application</span>
+                </label>
+              </div>
+              <div>
+                <label htmlFor="medicalField3">
+                  <input type="checkbox" id="medicalField3" name="medical_field[]" value="Physician Assistant Application" onChange={e => onChange(e)} />
+                  <span>  Physician Assistant Application</span>
+                </label>
+              </div>
+            </div>
+            <div className={s.column_right}>
+              <div>
+                <label htmlFor="medicalField4">
+                  <input type="checkbox" id="medicalField4" name="medical_field[]" value="Dental Application" onChange={e => onChange(e)} />
+                  <span>  Dental Application</span>
+                </label>
+              </div>
+              <div>
+                <label htmlFor="medicalField5">
+                  <input type="checkbox" id="medicalField5" name="medical_field[]" value="Other Application (e.g. Podiatry)" onChange={e => onChange(e)} />
+                  <span>  Other Application (e.g. Podiatry)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
           <span className={s.note}>Note: Depending on the type of application, please fill in the appropriate ID numbers.</span>
           
           <div className={s.clear}> </div>

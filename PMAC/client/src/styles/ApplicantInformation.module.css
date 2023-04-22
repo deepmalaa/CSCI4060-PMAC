@@ -282,3 +282,12 @@
     position: relative;
     
   }
+  .s.column_left {
+    float: left;
+    width: 50%;
+  }
+  
+  .s.column_right {
+    float: right;
+    width: 50%;
+  }

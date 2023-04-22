@@ -1,7 +1,8 @@
 /* Style for the main container */
 .profile {
+  margin-top: 200px;
+  text-align: center;
   width: 80%;
-  margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
@@ -12,12 +13,14 @@
 /* Style for the headings */
 .profile h1, h2, h3 {
   font-weight: bold;
-  text-align: center;
   color: #444;
 }
 
 /* Style for the main paragraphs */
 .profile p {
+  margin-top: 25px;
+  text-align: left;
+  margin-left: 20px;
   font-size: 16px;
   line-height: 1.5;
   color: #555;
@@ -25,18 +28,19 @@
 
 /* Style for the table headers */
 .profile th {
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   color: #444;
 }
 
 /* Style for the table rows */
 .profile td {
-  padding: 5px;
+  padding: 10px;
 }
 
 /* Style for the table */
 .profile table {
+  text-align: center;
   border-collapse: collapse;
   width: 100%;
 }
@@ -54,7 +58,7 @@
 
 /* Style for the honours and experience table headers */
 .profile table.honors th, table.experience th {
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   color: #444;
   background-color: #f7f7f7;
@@ -92,4 +96,55 @@
 .profile td {
   text-align: center;
   word-wrap: break-word;
+}
+
+.profile {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+th {
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  background-color: #e8e8e8;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn-light {
+  background-color: #f1f1f1;
+  color: black;
 }

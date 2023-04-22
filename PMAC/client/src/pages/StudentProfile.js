@@ -90,10 +90,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
 
     return(
     
-        <div className={s.profile}>
-          <Sidebar role ="admin"/>
-      <h2>Application Information</h2>
-      <p>Application Submitted Date: {profile.date}</p>
+    <div className={s.profile}>
+      <h2 style={{marinBottom:'25px'}}>Application Information</h2>
+      <Sidebar role ="admin"/>
+      <p>Application Submitted Date: {new Date(profile.date).toLocaleString()}</p>
       <p>First Name: {profile.fname}</p>
       <p>Middle Name: {profile.mname}</p>
       <p>Last Name: {profile.lname}</p>
@@ -106,11 +106,11 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
       <p>Alternate email: {profile.alt_email}</p>
       <p>Major: {profile.major}</p>
       <p>Minor: {profile.minor}</p>
-      <p>Date of Expected Graduation from ULM: {profile.grad_date}</p>
+      <p>Date of Expected Graduation from ULM: {new Date(profile.grad_date).toLocaleString()}</p>
       <p>Overall Collegiate GPA: {profile.gpa}</p>
-      <p>Date of Proposed Entrance to Professional School: {profile.entrance_date}</p>
+      <p>Date of Proposed Entrance to Professional School: {new Date(profile.entrance_date).toLocaleString()}</p>
       <p>Score of your most recent professional entry exam (MCAT, DAT, OAT, GRE): </p>
-      <p>Date of exam taken or expected date of exam: {profile.exam_date}</p>
+      <p>Date of exam taken or expected date of exam: {new Date(profile.exam_date).toLocaleString()}</p>
       <p>Type of School Application will be sent: {profile.schoolType}</p>
       <p>AMCAS Letter ID:{profile.amcas_id}</p>
       <p>AAMC ID#:{profile.aamc_id}</p>

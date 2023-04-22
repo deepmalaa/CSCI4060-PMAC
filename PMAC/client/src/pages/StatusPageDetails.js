@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/StatusPage.css';
+import ProgressSteps from '../components/layout/ProgressSteps';
 
 
 function Details({ application }) {
@@ -54,6 +55,7 @@ function Details({ application }) {
     case 'Pending':
       content = (
         <>
+          <ProgressSteps status="Pending" />
           <p className='content'>Application: {application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
@@ -78,6 +80,7 @@ function Details({ application }) {
       content = (
 
         <>
+          <ProgressSteps status="Accepted" />
           <p className='content'> Application: {application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
@@ -90,6 +93,7 @@ function Details({ application }) {
       case 'Interview':
         content = (
           <>
+            <ProgressSteps status="Interview" />
             <p className='content'>{application.title}</p>
             <p className='content'>Name: {application.name}</p>
             <p className='content'>Status: {status}</p>
@@ -104,6 +108,7 @@ function Details({ application }) {
     case 'Complete':
       content = (
         <>
+          <ProgressSteps status="Complete" />
           <p className='content'>{application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
@@ -119,14 +124,7 @@ function Details({ application }) {
   // Returns a visual guide on application process aswell as application info
   return (
     <div className="process-container">
-      <div className="content-container">
-      <ul className="process-steps">
-        <li className={`step pending ${status === 'Pending' ? 'active' : ''}`}>Pending</li>
-        <li className={`step accepted ${status === 'Accepted' ? 'active' : ''}`}>Accepted</li>
-        <li className={`step interview ${status === 'Interview' ? 'active' : ''}`}>Interview</li>
-        <li className={`step complete ${status === 'Complete' ? 'active' : ''}`}>Complete</li>
-      </ul>
-      
+      <div className="content-container">      
         {content}
         {calendarOption}
       </div>

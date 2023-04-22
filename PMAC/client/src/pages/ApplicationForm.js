@@ -87,6 +87,8 @@ const ApplicationForm = ({
 
 
 
+  
+
   return (
     <>
       <Sidebar role="student" />
@@ -163,15 +165,17 @@ const ApplicationForm = ({
                 type="text"
                 id="cwid"
                 name="cwid"
-                size = "50"
+                size = "10"
+                pattern="[0-9]*"
                 value={formData.cwid}
                 onChange={e=> onChange(e)}
                 />
+                
             </div>
             
 
             <div className={s.left2}>
-              <label htmlFor="address">Local Address: (Ex. 3425 Stone Street, Apt. 2A, Jacksonville, FL 39404) <br></br></label>
+              <label htmlFor="address" >Local Address: (Ex. 3425 Stone Street, Apt. 2A, Jacksonville, FL 39404) <br></br></label>
               <input
                 type="text"
                 id="address"
@@ -186,10 +190,11 @@ const ApplicationForm = ({
             
 
             <div className={s.left}>
-              <label htmlFor="phone">Phone: <br></br></label>
+              <label htmlFor="phone" >Phone: ex. 318-123-1234 <br></br></label>
               <input
-                type="text"
+                type="tel"
                 id="phone"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 name="cell"
                 size = "50"
                 value={formData.cell}
@@ -262,6 +267,7 @@ const ApplicationForm = ({
                 name="gpa"
                 size = "50"
                 value={formData.gpa}
+                pattern="[0-9]*.[0-9]*"
                 onChange={e=> onChange(e)}
                 required/>
             </div>
@@ -298,6 +304,8 @@ const ApplicationForm = ({
                 onChange={e=> onChange(e)}
                 required/>
           </div>
+          <br/>
+          <span className={s.note}>Scores of your most <i>recent</i> professional entry exam. Please enter all that apply.</span> <br/>
 
           <div className={s.left1}>
               <label htmlFor="MCAT">MCAT: <br></br></label>

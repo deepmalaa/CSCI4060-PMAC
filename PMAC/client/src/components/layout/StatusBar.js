@@ -7,15 +7,18 @@ import s from '../../styles/statusBar.module.css';
 import { getWaiver } from '../../actions/applicantRelease';
 import { useSelector } from 'react-redux';
 import { getFacultyForms } from '../../actions/facultyForm';
+import { getSchemas } from '../../actions/calendar';
 
 const StatusBar = ({
   getCurrentProfile,   
   profile: { profile },
   getWaiver,
-  getFacultyForms
+  getFacultyForms,
+  getSchemas
 }) => {
   const [waivers, setWaivers] = useState([]);
   const [facultyForms, setFacultyForms] = useState([]);
+  const [schemas, setSchemas] = useState([]);
   const [circle1Color, setCircle1Color] = useState('');
   const [circle2Color, setCircle2Color] = useState('');
   const [circle3Color, setCircle3Color] = useState('');
@@ -35,6 +38,11 @@ const StatusBar = ({
       //FacultyForms
       const data1 = await getFacultyForms();
       setFacultyForms(data1);
+
+      //Schedule
+      const data3 = await getSchemas();
+      setSchemas(data3);
+
     };
     fetchWaivers();
     getCurrentProfile();
@@ -64,15 +72,19 @@ const StatusBar = ({
     }
     if (profile != null) {
       setCircle1Color('#009E60');
-      if (profile.headshot) {
-        setCircle6Color('#009E60');
-      }
-      if (profile.transcript) {
-        setCircle4Color('#009E60');
-      }
-      if (profile.personal_statement) {
-        setCircle3Color('#009E60');
-      }
+    if (schemas) {
+      setCircle5Color('#009E60');
+    }
+
+    if (profile.headshot) {
+      setCircle6Color('#009E60');
+    }
+    if (profile.transcript) {
+      setCircle4Color('#009E60');
+    }
+    if (profile.personal_statement) {
+      setCircle3Color('#009E60');
+    }
     }
   }, [waivers, facultyForms, profile]);
   
@@ -95,8 +107,8 @@ const StatusBar = ({
                   <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="/uploadpersonalstatement">Personal Statement</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="/transcript">Unofficial Transcript</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle5Color }}></div><a href="/Calendar">Schedule</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle6Color }}></div><a href="#account">Photo</a></li>
-                  <li><div className={s.circle} style={{ backgroundColor: circle7Color }}></div><a href="#Help">Recommendation Letter</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle6Color }}></div><a href="/headshot">Photo</a></li>
+                  <li><div className={s.circle} style={{ backgroundColor: circle7Color }}></div><a href="/QuestionsPage">Recommendation Letter</a></li>
                 </ul>
                 <div><br />{count} of 7 completed</div>
               </div>
@@ -111,7 +123,8 @@ StatusBar.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     getWaiver: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
-    getFacultyForms: PropTypes.func.isRequired
+    getFacultyForms: PropTypes.func.isRequired,
+    getSchemas: PropTypes.func.isRequired,
   };
   
   const mapStateToProps = (state) => ({
@@ -120,6 +133,6 @@ StatusBar.propTypes = {
     
   });
   
-  export default connect(mapStateToProps, { getWaiver, getCurrentProfile, getFacultyForms })(
+  export default connect(mapStateToProps, { getWaiver, getCurrentProfile, getFacultyForms, getSchemas })(
     StatusBar
   );

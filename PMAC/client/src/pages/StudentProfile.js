@@ -15,7 +15,6 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
       getProfileById(userid)
 
       },[getProfileById, userid]);
-      console.log(profile)
       
     let experiences = "No Work Experience Added";
     let club_experiences = "No Club Experience Added";

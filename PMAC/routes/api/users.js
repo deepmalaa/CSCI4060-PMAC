@@ -109,6 +109,9 @@ async (req,res) => {
 
         const passwordMatch = await bcrypt.compare(currentPassword, user.password);
 
+        if(!passwordMatch){
+            return res.status(400).json({errors: [{msg:'Current Password do not match'}]});
+        }    
         if(passwordMatch) {
             const salt = await bcrypt.genSalt(10);
             // const hashedPassword = await bcrypt.hash(newPassword, salt);

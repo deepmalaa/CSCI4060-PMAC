@@ -169,6 +169,7 @@ const ApplicationForm = ({
                 pattern="[0-9]*"
                 value={formData.cwid}
                 onChange={e=> onChange(e)}
+                title="Please only enter numbers for CWID"
                 />
                 
             </div>
@@ -199,6 +200,7 @@ const ApplicationForm = ({
                 size = "50"
                 value={formData.cell}
                 onChange={e=> onChange(e)}
+                title="Example number: 318-123-1234"
                 required/>
             </div>
           
@@ -269,6 +271,7 @@ const ApplicationForm = ({
                 value={formData.gpa}
                 pattern="[0-9]*.[0-9]*"
                 onChange={e=> onChange(e)}
+                title="Please enter GPA on a four point scale 4.00"
                 required/>
             </div>
             
@@ -316,6 +319,8 @@ const ApplicationForm = ({
                 size = "25"
                 value={formData.mcat}
                 onChange={e=> onChange(e)}
+                pattern="[0-9]*"
+                title="Please enter only numeric characters for MCAT"
                 />
           </div>
           
@@ -329,6 +334,8 @@ const ApplicationForm = ({
                 size = "25"
                 value={formData.dat}
                 onChange={e=> onChange(e)}
+                pattern="[0-9]*"
+                title="Please enter only numeric characters for DAT"
                 />
           </div>
           
@@ -342,6 +349,8 @@ const ApplicationForm = ({
                 size = "25"
                 value={formData.oat}
                 onChange={e=> onChange(e)}
+                pattern="[0-9]*"
+                title="Please enter only numeric characters for OAT"
                 />
           </div>
           
@@ -352,9 +361,12 @@ const ApplicationForm = ({
                 type="text"
                 id="GRE"
                 name="gre"
+                pattern="[0-9]*"
                 size = "25"
                 value={formData.gre}
                 onChange={e=> onChange(e)}
+                title="Please enter only numeric characters for GRE"
+
                 />
           </div>
         

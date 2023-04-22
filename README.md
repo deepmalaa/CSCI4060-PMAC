@@ -10,3 +10,4 @@
     Web: [http://18.209.133.89/](https://ulm-pmac.software/)
 ## Install for Dropping Forms
 npm link client/node_modules/react
+npm install @material-ui/icons

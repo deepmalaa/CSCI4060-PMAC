@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../actions/profile';
 import {setAlert} from '../actions/alert';
 
-import { postSchedule, deleteSchema,getSchemas } from '../actions/calendar';
+import { postSchedule, deleteSchema, getSchemas } from '../actions/calendar';
 // create a schema for the event
 
 

@@ -127,7 +127,7 @@ const App = () => {
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
         <Route path="/manageApplications" element={<ManageApplications/>} />
         <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
-        <Route path="/SearchApplication" element={<PrivateRoute component ={SearchApplication} />} />
+        <Route path="/SearchApplications" element={<SearchApplication/>} />
         <Route path="/Calendar" element={<PrivateRoute component ={Calendar} />} />
         <Route path="/CommitteeCalendar" element={<PrivateRoute component ={CommitteeCalendar} />} />
         <Route path="/AdminCalendar" element={<PrivateRoute component ={AdminCalendar} />} />

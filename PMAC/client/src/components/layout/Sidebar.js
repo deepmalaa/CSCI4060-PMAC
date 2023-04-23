@@ -70,7 +70,7 @@ const Sidebar = ({ children, role }) => {
   {
     path:"/Calendar",
     name:"Schedule Availability",
-    icon:<FaUserGraduate/>,
+    icon:<FaCalendarAlt/>,
     roles: ['student'] 
 },
 
@@ -86,6 +86,12 @@ const Sidebar = ({ children, role }) => {
           {
             path: "/manageApplications",
             name: "View Applications",
+            icon: <FaClipboardList />,
+            roles: ['admin']
+          },
+          {
+            path: "/SearchApplications",
+            name: "Search Applications",
             icon: <FaClipboardList />,
             roles: ['admin']
           },

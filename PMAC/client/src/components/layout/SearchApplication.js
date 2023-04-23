@@ -41,57 +41,27 @@ const SearchApplication = ({
   return (
     <div className={css.container}>
       
-        <h1 className='text-center mt-4'></h1>
-        <form >
-          
+        <h1 className={css.subTitle}></h1>
+        <div className={css.entire}>
+          <form >
+            
 
-            {/* onChange for search */}
-            <input type="text"
-              onChange={(e) => setSearchFname(e.target.value)}
-              placeholder='Filter by Firstname'
-            />
-          
-          
+              {/* onChange for search */}
+              <input type="text"
+                onChange={(e) => setSearchFname(e.target.value)}
+                placeholder='Filter by Firstname'
+              />
+            
+            
 
-            {/* onChange for search */}
-            <input type="text"
-              onChange={(e) => setSearchLname(e.target.value)}
-              placeholder='Filter by Lastname'
-            />
-          
-        </form>
-        <table className={css.table}>
-          <thead className={css.thead}>
-            <tr>
-              <th className={css.th}>First Name</th>
-              <th className={css.th}>Last Name</th>
-              <th className={css.th}>Email</th>
-              <th className={css.th}>2nd Email</th>
-              <th className={css.th}>CWID</th>
-              <th className={css.th}>Address</th>
-              <th className={css.th}>Cell #</th>
-              <th className={css.th}>DOB</th>
-              <th className={css.th}>Major</th>
-              <th className={css.th}>Minor</th>
-              <th className={css.th}>Grad Date</th>
-              <th className={css.th}>GPA</th>
-              <th className={css.th}>Entrance Date</th>
-              <th className={css.th}>MCAT</th>
-              <th className={css.th}>DAT</th>
-              <th className={css.th}>OAT</th>
-              <th className={css.th}>GRE</th>
-              <th className={css.th}>Score Breakdown</th>
-              <th className={css.th}>School Type</th>
-              <th className={css.th}>Exam Date</th>
-              <th className={css.th}>AMCAS id</th>
-              <th className={css.th}>AACOMAS id</th>
-              <th className={css.th}>AADSAS id</th>
-              <th className={css.th}>AAMC id</th>
-              <th className={css.th}>CASPA id</th>
-              <th className={css.th}>Faculty Evaluation</th>
-            </tr>
-          </thead>
-          <tbody>
+              {/* onChange for search */}
+              <input type="text"
+                onChange={(e) => setSearchLname(e.target.value)}
+                placeholder='Filter by Lastname'
+              />
+            
+          </form>
+          <form>
             {profiles
               .filter((item) => {
                 return searchFname.toLowerCase() === '' && searchLname.toLowerCase() === ''
@@ -99,38 +69,91 @@ const SearchApplication = ({
                   : item.fname.toLowerCase().includes(searchFname.toLowerCase()) && item.lname.toLowerCase().includes(searchLname.toLowerCase());
               })
               .map((item, index) => (
-                <tr key={index}>
-                  <td className={css.td}>{item.fname}</td>
-                  <td className={css.td}>{item.lname}</td>
-                  <td className={css.td}>{item.ulm_email}</td>
-                  <td className={css.td}>{item.alt_email}</td>
-                  <td className={css.td}>{item.cwid}</td>
-                  <td className={css.td}>{item.address}</td>
-                  <td className={css.td}>{item.cell}</td>
-                  <td className={css.td}>{item.bdate}</td>
-                  <td className={css.td}>{item.major}</td>
-                  <td className={css.td}>{item.minor}</td>
-                  <td className={css.td}>{item.grad_date}</td>
-                  <td className={css.td}>{item.gpa}</td>
-                  <td className={css.td}>{item.entrance_date}</td>
-                  <td className={css.td}>{item.mcat}</td>
-                  <td className={css.td}>{item.dat}</td>
-                  <td className={css.td}>{item.oat}</td>
-                  <td className={css.td}>{item.gre}</td>
-                  <td className={css.td}>{item.scoreBreakdown}</td>
-                  <td className={css.td}>{item.schoolType}</td>
-                  <td className={css.td}>{item.exam_date}</td>
-                  <td className={css.td}>{item.amcas_id}</td>
-                  <td className={css.td}>{item.aacomas_id}</td>
-                  <td className={css.td}>{item.aadsas_id}</td>
-                  <td className={css.td}>{item.aamc_id}</td>
-                  <td className={css.td}>{item.caspa_id}</td>
-                  <td className={css.td}>{item.facultyEval}</td>
-                </tr>
+                <div className={css.form} key={index}>
+
+                  <label htmlFor={`fname${index}`}>First Name:</label>
+                  <input id={`fname${index}`} type="text" value={item.fname} />
+                  
+                  <label htmlFor={`lname${index}`}>Last Name:</label>
+                  <input id={`lname${index}`} type="text" value={item.lname} />
+
+                  <label htmlFor={`ulm_email${index}`}>ULM Email: </label>
+                  <input id={`ulm_email${index}`} type="text" value={item.ulm_email} />
+                  
+                  <label htmlFor={`alt_email${index}`}>Alt Email:</label>
+                  <input id={`alt_email${index}`} type="text" value={item.alt_email} />
+
+                  <label htmlFor={`cwid${index}`}>CWID:</label>
+                  <input id={`cwid${index}`} type="text" value={item.cwid} />
+
+                  <label htmlFor={`address${index}`}>Address:</label>
+                  <input id={`address${index}`} type="text" value={item.address} />
+
+                  <label htmlFor={`cell${index}`}>Cell #:</label>
+                  <input id={`cell${index}`} type="text" value={item.cell} />
+
+                  <label htmlFor={`bdate${index}`}>DOB:</label>
+                  <input id={`bdate${index}`} type="text" value={item.bdate} />
+
+                  <label htmlFor={`major${index}`}>Major:</label>
+                  <input id={`major${index}`} type="text" value={item.major} />
+
+                  <label htmlFor={`minore${index}`}>Minor:</label>
+                  <input id={`minore${index}`} type="text" value={item.minore} />
+
+                  <label htmlFor={`grad_date${index}`}>Graduation Date:</label>
+                  <input id={`grad_date${index}`} type="text" value={item.grad_date} />
+
+                  <label htmlFor={`gpa${index}`}>GPA:</label>
+                  <input id={`gpa${index}`} type="text" value={item.gpa} />
+
+                  <label htmlFor={`entrance_date${index}`}>Entrance Date:</label>
+                  <input id={`entrance_date${index}`} type="text" value={item.entrance_date} />
+
+                  <label htmlFor={`mcat${index}`}>MCAT:</label>
+                  <input id={`mcat${index}`} type="text" value={item.mcat} />
+
+                  <label htmlFor={`dat${index}`}>DAT:</label>
+                  <input id={`dat${index}`} type="text" value={item.dat} />
+
+                  <label htmlFor={`oat${index}`}>OAT:</label>
+                  <input id={`oat${index}`} type="text" value={item.oat} />
+
+                  <label htmlFor={`gre${index}`}>GRE:</label>
+                  <input id={`gre${index}`} type="text" value={item.gre} />
+
+                  <label htmlFor={`scoreBreakdown${index}`}>Score Breakdown:</label>
+                  <input id={`scoreBreakdown${index}`} type="text" value={item.scoreBreakdown} />
+
+                  <label htmlFor={`schoolType${index}`}>School Type:</label>
+                  <input id={`schoolType${index}`} type="text" value={item.schoolType} />
+
+                  <label htmlFor={`exam_date${index}`}>Exam Date:</label>
+                  <input id={`exam_date${index}`} type="text" value={item.exam_date} />
+
+                  <label htmlFor={`amcas_id${index}`}>AMCAS ID:</label>
+                  <input id={`amcas_id${index}`} type="text" value={item.amcas_id} />
+
+                  <label htmlFor={`aacomas_id${index}`}>AACOMAS ID:</label>
+                  <input id={`aacomas_id${index}`} type="text" value={item.aacomas_id} />
+
+                  <label htmlFor={`aadsas_id${index}`}>AADSAS ID:</label>
+                  <input id={`aadsas_id${index}`} type="text" value={item.aadsas_id} />
+
+                  <label htmlFor={`aamc_id${index}`}>AAMC ID:</label>
+                  <input id={`aamc_id${index}`} type="text" value={item.aamc_id} />
+
+                  <label htmlFor={`caspa_id${index}`}>CASPA ID:</label>
+                  <input id={`caspa_id${index}`} type="text" value={item.caspa_id} />
+
+                  <label htmlFor={`FacultyEval${index}`}>Faculty Evaluation:</label>
+                  <input id={`FacultyEval${index}`} type="text" value={item.FacultyEval} />
+
+                  {/* add other rows here */}
+                </div>
               ))}
-              
-          </tbody>
-        </table>
+          </form>
+        </div>
        
     </div>
   );

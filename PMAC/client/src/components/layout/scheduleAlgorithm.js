@@ -49,18 +49,6 @@ const ScheduleAlg = ({
       }, [schemas, userInfo]);
 
 
-
-      
-    
-
-
-
-    
-    
-
-
-
-
     // Function to find available slots for admin, at least three committee members, and all potential students that meet availability
     
     function generateTimeSlot(listSchemas, listUsers) {
@@ -108,6 +96,7 @@ const ScheduleAlg = ({
             const timeSlotDuration = 90; // minutes
             var timeSlotStart = eventStartTime;
             
+            //console.log(eventStartTime)
             // Loops through all potential time slots of event
             
             while (timeSlotStart.getTime() + timeSlotDuration * 60000 <= eventEndTime.getTime()) {
@@ -125,7 +114,7 @@ const ScheduleAlg = ({
                     
                     const comitStart = new Date(committee[i].start);
                     const comitEnd = new Date(committee[i].end);
-
+                    //console.log(comitStart);
                     // Checks if time slot fits committees availability
                     if(comitStart <= timeSlotStart && comitEnd >= timeSlotEnd) {
                         availableCommittee.push(committee[i]);
@@ -154,12 +143,14 @@ const ScheduleAlg = ({
 
                     if(availableStudents.length > 0) {
 
-                        const dateT = {"title": "", "start": "", "end": ""};
+                        const dateT = {"title": "", "start": "", "end": "", "daysOfWeek": ""};
                         // Need to match ids with names and send them via title
                         dateT.title = "A";
                         dateT.start = timeSlotStart;
                         dateT.end = timeSlotEnd;
-                        //console.log(dateT.start);
+                        dateT.daysOfWeek = [ timeSlotStart.getDay() ];
+
+                       
 
                         //events.push([timeSlotStart, timeSlotEnd, availableCommittee, availableStudents]);
                         events.push(dateT);

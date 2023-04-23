@@ -109,19 +109,11 @@ class DemoApp extends React.Component {
                   plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, momentPlugin]}
                   headerToolbar={{
                     
-                    left: 'title',
+                    left: '',
                     right: 'timeGridWeek,timeGridDay,prev,next',
                   }}
-
-                 
-
-
-                  
-
-
                   height={687}
-
-                  
+              
                   initialView='timeGridWeek'
 
 
@@ -137,8 +129,9 @@ class DemoApp extends React.Component {
                   slotMinTime="08:00:00"
                   slotMaxTime="18:00:00"
                   views={{
-                    dayGridWeek: {
-                      timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                    week: {
+                      // Set dayHeaderFormat for week view
+                      dayHeaderFormat: 'ddd' // Example format: "Mon 1/01"
                     },
                     dayGridDay: {
                       timeFormat: 'HH:mm', // set timeFormat to 24-hour format

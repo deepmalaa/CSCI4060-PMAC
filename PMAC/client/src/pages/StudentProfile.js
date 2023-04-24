@@ -92,12 +92,12 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
     
         <div className={s.profile}>
           <Sidebar role ="admin"/>
-      <h2>Application Information</h2>
+      <h1>Application Information</h1>
       <p>Application Submitted Date: {profile.date}</p>
-      <p>First Name: {profile.fname}</p>
-      <p>Middle Name: {profile.mname}</p>
-      <p>Last Name: {profile.lname}</p>
-      <p>Email: {profile.email}</p>
+      <p>First Name: {profile.fname} &nbsp;
+      &nbsp; Middle Name: {profile.mname} &nbsp; 
+         Last Name: {profile.lname}</p>
+      <p>Email: {profile.ulm_email}</p>
       <p>Phone: {profile.cell}</p>
       <p>Address: {profile.address}</p>
       <p>CWID: {profile.cwid}</p>
@@ -120,97 +120,97 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
       <br />
       <h2>Honors</h2>
       <table>
-        <thead>
+        
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
+       
+      
           {honors}
-        </tbody>
+       
       </table>
       <br />
 
       <h2>Work Experience</h2>
       <table>
-        <thead>
+        
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
+        
+       
           {experiences}
-        </tbody>
+        
       </table>
       <br />
 
       <h2>Club Experience</h2>
       <table>
-        <thead>
+        
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
+        
+       
           {club_experiences}
-        </tbody>
+        
       </table>
       <br />
 
       <h2>Field Experience</h2>
       <table>
-        <thead>
+        
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
+        
+        
         {field_experiences}
-        </tbody>
-        </table> 
-        <br />
+       
+      </table> 
+      <br />
 
-        <h2>Lab Experience</h2>
+      <h2>Lab Experience</h2>
       <table>
-        <thead>
+        
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
+      
+        
         {lab_experiences}
-        </tbody>
+       
         </table> 
         <br />
         
         <h2>Volunteer Experience</h2>
-      <table>
-        <thead>
+        <table>
+       
           <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
+            <td>Title</td>
+            <td>Company</td>
+            <td>Years</td>
+            <td>Description</td>
           </tr>
-        </thead>
-        <tbody>
-        {volunteer_experiences}
-        </tbody>
+       
+        
+          {volunteer_experiences}
+        
         </table> 
         <div>
         <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>

@@ -5,6 +5,7 @@ import css from '../../styles/SearchApplication.module.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StudentProfile from './StudentProfile';
+import Sidebar from './Sidebar';
 
 
 const SearchApplication = ({
@@ -39,11 +40,13 @@ const SearchApplication = ({
   // };
 
   return (
+    <>
+      <Sidebar role="admin" />
     <div className={css.container}>
       
-        <h1 className={css.subTitle}></h1>
+        <h1 className={css.subTitle}>Search for a Student's Completed Application</h1>
         <div className={css.entire}>
-          <form >
+          <form>
             
 
               {/* onChange for search */}
@@ -61,93 +64,168 @@ const SearchApplication = ({
               />
             
           </form>
-          <form>
+          <form className={css.form}>
             {profiles
               .filter((item) => {
-                return searchFname.toLowerCase() === '' && searchLname.toLowerCase() === ''
+                return (!searchFname || searchFname.toLowerCase() === '') && (!searchLname || searchLname.toLowerCase() === '')
                   ? item
-                  : item.fname.toLowerCase().includes(searchFname.toLowerCase()) && item.lname.toLowerCase().includes(searchLname.toLowerCase());
+                  : (item.fname && item.fname.toLowerCase().includes(searchFname.toLowerCase())) && (item.lname && item.lname.toLowerCase().includes(searchLname.toLowerCase()));
               })
               .map((item, index) => (
-                <div className={css.form} key={index}>
+                <div key={index}>
+                  <br></br>
+                  <div className={css.left}> 
+                    <label className={css.textLabels} htmlFor={`fname${index}`}>First Name:</label>
+                    <input id={`fname${index}`} type="text" value={item.fname} />
+                  </div> 
 
-                  <label htmlFor={`fname${index}`}>First Name:</label>
-                  <input id={`fname${index}`} type="text" value={item.fname} />
+                  <div className={css.left}> 
+                    <label className={css.textLabels} htmlFor={`mname${index}`}>Middle Name:</label>
+                    <input id={`mname${index}`} type="text" value={item.mname} />
+                  </div> 
+
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`lname${index}`}>Last Name:</label>
+                    <input id={`lname${index}`} type="text" value={item.lname} />
+                  </div>
+
+                  <div className={css.left3}>
+                    <label className={css.textLabels} htmlFor={`cwid${index}`}>CWID:</label>
+                    <input id={`cwid${index}`} type="text" value={item.cwid} />
+                  </div>
+
+                  <div className={css.left2}>
+                    <label className={css.textLabels} htmlFor={`address${index}`}>Address:</label>
+                    <input id={`address${index}`} type="text" value={item.address} />
+                  </div>
+
+                  <div className={css.clear}> </div>
+
+                  <br></br>
+                  <br></br>
+
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`cell${index}`}>Cell #:</label>
+                    <input id={`cell${index}`} type="text" value={item.cell} />
+                  </div>
+
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`ulm_email${index}`}>ULM Email: </label>
+                    <input id={`ulm_email${index}`} type="text" value={item.ulm_email} />
+                  </div>
                   
-                  <label htmlFor={`lname${index}`}>Last Name:</label>
-                  <input id={`lname${index}`} type="text" value={item.lname} />
-
-                  <label htmlFor={`ulm_email${index}`}>ULM Email: </label>
-                  <input id={`ulm_email${index}`} type="text" value={item.ulm_email} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`alt_email${index}`}>Alt Email:</label>
+                    <input id={`alt_email${index}`} type="text" value={item.alt_email} />
+                  </div>
                   
-                  <label htmlFor={`alt_email${index}`}>Alt Email:</label>
-                  <input id={`alt_email${index}`} type="text" value={item.alt_email} />
+                  <div className={css.clear}> </div>
+                  
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`major${index}`}>Major:</label>
+                    <input id={`major${index}`} type="text" value={item.major} />
+                  </div>
 
-                  <label htmlFor={`cwid${index}`}>CWID:</label>
-                  <input id={`cwid${index}`} type="text" value={item.cwid} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`minor${index}`}>Minor:</label>
+                    <input id={`minor${index}`} type="text" value={item.minor} />
+                  </div>
 
-                  <label htmlFor={`address${index}`}>Address:</label>
-                  <input id={`address${index}`} type="text" value={item.address} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`gpa${index}`}>GPA:</label>
+                    <input id={`gpa${index}`} type="text" value={item.gpa} />
+                  </div>
 
-                  <label htmlFor={`cell${index}`}>Cell #:</label>
-                  <input id={`cell${index}`} type="text" value={item.cell} />
+                  <div className={css.clear}> </div>
 
-                  <label htmlFor={`bdate${index}`}>DOB:</label>
-                  <input id={`bdate${index}`} type="text" value={item.bdate} />
+                  <br></br>
+                  <br></br>
 
-                  <label htmlFor={`major${index}`}>Major:</label>
-                  <input id={`major${index}`} type="text" value={item.major} />
+                  <div className={css.grad}>
+                    <label className={css.textLabels} htmlFor={`grad_date${index}`}>Graduation Date:</label>
+                    <input id={`grad_date${index}`} type="text" value={item.grad_date} />
+                  </div>
 
-                  <label htmlFor={`minore${index}`}>Minor:</label>
-                  <input id={`minore${index}`} type="text" value={item.minore} />
+                  <div className={css.profGrad}>
+                    <label className={css.textLabels} htmlFor={`entrance_date${index}`}>Entrance Date:</label>
+                    <input id={`entrance_date${index}`} type="text" value={item.entrance_date} />
+                  </div>
 
-                  <label htmlFor={`grad_date${index}`}>Graduation Date:</label>
-                  <input id={`grad_date${index}`} type="text" value={item.grad_date} />
+                  <br></br>
 
-                  <label htmlFor={`gpa${index}`}>GPA:</label>
-                  <input id={`gpa${index}`} type="text" value={item.gpa} />
+                  <div className={css.left1}>
+                    <label className={css.textLabels} htmlFor={`mcat${index}`}>MCAT:</label>
+                    <input id={`mcat${index}`} type="text" value={item.mcat} />
+                  </div>  
 
-                  <label htmlFor={`entrance_date${index}`}>Entrance Date:</label>
-                  <input id={`entrance_date${index}`} type="text" value={item.entrance_date} />
+                  <div className={css.left1}>
+                    <label className={css.textLabels} htmlFor={`dat${index}`}>DAT:</label>
+                    <input id={`dat${index}`} type="text" value={item.dat} />
+                  </div>
 
-                  <label htmlFor={`mcat${index}`}>MCAT:</label>
-                  <input id={`mcat${index}`} type="text" value={item.mcat} />
+                  <div className={css.left1}>
+                    <label className={css.textLabels} htmlFor={`oat${index}`}>OAT:</label>
+                    <input id={`oat${index}`} type="text" value={item.oat} />
+                  </div>
 
-                  <label htmlFor={`dat${index}`}>DAT:</label>
-                  <input id={`dat${index}`} type="text" value={item.dat} />
+                  <div className={css.left1}>
+                    <label className={css.textLabels} htmlFor={`gre${index}`}>GRE:</label>
+                    <input id={`gre${index}`} type="text" value={item.gre} />
+                  </div>
 
-                  <label htmlFor={`oat${index}`}>OAT:</label>
-                  <input id={`oat${index}`} type="text" value={item.oat} />
+                  <div className={css.scores}>
+                    <label className={css.textLabels} htmlFor={`scoreBreakdown${index}`}>Score Breakdown:</label>
+                    <input id={`scoreBreakdown${index}`} type="text" value={item.scoreBreakdown} />
+                  </div>
 
-                  <label htmlFor={`gre${index}`}>GRE:</label>
-                  <input id={`gre${index}`} type="text" value={item.gre} />
+                  <br></br>
 
-                  <label htmlFor={`scoreBreakdown${index}`}>Score Breakdown:</label>
-                  <input id={`scoreBreakdown${index}`} type="text" value={item.scoreBreakdown} />
+                  <div className={css.examTaken}>
+                    <label className={css.textLabels} htmlFor={`exam_date${index}`}>Exam Date:</label>
+                    <input id={`exam_date${index}`} type="text" value={item.exam_date} />
+                  </div>
 
-                  <label htmlFor={`schoolType${index}`}>School Type:</label>
-                  <input id={`schoolType${index}`} type="text" value={item.schoolType} />
+                  <div className={css.examTaken}>
+                    <label className={css.textLabels} htmlFor={`schoolType${index}`}>School Type:</label>
+                    <input id={`schoolType${index}`} type="text" value={item.schoolType} />
+                  </div>
+                  
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`amcas_id${index}`}>AMCAS ID:</label>
+                    <input id={`amcas_id${index}`} type="text" value={item.amcas_id} />
+                  </div>
 
-                  <label htmlFor={`exam_date${index}`}>Exam Date:</label>
-                  <input id={`exam_date${index}`} type="text" value={item.exam_date} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`aacomas_id${index}`}>AACOMAS ID:</label>
+                    <input id={`aacomas_id${index}`} type="text" value={item.aacomas_id} />
+                  </div>
 
-                  <label htmlFor={`amcas_id${index}`}>AMCAS ID:</label>
-                  <input id={`amcas_id${index}`} type="text" value={item.amcas_id} />
+                  <div className={css.left}> 
+                    <label className={css.textLabels} htmlFor={`aadsas_id${index}`}>AADSAS ID:</label>
+                    <input id={`aadsas_id${index}`} type="text" value={item.aadsas_id} />
+                  </div>
 
-                  <label htmlFor={`aacomas_id${index}`}>AACOMAS ID:</label>
-                  <input id={`aacomas_id${index}`} type="text" value={item.aacomas_id} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`aamc_id${index}`}>AAMC ID:</label>
+                    <input id={`aamc_id${index}`} type="text" value={item.aamc_id} />
+                  </div>
 
-                  <label htmlFor={`aadsas_id${index}`}>AADSAS ID:</label>
-                  <input id={`aadsas_id${index}`} type="text" value={item.aadsas_id} />
+                  <div className={css.left}>
+                    <label className={css.textLabels} htmlFor={`caspa_id${index}`}>CASPA ID:</label>
+                    <input id={`caspa_id${index}`} type="text" value={item.caspa_id} />
+                  </div>
 
-                  <label htmlFor={`aamc_id${index}`}>AAMC ID:</label>
-                  <input id={`aamc_id${index}`} type="text" value={item.aamc_id} />
+                  <br></br>
 
-                  <label htmlFor={`caspa_id${index}`}>CASPA ID:</label>
-                  <input id={`caspa_id${index}`} type="text" value={item.caspa_id} />
+                  <div className={css.examTaken}> 
+                    <label className={css.textLabels} htmlFor={`FacultyEval${index}`}>Faculty Evaluation:</label>
+                    <input id={`FacultyEval${index}`} type="text" value={item.FacultyEval} />
+                  </div>
 
-                  <label htmlFor={`FacultyEval${index}`}>Faculty Evaluation:</label>
-                  <input id={`FacultyEval${index}`} type="text" value={item.FacultyEval} />
+                  <br></br>
+
+
+                  <div className={css.redLine}></div>
 
                   {/* add other rows here */}
                 </div>
@@ -156,6 +234,7 @@ const SearchApplication = ({
         </div>
        
     </div>
+    </>
   );
 }
 

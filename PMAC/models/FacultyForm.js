@@ -14,6 +14,14 @@ const FacultyFormSchema = new mongoose.Schema({
             type : String,
             require: true
         },
+        title_evaluator: {
+            type : String,
+            require: true
+        },
+        department_evaluator: {
+            type : String,
+            require: true
+        },
         intellect: {
             type : String,
             require: true

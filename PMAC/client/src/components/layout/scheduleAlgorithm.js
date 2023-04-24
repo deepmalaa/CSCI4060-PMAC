@@ -49,23 +49,11 @@ const ScheduleAlg = ({
       }, [schemas, userInfo]);
 
 
-
-      
-    
-
-
-
-    
-    
-
-
-
-
     // Function to find available slots for admin, at least three committee members, and all potential students that meet availability
     
     function generateTimeSlot(listSchemas, listUsers) {
         setEvents([]);
-        //console.log(listUsers)
+        
 
         // Stores scheduled events based on user type
         var student = [];
@@ -96,9 +84,7 @@ const ScheduleAlg = ({
             }
         }
 
-        //console.log(student);
-        //console.log(admin);
-        //console.log(committee);
+        
 
         // Loop through all admin events (this saves time as it does not check days admin can not make)
         var events = [];
@@ -107,6 +93,7 @@ const ScheduleAlg = ({
             const eventEndTime = new Date(admin[j].end);
             const timeSlotDuration = 90; // minutes
             var timeSlotStart = eventStartTime;
+            console.log("TimeSlotStart: " + timeSlotStart.getTime())
             
             // Loops through all potential time slots of event
             
@@ -123,11 +110,22 @@ const ScheduleAlg = ({
                 availableCommittee = [];
                 for (let i = 0; i < committee.length; i++) {
                     
-                    const comitStart = new Date(committee[i].start);
-                    const comitEnd = new Date(committee[i].end);
+                    var comitStart = new Date(committee[i].start);
+                    comitStart.setMonth(eventStartTime.getMonth());
+                    comitStart.setDate(eventStartTime.getDate());
+                    var comitEnd = new Date(committee[i].end);
+                    comitEnd.setMonth(eventEndTime.getMonth());
+                    comitEnd.setDate(eventEndTime.getDate());
+                    //const comitStartTime = 
+                    console.log("TEST: " + comitStart)
+                    console.log("TEST2: " + timeSlotStart)
 
+
+
+                    
                     // Checks if time slot fits committees availability
                     if(comitStart <= timeSlotStart && comitEnd >= timeSlotEnd) {
+                        
                         availableCommittee.push(committee[i]);
                     }
                 }
@@ -142,9 +140,14 @@ const ScheduleAlg = ({
                     for (let x = 0; x < student.length; x++) {
                         
                         
-                        const studStart = new Date(student[x].start);
-                        const studEnd = new Date(student[x].end);
-                        
+                        var studStart = new Date(student[x].start);
+                        studStart.setMonth(eventStartTime.getMonth());
+                        studStart.setDate(eventStartTime.getDate());
+                        var studEnd = new Date(student[x].end);
+                        studEnd.setMonth(eventEndTime.getMonth());
+                        studEnd.setDate(eventEndTime.getDate());
+                        console.log("Student: " + studStart)
+
                         // Checks if time slot fits student availability
                         if(studStart <= timeSlotStart && studEnd >= timeSlotEnd) {
                             availableStudents.push(student[x]); 
@@ -154,12 +157,32 @@ const ScheduleAlg = ({
 
                     if(availableStudents.length > 0) {
 
-                        const dateT = {"title": "", "start": "", "end": ""};
+                        const dateT = {"title": "", "start": "", "end": "", "daysOfWeek": "", "startTime": "", "endTime":""};
                         // Need to match ids with names and send them via title
                         dateT.title = "A";
                         dateT.start = timeSlotStart;
                         dateT.end = timeSlotEnd;
-                        //console.log(dateT.start);
+
+                        // Fix annoying getMinutes returning 0 instead of 00...
+                        if(timeSlotStart.getMinutes() == 0){
+                          dateT.startTime = timeSlotStart.getHours() + ":00:00";
+                        }
+                        else {
+                          dateT.startTime = timeSlotStart.getHours() + ":" + timeSlotStart.getMinutes() + ":00";
+                        }
+                       
+                        if(timeSlotEnd.getMinutes() == 0){
+                          dateT.endTime = timeSlotEnd.getHours() + ":00:00";
+                        }
+                        else {
+                          dateT.endTime = timeSlotEnd.getHours() + ":" + timeSlotEnd.getMinutes() + ":00";
+                        }
+
+                        
+
+                        dateT.daysOfWeek = [ timeSlotStart.getDay() ];
+
+                       
 
                         //events.push([timeSlotStart, timeSlotEnd, availableCommittee, availableStudents]);
                         events.push(dateT);
@@ -186,13 +209,9 @@ const ScheduleAlg = ({
         <div className={styles.myCalendarAdmin}>
             <h2 className={styles.instructionHeader}> Instructions</h2>
             <ul className={styles.instructionList}>
-              <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
-              <li>2. To select a time, click and drag your mouse until the desired time is reached. 
-                Give your event a name then click 'OK'. </li>
-              <li>3. If done correctly, you should now see your event. </li> 
-              <li>4. If you'd like to edit your event, you can make the event longer or 
-                shorter by moving your cursor to the bottom edge and dragging either up or down.</li>
-              <li>5. If you'd like to delete an event, you can click it once and then confirm that you would like to delete the event.</li>
+              <li>1. Fill out the times you are available at <u><a href="/AdminCalendar">schedule availability</a></u> to be interviewed on any given week. </li> 
+              <li>2. Hover over an event to see the available committe members and students for that meeting time. </li>
+              
             </ul>
             <div className={styles.cal1}>
               <Sidebar role="admin" />

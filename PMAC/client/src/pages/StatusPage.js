@@ -48,6 +48,8 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   }
   
   
+  const DateOfSubmission = new Date(profile.date).toLocaleString();
+
   // Default verified false
   let Verified1 = false;
   let Verified2 = false;
@@ -57,7 +59,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
 
   // Default status
   let status1 = 'Pending';
-  let status2 = 'Accepted';
+  let status2 = 'Pending';
   let status3 = 'Pending';
   let status4 = 'Pending';
   let status5 = 'Pending';
@@ -99,7 +101,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         title: "Medical Application",
         status: status1,
         interviewStatus: false,
-        submissionDate: 'month/day/year',
+        submissionDate: DateOfSubmission,
         //release: releaseForm,
         //Statusmessage: message,
       },
@@ -111,7 +113,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         title: 'Osteopathic Medical Application', 
         status: status2,
         interviewStatus: false,
-        submissionDate: 'month/day/year',
+        submissionDate: DateOfSubmission,
         //release: releaseForm,
         //Statusmessage: message,
       },
@@ -122,7 +124,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         title: 'Physician Assistant Application',
         status: status3,
         interviewStatus: false,
-        submissionDate: 'month/day/year',
+        submissionDate: DateOfSubmission,
         //release: releaseForm,
         //Statusmessage: message,
       },
@@ -134,7 +136,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         title: 'Dental Application',
         status: status4,
         interviewStatus: false,
-        submissionDate: 'month/day/year',
+        submissionDate: DateOfSubmission,
         //release: releaseForm,
         //Statusmessage: message,
       },
@@ -146,7 +148,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         title: 'Other(ex: Podiatry) Application',
         status: status5,
         interviewStatus: false,
-        submissionDate: 'month/day/year',
+        submissionDate: DateOfSubmission,
         //release: releaseForm,
         //Statusmessage: message,
       },

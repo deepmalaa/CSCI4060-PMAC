@@ -16,14 +16,32 @@ const InterviewEvaluation = ({
   }, [getCurrentProfile]);
 
   const [interviewEvaluation, setInterviewEvaluation] = useState('');
+  const [file, setFile] = useState(null);
 
   const handleInputChange = (value) => {
     setInterviewEvaluation(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleFileClear = () => {
+    setFile(null);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('interviewEvaluation', interviewEvaluation);
+    formData.append('file', file);
     // Add code to submit personal statement here
+    try {
+      // use fetch or axios to submit the formData to your backend API
+      // e.g. await fetch('/api/interview-evaluation', { method: 'POST', body: formData });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -37,7 +55,7 @@ const InterviewEvaluation = ({
           <div className="form-group">
             <label htmlFor="interviewEvaluation">Interview Evaluation</label>
             <ReactQuill
-              style={{ height: '500px'}}
+              style={{ height: '400px'}}
               className="personal-statement-input"
               value={interviewEvaluation}
               onChange={handleInputChange}
@@ -46,11 +64,22 @@ const InterviewEvaluation = ({
                   [{ header: [1, 2, false] }],
                   ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                   [{ list: 'ordered' }, { list: 'bullet' }],
-                  ['link', 'image'],
+                  ['link', 'image', ],
                   ['clean'],
                 ],
               }}
             />
+            
+          </div>
+          <div className="form-group">
+            <label htmlFor="file">Upload File</label>
+            {file && (
+              <div>
+                <span>{file.name}</span>
+                <button type="button" className="form-group" onClick={handleFileClear}>Remove</button>
+              </div>
+            )}
+            {!file && <input type="file" className="form-control-file" id="file" onChange={handleFileChange} />}
           </div>
           <div style={{marginTop:'100px'}}>
             <button type="submit" className="btn btn-primary">

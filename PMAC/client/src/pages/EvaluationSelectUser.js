@@ -40,7 +40,7 @@ const InterviewEvaluation = ({
 
   return (
     <>
-      <Sidebar role="committee" />
+      <Sidebar role="committe" />
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
         <h1 style={{ color: 'maroon', fontSize: '36px', textAlign: 'center' }}>
           Search for a Student

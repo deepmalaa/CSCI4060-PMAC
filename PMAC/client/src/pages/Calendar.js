@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import momentPlugin from '@fullcalendar/moment'
 
 
 import { connect } from 'react-redux';
@@ -105,20 +106,14 @@ class DemoApp extends React.Component {
           <div className={css.cal}>
               <div className={css.cal1}>
                 <FullCalendar
-                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, momentPlugin]}
                   headerToolbar={{
                     
-                    left: 'title',
+                    left: '',
                     right: 'timeGridWeek,timeGridDay,prev,next',
                   }}
-
-
-                  
-
-
                   height={687}
-
-                  
+              
                   initialView='timeGridWeek'
 
 
@@ -134,8 +129,9 @@ class DemoApp extends React.Component {
                   slotMinTime="08:00:00"
                   slotMaxTime="18:00:00"
                   views={{
-                    dayGridWeek: {
-                      timeFormat: 'HH:mm', // set timeFormat to 24-hour format
+                    week: {
+                      // Set dayHeaderFormat for week view
+                      dayHeaderFormat: 'ddd' // Example format: "Mon 1/01"
                     },
                     dayGridDay: {
                       timeFormat: 'HH:mm', // set timeFormat to 24-hour format
@@ -170,12 +166,25 @@ class DemoApp extends React.Component {
     const { profile } = this.props.profile;
     return (
       <div>
+          <div className={css.navBar}>
+                <div className={css.goldBars}> </div>
+                      <div className={css.whiteBar}>
+                          <ul>
+                              <li><a href="/dashboardStudent">Home</a></li>
+                              <li><a href="/StudentContactPage">Contact</a></li>
+                          </ul>
+
+                      </div>
+                <div className={css.goldBars}> </div>
+            </div>
       <div className={css.allInstructions}>
         <div className={css.instructions}>
           
           <h2 className={css.instructionHeader}> Instructions</h2>
           <ul className={css.instructionList}>
-            <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
+            <li>1. Fill out the times you are AVAILABLE to be interviewed on any given week. 
+              The only times you should be unavailable are if you have work or school. A failure to list all available times
+              may cause your interview scheduling to be delayed or cancelled. </li> 
             <li>2. To select a time, click and drag your mouse until the desired time is reached. 
               Give your event a name then click 'OK'. </li>
             <li>3. If done correctly, you should now see your event. </li> 

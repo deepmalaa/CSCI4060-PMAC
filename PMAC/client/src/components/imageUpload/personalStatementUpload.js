@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
   },
   imageSection: {
-    height: '20em',
+    height: '5em',
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',

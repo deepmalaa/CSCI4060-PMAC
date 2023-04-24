@@ -5,24 +5,33 @@ import PropTypes from 'prop-types';
 import { changePassword } from '../../actions/auth';
 import jwt from 'jwt-decode';
 import Sidebar from '../layout/Sidebar';
+import {setAlert} from '../../actions/alert';
 
 
-const ChangePassword = ({changePassword, auth: { user }}) => {
+const ChangePassword = ({setAlert, changePassword, auth: { user }}) => {
     const [formData, setFormData] =useState({
 
         currentPassword: '',
         newPassword: '',
+        password2:''
 
     });
 
-    const{currentPassword,newPassword} = formData;
+    const{currentPassword,newPassword, password2} = formData;
 
     const onChange = e =>setFormData({...formData, [e.target.name]:e.target.value});
 
     const onSubmit = e => {
         e.preventDefault();
        
+        if(newPassword !== password2){
+          setAlert('New Passwords do not match', 'danger');
+          console.log("match failed");
+       }
+       else{
         changePassword(currentPassword, newPassword, user._id);
+       }
+        
         
     }
     let role;
@@ -60,6 +69,16 @@ const ChangePassword = ({changePassword, auth: { user }}) => {
             value ={newPassword} onChange={e=> onChange(e)} required
           />
         </div>
+        <div className="form-group">
+          <input
+            type="password"
+            placeholder="Confirm New Password"
+            name="password2"
+            required
+            minLength={8}
+            value ={password2} onChange={e=> onChange(e)} 
+          />
+        </div >
         
         <input type="submit" className="btn btn-primary" value="Change Password" />
       </form>
@@ -78,4 +97,4 @@ const mapStateToProps = (state) => ({
     auth: state.auth,
 });
 
-export default connect(mapStateToProps, {changePassword})(ChangePassword);
+export default connect(mapStateToProps, {setAlert,changePassword})(ChangePassword);

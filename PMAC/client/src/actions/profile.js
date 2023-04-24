@@ -8,7 +8,7 @@ import setAuthToken from '../utils/setAuthToken';
 // Get current users profile
 export const getCurrentProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('api/profile/me');
+    const res = await axios.get('/api/profile/me');
 
     dispatch({
       type: GET_PROFILE,
@@ -38,7 +38,7 @@ export const createProfile =
 
     const body = JSON.stringify(formData);
     try {
-        const res = await axios.post('api/profile', body, config);
+        const res = await axios.post('/api/profile', body, config);
 
       dispatch({
         type: GET_PROFILE,
@@ -78,7 +78,7 @@ export const createProfile =
 
     const body = JSON.stringify(formData);
     try {
-        const res = await axios.post('api/profile/save', body, config);
+        const res = await axios.post('/api/profile/save', body, config);
 
       dispatch({
         type: GET_PROFILE,
@@ -113,7 +113,7 @@ export const createProfile =
 export const addExperience = (formData, exp) => async (dispatch) => {
   let experience = exp;
   try {
-    const res = await axios.put(`api/profile/${experience}`, formData);
+    const res = await axios.put(`/api/profile/${experience}`, formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -142,7 +142,7 @@ export const deleteExperience = (exp, id) => async (dispatch) => {
 
     console.log("I am a delete action")
     let experience = exp;
-    const res = await axios.delete(`api/profile/${experience}/${id}`);
+    const res = await axios.delete(`/api/profile/${experience}/${id}`);
 
     dispatch({
       type: UPDATE_PROFILE,

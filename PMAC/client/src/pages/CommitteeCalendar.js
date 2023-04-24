@@ -167,12 +167,25 @@ class DemoApp extends React.Component {
     const { profile } = this.props.profile;
     return (
       <div>
+          <div className={css.navBar}>
+                <div className={css.goldBars}> </div>
+                      <div className={css.whiteBar}>
+                          <ul>
+                              <li><a href="/dashboardStudent">Home</a></li>
+                              <li><a href="/StudentContactPage">Contact</a></li>
+                          </ul>
+
+                      </div>
+                <div className={css.goldBars}> </div>
+            </div>
       <div className={css.allInstructions}>
         <div className={css.instructions}>
           
           <h2 className={css.instructionHeader}> Instructions</h2>
           <ul className={css.instructionList}>
-            <li>1. Fill out the times you are available to be interviewed on any given week. </li> 
+          <li>1. Fill out the times you are AVAILABLE to be interviewed on any given week. 
+              The only times you should be unavailable are if you have work or school. A failure to list all available times
+              may cause your interview scheduling to be delayed or cancelled. </li> 
             <li>2. To select a time, click and drag your mouse until the desired time is reached. 
               Give your event a name then click 'OK'. </li>
             <li>3. If done correctly, you should now see your event. </li> 

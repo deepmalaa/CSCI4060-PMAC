@@ -23,6 +23,8 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
     let volunteer_experiences = "No volunteer Experience Added";
     let honors = "No Honors Added";
 
+    
+
     if (profile){
 
     if(profile.work_experience.length !== 0) {experiences = profile.work_experience.map((exp) => (
@@ -87,6 +89,7 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
       ))
       }
 
+   if(user && user.type !== "Student"){
     return(
     
     <div className={s.profile}>
@@ -213,13 +216,13 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
         </table> 
         <div>
         <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
-        <Link to={`/api/image/${profile.headshot}`} className="btn btn-light my-1"> View </Link>
+        <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
         <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
         <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
         </div>
 
       </div>
-    );}
+    );}}
   }
   StudentProfile.propTypes = {
       getProfileById: PropTypes.func.isRequired,

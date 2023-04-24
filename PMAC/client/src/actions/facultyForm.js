@@ -14,7 +14,7 @@ async(dispatch) => {
     const body = JSON.stringify(formData);
 
     try {
-        const res = await axios.post('api/faculty', body, config);
+        const res = await axios.post('/api/faculty', body, config);
 
         dispatch({
             type: USER_LOADED,
@@ -39,11 +39,11 @@ async(dispatch) => {
 
 
 // Get current users faculty form
-export const getFacultyForms = () => async (dispatch) => {
+export const getFacultyForms = (id) => async (dispatch) => {
 
     dispatch({ type: CLEAR_F_FORM });
     try {
-      const res = await axios.get('/api/faculty');
+      const res = await axios.get(`/api/faculty/${id}`);
   
       dispatch({
         type: GET_F_FORM,

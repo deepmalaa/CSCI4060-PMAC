@@ -1,21 +1,31 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {Link, Navigate} from 'react-router-dom';
+import {Link, Navigate, useParams} from 'react-router-dom';
 import {setAlert} from '../actions/alert';
 import {facultyForm} from '../actions/facultyForm';
+import {getProfileById} from '../actions/profile';
 import propTypes from 'prop-types';
+import jwt from 'jwt-decode';
 
 
 import CSS from '../styles/facultyadvisory.module.css';
+import profileReducer from '../reducers/profile';
 
 
 
 
-const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
+const FacultyFormInfo = ({facultyForm, getProfileById}) => {
+    const { token } = useParams();
+    const user = jwt(token);
+    // const profile = getProfileById(user.user.id)
+    // // console.log(profile);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({
+        user:user.user.id,
         name_applicant:"",
         name_evaluator:"",
+        title_evaluator:"",
+        department_evaluator:"",
         intellect:"",
         motivation:"",
         initiative:"",
@@ -30,7 +40,6 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
         weaknesses:"",
         potential:"",
         comments:""
-
     });
 
     const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
@@ -40,9 +49,9 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
         setIsSubmitted(true);
     }
 
-    if(isSubmitted){
-        return <Navigate to ="/dashboardFaculty" />
-    }
+    // if(isSubmitted){
+    //     return <Navigate to ="/dashboardFaculty" />
+    // }
 
         
     return (
@@ -62,9 +71,20 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
                 onChange={e=> onChange(e)} placeholder="Enter your name:" required/>
                 </div>
 
+                <div for="title_evaluator">Name of Evaluator:
+                <input type="text" name="title_evaluator" value={formData.title_evaluator} 
+                onChange={e=> onChange(e)} placeholder="Enter your title:" required/>
+                </div>
+
+                <div for="department_evaluator">Name of Evaluator:
+                <input type="text" name="department_evaluator" value={formData.department_evaluator} 
+                onChange={e=> onChange(e)} placeholder="Enter your department:" required/>
+                </div>
+
                 <label for="instruct">Please indicate your estimation of this applicant by selecting the appropriate description in the drop down menu's below. </label>
                 <label for="intellect">Intellectual Ability</label>
                 <select id="intellect" name="intellect" value={formData.intellect} onChange={e=> onChange(e)} required>
+                <option value="">Select one</option>
                     <option value="Below Average">Below Average</option>
                     <option value="Average">Average</option>
                     <option value="Above Average">Above Average</option>
@@ -74,6 +94,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="motivation">Motivation</label>
                 <select id="motivation" name="motivation" value={formData.motivation} onChange={e=> onChange(e)} required>
+                <option value="">Select one</option>
                     <option value="Seems Uncertain">Seems Uncertain</option>
                     <option value="Seems Certain">Seems Certain</option>
                     <option value="Highly Motivated">Highly Motivated</option>
@@ -82,6 +103,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="initiative">Initiative</label>
                 <select id="initiative" name="initiative" value={formData.initiative} onChange={e=> onChange(e)} required>
+                <option value="">Select one</option>
                     <option value="Needs Occasional Prodding">Needs Occasional Prodding</option>
                     <option value="Does All Assigned Work">Does All Assigned Work</option>
                     <option value="Does Suggested Extra Work">Does Suggested Extra Work</option>
@@ -91,6 +113,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="socialMaturity">Personal and Social Maturity</label>
                 <select id="socialMaturity" name="socialMaturity" value={formData.socialMaturity} onChange={e=> onChange(e)} required>
+                <option value="">Select one</option>
                     <option value="Below Average">Below Average</option>
                     <option value="Average">Average</option>
                     <option value="Above Average">Above Average</option>
@@ -100,6 +123,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="emotionalMaturity">Emotional Maturity</label>
                 <select id="emotionalMaturity" name="emotionalMaturity" value={formData.emotionalMaturity} onChange={e=> onChange(e)} required>
+                <option value="">Select one</option>
                     <option value="Very Excitable">Very Excitable</option>
                     <option value="Easily Upset">Easily Upset</option>
                     <option value="Usually Stable">Usually Stable</option>
@@ -109,6 +133,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="reliability">Dependability and Reliability</label>
                 <select id="reliability" name="reliability" >
+                <option value="">Select one</option>
                     <option value="Doubtful Reliability">Doubtful Reliability</option>
                     <option value="Usually Reliable">Usually Reliable</option>
                     <option value="Above Average Reliability">Above Average Reliability</option>
@@ -118,6 +143,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="leadership">Leadership</label>
                 <select id="leadership" name="leadership">
+                <option value="">Select one</option>
                     <option value="Satisfied to Follow">Satisfied to Follow</option>
                     <option value="Occasionally a Leader">Occasionally a Leader</option>
                     <option value="Frequently a Leader">Frequently a Leader</option>
@@ -127,6 +153,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="character">Character/Integrity</label>
                 <select id="character" name="character">
+                <option value="">Select one</option>
                     <option value="Untrustworthy">Untrustworthy</option>
                     <option value="Occasional Lapses">Occasional Lapses</option>
                     <option value="No Serious Flaws">No Serious Flaws</option>
@@ -136,6 +163,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 
                 <label for="communication">Verbal Skills</label>
                 <select id="communication" name="communication">
+                <option value="">Select one</option>
                     <option value="Below Average">Below Average</option>
                     <option value="Average">Average</option>
                     <option value="Above Average">Above Average</option>
@@ -179,6 +207,7 @@ const FacultyFormInfo = ({facultyForm, isAuthenticated}) => {
 FacultyFormInfo.propTypes ={
     setAlert: propTypes.func.isRequired,
     facultyForm: propTypes.func.isRequired,
+    getProfileById: propTypes.func.isRequired,
     isAuthenticated: propTypes.bool
 }
 
@@ -186,4 +215,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, {setAlert, facultyForm})(FacultyFormInfo);
+export default connect(mapStateToProps, {setAlert, facultyForm, getProfileById})(FacultyFormInfo);

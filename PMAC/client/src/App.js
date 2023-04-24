@@ -69,6 +69,7 @@ import Headshot from './pages/Headshot';
 import StatusBar from './components/layout/StatusBar';
 import Transcript from './pages/Transcript';
 import StudentProfile from './pages/StudentProfile';
+import ViewFacultyRecommendation from './pages/ViewFacultyRecommendation';
 import UploadPersonalStatement from './pages/UploadPersonalStatement';
 import ChangePassword from './components/auth/ChangePassword';
 
@@ -107,8 +108,8 @@ const App = () => {
         
         <Route path="/ApplicantInformation" element={<ApplicantInformation/>} /> 
         <Route path="/FacultyLetter" element={<FacultyLetter/>} />
-        <Route path="/FacultyAdvisoryForm" element={<FacultyAdvisoryForm/>} />
-        <Route path="/FacultyRecommendationForm" element={<FacultyRecommendationForm/>} />
+        <Route path="/FacultyAdvisoryForm/:token" element={<FacultyAdvisoryForm/>} />
+        <Route path="/ViewFacultyRecommendation/:userid" element={<ViewFacultyRecommendation/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
         <Route path="/EvaluationSelectUser" element={<EvaluationSelectUser/>} />
         <Route path="/InterviewEvaluation" element={<InterviewEvaluation/>} />

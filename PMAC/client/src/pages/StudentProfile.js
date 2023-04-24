@@ -91,26 +91,14 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
 
    if(user && user.type !== "Student"){
     return(
-    
-<<<<<<< HEAD
-        <div className={s.profile}>
-          <Sidebar role ="admin"/>
+      <div className={s.profile}>
+      <Sidebar role ="admin"/>
       <h1>Application Information</h1>
       <p>Application Submitted Date: {profile.date}</p>
       <p>First Name: {profile.fname} &nbsp;
       &nbsp; Middle Name: {profile.mname} &nbsp; 
          Last Name: {profile.lname}</p>
       <p>Email: {profile.ulm_email}</p>
-=======
-    <div className={s.profile}>
-      <h2 style={{marinBottom:'25px'}}>Application Information</h2>
-      <Sidebar role ="admin"/>
-      <p>Application Submitted Date: {new Date(profile.date).toLocaleString()}</p>
-      <p>First Name: {profile.fname}</p>
-      <p>Middle Name: {profile.mname}</p>
-      <p>Last Name: {profile.lname}</p>
-      <p>Email: {profile.email}</p>
->>>>>>> ffe0668b8e61c036ed96c593d1510b957cf5cf60
       <p>Phone: {profile.cell}</p>
       <p>Address: {profile.address}</p>
       <p>CWID: {profile.cwid}</p>

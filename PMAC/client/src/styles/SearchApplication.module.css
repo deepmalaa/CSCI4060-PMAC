@@ -3,27 +3,98 @@
     margin-left: 5%;
     margin-right: 3%;
     overflow-x: auto;
-    height: 1000px;
+    height: 1150px;
 }
 
 
 .form {
-    position: relative;
-    top: -10px;
     
     padding: 20px; 
     border: 2px solid #ccc;
-    border-radius: 5px;
-    height: 1950px;
+    border-radius: 10px;
+    border-color: #BD955A;
+    max-width: 100%;
+    width: 60%;
 }
 
 .subTitle {
-    padding: 0% 0% 0% 2%;
+    position: relative;
+    top: 10px;
+    padding: 25px;
     font-size: 30px;
     font-weight: bold;
-    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #840029;
+    height: 100px;
+    color: white;
+    border-radius: 15px;
 }
 
 .entire{
     padding: 2px;
 }
+
+.left{
+    float: left;
+    margin-right: 5%;
+    width: 28%;
+    
+  }
+
+
+.textLabels{
+    color: darkslategray;
+}
+
+.left1{
+    float: left;
+    margin-right: 5%;
+    width: 19.7%;
+}
+
+.left2{
+    float: left;
+    margin-right: 5%;
+    width: 61%;
+}
+
+.left3{
+    float: left;
+    margin-right: 5%;
+    width: 28%;
+}
+
+.clear{
+    clear: both;
+  }
+
+  .grad{
+    float: left;
+
+    width: 45%;
+    margin-right: 4%;
+  }
+
+  .profGrad{
+    float: left;
+
+    width: 45%;
+  }
+  .scores{
+    clear: both;
+
+    width: 94%;
+  }
+
+  .examTaken{
+    clear: both;
+
+    width: 94%;
+  }
+  .redLine {
+    position: relative;
+    width: 100%;
+    height: 5px; 
+    background-color:#840029;
+  }

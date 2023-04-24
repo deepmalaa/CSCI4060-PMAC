@@ -71,12 +71,12 @@ const FacultyFormInfo = ({facultyForm, getProfileById}) => {
                 onChange={e=> onChange(e)} placeholder="Enter your name:" required/>
                 </div>
 
-                <div for="title_evaluator">Name of Evaluator:
+                <div for="title_evaluator">Title of Evaluator:
                 <input type="text" name="title_evaluator" value={formData.title_evaluator} 
                 onChange={e=> onChange(e)} placeholder="Enter your title:" required/>
                 </div>
 
-                <div for="department_evaluator">Name of Evaluator:
+                <div for="department_evaluator">Department of Evaluator:
                 <input type="text" name="department_evaluator" value={formData.department_evaluator} 
                 onChange={e=> onChange(e)} placeholder="Enter your department:" required/>
                 </div>

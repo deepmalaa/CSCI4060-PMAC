@@ -8,6 +8,7 @@
   background-color: #f7f7f7;
   border-radius: 5px;
   box-shadow: 0px 0px 10px #ccc;
+  border: 1px solid black;
 }
 
 /* Style for the headings */
@@ -30,12 +31,19 @@
 .profile th {
   text-align: center;
   font-weight: bold;
-  color: #444;
+  color: white;
+  background-color: #840029;
 }
 
 /* Style for the table rows */
 .profile td {
   padding: 10px;
+  border: 1px solid grey;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 50%;
 }
 
 /* Style for the table */
@@ -45,9 +53,13 @@
   width: 100%;
 }
 
+.profile tr{
+  background-color: lightgrey;
+}
+
 /* Style for the table rows */
 .profile tr:nth-child(even) {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 /* Style for the honours and experience tables */
@@ -99,7 +111,7 @@
 }
 
 .profile {
-  max-width: 800px;
+  max-width: 60%;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -147,4 +159,163 @@ td {
 .btn-light {
   background-color: #f1f1f1;
   color: black;
+}
+
+.form {
+  margin: 20px auto;
+  padding: 20px; 
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 60%;
+  height: 1450px;
+}
+
+.entire{
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}
+
+.left{
+  float: left;
+  margin-right: 5%;
+  width: 28%;
+}
+
+.left1{
+  float: left;
+  margin-right: 5%;
+  width: 19.7%;
+}
+
+.left2{
+  float: left;
+  margin-right: 5%;
+  width: 61%;
+}
+
+.left3{
+  float: left;
+  margin-right: 5%;
+  width: 28%;
+}
+
+.clear{
+  clear: both;
+}
+
+.scores{
+  clear: both;
+
+  width: 94%;
+}
+
+.date{
+  text-align: center;
+  float: left;
+  margin-right: 4%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 45%;
+  line-height: 42px;
+  font-size: 15px;
+  color: white;
+  border: 1px solid black;
+  background-color:#840029;
+  border-radius: 5px;
+}
+
+.date1{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 45%;
+  line-height: 42px;;
+  color: white;
+  border: 1px solid black;
+  background-color:#840029;
+  border-radius: 5px;
+}
+
+.firstArea{
+  position: relative;
+  top: 10px;
+}
+
+.secondArea{
+  position: relative;
+  top: 70px;
+}
+
+.thirdArea{
+  position: relative;
+  top: 140px;
+}
+
+.fourthArea{
+  position: relative;
+  top: 210px;
+}
+
+.fifthArea{
+  position: relative;
+  top: 70px;
+}
+
+.lastArea{
+  position: relative;
+  top: 235px;
+}
+
+.thinLine{
+  position: relative;
+  bottom: 30px;
+  width: 100%;
+  height: 2px; 
+  background-color: lightgray;
+}
+
+.description{
+  width: 50%;
+}
+
+.topHeader{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nameUnderline{
+  color: blue;
+  text-decoration: underline;
+}
+
+.subTitle1 {
+  position: relative;
+  top: 10px;
+  padding: 25px;
+  font-size: 30px;
+  width: 40%;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #840029;
+  height: 100%;
+  color: white;
+  border-radius: 15px;
+}
+
+.subTitle2 {
+  position: relative;
+  top: 10px;
+  padding: 25px;
+  font-size: 18px;
+  width: 100%;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #840029;
+  height: 100%;
+  color: white;
+  border-radius: 15px;
 }

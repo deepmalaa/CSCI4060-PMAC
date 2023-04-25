@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import Sidebar from '../components/layout/Sidebar';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { getCurrentProfile } from '../actions/profile';
+import { getProfileById } from '../actions/profile';
+import {loadUser} from '../actions/auth';
+import { Link, useParams } from 'react-router-dom';
 
-const InterviewEvaluation = ({
-  getCurrentProfile,
-  auth: { user },
-  profile: { profile },
-}) => {
-  useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
 
+
+const InterviewEvaluation = ({ getProfileById, auth: {user}, profile: {profile},}) => {
+  const {userid} = useParams();
+
+  useEffect(() => {getProfileById(userid)},[getProfileById, userid]);
+  
   const [interviewEvaluation, setInterviewEvaluation] = useState('');
   const [file, setFile] = useState(null);
 
@@ -44,16 +44,23 @@ const InterviewEvaluation = ({
     }
   };
 
+  if(profile) {
   return (
     <>
       <div className="container">
         <Sidebar role="committe" />
-        <h1>Evaluation for </h1>
+        <h1>Evaluation for {profile.fname} {profile.mname} {profile.lname}</h1> 
+        <div>
+          <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
+          <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
+          <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
+          <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
+        </div>
       </div>
       <div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="interviewEvaluation">Interview Evaluation</label>
+            <label htmlFor="interviewEvaluation"></label>
             <ReactQuill
               style={{ height: '400px'}}
               className="personal-statement-input"
@@ -72,7 +79,7 @@ const InterviewEvaluation = ({
             
           </div>
           <div className="form-group">
-            <label htmlFor="file">Upload File</label>
+            <label htmlFor="file" style={{backgroundColor:'lightGrey'}}>Upload File</label>
             {file && (
               <div>
                 <span>{file.name}</span>
@@ -90,10 +97,11 @@ const InterviewEvaluation = ({
       </div>
     </>
   );
+  }
 };
 
 InterviewEvaluation.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getProfileById: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -103,6 +111,11 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(
+export default connect(mapStateToProps, { getProfileById, loadUser })(
   InterviewEvaluation
 );
+
+
+
+
+

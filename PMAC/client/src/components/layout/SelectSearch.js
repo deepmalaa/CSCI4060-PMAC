@@ -57,40 +57,38 @@ const SelectSearch = ({
           </tr>
         </thead>
         <tbody>
-          {profiles
-            .filter((item) => {
-              return (
-                searchFname.toLowerCase() === '' &&
-                searchLname.toLowerCase() === ''
-              )
-                ? item
-                : item.fname
-                    .toLowerCase()
-                    .includes(searchFname.toLowerCase()) &&
-                  item.lname.toLowerCase().includes(searchLname.toLowerCase());
-            })
-            .map((item, index) => (
-              <tr
-                key={index}
-                onMouseOver={(event) => handleMouseOver(event, index)}
-                className={
-                index === selectedContactIndex ? 'selected-row' : ''}>
-                <td onClick={(event) => handleClick(event, index)}>
+        {profiles
+          .filter((item) => {
+            return (
+              searchFname.toLowerCase() === '' &&
+              searchLname.toLowerCase() === ''
+            )
+              ? item
+              : item.fname
+                  .toLowerCase()
+                  .includes(searchFname.toLowerCase()) &&
+                item.lname.toLowerCase().includes(searchLname.toLowerCase());
+          })
+          .map((item, index) => (
+            <tr
+              key={item._id}
+              onMouseOver={(event) => handleMouseOver(event, index)}
+              className={
+              index === selectedContactIndex ? 'selected-row' : ''}>
+              <td onClick={(event) => handleClick(event, index)}>
                 {item.fname}
               </td>
-                <td>{item.lname}</td>
-                <td>{item.cwid}</td>
-                <td>
+              <td>{item.lname}</td>
+              <td>{item.cwid}</td>
+              <td>
+                
                 {/* Add the button that will redirect to the user's personal statement page */}
-                <button
-                onClick={() => {
-                  window.location.href = `/InterviewEvaluation`; //${item.cwid}
-                }}>
-                Evaluate
-              </button>
-            </td>
-          </tr>
-        ))}
+                <button onClick={() => {window.location.href = `/InterviewEvaluation/${item._id}`;}}>
+                  Evaluate
+                </button>
+              </td>
+            </tr>
+          ))}
     </tbody>
   </table>
 </div>

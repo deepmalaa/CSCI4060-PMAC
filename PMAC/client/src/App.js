@@ -112,7 +112,6 @@ const App = () => {
         <Route path="/ViewFacultyRecommendation/:userid" element={<ViewFacultyRecommendation/>} />
         <Route path="/statusPage" element={<StatusPage/>} />
         <Route path="/EvaluationSelectUser" element={<EvaluationSelectUser/>} />
-        <Route path="/InterviewEvaluation" element={<InterviewEvaluation/>} />
 
         <Route path="/dashboardCommittee" element={<PrivateRoute component ={CommitteeMemberLanding} />} />
         
@@ -136,6 +135,7 @@ const App = () => {
         {/*<Route path="/statusBar" element={<PrivateRoute component ={StatusBar} />} />*/}
 
         <Route path="/:userid" element={<StudentProfile/>} />
+        <Route path="/InterviewEvaluation/:userid" element={<InterviewEvaluation/>} />
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />

@@ -44,10 +44,31 @@ const StudentLanding = ({
             </div>
 
             <div className={s.picture}>
-                <img src={student} alt="file submit"/>
-                <div className={s.goldBars}> </div>
+                <img src={student} alt="file submit" className ={"pic"}/>
+                
             </div>
 
+            {/* Text content for Picture*/}
+            <div className={s.floating}> 
+            
+            S T U D E N T S 
+          
+            <div className={s.textBoxCenter}>
+                A PRE - MEDICAL RESOURCE
+                <br/>
+                <br/>
+                <hr/>
+            </div>
+            <br/>
+            <div className={s.textBoxCenter2}>
+                A resource for students who want to take their career to the next step.<br/>
+                A place for students to evaluate and test their skills.
+            </div>
+
+
+            </div>
+
+            <div className={s.goldBars}> </div>
             <div className={s.contentBox}>
                 <div className={s.textTitle}>
                     Applicant Page

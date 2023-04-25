@@ -36,6 +36,107 @@
     font-size: 18px;
 }
 
+.picture {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 75vh;
+    background-color: black;
+    
+}
+.floating {
+    position: absolute;
+    max-width: 100%; /* Set the maximum width to 100% of the parent container */
+    max-height: 100%;
+    top: 25vh;
+    left: 50vh;
+    margin-left: auto;
+    margin-right: auto;   
+    z-index: 1;
+    color: white;
+    text-align: center;
+    opacity: 1;
+
+    font-family:'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 60px;
+    line-height: 58px;
+}
+
+.picture::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(2, 2, 2, 0.4); /* Adjust the color and opacity as desired */
+
+}
+.pic {
+    
+     /* or any other desired width */
+     max-width: 100%; /* Set the maximum width to 100% of the parent container */
+     max-height: 100%; /* Set the height to 50% of the viewport height */
+     /*filter: blur(8px);
+     -webkit-filter: blur(4px);*/
+     object-fit: contain;
+}
+.textBoxCenter {
+    text-align: center;
+    position: relative;
+    top: 0px;
+    
+    margin-left: auto;
+    margin-right: auto;    
+    width: 1165px;
+    
+    vertical-align: middle;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 26px;
+    max-width: 800px;
+    
+    color: white;
+}
+
+.textBoxCenter2 {
+text-align: center;
+position: relative;
+top: 0px;
+
+margin-left: auto;
+margin-right: auto;    
+width: 1165px;
+
+vertical-align: middle;
+font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 26px;
+max-width: 600px;
+
+color: white;
+}
+
+.textBoxCenter hr {
+width: 200px;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+
+
 .goldBars {
     width: 100%;
     max-width: 100%;

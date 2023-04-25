@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
-import building from '../img/MedicalBuilding.jpg';
+import building from '../img/HomePage/brassEagle.jpg';
 import s from '../styles/ChairLanding.module.css';
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import StudentProfile from '../components/layout/StudentProfile';
+import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 
 const popover = (
   <Popover id="popover-basic">
@@ -46,16 +47,39 @@ const ChairLanding = ({
                 </div>
             <div className={s.goldBars}> </div>
         </div>
+
         <div className={s.picture}>
-                <img src={building} alt="building picture"/>
-                <div className={s.goldBars}> </div>
+                <img src={building} alt="building picture" className={"pic"}/>
+                
         </div>
       
-      </div>
+      {/* Text content for Picture*/}
+      <div className={s.floating}> 
+            
+            C H A I R 
+          
+            <div className={s.textBoxCenter}>
+                A PRE - MEDICAL RESOURCE
+                <br/>
+                <br/>
+                <hr/>
+            </div>
+            <br/>
+            <div className={s.textBoxCenter2}>
+            A tool to simplify your work, so you can concentrate on what matters most...<br/>
+                Changing your students' lives daily.
+            </div>
 
-      <div className={s.contentBoxW}>
+
+            </div>
+
+
+        <div className={s.goldBars}> </div>
+
+
+        <div className={s.contentBoxW}>
         <div className={s.textTitle}>
-            Admin Page for ULM PMAC
+            Chair Page for ULM PMAC
 
         </div>
 
@@ -66,16 +90,49 @@ const ChairLanding = ({
           and more. The admin page allows the ULM PMAC system to be easily managed, ensuring smooth and 
           efficient system operation.
         </div>
-        <StudentProfile/>
-        <div className={s.websiteStatus}>
-          <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-          <Button variant="success">Quick Check</Button>
-          </OverlayTrigger>
-        </div>
 
-        <div className={s.foot}>
-            <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
-        </div>
+      </div>
+
+      <div className={s.contentBox}>
+
+              <div className={s.grayLeft}>
+                <div className={s.textTitle1}>What can I do?</div>
+                
+                <div className={s.textBox1}>
+                  <b>1.</b> Be sure to schedule the times you are available for a student's interview. 
+                  Navigate to your sidebar and click on 'Scheduling Calendar'. Follow the instructions,
+                  and this will allow the Committee Chair to start scheduling you for interviews.
+                </div>
+
+                <div className={s.textBox1}>
+                  <b>2.</b> You can review student's submitted applications by navigating to your sidebar
+                  and clicking on 'Review Applications'.
+                </div>
+
+                <div className={s.textBox1}>
+                  <b>3.</b> You can submit your evaluation for student's that have completed their interviews.
+                  Navigate to your sidebar and click on 'Interview Evaluation'
+                </div>
+
+              </div>
+
+              <div className={s.grayRight}>
+                <span>Links</span>
+                <ul>
+                    <li><a href="https://www.ulm.edu/" target="_blank">ULM</a></li>
+                    <li><a href="https://outlook.office.com/mail/" target="_blank">Outlook</a></li>
+                    <li><a href="/EvaluationSelectUser">Evaluate Student Interview</a></li>
+                </ul>
+              </div>
+
+            </div>
+            {/* break */}
+
+            
+
+                
+            
+
 
       </div>
     </>

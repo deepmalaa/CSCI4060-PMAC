@@ -173,6 +173,7 @@ const ApplicationForm = ({
                 size = "10"
                 pattern="[0-9]*"
                 value={formData.cwid}
+                placeholder="3013013011"
                 onChange={e=> onChange(e)}
                 title="Please only enter numbers for CWID"
                 />
@@ -188,6 +189,7 @@ const ApplicationForm = ({
                 name="address"
                 size = "50"
                 value={formData.address}
+                placeholder="3425 Stone Street, Apt. 2A, Jacksonville, FL 39404"
                 onChange={e=> onChange(e)}
                 required/>
             </div>
@@ -204,6 +206,7 @@ const ApplicationForm = ({
                 name="cell"
                 size = "50"
                 value={formData.cell}
+                placeholder="318-123-1234"
                 onChange={e=> onChange(e)}
                 title="Example number: 318-123-1234"
                 required/>
@@ -274,6 +277,7 @@ const ApplicationForm = ({
                 name="gpa"
                 size = "50"
                 value={formData.gpa}
+                placeholder="3.75"
                 pattern="[0-9]*.[0-9]*"
                 onChange={e=> onChange(e)}
                 title="Please enter GPA on a four point scale 4.00"

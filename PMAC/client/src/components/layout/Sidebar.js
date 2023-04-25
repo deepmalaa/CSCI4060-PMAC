@@ -90,12 +90,6 @@ const Sidebar = ({ children, role }) => {
             roles: ['admin']
           },
           {
-            path: "/SearchApplications",
-            name: "Search Applications",
-            icon: <FaClipboardList />,
-            roles: ['admin']
-          },
-          {
             path:"/schedule",
             name:"Find Meetings",
             icon:<FaCalendarAlt />,

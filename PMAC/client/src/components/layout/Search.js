@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import s from '../../styles/StudentProfile.module.css';
 
 
 const Search = ({
@@ -77,7 +78,7 @@ const Search = ({
                 <tr key={index}>
                 
         
-                  <td><Link to={`/${item._id}`}>{item.fname}</Link></td>
+                  <td className={s.nameUnderline}><Link to={`/${item._id}`}>{item.fname}</Link></td>
                   <td>{item.lname}</td>
                   <td>{item.ulm_email}</td>
                   <td>{item.cwid}</td>

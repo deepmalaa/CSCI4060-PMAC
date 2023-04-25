@@ -3,6 +3,7 @@ import { Link, useMatch, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile, saveProfile } from '../actions/profile';
+import { requestFacultyForms } from '../actions/facultyForm';
 import s from '../styles/ApplicantInformation.module.css';
 import moment from "moment";
 import Sidebar from '../components/layout/Sidebar';
@@ -41,7 +42,8 @@ const ApplicationForm = ({
   profile: { profile, loading },
   createProfile,
   getCurrentProfile,
-  saveProfile
+  saveProfile,
+  requestFacultyForms
 }) => {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -75,7 +77,10 @@ const ApplicationForm = ({
     e.preventDefault();
     createProfile(formData, editing).then(() => {
       //if (!editing) navigate('/clubExperience');
+      requestFacultyForms(profile.user)
+      console.log(profile.user)
     });
+    requestFacultyForms(profile.user)
   };
 
 
@@ -527,12 +532,11 @@ const ApplicationForm = ({
         <div className={s.clear}> </div>
 
           <div className={s.fac}>
-            <label htmlFor="facultyEval">Name / Title/ Department<br></br></label> 
+            <label htmlFor="facultyEval">Faculty Email<br></br></label> 
             <textarea
               type="text"
               id="facultyEval"
               name="facultyEval"
-              size = "500"
               value={formData.facultyEval}
               onChange={e=> onChange(e)}
               /> 
@@ -587,13 +591,14 @@ ApplicationForm.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  saveProfile: PropTypes.object.isRequired
+  saveProfile: PropTypes.object.isRequired,
+  requestFacultyForms: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile , saveProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile , saveProfile, requestFacultyForms })(
   ApplicationForm
 );

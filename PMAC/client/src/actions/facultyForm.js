@@ -59,3 +59,26 @@ export const getFacultyForms = (id) => async (dispatch) => {
       });
     }
   };
+
+  //request recommendation
+
+  export const requestFacultyForms = (id) => async (dispatch) => {
+
+    try {
+      const res = await axios.get(`/api/faculty/request/${id}`);
+      dispatch({
+        type: GET_F_FORM,
+        payload: res.data
+      });
+  
+      console.log("hi")
+      return res.data;
+
+    } catch (err) {
+      console.log("bye")
+      dispatch({
+        type: GET_F_FORM,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };

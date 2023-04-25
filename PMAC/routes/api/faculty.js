@@ -4,7 +4,11 @@ const auth = require('../../middleware/auth');
 const {check, validationResult} = require('express-validator');
 const FacultyForm = require('../../models/FacultyForm');
 const checkObjectId = require('../../middleware/checkObjectId');
-
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const User = require('../../models/User');
+const Profile = require('../../models/Profile');
+const config = require('config');
 
 router.post('/',  [
     check('name_applicant', 'Applicant is required').not().isEmpty(),
@@ -67,7 +71,7 @@ catch(err){
 
 });
 
-
+//get recommendation forms by id
 router.get('/:id',
 checkObjectId('id'), 
  async ({ params: { id } }, res) => {
@@ -83,10 +87,51 @@ checkObjectId('id'),
     }
   });
 
-  router.get('/:id/:token', async (req, res) => {
+
+  //request recommendation
+  router.get('/request/:id', checkObjectId('id'), 
+  async ({ params: { id } }, res) => {
     try {
-      const form = await FacultyForm.findOne().populate('user', ['fname', 'lname']);
-      res.json(form);
+
+      const user1 = await User.findOne({ _id: id }).populate('name', 'email');
+      const profile = await Profile.findOne({ user: id }).populate('facultyEval');
+    
+
+    
+    const newToken = jwt.sign(
+        {user: {
+          id: id,
+      }},
+        config.get('jwtSecret'),
+        { expiresIn: 360000 },
+        );
+
+        const transporter = nodemailer.createTransport({
+          host: 'smtp.ethereal.email',
+          port: 587,
+          auth: {
+              user: 'edgardo85@ethereal.email',
+              pass: 'JJyFSKbxmE4QAtQsCq'
+          }
+      });
+
+      const url = `http://localhost:3000/FacultyAdvisoryForm/${newToken}`;
+
+            var mailOptions = {
+                from: 'smtp.ethereal.email',
+                to: profile.facultyEval, // list of receivers
+                subject: "Recommendation Letter", // Subject line
+                // text: "Hello world?", // plain text body
+                html: `Student ${user1.name} has requested a recommendation letter from you. Please go to the link to submit. <a href="${url}">${url}</a>`, // html body
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  res.status(250).send("email sent");
+                }});
+      
       
     } catch (err) {
       console.error(err.message);

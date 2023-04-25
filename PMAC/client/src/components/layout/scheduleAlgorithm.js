@@ -282,8 +282,12 @@ const ScheduleAlg = ({
       popup.style.left = info.el.getBoundingClientRect().left + "px";
       popup.style.top = (info.el.getBoundingClientRect().top + window.scrollY + 25) + "px";
       popup.style.textAlign = "left";
-      //popup.style.overflow = "scroll";
       popup.style.maxWidth = "300px";
+      popup.style.boxShadow = "0px 2px 6px rgba(0, 0, 0, 0.3)";
+      popup.style.fontFamily = "Arial, sans-serif";
+      popup.style.fontSize = "17px";
+      popup.style.backgroundColor = "#f2f2f2";
+      //popup.style.fontWeight = "540"
 
       // Append the pop-up box to the body
       document.body.appendChild(popup);

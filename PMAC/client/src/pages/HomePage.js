@@ -1,10 +1,10 @@
 import React from 'react';
 import s from '../styles/HomePage.module.css';
-//import campus from '../img/HomePage/campus.jpg';
 import whiteFile from '../img/HomePage/fileSymbolWhite.png';
 import profile from '../img/HomePage/Profile.png';
 
-import campus from '../img/HomePage/Best.jpg';
+//import campus from '../img/HomePage/Best.jpg';
+import campus from '../img/HomePage/Fire.jpg';
 
 import bottomBanner from '../img/HomePage/library.jpg';
 import Sidebar from '../components/layout/Sidebar';
@@ -42,14 +42,37 @@ function FormOne({isAuthenticated}) {
                             <li><a href="/ContactPage">Contact</a></li>
                         </ul>
                     </div>
-                <div className={s.goldBars}> </div>
+                
             </div>
+            <div className={s.goldBars}> </div>
             <div className={s.picture}>
+            
                 <img src={campus} alt="campus picture" className={s.pic}/>
-                <div className={s.goldBars}> </div>
+                
                 <Sidebar role="guest" />
             </div>
+
+            {/* Text content for Picture*/}
+            <div className={s.floating}> 
             
+            P M A C
+          
+            <div className={s.textBoxCenter}>
+                WHERE YOUR JOURNEY BEGINS
+                <br/>
+                <br/>
+                <hr/>
+            </div>
+            <br/>
+            <div className={s.textBoxCenter2}>
+                A resource for students who want to take their career to the next step.<br/>
+                A place for students to evaluate and test their skills.
+            </div>
+
+
+            </div>
+
+            <div className={s.goldBars}> </div>
             <div className={s.contentBoxW}>
                 <div className={s.textTitle}>
                     Our Purpose

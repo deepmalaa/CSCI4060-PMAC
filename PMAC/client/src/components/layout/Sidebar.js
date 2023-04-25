@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import jwt from 'jwt-decode';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+
 import {
     FaTh,
     FaWpforms,
@@ -14,14 +19,30 @@ import {
     FaRegSun,
     FaCalendarAlt,
     FaUserGraduate
-}from "react-icons/fa";
+}
+from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'
 import '../../styles/Sidebar.css'
 
-const Sidebar = ({ children, role }) => {
+const Sidebar = ({isAuthenticated}) => {
+  console.log("Authenticated? " + isAuthenticated)
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    var role = "guest";
+
+
+    if(isAuthenticated){
+      const user = jwt(localStorage.token);
+      console.log(user.role);
+      if(user.user.role === "Student")
+        role = "student";
+      if(user.user.role === "Committee")
+        role = "committee";
+      if(user.user.role === "admin")
+        role = "admin";
+    }
+    
 
     const menuItem = [
           {
@@ -106,25 +127,25 @@ const Sidebar = ({ children, role }) => {
             path: "/dashboardCommittee",
             name: "Home",
             icon: <FaHouseUser />,
-            roles: ['committe']
+            roles: ['committee']
           },
           {
-            path: "/reviewApplications",
+            path: "/manageApplications",
             name: "Review Applications",
             icon: <FaClipboardList />,
-            roles: ['committe']
+            roles: ['committee']
           },
           {
             path: "/CommitteeCalendar",
             name: "Scheduling Calendar",
             icon: <FaCalendarAlt />,
-            roles: ['committe']
+            roles: ['committee']
           },
           {
             path: "/EvaluationSelectUser",
             name: "Interview Evaluation",
             icon: <FaCalendarAlt />,
-            roles: ['committe']
+            roles: ['committee']
           },
           {
             path: "/FacultyLetter",
@@ -178,9 +199,19 @@ const Sidebar = ({ children, role }) => {
                     ))
                 }
             </div>
-            <main className="main">{children}</main>
+            <main className="main"></main>
         </div>
     );
 };
 
-export default Sidebar;
+
+Sidebar.propTypes = {
+
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(Sidebar); 

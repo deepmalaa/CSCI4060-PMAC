@@ -21,7 +21,9 @@ const ScheduleAlg = ({
     getAllProfile, 
     profile: { profiles }, 
     getAllSchemas,
-    getUserData
+    getUserData,
+    getSearchProfile
+   
 
 }) => {
     const [schemas, setSchemas] = useState([]);
@@ -34,6 +36,7 @@ const ScheduleAlg = ({
       getAllProfile();
       getAllSchemas().then(data => setSchemas(data));
       getUserData().then(data => setUserInfo(data));
+      getSearchProfile();
       
     }, []);
 
@@ -57,7 +60,9 @@ const ScheduleAlg = ({
 
         // Stores scheduled events based on user type
         var student = [];
+        var studNames = "";
         var committee = [];
+        var comNames = "";
         var admin = [];
         //var events = [];
         // Stores data of time slot for meeting
@@ -93,7 +98,7 @@ const ScheduleAlg = ({
             const eventEndTime = new Date(admin[j].end);
             const timeSlotDuration = 90; // minutes
             var timeSlotStart = eventStartTime;
-            console.log("TimeSlotStart: " + timeSlotStart.getTime())
+            
             
             // Loops through all potential time slots of event
             
@@ -117,8 +122,7 @@ const ScheduleAlg = ({
                     comitEnd.setMonth(eventEndTime.getMonth());
                     comitEnd.setDate(eventEndTime.getDate());
                     //const comitStartTime = 
-                    console.log("TEST: " + comitStart)
-                    console.log("TEST2: " + timeSlotStart)
+                    
 
 
 
@@ -146,7 +150,7 @@ const ScheduleAlg = ({
                         var studEnd = new Date(student[x].end);
                         studEnd.setMonth(eventEndTime.getMonth());
                         studEnd.setDate(eventEndTime.getDate());
-                        console.log("Student: " + studStart)
+                        
 
                         // Checks if time slot fits student availability
                         if(studStart <= timeSlotStart && studEnd >= timeSlotEnd) {
@@ -157,9 +161,34 @@ const ScheduleAlg = ({
 
                     if(availableStudents.length > 0) {
 
-                        const dateT = {"title": "", "start": "", "end": "", "daysOfWeek": "", "startTime": "", "endTime":""};
+                        const dateT =  {"title": "", "start": "", "end": "", "daysOfWeek": "", "startTime": "", "endTime":"", "extendedProps": {
+                          "names": ""}};
                         // Need to match ids with names and send them via title
-                        dateT.title = "A";
+                        dateT.title = "Meeting";
+                        
+                        dateT.extendedProps.names = "Committee: ";
+                        console.log("\r\n\r\nSTUDENTS")
+                        console.log(availableStudents)
+                        for (var i = 0; i < availableCommittee.length; i++)
+                        {
+                          
+                          var comName = userInfo.find(user => user._id === availableCommittee[i].user);
+                          
+                          dateT.extendedProps.names += comName.name;
+                          if(i < availableCommittee.length - 1)
+                          dateT.extendedProps.names += ", ";
+                        } 
+
+                        dateT.extendedProps.names += "\nStudents: ";
+                        for (var i = 0; i < availableStudents.length; i++)
+                        {
+                          var stuName = userInfo.find(user => user._id === availableStudents[i].user);
+                          
+                          dateT.extendedProps.names += stuName.name;
+                          if(i < availableStudents.length - 1)
+                          dateT.extendedProps.names += ", ";
+                        } 
+                        
                         dateT.start = timeSlotStart;
                         dateT.end = timeSlotEnd;
 
@@ -200,7 +229,9 @@ const ScheduleAlg = ({
     }   
     
    console.log(events);
-    
+ 
+
+
    return (
     <>
       {loading ? (
@@ -232,6 +263,51 @@ const ScheduleAlg = ({
                   slotMinTime="08:00:00"
                   slotMaxTime="18:00:00"
                   eventLimit = {1}
+
+                  eventDidMount={(info) => {
+    const handleMouseEnter = () => {
+      // Create a div element for the pop-up box
+      
+      const popup = document.createElement("div");
+      popup.className = "popup";
+      popup.style.whiteSpace = "pre-line";
+      popup.textContent = info.event.extendedProps.names;
+      popup.style.position = "absolute";
+      //popup.style.left = "1000px";
+      popup.style.zIndex = 100;
+      //popup.style.display = "inline-block";
+      popup.style.backgroundColor = "white";
+      popup.style.padding = "5px";
+      popup.style.border = "1px solid black";
+      popup.style.left = info.el.getBoundingClientRect().left + "px";
+      popup.style.top = (info.el.getBoundingClientRect().top + window.scrollY + 25) + "px";
+      popup.style.textAlign = "left";
+      //popup.style.overflow = "scroll";
+      popup.style.maxWidth = "300px";
+
+      // Append the pop-up box to the body
+      document.body.appendChild(popup);
+    };
+
+    const handleMouseLeave = () => {
+      // Remove the pop-up box from the body
+      const popup = document.querySelector(".popup");
+      if (popup) {
+        document.body.removeChild(popup);
+      }
+    };
+
+    // Add event listeners for mouseenter and mouseleave
+    info.el.addEventListener("mouseenter", handleMouseEnter);
+    info.el.addEventListener("mouseleave", handleMouseLeave);
+    //info.el.addEventListener("click", handleMouseEnter);
+
+    // Return a cleanup function to remove the event listeners when the event is removed
+    return () => {
+      info.el.removeEventListener("mouseenter", handleMouseEnter);
+      info.el.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }}
                   
                   eventRender={(info) => {
                       const handleMouseEnter = () => {
@@ -242,6 +318,7 @@ const ScheduleAlg = ({
                       };
                       info.el.addEventListener("mouseenter", handleMouseEnter);
                       info.el.addEventListener("mouseleave", handleMouseLeave);
+                      
                     }}
                   
               />
@@ -260,7 +337,8 @@ const ScheduleAlg = ({
         profile: PropTypes.object.isRequired,
         getAllProfile: PropTypes.func.isRequired,
         getAllSchemas: PropTypes.func.isRequired,
-        getUserData: PropTypes.func.isRequired
+        getUserData: PropTypes.func.isRequired,
+        getSearchProfile: PropTypes.func.isRequired,
       };
       
       const mapStateToProps = (state) => ({
@@ -269,6 +347,6 @@ const ScheduleAlg = ({
         
       });
       
-      export default connect(mapStateToProps, { getAllProfile, getAllSchemas, getUserData})(
+      export default connect(mapStateToProps, { getAllProfile, getAllSchemas, getUserData, getSearchProfile})(
         ScheduleAlg
       );

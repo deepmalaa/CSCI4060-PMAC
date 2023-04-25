@@ -6,6 +6,8 @@ import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
 import SearchApplication from '../components/layout/Search';
 
+import s from '../styles/StudentProfile.module.css';
+
 const ManageApplications = ({
   getCurrentProfile,
   auth: { user },
@@ -19,7 +21,9 @@ const ManageApplications = ({
     <><div >
       <Sidebar role="admin" />
       
-      <h1 style={{ color: 'red', fontSize: '36px', textAlign: 'center' }}>Search For a Student's Completed Application</h1>
+      <div className={s.subTitle1}>Search For a Student's Completed Application <div className={s.subTitle2}>To go to a Student's Application, click on their First Name</div></div>
+
+      
         <SearchApplication />
       </div>
     </>

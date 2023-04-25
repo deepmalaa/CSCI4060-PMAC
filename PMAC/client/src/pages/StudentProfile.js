@@ -92,135 +92,252 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
    if(user && user.type !== "Student"){
     return(
     
-    <div className={s.profile}>
-      <h2 style={{marinBottom:'25px'}}>Application Information</h2>
+    <div className={s.entire}>
+      <h2 className={s.topHeader}>Application Information</h2>
       <Sidebar role ="admin"/>
-      <p>Application Submitted Date: {new Date(profile.date).toLocaleString()}</p>
-      <p>First Name: {profile.fname}</p>
-      <p>Middle Name: {profile.mname}</p>
-      <p>Last Name: {profile.lname}</p>
-      <p>Email: {profile.email}</p>
-      <p>Phone: {profile.cell}</p>
-      <p>Address: {profile.address}</p>
-      <p>CWID: {profile.cwid}</p>
-      <p>Cell Phone: {profile.phone}</p>
-      <p>ULM E-mail Address: {profile.ulm_email}</p>
-      <p>Alternate email: {profile.alt_email}</p>
-      <p>Major: {profile.major}</p>
-      <p>Minor: {profile.minor}</p>
-      <p>Date of Expected Graduation from ULM: {new Date(profile.grad_date).toLocaleString()}</p>
-      <p>Overall Collegiate GPA: {profile.gpa}</p>
-      <p>Date of Proposed Entrance to Professional School: {new Date(profile.entrance_date).toLocaleString()}</p>
-      <p>Score of your most recent professional entry exam (MCAT, DAT, OAT, GRE): </p>
-      <p>Date of exam taken or expected date of exam: {new Date(profile.exam_date).toLocaleString()}</p>
-      <p>Type of School Application will be sent: {profile.schoolType}</p>
-      <p>AMCAS Letter ID:{profile.amcas_id}</p>
-      <p>AAMC ID#:{profile.aamc_id}</p>
-      <p>AACOMAS CAS#:{profile.aacomas_id}</p>
-      <p>CASPA CAS#:{profile.caspa_id}</p>
-      <p>AADSAS ID#:{profile.aadsas_id}</p>
-      <br />
-      <h2>Honors</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {honors}
-        </tbody>
-      </table>
-      <br />
+      <div className={s.date1}><b>Application Submitted Date: </b> {new Date(profile.date).toLocaleString()}</div>
+      <form className={s.form}>
+        <div className={s.firstArea}>
+          <div className={s.left}>
+            <label>First Name: </label>
+            <input type="text" value={profile.fname} />
+          </div>
 
-      <h2>Work Experience</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {experiences}
-        </tbody>
-      </table>
-      <br />
+          <div className={s.left}>
+            <label>Middle Name: </label>
+            <input type="text" value={profile.mname} />
+          </div>
 
-      <h2>Club Experience</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {club_experiences}
-        </tbody>
-      </table>
-      <br />
+          <div className={s.left}>
+            <label>Last Name: </label>
+            <input type="text" value={profile.lname} />
+          </div>
 
-      <h2>Field Experience</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-        {field_experiences}
-        </tbody>
-        </table> 
-        <br />
+          <div className={s.left3}>
+            <label>CWID: </label>
+            <input type="text" value={profile.cwid} />
+          </div>
 
-        <h2>Lab Experience</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-        {lab_experiences}
-        </tbody>
-        </table> 
-        <br />
-        
-        <h2>Volunteer Experience</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Company</th>
-            <th>Years</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-        {volunteer_experiences}
-        </tbody>
-        </table> 
-        <div>
-        <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
-        <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
-        <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
-        <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
+          <div className={s.left2}>
+            <label>Address: </label>
+            <input type="text" value={profile.address} />
+          </div>
+
+          <div className={s.clear}> </div>
+
+          <div className={s.left}>
+            <label>Cell #: </label>
+            <input type="text" value={profile.cell} />
+          </div>
+
+          <div className={s.left}>
+            <label>ULM Email: </label>
+            <input type="text" value={profile.ulm_email} />
+          </div>
+
+          <div className={s.left}>
+            <label>Alt Email: </label>
+            <input type="text" value={profile.alt_email} />
+          </div>
         </div>
 
+        <div className={s.clear}> </div>
+
+        
+
+        <div className={s.secondArea}>
+          <div className={s.thinLine}></div>
+          <div className={s.left}>
+            <label>Major: </label>
+            <input type="text" value={profile.major} />
+          </div>
+
+          <div className={s.left}>
+            <label>Minor: </label>
+            <input type="text" value={profile.minor} />
+          </div>
+
+          <div className={s.left}>
+            <label>GPA: </label>
+            <input type="text" value={profile.gpa} />
+          </div>
+
+          <div className={s.date}><b>Date of Expected Graduation from ULM: </b>{new Date(profile.grad_date).toLocaleString()}</div>
+          <div className={s.date}><b>Date of Proposed Entrance to Professional School: </b> {new Date(profile.entrance_date).toLocaleString()}</div>
+        </div>
+
+
+        <div className={s.clear}> </div>
+
+        <div className={s.thirdArea}>
+          <div className={s.thinLine}></div>
+          <div className={s.left1}>
+            <label>MCAT: </label>
+            <input type="text" value={profile.mcat} />
+          </div>
+
+          <div className={s.left1}>
+            <label>DAT: </label>
+            <input type="text" value={profile.dat} />
+          </div>
+
+          <div className={s.left1}>
+            <label>OAT: </label>
+            <input type="text" value={profile.oat} />
+          </div>
+
+          <div className={s.left1}>
+            <label>GRE: </label>
+            <input type="text" value={profile.gre} />
+          </div>
+
+          <div className={s.scores}>
+            <label>Score Breakdown: </label>
+            <input type="text" value={profile.scoreBreakdown} />
+          </div>
+
+          <div className={s.date1}><b>Date of exam taken or expected date of exam:</b> {new Date(profile.exam_date).toLocaleString()}</div>
+        </div>
+
+        
+
+        <div className={s.fourthArea}>
+          <div className={s.thinLine}></div>
+          <div className={s.scores}>
+            <label>Type of School Apllication will be sent: </label>
+            <input type="text" value={profile.schoolType} />
+          </div>
+
+          <div className={s.left}>
+            <label>AMCAS Letter ID: </label>
+            <input type="text" value={profile.amcas_id} />
+          </div>
+
+          <div className={s.left}>
+            <label>AAMC ID#: </label>
+            <input type="text" value={profile.aamc_id} />
+          </div>
+
+          <div className={s.left}>
+            <label>AACOMAS CAS#: </label>
+            <input type="text" value={profile.aacomas_id} />
+          </div>
+
+          <div className={s.left}>
+            <label>CASPA CAS#: </label>
+            <input type="text" value={profile.caspa_id} />
+          </div>
+
+          <div className={s.left}>
+            <label>AADSAS ID#: </label>
+            <input type="text" value={profile.aadsas_id} />
+          </div>
+        </div> 
+
+      </form>
+      <br />
+      <div className={s.profile}>
+        <h2>Honors</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th className={s.description}>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {honors}
+          </tbody>
+        </table>
+        <br />
+
+        <h2>Work Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {experiences}
+          </tbody>
+        </table>
+        <br />
+
+        <h2>Club Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {club_experiences}
+          </tbody>
+        </table>
+        <br />
+
+        <h2>Field Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+          {field_experiences}
+          </tbody>
+          </table> 
+          <br />
+
+          <h2>Lab Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+          {lab_experiences}
+          </tbody>
+          </table> 
+          <br />
+          
+          <h2>Volunteer Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Company</th>
+              <th>Years</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+          {volunteer_experiences}
+          </tbody>
+          </table> 
+          <div>
+          <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
+          <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
+          <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
+          <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
+          </div>
+        </div>
       </div>
     );}}
   }

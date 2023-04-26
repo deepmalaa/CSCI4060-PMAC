@@ -7,6 +7,7 @@ import { requestFacultyForms } from '../actions/facultyForm';
 import s from '../styles/ApplicantInformation.module.css';
 import moment from "moment";
 import Sidebar from '../components/layout/Sidebar';
+import help from '../img/help.png';
 
 const initialState = {
     fname:"",
@@ -37,6 +38,7 @@ const initialState = {
     facultyEval: '',
     schoolType:''
 };
+
 
 const ApplicationForm = ({
   profile: { profile, loading },
@@ -91,7 +93,7 @@ const ApplicationForm = ({
   };
 
 
-
+  const [isShown, setIsShown] = useState(false);
   
 
   return (
@@ -116,7 +118,45 @@ const ApplicationForm = ({
             <div className={s.goldBars}> </div>
         </div>  
 
-        <div className={s.subTitle}>Applicant Information</div>
+        <button
+            className={s.buttonCust}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+          </button>
+          {isShown && (
+            <div className={s.hoverContent}>
+              <div className={s.hoverHead}> 
+                Help
+              </div>
+              <div className={s.hoverText}>
+                - This page is where you enter all your 
+                information needed for the application and interview process.
+              </div>
+
+              <div className={s.hoverText}>
+                - You'll get a chance to show off your experience on the next few pages. 
+                Be sure these get completed.
+              </div>
+
+              <div className={s.hoverText}>
+                - Be sure to fill out all fields and if you are unsure 
+                about an answer, you can always save and comeback later.
+              </div>
+
+              <div className={s.hoverText}>
+                - If you are still unsure about the application form, locate the Contact Page 
+              </div>
+            </div>
+          )}
+
+
+        <div className={s.subTitle}>Applicant Information
+          
+        </div>
+
+        
+
+        
 
         <form onSubmit={e => onSubmit(e)} className={s.form}>
 

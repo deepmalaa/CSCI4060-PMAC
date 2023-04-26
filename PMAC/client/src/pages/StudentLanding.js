@@ -21,7 +21,7 @@ const StudentLanding = ({
     return (
       
       <>
-        <Sidebar role="student" />
+        <Sidebar />
         <div className = "dashboard ">Welcome {user && user.name}</div>
         <div className = "StudentPage1">    
           

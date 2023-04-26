@@ -107,19 +107,23 @@ checkObjectId('id'),
         );
 
         const transporter = nodemailer.createTransport({
-          host: 'smtp.ethereal.email',
+          host: 'smtp.gmail.com',
+          service:'ethereal',
+          service:'gmail',
+          secure: false,
           port: 587,
           auth: {
-              user: 'edgardo85@ethereal.email',
-              pass: 'JJyFSKbxmE4QAtQsCq'
+              user: 'ulm.pmac.email@gmail.com',
+              pass: 'thhdzpvqemggeovc'
           }
       });
 
       const url = `http://localhost:3000/FacultyAdvisoryForm/${newToken}`;
-
+      console.log(profile.facultyEval)
             var mailOptions = {
-                from: 'smtp.ethereal.email',
+                from: 'ulm.pmac.email@gmail.com',
                 to: profile.facultyEval, // list of receivers
+                
                 subject: "Recommendation Letter", // Subject line
                 // text: "Hello world?", // plain text body
                 html: `Student ${user1.name} has requested a recommendation letter from you. Please go to the link to submit. <a href="${url}">${url}</a>`, // html body

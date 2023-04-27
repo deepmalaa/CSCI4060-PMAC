@@ -7,6 +7,7 @@ import 'react-quill/dist/quill.snow.css';
 import { getProfileById } from '../actions/profile';
 import {loadUser} from '../actions/auth';
 import { Link, useParams } from 'react-router-dom';
+import s from '../styles/ApplicantInformation.module.css';
 
 const InterviewEvaluation = ({ getProfileById, auth: {user}, profile: {profile}, loadUser }) => {
   const {userid} = useParams();
@@ -59,6 +60,18 @@ const InterviewEvaluation = ({ getProfileById, auth: {user}, profile: {profile},
       <>
         <div className="container">
           <Sidebar role="committee" />
+          <div className={s.body}>
+            <div className={s.top}>
+                <div className={s.goldBars}> </div>
+                <div className={s.whiteBar}>
+                    <ul>
+                        <li><a href="/dashboardCommittee">Home</a></li>
+                        <li><a href="/StudentContactPage">Contact</a></li>
+                    </ul>
+                </div>
+                <div className={s.goldBars}> </div>
+            </div>
+           </div>
           <h1>Evaluation for {profile.fname} {profile.mname} {profile.lname}</h1> 
           <div>
             <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
@@ -68,7 +81,7 @@ const InterviewEvaluation = ({ getProfileById, auth: {user}, profile: {profile},
           </div>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={s.form} style={{height: '600px'}}>
             <div className="form-group">
               <label htmlFor="interviewEvaluation"></label>
               <ReactQuill

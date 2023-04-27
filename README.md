@@ -11,3 +11,4 @@
 ## Install for Dropping Forms
 npm link client/node_modules/react
 npm install @material-ui/icons
+npm install @fullcalendar/core @fullcalendar/daygrid

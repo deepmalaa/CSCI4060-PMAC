@@ -21,6 +21,7 @@ import CommitteeMemberLanding from './pages/CommitteeMemberLanding';
 import ChairLanding from './pages/ChairLanding';
 import ManageUsers from './pages/ManageUsers';
 import ManageApplications from './pages/ManageApplications';
+import EvaluationForm from './pages/EvaluationForm';
 import QuestionsPage from './pages/QuestionsPage';
 import CreateAccount from './components/layout/CreateAccount';
 import ContactPage from './pages/ContactPage';
@@ -126,6 +127,7 @@ const App = () => {
         {/* <Route path="/student-profile/:userId" component={StudentProfile} /> */}
         <Route path="/search" element={<PrivateRoute component ={Search} />} />
         <Route path="/manageApplications" element={<ManageApplications/>} />
+        <Route path="EvaluationForm" element={<EvaluationForm/>} />
         <Route path="/reviewApplications" element={<PrivateRoute component ={ReviewApplications} />} />
         <Route path="/SearchApplications" element={<SearchApplication/>} />
         <Route path="/Calendar" element={<PrivateRoute component ={Calendar} />} />

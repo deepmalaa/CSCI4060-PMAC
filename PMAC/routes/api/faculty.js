@@ -9,6 +9,7 @@ const nodemailer = require('nodemailer');
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
 const config = require('config');
+const transporter = require('../../config/transporter');
 
 router.post('/',  [
     check('name_applicant', 'Applicant is required').not().isEmpty(),
@@ -106,19 +107,7 @@ checkObjectId('id'),
         { expiresIn: 360000 },
         );
 
-        const transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          service:'ethereal',
-          service:'gmail',
-          secure: false,
-          port: 587,
-          auth: {
-              user: 'ulm.pmac.email@gmail.com',
-              pass: 'thhdzpvqemggeovc'
-          }
-      });
-
-      const url = `http://localhost:3000/FacultyAdvisoryForm/${newToken}`;
+      const url = `https://ulm-pmac.software/FacultyAdvisoryForm/${newToken}`;
       console.log(profile.facultyEval)
             var mailOptions = {
                 from: 'ulm.pmac.email@gmail.com',

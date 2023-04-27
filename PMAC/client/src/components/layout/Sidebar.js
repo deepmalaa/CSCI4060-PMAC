@@ -137,6 +137,12 @@ const Sidebar = ({isAuthenticated}) => {
             roles: ['committee']
           },
           {
+            path: "/EvaluationForm",
+            name: "Evaluate Applicants",
+            icon: <FaClipboardList />,
+            roles: ['committee']
+          },
+          {
             path: "/CommitteeCalendar",
             name: "Scheduling Calendar",
             icon: <FaCalendarAlt />,

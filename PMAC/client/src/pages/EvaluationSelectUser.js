@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
 import SelectSearch from '../components/layout/SelectSearch';
+import s from '../styles/ApplicantInformation.module.css';
 
 const InterviewEvaluation = ({
   getCurrentProfile,
@@ -41,11 +42,23 @@ const InterviewEvaluation = ({
   return (
     <>
       <Sidebar role="committe" />
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
+      <div className={s.body}>
+        <div className={s.top}>
+            <div className={s.goldBars}> </div>
+            <div className={s.whiteBar}>
+                <ul>
+                    <li><a href="/dashboardCommittee">Home</a></li>
+                    <li><a href="/StudentContactPage">Contact</a></li>
+                </ul>
+            </div>
+            <div className={s.goldBars}> </div>
+        </div>
+    </div>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '10%' }}>
         <h1 style={{ color: 'maroon', fontSize: '36px', textAlign: 'center' }}>
           Search for a Student
         </h1>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className={s.form} style={{height: '700px'}}>
           <SelectSearch
             applicants={applicants
               .filter((item) => {

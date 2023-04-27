@@ -44,6 +44,8 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
         }
       }, [getCurrentProfile, loading]); 
 
+      const [isShown, setIsShown] = useState(false);
+
     const onChange = e =>setFormData({...formData,[e.target.name]:e.target.value});
     const onSubmit = async (e) =>{
         e.preventDefault();
@@ -72,6 +74,28 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
                             </div>
                         <div className={s.goldBars}> </div>
                     </div>
+
+                    <button
+            className={s.buttonCust1}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+          </button>
+          {isShown && (
+            <div className={s.hoverContent1}>
+              <div className={s.hoverHead}> 
+                Help
+              </div>
+              <div className={s.hoverText}>
+                - This page is what allows the Pre-Medical Advisory Committee to have access to your school info.
+              </div>
+
+              <div className={s.hoverText}>
+                - This form should be submitted before anything else is completed. If this form is not submitted,
+                your interview process may be delayed or cancelled.
+              </div>
+
+            </div>
+          )}
                 
                     <div className={s.title}> ULM Pre-Medical Advisory Committee Release Form</div>
                         <div className={s.instructions}>

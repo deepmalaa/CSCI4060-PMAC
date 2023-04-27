@@ -77,6 +77,21 @@ const ProfileSchema = new mongoose.Schema({
     scoreBreakdown:{
         type:String,
     },
+    medicalField1:{
+        type:Boolean,
+    },
+    medicalField2:{
+        type:Boolean,
+    },
+    medicalField3:{
+        type:Boolean,
+    },
+    medicalField4:{
+        type:Boolean,
+    },
+    medicalField5:{
+        type:Boolean,
+    },
     exam_date:{
         type: Date,  
     },

@@ -325,6 +325,7 @@ margin-right: auto;
 /* bottom banner */
 .bottomBanner {
     position: relative;
+    overflow: hidden;
 
 }
 .bottomBanner img{    
@@ -335,6 +336,7 @@ margin-right: auto;
         filter: blur(2px);
     margin: -5px -10px -10px -5px;
     background-color: yellow;
+    transform: scale(1.1)
 }
 .bottomTitle {
     position: absolute;

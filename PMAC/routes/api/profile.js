@@ -48,6 +48,11 @@ router.post('/', [auth, [
   check('gpa', 'Please include a valid gpa').not().isEmpty(),
   check('entrance_date', 'Please include a valid entrance date').not().isEmpty(),
   check('mcat', 'Please include a valid mcat').not().isEmpty(),
+  check('medicalField1', 'Please include a valid field').not().isEmpty(),
+  check('medicalField2', 'Please include a valid field').not().isEmpty(),
+  check('medicalField3', 'Please include a valid field').not().isEmpty(),
+  check('medicalField4', 'Please include a valid field').not().isEmpty(),
+  check('medicalField5', 'Please include a valid field').not().isEmpty(),
   check('dat', 'Please include a valid dat').not().isEmpty(),
   check('oat', 'Please include a valid oat').not().isEmpty(),
   check('gre', 'Please include a valid gre').not().isEmpty(),
@@ -85,6 +90,11 @@ router.post('/', [auth, [
     oat,
     gre,
     scoreBreakdown,
+    medicalField1,
+    medicalField2,
+    medicalField3,
+    medicalField4,
+    medicalField5,
     schoolType,
     exam_date,
     amcas_id,
@@ -119,6 +129,11 @@ router.post('/', [auth, [
   if (oat) profileFields.oat = oat;
   if (gre) profileFields.gre = gre;
   if (scoreBreakdown) profileFields.scoreBreakdown = scoreBreakdown;
+  if (medicalField1) profileFields.medicalField1 = medicalField1;
+  if (medicalField2) profileFields.medicalField2 = medicalField2;
+  if (medicalField3) profileFields.medicalField3 = medicalField3;
+  if (medicalField4) profileFields.medicalField4 = medicalField4;
+  if (medicalField5) profileFields.medicalField5 = medicalField5;
   if (schoolType) profileFields.schoolType = schoolType;
   if (exam_date) profileFields.exam_date = exam_date;
   if (amcas_id) profileFields.amcas_id = amcas_id;

@@ -126,7 +126,7 @@ checkObjectId('id'),
                 
                 subject: "Recommendation Letter", // Subject line
                 // text: "Hello world?", // plain text body
-                html: `Student ${user1.name} has requested a recommendation letter from you. Please go to the link to submit. <a href="${url}">${url}</a>`, // html body
+                html: `Student ${user1.name} has requested a recommendation letter from you. Please go to the link to submit within 5 days. <a href="${url}">${url}</a>`, // html body
             };
 
             transporter.sendMail(mailOptions, function(error, info){

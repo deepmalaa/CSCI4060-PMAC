@@ -44,6 +44,7 @@ const StudentLanding = ({
             </div>
 
             <div className={s.picture}>
+            
                 <img src={student} alt="file submit" className ={"pic"}/>
                 
             </div>
@@ -145,7 +146,7 @@ const StudentLanding = ({
 
             </div>
             <div className={s.contentBox}></div>
-
+            <div className={s.goldBars}> </div>
             <div className={s.bottomBanner}>
             
                 <div className={s.img}>
@@ -170,7 +171,7 @@ const StudentLanding = ({
                 {/* goldBar */}
                 
             </div>
-
+            
             <div className={s.redBar}></div>
 
         </div>

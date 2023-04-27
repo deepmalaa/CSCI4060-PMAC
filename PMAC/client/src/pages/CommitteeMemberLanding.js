@@ -125,7 +125,7 @@ const CommitteeMemberLanding = ({
 
             </div>
             <div className={s.contentBox}></div>
-
+            <div className={s.goldBars}></div>
             <div className={s.bottomBanner}>
             
                 <div className={s.img}>

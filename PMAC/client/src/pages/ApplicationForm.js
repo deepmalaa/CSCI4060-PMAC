@@ -28,6 +28,11 @@ const initialState = {
     oat:"",
     gre:"",
     scoreBreakdown: '',
+    medicalField1: "",
+    medicalField2: "",
+    medicalField3: "",
+    medicalField4: "",
+    medicalField5: "",
     exam_date:"",
     amcas_id:"",
     aacomas_id:"",
@@ -47,8 +52,29 @@ const ApplicationForm = ({
 }) => {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
 
   const navigate = useNavigate();
+
+const handleChange1 = () => {
+  setIsChecked1(!isChecked1);
+};
+const handleChange2 = () => {
+  setIsChecked2(!isChecked2);
+};
+const handleChange3 = () => {
+  setIsChecked3(!isChecked3);
+};
+const handleChange4 = () => {
+  setIsChecked4(!isChecked4);
+};
+const handleChange5 = () => {
+  setIsChecked5(!isChecked5);
+};
 
   useEffect(() => {
     // if there is no profile, attempt to fetch one
@@ -69,10 +95,13 @@ const ApplicationForm = ({
 
   
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    console.log("HIT");
+    console.log(e);
+    setFormData({ ...formData, [e.target.name]: e.target.value });}
 
   const onSubmit = (e) => {
+    console.log(e)
     const editing = profile ? true : false;
     e.preventDefault();
     createProfile(formData, editing).then(() => {
@@ -82,6 +111,7 @@ const ApplicationForm = ({
     });
     requestFacultyForms(profile.user)
   };
+
 
 
   const onSaveData = (e) => {
@@ -424,19 +454,47 @@ const ApplicationForm = ({
             <div className={s.column_left}>
               <div>
                 <label htmlFor="medicalField1">
-                  <input type="checkbox" id="medicalField1" name="medical_field[]" value="Medical Application" onChange={e => onChange(e)} />
+                  <input type="checkbox" 
+                  id="medicalField1"  
+                  name="medicalField1"
+                  value={!isChecked1}
+                  checked={formData.medicalField1 ? true : false}
+                  onChange={e => {
+                    handleChange1();
+                    onChange(e);
+                    
+                    }} />
                   <span>  Medical Application</span>
                 </label>
               </div>
               <div>
                 <label htmlFor="medicalField2">
-                  <input type="checkbox" id="medicalField2" name="medical_field[]" value="Osteopathic Medical Application" onChange={e => onChange(e)} />
+                  <input type="checkbox" 
+                  id="medicalField2"
+                  name="medicalField2"
+                  value={!isChecked2}
+                  checked={formData.medicalField2 ? true : false}
+                  onChange={e => {
+                    handleChange2();
+                    onChange(e);
+                    
+                    }} />
                   <span> Osteopathic Medical Application</span>
                 </label>
               </div>
               <div>
                 <label htmlFor="medicalField3">
-                  <input type="checkbox" id="medicalField3" name="medical_field[]" value="Physician Assistant Application" onChange={e => onChange(e)} />
+                  <input 
+                  type="checkbox" 
+                  id="medicalField3"
+                  name="medicalField3"
+                  value={!isChecked3}
+                  checked={formData.medicalField3 ? true : false}
+                  onChange={e => {
+                    handleChange3();
+                    onChange(e);
+                    
+                    }} />
                   <span>  Physician Assistant Application</span>
                 </label>
               </div>
@@ -444,13 +502,32 @@ const ApplicationForm = ({
             <div className={s.column_right}>
               <div>
                 <label htmlFor="medicalField4">
-                  <input type="checkbox" id="medicalField4" name="medical_field[]" value="Dental Application" onChange={e => onChange(e)} />
+                  <input type="checkbox"                   
+                  id="medicalField4"
+                  name="medicalField4"                  
+                  value={!isChecked4}
+                  checked={formData.medicalField4 ? true : false}
+                  onChange={e => {
+                    handleChange4();
+                    onChange(e);
+                    
+                    }} />
                   <span>  Dental Application</span>
                 </label>
               </div>
+              
               <div>
                 <label htmlFor="medicalField5">
-                  <input type="checkbox" id="medicalField5" name="medical_field[]" value="Other Application (e.g. Podiatry)" onChange={e => onChange(e)} />
+                  <input type="checkbox"
+                  id="medicalField5"   
+                  value={!isChecked5}
+                  name="medicalField5"
+                  checked={formData.medicalField5.toString()}
+                  onChange={e => {
+                  handleChange5();
+                  onChange(e);
+                  
+                  }} />
                   <span>  Other Application (e.g. Podiatry)</span>
                 </label>
               </div>

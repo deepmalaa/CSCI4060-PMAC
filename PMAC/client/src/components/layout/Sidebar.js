@@ -82,9 +82,10 @@ const Sidebar = ({isAuthenticated}) => {
         name:"Upload Transcript",
         icon:<FaUserGraduate/>,
         roles: ['student'] 
-    },{
+    },
+    {
       path:"/uploadpersonalstatement",
-      name:"Upload Personal Statement",
+      name:"Personal Statement",
       icon:<FaRegEdit/>,
       roles: ['student'] 
   },

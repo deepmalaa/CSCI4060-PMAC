@@ -288,6 +288,7 @@
 /* bottom banner */
 .bottomBanner {
     position: relative;
+    overflow: hidden;
     
 }
 .bottomBanner img{    
@@ -297,6 +298,7 @@
         -o-filter: blur(2px);
         -ms-filter: blur(2px);
     margin: -5px -10px -10px -5px;
+    transform: scale(1.1)
 }
 .bottomTitle {
     position: absolute;

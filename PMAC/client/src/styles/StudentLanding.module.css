@@ -382,13 +382,14 @@ margin-right: auto;
 /* bottom banner */
 .bottomBanner {
     position: relative;
-
+    overflow: hidden;
 }
 .bottomBanner img{    
-    filter: blur(8px);
+    filter: blur(1px);
     -webkit-filter: blur(2px);
     margin: -5px -10px -10px -5px;
     background-color: yellow;
+    transform: scale(1.1)
 }
 .bottomTitle {
     position: absolute;
@@ -441,8 +442,9 @@ margin-right: auto;
 
 .redBar {
     width: 100%;
-    height: 89px;
+    height: 90px;
     background: #840029;
     border-style: solid solid solid solid;
     border-color: white;
+    
 }

@@ -161,7 +161,7 @@ function FormOne({isAuthenticated}) {
             </div>
             {/* break */}
 
-
+            <div className={s.goldBars}> </div>
             <div className={s.bottomBanner}>
                 <div className={s.img}>
                     <img src={bottomBanner} alt="Backdrop of ULM Campus"/>  

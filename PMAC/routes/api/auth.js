@@ -45,6 +45,10 @@ async (req,res) => {
             return res.status(400).json({errors: [{msg:'Invalid credentials'}]});
         }
 
+        if(!user.confirmed){
+            return res.status(400).json({errors: [{msg:'Please confirm your email to login'}]});
+        }
+
         //check password
         const isMatch = await bcrypt.compare(password, user.password);
 

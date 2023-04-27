@@ -107,7 +107,7 @@ checkObjectId('id'),
         { expiresIn: 360000 },
         );
 
-      const url = `http://localhost:3000/FacultyAdvisoryForm/${newToken}`;
+      const url = `https://ulm-pmac.software/FacultyAdvisoryForm/${newToken}`;
       console.log(profile.facultyEval)
             var mailOptions = {
                 from: 'ulm.pmac.email@gmail.com',

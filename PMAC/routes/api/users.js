@@ -91,7 +91,7 @@ router.post('/', [
             //console.log(req.body);
             //res.send('User registered');
 
-            const url = `http://localhost:5001/api/users/confirmation/${newToken}`;
+            const url = `https://ulm-pmac.software/api/users/confirmation/${newToken}`;
 
             var mailOptions = {
                 from: 'ulm.pmac.email@gmail.com',
@@ -219,7 +219,7 @@ router.get('/confirmation/:token', async ({ params: { token } }, res) => {
         // user.confirmed = true;
         // await user.save();
 
-        return res.redirect('http://localhost:3000/login');
+        return res.redirect('https://ulm-pmac.software/login');
        
     }
     catch (e)

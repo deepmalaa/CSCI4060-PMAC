@@ -72,18 +72,15 @@ const Search = ({
               .filter((item) => {
                 return searchFname.toLowerCase() === '' && searchLname.toLowerCase() === ''
                   ? item
-                  : item.fname.toLowerCase().includes(searchFname.toLowerCase()) && item.lname.toLowerCase().includes(searchLname.toLowerCase());
+                  : item.fname && item.fname.toLowerCase().includes(searchFname.toLowerCase()) && item.lname.toLowerCase().includes(searchLname.toLowerCase());
               })
               .map((item, index) => (
-                <tr key={index}>
                 
-        
+                <tr key={index}>
                   <td className={s.nameUnderline}><Link to={`/${item._id}`}>{item.fname}</Link></td>
-                  <td>{item.lname}</td>
-                  <td>{item.ulm_email}</td>
-                  <td>{item.cwid}</td>
-
-                  {/* <td><button className="btn btn-danger" onClick={navigate(`/StudentProfile/${item._id}`)}>View</button></td> */}
+                  <td><Link to={`/${item._id}`}>{item.lname}</Link></td>
+                  <td><Link to={`/${item._id}`}>{item.ulm_email}</Link></td>
+                  <td><Link to={`/${item._id}`}>{item.cwid}</Link></td>
                 </tr>
               ))}
               

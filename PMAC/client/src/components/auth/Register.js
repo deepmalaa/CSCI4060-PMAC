@@ -21,10 +21,17 @@ const Register = ({setAlert, register, isAuthenticated}) => {
 
     const onChange = e =>setFormData({...formData, [e.target.name]:e.target.value});
 
+    const emailRegex = /\b[A-Z0-9._%+-]+@ulm\.edu\b/i;
+
     const onSubmit = async (e) => {
         e.preventDefault();
         if(password !== password2){
            setAlert('Passwords do not match', 'danger');
+          
+        }
+
+        if(type ==="Committee" && !emailRegex.test(email)){
+          setAlert('Email should be a ULM faculty email', 'danger');
         }
         else{
             register({ name, email, password, type });

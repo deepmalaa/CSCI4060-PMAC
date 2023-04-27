@@ -7,7 +7,7 @@ import { requestFacultyForms } from '../actions/facultyForm';
 import s from '../styles/ApplicantInformation.module.css';
 import moment from "moment";
 import Sidebar from '../components/layout/Sidebar';
-import help from '../img/help.png';
+import auth from '../reducers/auth';
 
 const initialState = {
     fname:"",
@@ -42,6 +42,7 @@ const initialState = {
 
 const ApplicationForm = ({
   profile: { profile, loading },
+  auth:{user},
   createProfile,
   getCurrentProfile,
   saveProfile,
@@ -67,7 +68,7 @@ const ApplicationForm = ({
       // set local state with the profileData
       setFormData(profileData);
     }
-  }, [loading, getCurrentProfile, profile]);
+  }, [loading, getCurrentProfile, profile, auth]);
 
   
 
@@ -79,10 +80,8 @@ const ApplicationForm = ({
     e.preventDefault();
     createProfile(formData, editing).then(() => {
       //if (!editing) navigate('/clubExperience');
-      requestFacultyForms(profile.user)
-      console.log(profile.user)
     });
-    requestFacultyForms(profile.user)
+    requestFacultyForms(user._id)
   };
 
 
@@ -640,7 +639,7 @@ ApplicationForm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  profile: state.profile
+  profile: state.profile, auth:state.auth
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile , saveProfile, requestFacultyForms })(

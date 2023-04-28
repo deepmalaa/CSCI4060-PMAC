@@ -8,6 +8,20 @@ import { getProfileById } from '../actions/profile';
 import {loadUser} from '../actions/auth';
 import { Link, useParams } from 'react-router-dom';
 import s from '../styles/ApplicantInformation.module.css';
+import {submitInterviewEvaluation} from '../actions/InterviewEvaluation';
+import { createProfile, getCurrentProfile, saveProfile } from '../actions/profile';
+
+const initialState = {
+    //user:user.user.id,
+    name_applicant:'',
+    name_evaluator:'',         
+    application:'',
+    candidate:"",
+    evaluator:'',
+    interviewEvaluation:'',
+    file:'',
+};
+
 
 const InterviewEvaluation = ({ getProfileById, auth: {user}, profile: {profile}, loadUser }) => {
   const {userid} = useParams();

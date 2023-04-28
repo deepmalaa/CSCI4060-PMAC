@@ -51,10 +51,10 @@ const SelectSearch = ({
           <thead>
             <tr>
               <th>First Name</th>
+              <th>Middle Initial</th>
               <th>Last Name</th>
               <th>CWID</th>
-
-              <th></th> {/* Add a new column with a blank header */}
+              <th>Personal Email</th>
             </tr>
           </thead>
           <tbody>
@@ -77,17 +77,13 @@ const SelectSearch = ({
                   onMouseOver={(event) => handleMouseOver(event, index)}
                   className={index === selectedContactIndex ? 'selected-row' : ''}>
                   <td onClick={(event) => handleClick(event, index)}>
-                    {item.fname}
+                  <a href={`/InterviewEvaluation/${item._id}`}>{item.fname}</a>
                   </td>
-                  <td>{item.lname}</td>
-                  <td>{item.cwid}</td>
-                  <td>
-
-                    {/* Add the button that will redirect to the user's personal statement page */}
-                    <button onClick={() => { window.location.href = `/InterviewEvaluation/${item._id}`; } }>
-                      Evaluate
-                    </button>
-                  </td>
+                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.mname}</a></td>
+                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.lname}</a></td>
+                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.cwid}</a></td>
+                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.alt_email}</a></td>
+                  
                 </tr>
               ))}
           </tbody>

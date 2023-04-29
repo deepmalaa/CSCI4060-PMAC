@@ -53,8 +53,7 @@ const SelectSearch = ({
               <th>First Name</th>
               <th>Middle Initial</th>
               <th>Last Name</th>
-              <th>CWID</th>
-              <th>Personal Email</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody>
@@ -79,7 +78,6 @@ const SelectSearch = ({
                   <td onClick={(event) => handleClick(event, index)}>
                   <a href={`/InterviewEvaluation/${item._id}`}>{item.fname}</a>
                   </td>
-                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.mname}</a></td>
                   <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.lname}</a></td>
                   <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.cwid}</a></td>
                   <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.alt_email}</a></td>

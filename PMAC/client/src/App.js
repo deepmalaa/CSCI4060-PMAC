@@ -33,6 +33,7 @@ import ReviewApplications from './pages/ReviewApplications';
 import AdminCalendar from './pages/AdminCalendar';
 import EvaluationSelectUser from './pages/EvaluationSelectUser';
 import InterviewEvaluation from './pages/InterviewEvaluation';
+import CandidateEvaluations from './pages/CandidateEvaluations';
 import StudentQuestionsPage from './pages/StudentQuestionsPage';
 import CommitteeQuestionsPage from './pages/CommitteeQuestionsPage';
 
@@ -138,6 +139,8 @@ const App = () => {
 
         <Route path="/:userid" element={<StudentProfile/>} />
         <Route path="/InterviewEvaluation/:userid" element={<InterviewEvaluation/>} />
+        <Route path="/CandidateEvaluations/:userid" element={<CandidateEvaluations/>} />
+        
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />
         <Route path="/addClubExperience" element={<AddClubExperience/>} />

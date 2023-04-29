@@ -211,3 +211,53 @@ export const getProfileById = (userId) => async (dispatch) => {
   }
 };
 
+
+
+// Add evaluation
+export const addEvaluation = (formData, exp) => async (dispatch) => {
+  let evaluation = exp;
+  try {
+    const res = await axios.put(`/api/profile/${evaluation}`, formData);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Evaluation Added', 'success'));
+    return res.data;
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Delete evaluation
+export const deleteEvaluation = (exp, id) => async (dispatch) => {
+  try {
+
+    console.log("I am a delete action")
+    let evaluation = exp;
+    const res = await axios.delete(`/api/profile/${evaluation}/${id}`);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Evaluation Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

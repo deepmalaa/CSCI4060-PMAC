@@ -224,7 +224,33 @@ const ProfileSchema = new mongoose.Schema({
     date:{
         type: Date,
         default: Date.now
-    }
+    },
+    interview_evaluation:[{
+        name_applicant: {
+          type: String,
+          required: true
+        },
+        name_evaluator: {
+          type: String,
+          required: true
+        },
+        title_evaluator: {
+          type: String,
+          required: true
+        },
+        application: {
+          type: String,
+          required: true
+        },
+        interviewEvaluation: {
+          type: String
+        },
+        file: {
+          data: Buffer,
+          contentType: String
+        }
+    }],
 });
+
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

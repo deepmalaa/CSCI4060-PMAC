@@ -410,3 +410,53 @@ router.get(
     }
   }
 );
+
+router.put(
+  '/:evaluation',
+  auth,
+  check('name_evaluator', 'Evaluator name is required').notEmpty(),
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      const a = req.params.evaluation
+      console.log(profile[a])
+      profile[a].unshift(req.body);
+
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server app Error');
+    }
+  }
+);
+
+// @route    DELETE api/profile/work-experience/:exp_id
+// @desc     Delete experience from profile
+// @access   Private
+
+router.delete('/:evaluation/:exp_id', auth, async (req, res) => {
+  try {
+    console.log("API: :evaluation :exp_id")
+    const foundProfile = await Profile.findOne({ user: req.user.id });
+    const evaluation = req.params.evaluation;
+    foundProfile[evaluation] = foundProfile[evaluation].filter(
+      (exp) => exp._id.toString() !== req.params.exp_id
+    );
+    console.log(foundProfile[evaluation])
+
+    await foundProfile.save();
+    return res.status(200).json(foundProfile);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+});

@@ -12,7 +12,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import s from '../styles/ApplicantInformation.module.css';
 
-const InterviewEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, loadUser, addEvaluation }) => {
+
+const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, loadUser, addEvaluation }) => {
   const navigate = useNavigate();
   const { userid } = useParams();
   const [formData, setFormData] = useState({
@@ -138,7 +139,7 @@ const InterviewEvaluation = ({ getProfileById, auth: { user }, profile: { profil
     }
   };
 
-InterviewEvaluation.propTypes = {
+AddEvaluation.propTypes = {
   addEvaluation: PropTypes.func.isRequired,
   getProfileById: PropTypes.func.isRequired,
   loadUser: PropTypes.func.isRequired,
@@ -151,4 +152,5 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getProfileById, loadUser , addEvaluation })(InterviewEvaluation);
+export default connect(mapStateToProps, { getProfileById, loadUser , addEvaluation })(AddEvaluation);
+

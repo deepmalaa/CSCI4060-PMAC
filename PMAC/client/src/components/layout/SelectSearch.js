@@ -76,7 +76,7 @@ const SelectSearch = ({
                   onMouseOver={(event) => handleMouseOver(event, index)}
                   className={index === selectedContactIndex ? 'selected-row' : ''}>
                   <td onClick={(event) => handleClick(event, index)}>
-                  <a href={`/InterviewEvaluation/${item._id}`}>{item.fname}</a>
+                  <a href={`/CandidateEvaluations/${item._id}`}>{item.fname}</a>
                   </td>
                   <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.lname}</a></td>
                   <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.cwid}</a></td>

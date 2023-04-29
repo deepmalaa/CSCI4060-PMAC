@@ -3,108 +3,102 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile, deleteEvaluation } from '../../actions/profile';
-import Sidebar from '../../components/layout/Sidebar';
-import SelectSearch from '../SelectSearch';
+import { deleteEvaluation } from '../actions/profile';
+import Sidebar from '../components/layout/Sidebar';
+import SelectSearch from '../components/layout/SelectSearch';
 import { getProfileById } from '../actions/profile';
 import { loadUser } from '../actions/auth';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { createProfile, getCurrentProfile, saveProfile } from '../actions/profile';
 
-const CandidateEvaluation = ({ profile: { profile, loading }, auth: { user }, deleteEvaluation, loadUser, getProfileById, getCurrentProfile, match }) => {
-  const dispatch = useDispatch();
-  const [search, setSearch] = useState('');
-  const [selectedOption, setSelectedOption] = useState(null);
 
-  useEffect(() => {
-    dispatch(getCurrentProfile());
-    dispatch(loadUser());
-  }, [dispatch]);
 
-  useEffect(() => {
-    if (match.params.userid) {
-      getProfileById(match.params.userid);
+const Evaluation = ({
+    getProfileById,
+    getCurrentProfile,
+    auth: { user },
+    profile: { profile }
+  }) => {
+    const navigate = useNavigate();
+    const {userid} = useParams();
+    const dispatch = useDispatch(); // Define dispatch using useDispatch
+  
+    useEffect(() => {
+      getCurrentProfile();
+      getProfileById(userid);
+    }, [getCurrentProfile, getProfileById,userid]);
+  
+    const [item, setItem] = useState({ _id: null }); // Define item using useState
+  
+    let evaluation;
+  
+    if (profile && profile.interview_evaluation) {
+      evaluation = profile.interview_evaluation.map((exp) => (
+        <tr key={exp._id}>
+          <td>{exp.name_applicant}</td>
+          <td>{exp.name_evaluator}</td>
+          <td>{exp.application}</td>
+          <td>{exp.interviewEvaluation}</td>
+          <td>{exp.file}</td>
+          <td>
+            <button
+              onClick={() =>
+                dispatch(deleteEvaluation('interview_evaluation', exp._id))
+              }
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ));
     }
-  }, [match.params.userid, getProfileById]);
-
-  const onSelectOption = (option) => {
-    setSelectedOption(option);
-  };
-
-  const onClearSearch = () => {
-    setSearch('');
-    setSelectedOption(null);
-  };
-
-  const onDeleteEvaluation = (id) => {
-    deleteEvaluation(id);
-  };
-
-  let Candidate_Name = '';
-
-  if (profile !== null && !loading) {
-    Candidate_Name = `${profile.fname} ${profile.mname} ${profile.lname}`;
-  }
-
-  return (
-    <section className="container">
-      <Sidebar role="committe" />
-      <h1 className="large text-primary">Evaluation for {item._id ? `CandidateEvaluation${item._id}` : Candidate_Name}</h1>
+    if(profile) {
+    return (
       <Fragment>
-        <div className="my-2">
-          <SelectSearch search={search} setSearch={setSearch} onSelectOption={onSelectOption} onClearSearch={onClearSearch} />
-        </div>
-        <table className="table">
+        <h2 className="my-2">{profile.fname} {profile.lname}'s Evaluations</h2>
+        <Sidebar role="committe" />
+        <div className="table">
           <thead>
             <tr>
-              <th>Evaluated By</th>
-              <th>Date of Evaluation</th>
-              <th>File</th>
-              <th></th>
+              <th>Evaluator</th>
+              <th>Application Type</th>
+              <th>Written Evaluation</th>
+              <th>File Evaluation</th>
+              
             </tr>
           </thead>
-          <tbody>
-            {profile &&
-              profile.evaluations.map((evaluation) => (
-                <tr key={evaluation._id}>
-                  <td>{evaluation.evaluator_name}</td>
-                  <td>{new Date(evaluation.date).toLocaleDateString()}</td>
-                  <td>
-                    {evaluation.file ? (
-                      <a href={`/api/evaluation/${evaluation.file}`} target="_blank" rel="noopener noreferrer">
-                        View
-                      </a>
-                    ) : (
-                      'N/A'
-                    )}
-                  </td>
-                  <td>
-                    <button className="btn btn-danger" onClick={() => onDeleteEvaluation(evaluation._id)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-        <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
-          Go Back
+          <tbody>{evaluation}</tbody>
+        </div>
+  
+        <br />
+        <Link
+          to={`/InterviewEvaluation/${profile._id}`} // Use item here
+          className="btn btn-primary"
+        >
+          <i className="fab fa-black-tie text-primary" /> Add Evaluation
         </Link>
+  
+        <div className="buttons">
+          <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
+            Go Back
+          </Link>
+        </div>
       </Fragment>
-    </section>
-  );
-};
+    );}
+  };
+  
 
-CandidateEvaluation.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
-  deleteEvaluation: PropTypes.func.isRequired,
-  loadUser: PropTypes.func.isRequired,
-  getProfileById: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
-};
-
+Evaluation.propTypes = {
+    getCurrentProfile: PropTypes.func.isRequired,
+    getProfileById: PropTypes.func.isRequired, // add this prop type
+    auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired,
+  };
 const mapStateToProps = (state) => ({
-  profile: state.profile,
-  auth: state.auth,
-});
+    auth: state.auth,
+    profile: state.profile
+  });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteEvaluation, loadUser, getProfileById })(CandidateEvaluation);
+export default connect(mapStateToProps, {getProfileById, getCurrentProfile, deleteEvaluation })(Evaluation);

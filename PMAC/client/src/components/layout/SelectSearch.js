@@ -78,9 +78,9 @@ const SelectSearch = ({
                   <td onClick={(event) => handleClick(event, index)}>
                   <a href={`/CandidateEvaluations/${item._id}`}>{item.fname}</a>
                   </td>
-                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.lname}</a></td>
-                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.cwid}</a></td>
-                  <td> <a href={`/InterviewEvaluation/${item._id}`}>{item.alt_email}</a></td>
+                  <td> <a href={`/CandidateEvaluations/${item._id}`}>{item.lname}</a></td>
+                  <td> <a href={`/CandidateEvaluations/${item._id}`}>{item.cwid}</a></td>
+                  <td> <a href={`/CandidateEvaluations/${item._id}`}>{item.alt_email}</a></td>
                   
                 </tr>
               ))}

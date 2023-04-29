@@ -143,8 +143,8 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
                             <label>
                                 Name: <input 
                                 type="text" 
-                                name="name" 
-                                value={formData.name} 
+                                name="signature" 
+                                value={formData.signature} 
                                 onChange={e=> onChange(e)}
                                 required/>
                             </label>

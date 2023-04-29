@@ -41,7 +41,7 @@ const initialState = {
     aamc_id:"",
     caspa_id:"",
     facultyEval: '',
-    schoolType:''
+    
 };
 
 
@@ -55,11 +55,12 @@ const ApplicationForm = ({
 }) => {
   const [formData, setFormData] = useState(initialState);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [isChecked4, setIsChecked4] = useState(false);
-  const [isChecked5, setIsChecked5] = useState(false);
+  
+  const [isChecked1, setIsChecked1] = useState(formData.medicalField1);
+  const [isChecked2, setIsChecked2] = useState(formData.medicalField2);
+  const [isChecked3, setIsChecked3] = useState(formData.medicalField3);
+  const [isChecked4, setIsChecked4] = useState(formData.medicalField4);
+  const [isChecked5, setIsChecked5] = useState(formData.medicalField5);
 
   const navigate = useNavigate();
 
@@ -113,7 +114,13 @@ const handleChange5 = () => {
     requestFacultyForms(user._id)
   };
 
-
+  useEffect(() => {
+    setIsChecked1(Boolean(formData.medicalField1));
+    setIsChecked2(Boolean(formData.medicalField2));
+    setIsChecked3(Boolean(formData.medicalField3));
+    setIsChecked4(Boolean(formData.medicalField4));
+    setIsChecked5(Boolean(formData.medicalField5));
+  }, [formData]);
 
   const onSaveData = (e) => {
     // Call the saveProfile action or any other logic you want to perform to save the data
@@ -497,7 +504,7 @@ const handleChange5 = () => {
                   id="medicalField1"  
                   name="medicalField1"
                   value={!isChecked1}
-                  checked={formData.medicalField1 ? true : false}
+                  checked={isChecked1}
                   onChange={e => {
                     handleChange1();
                     onChange(e);
@@ -512,7 +519,7 @@ const handleChange5 = () => {
                   id="medicalField2"
                   name="medicalField2"
                   value={!isChecked2}
-                  checked={formData.medicalField2 ? true : false}
+                  checked={isChecked2}
                   onChange={e => {
                     handleChange2();
                     onChange(e);
@@ -528,7 +535,7 @@ const handleChange5 = () => {
                   id="medicalField3"
                   name="medicalField3"
                   value={!isChecked3}
-                  checked={formData.medicalField3 ? true : false}
+                  checked={isChecked3}
                   onChange={e => {
                     handleChange3();
                     onChange(e);
@@ -545,7 +552,7 @@ const handleChange5 = () => {
                   id="medicalField4"
                   name="medicalField4"                  
                   value={!isChecked4}
-                  checked={formData.medicalField4 ? true : false}
+                  checked={isChecked4}
                   onChange={e => {
                     handleChange4();
                     onChange(e);
@@ -561,7 +568,7 @@ const handleChange5 = () => {
                   id="medicalField5"   
                   value={!isChecked5}
                   name="medicalField5"
-                  checked={formData.medicalField5.toString()}
+                  checked={isChecked5}
                   onChange={e => {
                   handleChange5();
                   onChange(e);

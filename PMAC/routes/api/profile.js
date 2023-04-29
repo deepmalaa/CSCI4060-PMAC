@@ -56,7 +56,7 @@ router.post('/', [auth, [
   check('dat', 'Please include a valid dat').not().isEmpty(),
   check('oat', 'Please include a valid oat').not().isEmpty(),
   check('gre', 'Please include a valid gre').not().isEmpty(),
-  check('schoolType', 'Please include a valid school type').not().isEmpty(),
+  //check('schoolType', 'Please include a valid school type').not().isEmpty(),
   check('exam_date', 'Please include a valid exam date').not().isEmpty(),
   check('amcas_id', 'Please include a valid amcas_id').not().isEmpty(),
   check('aacomas_id', 'Please include a valid aacomas_id').not().isEmpty(),
@@ -198,6 +198,11 @@ router.post('/save', [auth, [
     dat,
     oat,
     gre,
+    medicalField1,
+    medicalField2,
+    medicalField3,
+    medicalField4,
+    medicalField5,
     scoreBreakdown,
     schoolType,
     exam_date,
@@ -233,6 +238,11 @@ router.post('/save', [auth, [
   if (oat) profileFields.oat = oat;
   if (gre) profileFields.gre = gre;
   if (scoreBreakdown) profileFields.scoreBreakdown = scoreBreakdown;
+  if (medicalField1) profileFields.medicalField1 = medicalField1;
+  if (medicalField2) profileFields.medicalField2 = medicalField2;
+  if (medicalField3) profileFields.medicalField3 = medicalField3;
+  if (medicalField4) profileFields.medicalField4 = medicalField4;
+  if (medicalField5) profileFields.medicalField5 = medicalField5;
   if (schoolType) profileFields.schoolType = schoolType;
   if (exam_date) profileFields.exam_date = exam_date;
   if (amcas_id) profileFields.amcas_id = amcas_id;
@@ -460,3 +470,34 @@ router.delete('/:evaluation/:exp_id', auth, async (req, res) => {
     return res.status(500).json({ msg: 'Server error' });
   }
 });
+
+/*
+router.put(
+  '/',
+  auth,
+  check('name_evaluator', 'Evaluator name is required').notEmpty(),
+
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      const a = req.params.evaluation
+      console.log(profile[a])
+      profile[a].unshift(req.body);
+
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server app Error');
+    }
+  }
+);
+
+*/

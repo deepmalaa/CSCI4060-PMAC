@@ -121,6 +121,9 @@ const ProfileSchema = new mongoose.Schema({
     facultyEval:{
         type:String,
     },
+    status:{
+        type:Boolean,
+    },
 
     work_experience:[{
         title:{

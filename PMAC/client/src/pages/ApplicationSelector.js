@@ -31,7 +31,7 @@ function ApplicationSelector(props) {
       
       <div className='container'>
         {submittedApplicationList.length === 0 ? (
-          <p className='no-applications'> No Applications Submissions Found</p>
+          <p className='no-applications' style={{marginTop:'100px', color:'red'}}> No Application Submissions Found</p>
         ) : ( 
         <>
         <div className='application-container'>

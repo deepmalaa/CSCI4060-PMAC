@@ -37,13 +37,11 @@
     position: absolute;
     max-width: 100%; /* Set the maximum width to 100% of the parent container */
     max-height: 100%;
+    width: 100%;
     top: 25vh;
-    left: 50vh;
-    margin-left: auto;
-    margin-right: auto;   
     z-index: 1;
     color: white;
-    text-align: center;
+    align-items: center;
     opacity: 1;
 
     font-family:'Roboto', sans-serif;
@@ -372,3 +370,9 @@
     text-decoration: underline;
     
   }
+
+  .contact{
+    text-decoration: underline;
+    background-color: #BD955A;
+    color: blue;
+}

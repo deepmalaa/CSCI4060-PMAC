@@ -30,9 +30,9 @@ const Register = ({setAlert, register, isAuthenticated}) => {
           
         }
 
-        // if(type ==="Committee" && !emailRegex.test(email)){
-        //   setAlert('Email should be a ULM faculty email', 'danger');
-        // }
+        if(type ==="Committee" && !emailRegex.test(email)){
+          setAlert('Email should be a ULM faculty email', 'danger');
+        }
         else{
             register({ name, email, password, type });
         }

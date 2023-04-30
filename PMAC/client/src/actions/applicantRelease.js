@@ -13,7 +13,7 @@ async (dispatch) => {
     }
     const body = JSON.stringify(formData);
     try {
-        const res = await axios.post('/sapi/apprelease', body, config);
+        const res = await axios.post('/api/apprelease', body, config);
         
       dispatch({
         type: GET_PROFILE,

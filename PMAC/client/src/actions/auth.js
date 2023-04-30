@@ -109,7 +109,7 @@ export const changePassword = (currentPassword, newPassword, id) => async dispat
 
     const body = JSON.stringify({currentPassword, newPassword});
     try {
-        const res = await axios.patch(`api/users/updatepassword/${id}`, body, config);
+        const res = await axios.patch(`/api/users/updatepassword/${id}`, body, config);
         dispatch({
             type: PASSWORD_UPDATE,
             payload: res.data

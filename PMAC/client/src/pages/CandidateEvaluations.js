@@ -44,7 +44,7 @@ const Evaluation = ({
           <td>
             <button
               onClick={() =>
-                dispatch(deleteEvaluation('interview_evaluation', exp._id))
+                dispatch(deleteEvaluation(userid, exp._id))
               }
               className="btn btn-danger"
             >

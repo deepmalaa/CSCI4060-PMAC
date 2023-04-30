@@ -422,20 +422,17 @@ router.get(
 );
 
 router.put(
-  '/:evaluation',
+  '/add/interview_evaluation/:id',
   auth,
   check('name_evaluator', 'Evaluator name is required').notEmpty(),
 
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
     try {
-      const profile = await Profile.findOne({ user: req.user.id });
-      const a = req.params.evaluation
-      console.log(profile[a])
+      console.log(req.body.applicant_id)
+      const profile = await Profile.findOne({ _id:req.body.applicant_id });
+      const a = "interview_evaluation"
+      console.log(profile)
+
       profile[a].unshift(req.body);
 
 
@@ -453,11 +450,11 @@ router.put(
 // @desc     Delete experience from profile
 // @access   Private
 
-router.delete('/:evaluation/:exp_id', auth, async (req, res) => {
+router.delete('/delete/interview_evaluation/:exp_id/:userid', auth, async (req, res) => {
   try {
-    console.log("API: :evaluation :exp_id")
-    const foundProfile = await Profile.findOne({ user: req.user.id });
-    const evaluation = req.params.evaluation;
+    // console.log("API: :evaluation :exp_id")
+    const foundProfile = await Profile.findOne({ _id: req.params.userid });
+    const evaluation = "interview_evaluation";
     foundProfile[evaluation] = foundProfile[evaluation].filter(
       (exp) => exp._id.toString() !== req.params.exp_id
     );

@@ -13,14 +13,15 @@ import 'react-quill/dist/quill.snow.css';
 import s from '../styles/ApplicantInformation.module.css';
 
 
-const initialState ={
+const initialState = {
   applicant_id: '',
   name_applicant: '',
+  status: '',
   name_evaluator: '',
   application: '',
   interviewEvaluation: '',
   file: '',
-}
+};
 
 
 const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, addEvaluation }) => {
@@ -32,15 +33,16 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
 
   const { applicant_id, name_applicant, name_evaluator, application, interviewEvaluation, file } = formData;
   useEffect(() => {getProfileById(userid);
-    if (profile){
+    if (profile) {
       setFormData({
-      name_applicant  :`${profile.fname} ${profile.mname} ${profile.lname}`,
-      applicant_id : userid,
-      name_evaluator: '',
-      application: '',
-      interviewEvaluation: '',
-      file: '',
-    })
+        applicant_id: userid,
+        name_applicant: `${profile.fname} ${profile.mname} ${profile.lname}`,
+        name_evaluator: user && user.name,
+        application: '',
+        interviewEvaluation: '',
+        file: '',
+        status: 'Committee Member'
+      });
     }
   },[getProfileById, userid]);
 
@@ -57,13 +59,13 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
       })
     }
     
-  
-  
+
     if (profile && user) {
 
       
       
       return (
+        
         <section className="container">
           <Sidebar role="committe" />
           <h1 className="large text-primary">Evaluation for {name_applicant}</h1>
@@ -74,8 +76,7 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
             <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
             <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
             <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
-          </div>
-          
+          </div>       
 
           <form className={s.form} style={{height: '100%', width: '100%'}}
             onSubmit={(e) => {
@@ -84,26 +85,6 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
             }}      
           >
             
-
-            <div className="form-group" style={{display: 'block', textAlign: 'left'}}>
-               Candidate
-              <input
-                type="text"
-                name="name_applicant"
-                value={name_applicant}
-                onChange={onChange}
-                readOnly
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="* name_evaluator"
-                name="name_evaluator"
-                value={name_evaluator}
-                onChange={onChange}
-              />
-            </div>
             <div className="form-group">
               <input
                 type="text"

@@ -471,12 +471,9 @@ router.delete('/:evaluation/:exp_id', auth, async (req, res) => {
   }
 });
 
-/*
 router.put(
-  '/',
+  '/status/:stat',
   auth,
-  check('name_evaluator', 'Evaluator name is required').notEmpty(),
-
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -485,19 +482,14 @@ router.put(
 
     try {
       const profile = await Profile.findOne({ user: req.user.id });
-      const a = req.params.evaluation
-      console.log(profile[a])
-      profile[a].unshift(req.body);
-
-
+      const status = req.params.stat;
+      profile.status = status;
       await profile.save();
 
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server app Error');
+      res.status(500).send('Server Error');
     }
   }
 );
-
-*/

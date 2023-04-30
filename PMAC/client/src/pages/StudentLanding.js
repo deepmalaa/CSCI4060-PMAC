@@ -5,6 +5,7 @@ import { getCurrentProfile } from '../actions/profile';
 import s from '../styles/StudentLanding.module.css';
 import CheckList from '../components/layout/CheckList';
 import Sidebar from '../components/layout/Sidebar';
+import Status from '../components/layout/CandidateStatus';
 import bottomBanner from '../img/HomePage/library.jpg';
 //import student from '../img/landingPages/student.jpg';
 import student from '../img/landingPages/students.jpg';
@@ -21,7 +22,7 @@ const StudentLanding = ({
     return (
       
       <>
-        <Sidebar />
+        <Sidebar /> <Status/>
         <div className = "dashboard ">Welcome {user && user.name}</div>
         <div className = "StudentPage1">    
           
@@ -36,7 +37,7 @@ const StudentLanding = ({
                       <div className={s.whiteBar}>
                           <ul>
                               <li><a href="/dashboardStudent">Home</a></li>
-                              <li><a href="/StudentContactPage">Contact</a></li>
+                              <li><a href="/StudentContactPage">Contact</a></li>                            
                           </ul>
 
                       </div>
@@ -72,7 +73,7 @@ const StudentLanding = ({
             <div className={s.goldBars}> </div>
             <div className={s.contentBox}>
                 <div className={s.textTitle}>
-                    Applicant Page
+                    Applicant Page 
                     <br/>
                     Welcome {user && user.name}
                     

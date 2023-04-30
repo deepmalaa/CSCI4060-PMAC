@@ -8,6 +8,7 @@ import { getWaiver } from '../../actions/applicantRelease';
 import { useSelector } from 'react-redux';
 import { getFacultyForms } from '../../actions/facultyForm';
 import { getSchemas } from '../../actions/calendar';
+import jwt from 'jwt-decode';
 
 const StatusBar = ({
   getCurrentProfile,   
@@ -26,6 +27,7 @@ const StatusBar = ({
   const [circle5Color, setCircle5Color] = useState('');
   const [circle6Color, setCircle6Color] = useState('');
   const [circle7Color, setCircle7Color] = useState('');
+  const userR = jwt(localStorage.token);
   //let count = 0;
 
 
@@ -36,7 +38,8 @@ const StatusBar = ({
       setWaivers(data);
 
       //FacultyForms
-      const data1 = await getFacultyForms();
+ 
+      const data1 = await getFacultyForms(userR.user.id);
       setFacultyForms(data1);
 
       //Schedule
@@ -51,17 +54,7 @@ const StatusBar = ({
 
   const count = [    circle1Color,    circle2Color,    circle3Color,    circle4Color,    circle5Color,    circle6Color,    circle7Color  ].filter(color => color === '#009E60').length;
 
- // console.log(src);
-
-  // State Handler 
-  /* 
-  const circleElements = document.querySelectorAll(`.${s.circle}`);
-
-  if (waivers != null && waivers.authorize && circleElements[1]){
-    circleElements[1].style.backgroundColor = 'green';
-    count++;
-  }
-  */
+ 
 
   useEffect(() => {
     if (waivers != null && waivers.authorize) {
@@ -72,7 +65,7 @@ const StatusBar = ({
     }
     if (profile != null) {
       setCircle1Color('#009E60');
-    if (schemas) {
+    if (schemas.length > 0) {
       setCircle5Color('#009E60');
     }
 

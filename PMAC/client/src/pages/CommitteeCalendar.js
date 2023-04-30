@@ -172,7 +172,6 @@ class DemoApp extends React.Component {
                       <div className={css.whiteBar}>
                           <ul>
                               <li><a href="/dashboardStudent">Home</a></li>
-                              <li><a href="/StudentContactPage">Contact</a></li>
                           </ul>
 
                       </div>

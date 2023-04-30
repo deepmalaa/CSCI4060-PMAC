@@ -39,7 +39,6 @@ function FormOne({isAuthenticated}) {
                         <ul>
                             <li><a href= {link} >{name}</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
-                            <li><a href="/ContactPage">Contact</a></li>
                         </ul>
                     </div>
                 
@@ -173,7 +172,7 @@ function FormOne({isAuthenticated}) {
     
                 <div className={s.bottomText}>
                     If you want to know more about the PMAC committe, 
-                    please contact us or see our frequently asked questions page   
+                    please <a className={s.contact} href = "mailto: awiedemeier@ulm.edu"><br/>CONTACT US</a> or see our frequently asked questions page   
                 </div>
                 
                 {/*<div className={s.FQA}>*/}

@@ -9,6 +9,7 @@ const nodemailer = require('nodemailer');
 const User = require('../../models/User');
 const jwt_decode = require('jwt-decode');
 const transporter = require('../../config/transporter');
+const { EmailOutlined } = require('@material-ui/icons');
 
 
 // const transporter = nodemailer.createTransport({
@@ -108,9 +109,33 @@ router.post('/', [
                   console.log('Email sent: ' + info.response);
                 }});
 
-                if(!user.confirmed){
-                    return res.status(400).json({errors: [{msg:'Please confirm your email to login'}]});
-                }
+            
+        if(user.type === 'Committee'){
+
+            const url1 = `https://ulm-pmac.software/api/users/chair_confirmation/${newToken}`;
+
+            var mailOptions1 = {
+                from: 'ulm.pmac.email@gmail.com',
+                to: "deepmalabhomi@gmail.com", // list of receivers
+                subject: "Confirm email for a committee account", // Subject line
+                html: `Please click this email to confirm the email ${email} : <a href="${url1}">${url1}</a>`, // html body
+            };
+
+            transporter.sendMail(mailOptions1, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }});
+            
+        }
+
+        if(!user.confirmed){
+            return res.status(400).json({errors: [{msg:'Please confirm your email to login'}]});
+        }
+        if(!user.chair_confirmed){
+            return res.status(400).json({errors: [{msg:'The chair has not authorized your account'}]});
+        }
         
 
         }
@@ -207,6 +232,34 @@ router.get('/confirmation/:token', async ({ params: { token } }, res) => {
         const tokenId = jwt_decode(token)
         console.log(tokenId);
         User.findByIdAndUpdate(tokenId.user.id, { confirmed: true },
+                            function (err, docs) {
+    if (err){
+        console.log(err)
+    }
+    else{
+        console.log("Updated User : ", docs);
+    }
+} );
+        // const user = await User.findOne({ _id: tokenId.user.id })
+        // user.confirmed = true;
+        // await user.save();
+
+        return res.redirect('https://ulm-pmac.software/login');
+       
+    }
+    catch (e)
+    {
+        res.send('error');
+    }
+
+
+})
+
+router.get('/chair_confirmation/:token', async ({ params: { token } }, res) => {
+    try{
+        const tokenId = jwt_decode(token)
+        console.log(tokenId);
+        User.findByIdAndUpdate(tokenId.user.id, { chair_confirmed: true },
                             function (err, docs) {
     if (err){
         console.log(err)

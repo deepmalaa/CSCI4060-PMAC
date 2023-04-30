@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
         type:Boolean,
         default: false
     },
+    chair_confirmed:{
+        type:Boolean,
+        default: false
+    },
     date: {
         type: Date,
         default: Date.now

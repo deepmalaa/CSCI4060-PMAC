@@ -41,8 +41,8 @@
   border: 1px solid grey;
 }
 
-th:nth-child(4),
-td:nth-child(4) {
+.profile th:nth-child(4),
+.profile td:nth-child(4) {
   width: 50%;
 }
 
@@ -118,7 +118,7 @@ td:nth-child(4) {
   background-color: #f9f9f9;
 }
 
-h2 {
+.hTwoHeader {
   font-size: 24px;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -129,20 +129,20 @@ p {
   margin-bottom: 10px;
 }
 
-table {
+.profileTable {
   border-collapse: collapse;
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-th {
+.tableHead {
   font-weight: bold;
   text-align: left;
   padding: 10px;
   background-color: #e8e8e8;
 }
 
-td {
+.tableData {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }

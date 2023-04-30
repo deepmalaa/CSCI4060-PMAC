@@ -68,7 +68,6 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
                             <div className={s.whiteBar}>
                                 <ul>
                                     <li><a href="/dashboardStudent">Home</a></li>
-                                    <li><a href="/StudentContactPage">Contact</a></li>
                                 </ul>
 
                             </div>

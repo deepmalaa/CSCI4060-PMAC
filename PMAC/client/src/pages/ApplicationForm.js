@@ -147,7 +147,12 @@ const handleChange5 = () => {
                   <div className={s.whiteBar}>
                       <ul>
                           <li><a href="/dashboardStudent">Home</a></li>
-                          <li><a href="/StudentContactPage">Contact</a></li>
+                          <li><a href="/clubExperience">Clubs</a></li>
+                          <li><a href="/workExperience">Work Experience</a></li>
+                          <li><a href="/fieldExperience">Field Experience</a></li>
+                          <li><a href="/honorsExperience">Honors & Awards</a></li>
+                          <li><a href="/labExperience">Lab Experience</a></li>
+                          <li><a href="/volunteerExperience">Volunteer Work</a></li>
                       </ul>
 
                   </div>

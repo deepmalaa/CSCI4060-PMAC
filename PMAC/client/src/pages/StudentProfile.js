@@ -237,10 +237,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
       </form>
       <br />
       <div className={s.profile}>
-        <h2>Honors</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Honors</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>
@@ -253,10 +253,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
         </table>
         <br />
 
-        <h2>Work Experience</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Work Experience</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>
@@ -269,10 +269,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
         </table>
         <br />
 
-        <h2>Club Experience</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Club Experience</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>
@@ -285,10 +285,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
         </table>
         <br />
 
-        <h2>Field Experience</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Field Experience</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>
@@ -301,10 +301,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
           </table> 
           <br />
 
-          <h2>Lab Experience</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Lab Experience</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>
@@ -317,10 +317,10 @@ const StudentProfile = ({getProfileById, auth:{user}, profile: {profile},}) => {
           </table> 
           <br />
           
-          <h2>Volunteer Experience</h2>
-        <table>
-          <thead>
-            <tr>
+        <h2 className={s.hTwoHeader}>Volunteer Experience</h2>
+        <table className={s.profileTable}>
+          <thead className={s.tableHead}>
+            <tr className={s.tableData}>
               <th>Title</th>
               <th>Company</th>
               <th>Years</th>

@@ -13,7 +13,7 @@ async (dispatch) => {
     }
     const body = JSON.stringify(formData);
     try {
-        const res = await axios.post('api/calendar', body, config);
+        const res = await axios.post('/api/calendar', body, config);
         
       dispatch({
         type: POST_SCHEDULE,
@@ -39,7 +39,7 @@ async (dispatch) => {
 export const deleteSchema = (id) => async (dispatch) => {
     try {
       
-      const res = await axios.delete(`api/calendar/${id}`);
+      const res = await axios.delete(`/api/calendar/${id}`);
   
       dispatch({
         type: UPDATE_SCHEMA,

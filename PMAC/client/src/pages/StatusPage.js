@@ -187,7 +187,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
               <div className={s.whiteBar}>
                 <ul>
                   <li><a href="/dashboardStudent">Home</a></li>
-                  <li><a href="/StudentContactPage">Contact</a></li>
                 </ul>
               </div>
               <div className={s.goldBars}> </div>

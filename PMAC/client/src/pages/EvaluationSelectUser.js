@@ -48,7 +48,6 @@ const InterviewEvaluation = ({
             <div className={s.whiteBar}>
                 <ul>
                     <li><a href="/dashboardCommittee">Home</a></li>
-                    <li><a href="/StudentContactPage">Contact</a></li>
                 </ul>
             </div>
             <div className={s.goldBars}> </div>

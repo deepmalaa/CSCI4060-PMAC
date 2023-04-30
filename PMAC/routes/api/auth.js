@@ -49,6 +49,14 @@ async (req,res) => {
             return res.status(400).json({errors: [{msg:'Please confirm your email to login'}]});
         }
 
+        console.log(user.type)
+
+        if(user.type === 'Committee'){
+            if(!user.chair_confirmed){
+                return res.status(400).json({errors: [{msg:'The chair has not authorized your account'}]});
+            }
+        }
+
         //check password
         const isMatch = await bcrypt.compare(password, user.password);
 

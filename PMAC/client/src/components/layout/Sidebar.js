@@ -14,11 +14,18 @@ import {
     FaUserAlt,
     FaCommentAlt,
     FaIdCard,
+    FaBook,
     FaRegEdit,
+    FaCaretDown,
+    FaGlobe,
     FaThList,
     FaRegSun,
     FaCalendarAlt,
-    FaUserGraduate
+    FaUserGraduate,
+    FaFlask,
+    FaBriefcase,
+    FaBriefcaseMedical,
+    FaGraduationCap
 }
 from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
@@ -57,11 +64,54 @@ const Sidebar = ({isAuthenticated}) => {
             icon:<FaFileSignature/>,
             roles: ['student'] 
         },
-          {
-            path:"/ApplicationForm",
-            name:"Applicant Form",
-            icon:<FaClipboardList/>,
-            roles: ['student'] 
+        {
+          name:"Applicant Form",
+          icon:<FaCaretDown/>,
+          roles: ['student'],
+          submenu: [
+            {
+              path:"/ApplicationForm",
+              icon:<FaClipboardList/>,
+              name:"Applicant Form",
+              roles: ['student']
+            },
+            {
+              path:"/clubExperience",
+              icon:<FaBook/>,
+              name:"Club Experience",
+              roles: ['student']
+            },
+            {
+              path:"/workExperience",
+              icon:<FaBriefcase/>,
+              name:"Work Experience",
+              roles: ['student']
+            },
+            {
+              path:"/fieldExperience",
+              icon:<FaBriefcaseMedical/>,
+              name:"Field Experience",
+              roles: ['student']
+            },
+            {
+              path:"/honorsExperience",
+              icon:<FaGraduationCap/>,
+              name:"Honors Experience",
+              roles: ['student']
+            },
+            {
+              path:"/labExperience",
+              icon:<FaFlask/>,
+              name:"Lab Experience",
+              roles: ['student']
+            },
+            {
+              path:"/volunteerExperience",
+              icon:<FaGlobe/>,
+              name:"Volunteer Experience",
+              roles: ['student']
+            }
+          ]
         },
         {
             path:"/StatusPage",
@@ -188,26 +238,56 @@ const Sidebar = ({isAuthenticated}) => {
 
     const filteredMenuItems = menuItem.filter(item => item.roles.includes(role));
 
+    const [subMenuOpen, setSubMenuOpen] = useState(false);
+
+
     return (
-        <div className='box'>
-            <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
-                <div className="top_section">
-                    <img src={logo} alt="logo" style={{ display: isOpen ? "block" : "none" }} className="logo"></img>
-                    <div style={{ marginLeft: isOpen ? "150px" : "0px" }} className="bars">
-                        <FaBars onClick={toggle} />
-                    </div>
-                </div>
-                {
-                    filteredMenuItems.map((item, index) => (
-                        <NavLink to={item.path} key={index} className="link" activeClassName="active">
-                            <div className="icon">{item.icon}</div>
-                            <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
-                        </NavLink>
-                    ))
-                }
+      <div className='box'>
+        <div style={{ width: isOpen ? "250px" : "50px" }} className="sidebar">
+          <div className="top_section">
+            <img src={logo} alt="logo" style={{ display: isOpen ? "block" : "none" }} className="logo"></img>
+            <div style={{ marginLeft: isOpen ? "150px" : "0px" }} className="bars">
+              <FaBars onClick={toggle} />
             </div>
-            <main className="main"></main>
+          </div>
+          {filteredMenuItems.map((item, index) => {
+            if (item.submenu) {
+              return (
+                <div key={index} className="link_submenu" onClick={() => setSubMenuOpen(!subMenuOpen)}>
+                  <div className="icon">{item.icon}</div>
+                  <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
+                  <div className={`submenu_items ${subMenuOpen ? 'open' : 'closed'}`}>
+                    {item.submenu.map((subitem, subindex) => (
+                      <NavLink
+                        to={subitem.path}
+                        key={subindex}
+                        className="link_submenu_item"
+                        activeClassName="active"
+                      >
+                        <div className="icon1">{subitem.icon}</div>
+                        <div className="link_text1">{subitem.name}</div>
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <NavLink
+                  to={item.path}
+                  key={index}
+                  className="link"
+                  activeClassName="active"
+                >
+                  <div className="icon">{item.icon}</div>
+                  <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
+                </NavLink>
+              );
+            }
+          })}
         </div>
+        <main className="main"></main>
+      </div>
     );
 };
 

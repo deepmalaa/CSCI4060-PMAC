@@ -13,36 +13,63 @@ import 'react-quill/dist/quill.snow.css';
 import s from '../styles/ApplicantInformation.module.css';
 
 
-const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, loadUser, addEvaluation }) => {
+const initialState ={
+  applicant_id: '',
+  name_applicant: '',
+  name_evaluator: '',
+  application: '',
+  interviewEvaluation: '',
+  file: '',
+}
+
+
+const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, addEvaluation }) => {
   const navigate = useNavigate();
   const { userid } = useParams();
   const [formData, setFormData] = useState({
-    name_applicant: '',
-    name_evaluator: '',
-    application: '',
-    interviewEvaluation: '',
-    file: '',
+    initialState
   });
 
-  const { name_applicant, name_evaluator, application, interviewEvaluation, file } = formData;
-  useEffect(() => {getProfileById(userid)},[getProfileById, userid]);
+  const { applicant_id, name_applicant, name_evaluator, application, interviewEvaluation, file } = formData;
+  useEffect(() => {getProfileById(userid);
+    if (profile){
+      setFormData({
+      name_applicant  :`${profile.fname} ${profile.mname} ${profile.lname}`,
+      applicant_id : userid,
+      name_evaluator: '',
+      application: '',
+      interviewEvaluation: '',
+      file: '',
+    })
+    }
+  },[getProfileById, userid]);
 
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  const handleQuillEdit = (value) => {
+    setFormData((prev) => {
+        return {
+          ...prev,
+          interviewEvaluation: value
+        }
+      })
+    }
     
   
   
     if (profile && user) {
 
-      let Candidate_Name = `${profile.fname} ${profile.mname} ${profile.lname}`;
+      
+      
       return (
         <section className="container">
           <Sidebar role="committe" />
-          <h1 className="large text-primary">Evaluation for {Candidate_Name}</h1>
+          <h1 className="large text-primary">Evaluation for {name_applicant}</h1>
 
           <div>
+            <a href={`/${profile._id}`} className="btn btn-light my-1">View Application</a>
             <a href={`/api/image/${profile.headshot}`} className="btn btn-light my-1">View Headshot</a>
             <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
             <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
@@ -53,7 +80,7 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, l
           <form className={s.form} style={{height: '100%', width: '100%'}}
             onSubmit={(e) => {
               e.preventDefault();
-              addEvaluation(formData, "interview_evaluation").then(() => navigate('/interviewEvaluation'));
+              addEvaluation(formData, profile.user._id).then(() => navigate(`/CandidateEvaluations/${userid}`));
             }}      
           >
             
@@ -63,7 +90,7 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, l
               <input
                 type="text"
                 name="name_applicant"
-                value={Candidate_Name}
+                value={name_applicant}
                 onChange={onChange}
                 readOnly
               />
@@ -94,8 +121,9 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, l
               <ReactQuill
                 style={{ height: '400px'}}
                 className="personal-statement-input"
+                name="interviewEvaluation"
                 value={interviewEvaluation}
-                onChange={onChange}
+                onChange={handleQuillEdit}
                 modules={{
                   toolbar: [
                     [{ header: [1, 2, false] }],

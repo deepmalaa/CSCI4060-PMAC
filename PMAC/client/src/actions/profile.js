@@ -180,7 +180,7 @@ export const getAllProfile = () => async (dispatch) => {
 // Get search profile
 export const getSearchProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get('api/profile/search');
+    const res = await axios.get('/api/profile/search');
 
     dispatch({
       type: GET_PROFILES,
@@ -197,7 +197,7 @@ export const getSearchProfile = () => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
   try {
-    const res = await api.get(`profile/user/${userId}`);
+    const res = await axios.get(`/api/profile/user/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -217,7 +217,7 @@ export const getProfileById = (userId) => async (dispatch) => {
 export const addEvaluation = (formData, exp) => async (dispatch) => {
   let evaluation = exp;
   try {
-    const res = await axios.put(`/api/profile/${evaluation}`, formData);
+    const res = await axios.put(`/api/profile/add/interview_evaluation/${evaluation}`, formData);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -241,12 +241,11 @@ export const addEvaluation = (formData, exp) => async (dispatch) => {
 };
 
 // Delete evaluation
-export const deleteEvaluation = (exp, id) => async (dispatch) => {
+export const deleteEvaluation = (userid, id) => async (dispatch) => {
   try {
 
     console.log("I am a delete action")
-    let evaluation = exp;
-    const res = await axios.delete(`/api/profile/${evaluation}/${id}`);
+    const res = await axios.delete(`/api/profile/delete/interview_evaluation/${id}/${userid}`);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -255,6 +254,33 @@ export const deleteEvaluation = (exp, id) => async (dispatch) => {
 
     dispatch(setAlert('Evaluation Removed', 'success'));
   } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Add status
+export const updateStatus = (stat) => async (dispatch) => {
+  
+  try {
+    const res = await axios.put(`/api/profile/status/${stat}`);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    
+    return res.data;
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

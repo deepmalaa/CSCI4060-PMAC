@@ -18,6 +18,14 @@ const StudentLanding = ({
     useEffect(() => {
       getCurrentProfile();
     }, [getCurrentProfile]);
+
+
+    function scrollToSection() {
+      var section = document.getElementById("faq");
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+
+   
     return (
       
       <>
@@ -36,8 +44,12 @@ const StudentLanding = ({
                       <div className={s.whiteBar}>
                           <ul>
                               <li><a href="/dashboardStudent">Home</a></li>
-                              <li><a href="/StudentContactPage">Contact</a></li>
+                              <li><a href="#how-to-apply">How to Apply</a></li>
+                              <li><a href="#how-to-apply">Status</a></li>
+                              <li><a href="#faq">FAQ</a></li>
+                              
                           </ul>
+                        
 
                       </div>
                 <div className={s.goldBars}> </div>
@@ -93,7 +105,7 @@ const StudentLanding = ({
             {/* break */}
 
 
-            <div className={s.contentBox1}>
+            <div id="how-to-apply" className={s.contentBox1}>
 
               <div className={s.grayLeft}>
                 <div className={s.textTitle1}>HOW TO APPLY</div>
@@ -157,9 +169,9 @@ const StudentLanding = ({
                     REQUEST MORE INFORMATION    
                 </div>
     
-                <div className={s.bottomText}>
+                <div id="faq" className={s.bottomText}>
                     If you want to know more about the PMAC committe, 
-                    please contact us or see our frequently asked questions page   
+                    please <a className={s.contact} href = "mailto: awiedemeier@ulm.edu"><br/>CONTACT US</a> or see our frequently asked questions page   
                 </div>
                 
                 {/*<div className={s.FQA}>*/}
@@ -187,6 +199,7 @@ StudentLanding.propTypes = {
 
 
   };
+
 
 const mapStateToProps = (state) => ({
     auth: state.auth,

@@ -39,10 +39,7 @@ const ChairLanding = ({
             <div className={s.goldBars}> </div>
                 <div className={s.whiteBar}>
                     <ul>
-                        <li><a href="/HomePage">Home</a></li>
-                        <li><a href="/createAccount">Create Account</a></li>
-                        <li><a href="/ContactPage">Contact</a></li>
-                        <li><a href="#Help">Help</a></li>
+                        <li><a href="/dashboardChair">Home</a></li>
                     </ul>
                 </div>
             <div className={s.goldBars}> </div>

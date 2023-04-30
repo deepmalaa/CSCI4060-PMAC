@@ -231,19 +231,15 @@ const ProfileSchema = new mongoose.Schema({
     interview_evaluation:[{
         name_applicant: {
           type: String,
-          required: true
         },
         name_evaluator: {
           type: String,
-          required: true
         },
         title_evaluator: {
           type: String,
-          required: true
         },
         application: {
           type: String,
-          required: true
         },
         interviewEvaluation: {
           type: String

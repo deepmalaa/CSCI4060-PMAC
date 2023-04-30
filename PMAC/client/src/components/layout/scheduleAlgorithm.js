@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { getCurrentProfile } from '../../actions/profile';
-import { getAllProfile, getSearchProfile } from '../../actions/profile';
+import { getAllProfile, getSearchProfile,getProfileById } from '../../actions/profile';
 import { getUserData } from '../../actions/users';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,7 +22,8 @@ const ScheduleAlg = ({
     profile: { profiles }, 
     getAllSchemas,
     getUserData,
-    getSearchProfile
+    getSearchProfile,
+    
    
 
 }) => {
@@ -30,6 +31,7 @@ const ScheduleAlg = ({
     const [userInfo, setUserInfo] = useState([]);
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
+    //const [profiles, setProfiles] = useState();
     const popoverRef = useRef();
     
     useEffect(() => {
@@ -74,8 +76,10 @@ const ScheduleAlg = ({
             for (let j = 0; j < listUsers.length; j++) {
                 
                 if (listUsers[j]._id === listSchemas[i].user) {
-                
-                    if (listUsers[j].type === "Student") {
+                    // RIGHT ASDKLFJA;LSDKFJ;ALSDKJF;ALSKDJFA;LSDKFJ;ALSDKJFA;LKSDFJ;ALDS
+                   
+                    if (listUsers[j].type === "Student" && profiles.find(profiles => profiles.user._id === listUsers[j]._id)?.status === true) {
+                        
                         student.push(listSchemas[i]);
                     }
                     if (listUsers[j].type === "Committee") {
@@ -167,8 +171,7 @@ const ScheduleAlg = ({
                         dateT.title = "Meeting";
                         
                         dateT.extendedProps.names = "Committee: ";
-                        console.log("\r\n\r\nSTUDENTS")
-                        console.log(availableStudents)
+                        
                         for (var i = 0; i < availableCommittee.length; i++)
                         {
                           
@@ -228,7 +231,7 @@ const ScheduleAlg = ({
         return events;
     }   
     
-   console.log(events);
+   //console.log(events);
  
 
 
@@ -343,6 +346,7 @@ const ScheduleAlg = ({
         getAllSchemas: PropTypes.func.isRequired,
         getUserData: PropTypes.func.isRequired,
         getSearchProfile: PropTypes.func.isRequired,
+        getProfileById: PropTypes.func.isRequired,
       };
       
       const mapStateToProps = (state) => ({
@@ -351,6 +355,6 @@ const ScheduleAlg = ({
         
       });
       
-      export default connect(mapStateToProps, { getAllProfile, getAllSchemas, getUserData, getSearchProfile})(
+      export default connect(mapStateToProps, { getAllProfile, getAllSchemas, getUserData, getSearchProfile,getProfileById})(
         ScheduleAlg
       );

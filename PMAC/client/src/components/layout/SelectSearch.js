@@ -51,8 +51,8 @@ const SelectSearch = ({
           <thead>
             <tr>
               <th>First Name</th>
-              <th>Middle Initial</th>
               <th>Last Name</th>
+              <th>CWID</th>
               <th>Email</th>
             </tr>
           </thead>

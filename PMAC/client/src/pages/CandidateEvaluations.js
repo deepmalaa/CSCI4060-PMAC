@@ -11,7 +11,7 @@ import { loadUser } from '../actions/auth';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { createProfile, getCurrentProfile, saveProfile } from '../actions/profile';
-//import OpenEvaluation from '../components/layout/OpenEvaluation';
+import EvaluationPage from './EvaluationPage';
 
 const Evaluation = ({
   getProfileById,
@@ -30,31 +30,38 @@ const Evaluation = ({
 
   const [item, setItem] = useState({ _id: null }); // Define item using useState
 
+  const [selectedRow, setSelectedRow] = useState(null);
+
   let evaluation;
-  
+
   if (profile && profile.interview_evaluation) {
-    evaluation = profile.interview_evaluation.map((exp) => (
-      <tr key={exp._id}>
+    evaluation = profile.interview_evaluation.map((exp, index) => (
+      <tr key={exp._id} onClick={() => setSelectedRow(index)}>
         <td>{exp.name_evaluator}</td>
         <td>{exp.application}</td>
-        <td><a href={`/EvaluationPage/${exp._id}`}>View Evaluation</a></td>
-        
+        <td className="btn btn-light my-1">{selectedRow === index ? <EvaluationPage myProp={exp.interviewEvaluation} profile={profile._id} evaluator={exp.name_evaluator} applicationType={exp.application}/> : null} View</td>
         <td>{exp.file}</td><td>
-          <button
+        <button
             onClick={() => dispatch(deleteEvaluation(userid, exp._id))}
-            className="btn btn-danger"
-          >
+            className="btn btn-danger">
             Delete
           </button>
         </td>
       </tr>
     ));
   }
-  if (profile) {
-    return (
-      <Fragment>
-        <h2 className="my-2">{profile.fname} {profile.lname}'s Evaluations</h2>
-        <Sidebar role="committe" />
+
+  return (
+    <Fragment>
+      <h2 className="my-2">{profile?.fname} {profile?.lname}'s Evaluations</h2>
+      <Sidebar role="committe" />
+      {selectedRow !== null ? (
+        <><EvaluationPage myProp={profile?.interview_evaluation?.[selectedRow]?.interviewEvaluation} />
+        <button className="btn btn-primary" onClick={() => setSelectedRow(null)}>
+          <i className="fab fa-black-tie text-primary" /> Done
+        </button></>
+      ) : (
+        <div>
         <div className="table">
           <thead>
             <tr>
@@ -62,27 +69,29 @@ const Evaluation = ({
               <th>Application Type</th>
               <th>Written Evaluation</th>
               <th>File Evaluation</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>{evaluation}</tbody>
-        </div>
-
+        </div> 
         <br />
-        <Link
-          to={`/InterviewEvaluation/${profile._id}`}
-          className="btn btn-primary"
-        >
-          <i className="fab fa-black-tie text-primary" /> Add Evaluation
-        </Link>
+      <Link
+        to={`/InterviewEvaluation/${profile?._id}`}
+        className="btn btn-primary"
+      >
+        <i className="fab fa-black-tie text-primary" /> Add Evaluation
+      </Link>
 
-        <div className="buttons">
-          <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
-            Go Back
-          </Link>
+      <div className="buttons">
+        <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
+          Go Back
+        </Link>
+      </div>
         </div>
-      </Fragment>
-    );
-  }
+      )}
+      
+    </Fragment>
+  );
 };
 
 Evaluation.propTypes = {

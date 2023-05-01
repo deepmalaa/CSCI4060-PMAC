@@ -76,31 +76,29 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
             <a href={`/ViewFacultyRecommendation/${profile.user._id}`} className="btn btn-light my-1"> View Recommendations</a>
             <a href={`/api/transcript/${profile.transcript}`} className="btn btn-light my-1">View Transcript</a>
             <a href={`/api/personalstatement/${profile.personal_statement}`} className="btn btn-light my-1">View Personal Statement</a>
-          </div>       
+          </div>
 
-          <form className={s.form} style={{height: '100%', width: '100%'}}
+          <form className={s.form} style={{ height: '100%', width: '100%' }}
             onSubmit={(e) => {
               e.preventDefault();
               addEvaluation(formData, profile.user._id).then(() => navigate(`/CandidateEvaluations/${userid}`));
-            }}      
+            } }
           >
-            
+
             <div className="form-group">
               <input
                 type="text"
                 placeholder="application"
                 name="application"
                 value={application}
-                onChange={onChange}
-                
-              />
+                onChange={onChange} />
             </div>
-            
-            
-            <div className="form-group" >
+
+
+            <div className="form-group">
               <label htmlFor="interviewEvaluation"></label>
               <ReactQuill
-                style={{ height: '400px'}}
+                style={{ height: '400px' }}
                 className="personal-statement-input"
                 name="interviewEvaluation"
                 value={interviewEvaluation}
@@ -110,40 +108,23 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
                     [{ header: [1, 2, false] }],
                     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                     [{ list: 'ordered' }, { list: 'bullet' }],
-                    ['link', 'image', ],
+                    ['link', 'image',],
                     ['clean'],
                   ],
-                }}
-              />
+                }} />
             </div>
-  
-
-            <div className="form-group">
-              <label htmlFor="file" 
-              style={{backgroundColor:'lightGrey'}}>Upload File</label>
-              {file && (
-                <div>
-                  <span>{file.name}</span>
-                  <button type="button" className="form-group" onChange={onChange} value={file}>
-                    Remove
-                  </button>
-                </div>
-              )}
-              {!file && (
-                <input
-                  type="file"
-                  accept=".pdf"
-                  className="form-control"
-                  onChange={onChange}
-                />
-              )}
-            </div>
+            <div style={{marginTop:'50px'}}>
             <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
-              Go Back
-            </Link>
-              <input type="submit" className="btn btn-primary" />
-          </form>
-        </section>
+                Go Back
+              </Link><input
+                type="submit"
+                value="Submit"
+                className="fab fa-black-tie text-primary" />
+            </div>
+        </form>
+      </section>
+
+        
       );
     }
   };

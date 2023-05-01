@@ -1,49 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Sidebar from '../components/layout/Sidebar';
-import { getProfileById } from '../actions/profile';
+import React from 'react';
+import '../styles/StatusPage.css';
+import { Link } from 'react-router-dom';
 
-const InterviewEvaluation = ({ getProfileById, auth: { user }, profile: { profile } }) => {
-  const { userid, exp_id } = useParams();
-
-  useEffect(() => {
-    getProfileById(userid);
-  }, [getProfileById, userid]);
-
-  const [item, setItem] = useState({ _id: null });
-
-  let exp;
-
-  if (profile && profile.interview_evaluation) {
-    exp = profile.interview_evaluation.find((item) => item._id === exp_id);
-  }
+function EvaluationPage(props) {
+  const { myProp, profile, evaluator, applicationType } = props;
 
   return (
-    <div>
-      <h2 className="my-2">Interview Evaluation</h2>
-      <Sidebar role="committe" />
+    <form>
+      <div style={{ textAlign: 'left', maxWidth: '100%' }} dangerouslySetInnerHTML={{ __html: myProp }} />
       
-      <form>
-        <p>{exp_id && `Evaluation ID: ${exp_id}`}</p>
-        <p>{exp && `Candidate: ${exp.name_applicant}`}</p>
-        <p>{exp && `Evaluator: ${exp.name_evaluator}`}</p>
-        <p>{exp && `Interview Evaluation: ${exp.interviewEvaluation}`}</p>
-      </form>
-    </div>
+      <p>Evaluator: {props.evaluator}</p>
+      <p>Application Type: {applicationType}</p>
+    </form>
+    
   );
-};
+}
 
-InterviewEvaluation.propTypes = {
-  getProfileById: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
-};
+export default EvaluationPage;
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  profile: state.profile,
-});
-
-export default connect(mapStateToProps, { getProfileById })(InterviewEvaluation);
+//<div className='date'>Date: {props.applications[application].submissionDate}</div>

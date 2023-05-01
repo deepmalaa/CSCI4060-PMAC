@@ -37,9 +37,8 @@ const Evaluation = ({
       <tr key={exp._id}>
         <td>{exp.name_evaluator}</td>
         <td>{exp.application}</td>
-        <Link to={{ pathname: `/OpenEvaluation/${exp._id}`, state: { evaluation: exp.interview_evaluation } }}>
-  View Evaluation
-</Link>
+        <td><a href={`/EvaluationPage/${exp._id}`}>View Evaluation</a></td>
+        
         <td>{exp.file}</td><td>
           <button
             onClick={() => dispatch(deleteEvaluation(userid, exp._id))}

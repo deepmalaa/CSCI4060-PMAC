@@ -47,11 +47,13 @@ const Evaluation = ({
           {selectedRow === index ? <EvaluationPage myProp={exp.interviewEvaluation} profile={profile._id} evaluator={exp.name_evaluator} applicationType={exp.application}/> : null} View
         </td>
         <td>
-          <button
-            onClick={() => dispatch(deleteEvaluation(userid, exp._id))}
-            className="btn btn-danger">
-            Delete
-          </button>
+          {exp.name_evaluator === user.name && (
+            <button
+              onClick={() => dispatch(deleteEvaluation(userid, exp._id))}
+              className="btn btn-danger">
+              Delete
+            </button>
+          )}
         </td>
       </tr>
     ));
@@ -60,7 +62,7 @@ const Evaluation = ({
   return (
     <Fragment>
       <h2 className="my-2">{profile?.fname} {profile?.lname}'s Evaluations</h2>
-      <Sidebar role="committe" />
+      <Sidebar role={user && user.type}/>
       {selectedRow !== null ? (
         <><EvaluationPage myProp={profile?.interview_evaluation?.[selectedRow]?.interviewEvaluation} />
         <button className="btn btn-primary" onClick={() => setSelectedRow(null)}>

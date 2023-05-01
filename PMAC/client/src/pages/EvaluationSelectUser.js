@@ -41,7 +41,7 @@ const InterviewEvaluation = ({
 
   return (
     <>
-      <Sidebar role="committe" />
+      <Sidebar role={user && user.type} />
       <div className={s.body}>
         <div className={s.top}>
             <div className={s.goldBars}> </div>

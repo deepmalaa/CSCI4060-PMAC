@@ -58,7 +58,13 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
         }
       })
     }
-    
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    };
 
     if (profile && user) {
 
@@ -67,7 +73,7 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
       return (
         
         <section className="container">
-          <Sidebar role="committe" />
+          
           <h1 className="large text-primary">Evaluation for {name_applicant}</h1>
 
           <div>
@@ -85,14 +91,24 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
             } }
           >
 
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="application"
+
+            <label className="form-group" style={{textAlign: 'left'}}>
+              Application Type:
+              <select
                 name="application"
-                value={application}
-                onChange={onChange} />
-            </div>
+                value={formData.application}
+                onChange={handleChange}
+              >
+                <option value="">Select Candidates Application Type</option>
+                <option value="Medical Application">Medical Application</option>
+                <option value="Osteopathic Medical Application">Osteopathic Medical Application</option>
+                <option value="Physician Assistant Application">Physician Assistant Application</option>
+                <option value="Dental Application">Dental Application</option>
+                <option value="Other (ex: Podiatry) Application">Other (ex: Podiatry) Application</option>
+              </select>
+            </label>
+
+
 
 
             <div className="form-group">
@@ -108,7 +124,7 @@ const AddEvaluation = ({ getProfileById, auth: { user }, profile: { profile }, a
                     [{ header: [1, 2, false] }],
                     ['bold', 'italic', 'underline', 'strike', 'blockquote'],
                     [{ list: 'ordered' }, { list: 'bullet' }],
-                    ['link', 'image',],
+                    ['link',],
                     ['clean'],
                   ],
                 }} />

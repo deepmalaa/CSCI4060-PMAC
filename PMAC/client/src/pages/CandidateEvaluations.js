@@ -21,14 +21,12 @@ const Evaluation = ({
 }) => {
   const navigate = useNavigate();
   const { userid } = useParams();
-  const dispatch = useDispatch(); // Define dispatch using useDispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getCurrentProfile();
     getProfileById(userid);
   }, [getCurrentProfile, getProfileById, userid]);
-
-  const [item, setItem] = useState({ _id: null }); // Define item using useState
 
   const [selectedRow, setSelectedRow] = useState(null);
 
@@ -36,16 +34,10 @@ const Evaluation = ({
 
   if (profile && profile.interview_evaluation) {
     evaluation = profile.interview_evaluation.map((exp, index) => (
-      <tr key={exp._id} onClick={() => setSelectedRow(index)}>
+      <tr key={exp._id}>
         <td>{exp.name_evaluator}</td>
         <td>{exp.application}</td>
-        <td style={{ color: 'maroon', cursor: 'default' }} onMouseOver={(event) => { 
-          event.target.style.cursor = 'pointer'; 
-        }} onMouseOut={(event) => { 
-          event.target.style.cursor = 'default'; 
-        }}> 
-          {selectedRow === index ? <EvaluationPage myProp={exp.interviewEvaluation} profile={profile._id} evaluator={exp.name_evaluator} applicationType={exp.application}/> : null} View
-        </td>
+        <td style={{ color: 'maroon', cursor: 'pointer' }} onClick={() => setSelectedRow(index)}>View</td>
         <td>
           {exp.name_evaluator === user.name && (
             <button
@@ -66,40 +58,42 @@ const Evaluation = ({
     <Fragment>
       <h2 className="my-2">{profile?.fname} {profile?.lname}'s Evaluations</h2>
       <Sidebar role={user && user.type}/>
-      {selectedRow !== null ? (
-        <><EvaluationPage myProp={profile?.interview_evaluation?.[selectedRow]?.interviewEvaluation} />
-        <button className="btn btn-primary" onClick={() => setSelectedRow(null)}>
-          <i className="fab fa-black-tie text-primary" /> Done
-        </button></>
-      ) : (
+      {selectedRow !== null && (
         <div>
-        <div className="table">
-          <thead>
-            <tr>
-              <th>Evaluator</th>
-              <th>Application Type</th>
-              <th>Written Evaluation</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>{evaluation}</tbody>
-        </div> 
-        <br />
-      <Link
-        to={`/InterviewEvaluation/${profile?._id}`}
-        className="btn btn-primary"
-      >
-        <i className="fab fa-black-tie text-primary" /> Add Evaluation
-      </Link>
-
-      <div className="buttons">
-        <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
-          Go Back
-        </Link>
-      </div>
+          <EvaluationPage myProp={profile?.interview_evaluation?.[selectedRow]?.interviewEvaluation} />
+          <button className="btn btn-primary" onClick={() => setSelectedRow(null)}>
+            <i className="fab fa-black-tie text-primary" /> Done
+          </button>
         </div>
       )}
-      
+      {selectedRow === null && (
+        <div>
+          <div className="table">
+            <thead>
+              <tr>
+                <th>Evaluator</th>
+                <th>Application Type</th>
+                <th>Written Evaluation</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>{evaluation}</tbody>
+          </div>
+          <br />
+          <Link
+            to={`/InterviewEvaluation/${profile?._id}`}
+            className="btn btn-primary"
+          >
+            <i className="fab fa-black-tie text-primary" /> Add Evaluation
+          </Link>
+
+          <div className="buttons">
+            <Link className="btn btn-light my-1" to="/EvaluationSelectUser">
+              Go Back
+            </Link>
+          </div>
+        </div>
+      )}
     </Fragment>
   );
 };

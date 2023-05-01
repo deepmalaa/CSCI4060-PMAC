@@ -54,6 +54,9 @@ const Evaluation = ({
               Delete
             </button>
           )}
+          {exp.name_evaluator !== user.name && (
+            <p>Not Available</p>
+          )}
         </td>
       </tr>
     ));

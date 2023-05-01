@@ -39,9 +39,15 @@ const Evaluation = ({
       <tr key={exp._id} onClick={() => setSelectedRow(index)}>
         <td>{exp.name_evaluator}</td>
         <td>{exp.application}</td>
-        <td className="btn btn-light my-1">{selectedRow === index ? <EvaluationPage myProp={exp.interviewEvaluation} profile={profile._id} evaluator={exp.name_evaluator} applicationType={exp.application}/> : null} View</td>
-        <td>{exp.file}</td><td>
-        <button
+        <td style={{ color: 'maroon', cursor: 'default' }} onMouseOver={(event) => { 
+          event.target.style.cursor = 'pointer'; 
+        }} onMouseOut={(event) => { 
+          event.target.style.cursor = 'default'; 
+        }}> 
+          {selectedRow === index ? <EvaluationPage myProp={exp.interviewEvaluation} profile={profile._id} evaluator={exp.name_evaluator} applicationType={exp.application}/> : null} View
+        </td>
+        <td>
+          <button
             onClick={() => dispatch(deleteEvaluation(userid, exp._id))}
             className="btn btn-danger">
             Delete
@@ -68,7 +74,6 @@ const Evaluation = ({
               <th>Evaluator</th>
               <th>Application Type</th>
               <th>Written Evaluation</th>
-              <th>File Evaluation</th>
               <th>Delete</th>
             </tr>
           </thead>

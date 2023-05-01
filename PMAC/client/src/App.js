@@ -36,6 +36,7 @@ import InterviewEvaluation from './pages/InterviewEvaluation';
 import CandidateEvaluations from './pages/CandidateEvaluations';
 import StudentQuestionsPage from './pages/StudentQuestionsPage';
 import CommitteeQuestionsPage from './pages/CommitteeQuestionsPage';
+import EvaluationPage from './pages/EvaluationPage';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -140,6 +141,7 @@ const App = () => {
         <Route path="/:userid" element={<StudentProfile/>} />
         <Route path="/InterviewEvaluation/:userid" element={<InterviewEvaluation/>} />
         <Route path="/CandidateEvaluations/:userid" element={<CandidateEvaluations/>} />
+        <Route path="/EvaluationPage/:_id" element={<EvaluationPage />} />
         
         {/* experiencePages */}
         <Route path="/clubExperience" element={<ClubExperience/>} />

@@ -76,19 +76,19 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     // Allows next default message
     message = 'No applications found';
     // Checks to see what user is applying for
-    if(profile.medicalField1 == true) {
+    if(profile.medicalField1 === true) {
       Verified1 = true;  
     }
-    if(profile.medicalField2 == true) {
+    if(profile.medicalField2 === true) {
       Verified2 = true;  
     }
-    if(profile.medicalField3 == true) {
+    if(profile.medicalField3 === true) {
       Verified3 = true;  
     }
-    if(profile.medicalField4 == true) {
+    if(profile.medicalField4 === true) {
       Verified4 = true;  
     }
-    if(profile.medicalField5 == true) {
+    if(profile.medicalField5 === true) {
       Verified5 = true;  
     }
   //}
@@ -218,7 +218,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
           )}
           </>
         </div> 
-
       </> 
     );
   }

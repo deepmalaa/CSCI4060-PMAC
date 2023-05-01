@@ -173,6 +173,12 @@ const Sidebar = ({isAuthenticated}) => {
             icon: <FaCalendarAlt />,
             roles: ['admin']
           },
+          {
+            path: "/EvaluationSelectUser",
+            name: "Interview Evaluation",
+            icon: <FaCalendarAlt />,
+            roles: ['admin']
+          },
           
           {
             path: "/dashboardCommittee",

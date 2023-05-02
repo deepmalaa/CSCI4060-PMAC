@@ -9,7 +9,11 @@ import { useSelector } from 'react-redux';
 import { getFacultyForms } from '../../actions/facultyForm';
 import { getSchemas } from '../../actions/calendar';
 import jwt from 'jwt-decode';
-
+import {
+  FaCheck,
+  FaCheckCircle
+}
+from "react-icons/fa";
 const StatusBar = ({
   getCurrentProfile,   
   profile: { profile },
@@ -84,8 +88,8 @@ const StatusBar = ({
       
   
   
-
-
+//icon={faCheck}
+//<FaCheckCircle />
 
   return (
     <div>
@@ -95,7 +99,7 @@ const StatusBar = ({
         <div className={s.grayRight}>
                 <span>Status</span>
                 <ul>
-                  <li><div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="/ApplicationForm">Application Form</a></li>
+                  <li> <div className={s.circle} style={{ backgroundColor: circle1Color }}></div><a href="/ApplicationForm">Application Form</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle2Color }}></div><a href="/ApplicantRelease">Release Form</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle3Color }}></div><a href="/uploadpersonalstatement">Personal Statement</a></li>
                   <li><div className={s.circle} style={{ backgroundColor: circle4Color }}></div><a href="/transcript">Unofficial Transcript</a></li>

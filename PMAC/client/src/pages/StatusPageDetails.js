@@ -41,29 +41,17 @@ function Details({ application }) {
       );
       break;
 
-    case 'Waiver':
+    case 'Incomplete':
       content = (
         <>
+          <ProgressSteps status="Waiver" />
           <p className='content'> Application: {application.title}</p>
           <p className='content'>Name: {application.name}</p>
-          <p className='content'>Status: No Waiver Signed </p>
+          <p className='content'>Status: Incomplete (Note: Application cannot be reviewed until completed) </p>
         </>
       );
       break;
-    case 'Accepted':
-      content = (
-
-        <>
-          <ProgressSteps status="Accepted" />
-          <p className='content'> Application: {application.title}</p>
-          <p className='content'>Name: {application.name}</p>
-          <p className='content'>Status: {status}</p>
-          <p className='content'>Submission Date: {submissionDate}</p>
-
-        </>
-      );
-      break;
-
+    
 
     case 'Complete':
       content = (

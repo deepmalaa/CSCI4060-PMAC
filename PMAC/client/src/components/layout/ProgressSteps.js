@@ -1,26 +1,29 @@
 import React from 'react';
-import '../../styles/ProgressSteps.css'
+import '../../styles/ProgressSteps.css';
 
 const ProgressSteps = ({ status }) => {
   return (
     <div className="process-container">
       <ul className="process-steps">
+        {status === 'Waiver' ? (
+          <li className={`step waiver active`}>
+            Incomplete
+            <div className={`step-status active`}>
+              <div className="step.waiver.active"></div>
+            </div>
+          </li>
+        ) : (
+          <li className={`step waiver ${status === 'Waiver' ? 'active' : ''}`}>
+            Submitted
+            <div className={`step-status ${status === 'Waiver' ? 'active' : ''}`}>
+              <div className="step.waiver.active"></div>
+            </div>
+          </li>
+        )}
         <li className={`step pending ${status === 'Pending' ? 'active' : ''}`}>
           Pending
           <div className={`step-status ${status === 'Pending' ? 'active' : ''}`}>
             <div className="step.pending.active"></div>
-          </div>
-        </li>
-        <li className={`step accepted ${status === 'Accepted' ? 'active' : ''}`}>
-          Accepted
-          <div className={`step-status ${status === 'Accepted' ? 'active' : ''}`}>
-            <div className="step.accepted.active"></div>
-          </div>
-        </li>
-        <li className={`step interview ${status === 'Interview' ? 'active' : ''}`}>
-          Interview
-          <div className={`step-status ${status === 'Interview' ? 'active' : ''}`}>
-            <div className="step.interview.active"></div>
           </div>
         </li>
         <li className={`step complete ${status === 'Complete' ? 'active' : ''}`}>

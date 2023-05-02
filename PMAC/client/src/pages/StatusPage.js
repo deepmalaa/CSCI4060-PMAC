@@ -18,7 +18,7 @@ import { getWaiver } from '../actions/applicantRelease';
 
 // Pulling User profile information
 const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
-  useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
+  useEffect(() => {getCurrentProfile(profile);}, [getCurrentProfile]);
 
   const [waivers, setWaivers] = useState([]);
   const [facultyForms, setFacultyForms] = useState([]);
@@ -58,20 +58,22 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   let Verified5 = false;
 
   // Default status
-  let status1 = 'Waiver';
-  let status2 = 'Waiver';
-  let status3 = 'Waiver';
-  let status4 = 'Waiver';
-  let status5 = 'Waiver';
+  let status1 = 'Incomplete';
+  let status2 = 'Incomplete';
+  let status3 = 'Incomplete';
+  let status4 = 'Incomplete';
+  let status5 = 'Incomplete';
 
-  if(profile.status !== false) {
-    status1 = 'Pending';
-    status2 = 'Pending';
-    status3 = 'Pending';
-    status4 = 'Pending';
-    status5 = 'Pending';
-  }
   
+    if(profile && profile.status === true) {
+      status1 = 'Pending';
+      status2 = 'Pending';
+      status3 = 'Pending';
+      status4 = 'Pending';
+      status5 = 'Pending';
+    }
+
+
   let evaluation;
   if (profile && profile.interview_evaluation) {
     evaluation = profile.interview_evaluation.map((exp, index) => {

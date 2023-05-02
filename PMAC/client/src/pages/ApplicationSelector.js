@@ -7,7 +7,7 @@ function ApplicationSelector(props) {
   const statusClassNames = {
     Pending: 'status--pending',
     Interview: 'status--interview',
-    Waiver: 'status--denied',
+    Incomplete: 'status--denied',
     Complete: 'status--complete',
     Accepted: 'status--accepted',
   };
@@ -36,8 +36,8 @@ function ApplicationSelector(props) {
 
                   <div className='title'>{props.applications[application].title}</div>
 
-                  {props.applications[application].status === "Waiver" ? (
-                    <div className='name'>No Wavier Signed</div>
+                  {props.applications[application].status === "Incomplete" ? (
+                    <div className='name'>Application Incomplete</div>
                   ) : (
                     <>
                       <div className='name'>Submission Date: {props.applications[application].submissionDate}</div>

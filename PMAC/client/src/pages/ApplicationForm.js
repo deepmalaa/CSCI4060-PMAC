@@ -663,16 +663,24 @@ const handleChange5 = () => {
         <span className={s.note}>Faculty Members Submitting Evaluations on your Behalf: </span>
         <div className={s.clear}> </div>
 
-          <div className={s.fac}>
-            <label htmlFor="facultyEval">Faculty Email<br></br></label> 
-            <textarea
-              type="text"
-              id="facultyEval"
-              name="facultyEval"
-              value={formData.facultyEval}
-              onChange={e=> onChange(e)}
+        <div className={s.fac}>
+          <label htmlFor="facultyEval1">Faculty Email 1<br></br></label> 
+              <input
+                type="text"
+                id="facultyEval1"
+                name="facultyEval1"
+                value={formData.facultyEval.split(',')[0]}
+                onChange={e => setFormData({...formData, facultyEval: e.target.value + ',' + formData.facultyEval.split(',')[1]})}
               /> 
-          </div>
+            <label htmlFor="facultyEval2">Faculty Email 2<br></br></label> 
+              <input
+                type="text"
+                id="facultyEval2"
+                name="facultyEval2"
+                value={formData.facultyEval.split(',')[1]}
+                onChange={e => setFormData({...formData, facultyEval: formData.facultyEval.split(',')[0] + ',' + e.target.value})}
+              />
+        </div>
         </div>
           </div>
           </div> 

@@ -174,6 +174,12 @@ const Sidebar = ({isAuthenticated}) => {
             roles: ['admin']
           },
           {
+            path: "/EvaluationForm",
+            name: "Evaluate Applicants",
+            icon: <FaClipboardList />,
+            roles: ['admin']
+          },
+          {
             path: "/EvaluationSelectUser",
             name: "Interview Evaluation",
             icon: <FaClipboardList />,
@@ -192,12 +198,7 @@ const Sidebar = ({isAuthenticated}) => {
             icon: <FaClipboardList />,
             roles: ['committee']
           },
-          {
-            path: "/EvaluationForm",
-            name: "Evaluate Applicants",
-            icon: <FaClipboardList />,
-            roles: ['committee']
-          },
+          
           {
             path: "/CommitteeCalendar",
             name: "Scheduling Calendar",

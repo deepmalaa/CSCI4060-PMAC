@@ -183,7 +183,9 @@ const StudentLanding = ({
                 {/* goldBar */}
                 
             </div>
-            
+            <div className={s.foot}>
+                    <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+                </div>
             <div className={s.redBar}></div>
 
         </div>

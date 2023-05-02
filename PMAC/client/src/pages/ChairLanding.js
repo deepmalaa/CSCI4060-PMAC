@@ -121,7 +121,10 @@ const ChairLanding = ({
                     <li><a href="/EvaluationSelectUser">Evaluate Student Interview</a></li>
                 </ul>
               </div>
-
+              <br/>
+              <br/>
+              
+              
             </div>
             {/* break */}
 
@@ -129,8 +132,10 @@ const ChairLanding = ({
 
                 
             
-
-
+            <div className={s.contentBox}></div>
+            <div className={s.foot}>
+                <a href="https://www.ulm.edu/">@ The University of Louisiana Monroe</a>
+            </div>
       </div>
     </>
   );

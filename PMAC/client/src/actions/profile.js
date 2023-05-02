@@ -287,3 +287,32 @@ export const updateStatus = (stat) => async (dispatch) => {
     });
   }
 };
+
+//'/schoolStatus/:id',
+
+// Set sttus
+export const updateSchoolStatus = (id, formData) => async (dispatch) => {
+  console.log("ACITON");
+  try {
+    const res = await axios.put(`/api/profile/schoolStatus/${id}`, formData);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    
+    return res.data;
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

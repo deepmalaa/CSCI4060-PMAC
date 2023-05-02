@@ -249,6 +249,23 @@ const ProfileSchema = new mongoose.Schema({
           contentType: String
         }
     }],
+    
+        MAStatus: {
+          type: String,
+        },
+        OMAStatus: {
+          type: String,
+        },
+        PAAStatus: {
+          type: String,
+        },
+        DAStatus: {
+          type: String,
+        },
+        OtherSchoolStatus: {
+          type: String
+        },
+    
 });
 
 

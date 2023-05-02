@@ -490,3 +490,61 @@ router.put(
     }
   }
 );
+
+// Changes school status
+router.put(
+  '/schoolStatus/:id',
+  auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+   
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const profile = await Profile.findOne({ user: req.params.id  });
+      
+      const {
+        MA,
+        OMA,
+        PAA,
+        DA,
+        OtherSchool
+      } = req.body;
+      console.log(" Test " +MA)
+      
+      profile.MAStatus = MA;
+      profile.OMAStatus = OMA;
+      profile.PAAStatus = PAA;
+      profile.DAStatus = DA;
+      profile.OtherSchoolStatus = OtherSchool;
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+/*
+schoolStatus:[{
+  MA: {
+    type: String,
+  },
+  OMA: {
+    type: String,
+  },
+  PAA: {
+    type: String,
+  },
+  DA: {
+    type: String,
+  },
+  OtherSchool: {
+    type: String
+  },
+}],
+*/

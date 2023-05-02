@@ -7,7 +7,7 @@ function ApplicationSelector(props) {
   const statusClassNames = {
     Pending: 'status--pending',
     Interview: 'status--interview',
-    Denied: 'status--denied',
+    Waiver: 'status--denied',
     Complete: 'status--complete',
     Accepted: 'status--accepted',
   };
@@ -16,34 +16,34 @@ function ApplicationSelector(props) {
   const submittedApplicationList = Object.keys(props.applications)
     .filter(application => props.applications[application].verified);
   
-    // Only displays true to verified 
+  // Only displays true to verified 
   const handleSelect = (application) => {
     props.onChange(application);
   };
 
   const hasReleaseSignature = Object.values(props.applications).some(application => application.release);
-  //const message = hasReleaseSignature ? 'No applications found' : 'No Release Signature';
-  //<p className='no-applications'> Note: Lack of signed contract WILL NOT allow progression</p>
   
   return (
     <body className='background'>
-      
-      
       <div className='container'>
         {submittedApplicationList.length === 0 ? (
           <p className='no-applications' style={{marginTop:'100px', color:'red'}}> No Application Submissions Found</p>
         ) : ( 
-        <>
-        <div className='application-container'>
+          <>
+            <div className='application-container'>
               {submittedApplicationList.map(application => (
                 <div key={application} className='application-box' onClick={() => handleSelect(application)}>
 
                   <div className='title'>{props.applications[application].title}</div>
 
-                  <div className='name'>Submission Date: {props.applications[application].submissionDate}</div>
-                  
-                  <div className='name'>Name: {props.applications[application].name}</div>
-
+                  {props.applications[application].status === "Waiver" ? (
+                    <div className='name'>No Wavier Signed</div>
+                  ) : (
+                    <>
+                      <div className='name'>Submission Date: {props.applications[application].submissionDate}</div>
+                      <div className='name'>Name: {props.applications[application].name}</div>
+                    </>
+                  )}
 
                   <div className={`status ${statusClassNames[props.applications[application].status]}`}>
                     {props.applications[application].status}
@@ -51,7 +51,8 @@ function ApplicationSelector(props) {
 
                 </div>
               ))}
-            </div></>
+            </div>
+          </>
         )}
       </div>
     </body>
@@ -59,5 +60,3 @@ function ApplicationSelector(props) {
 }
 
 export default ApplicationSelector;
-
-//<div className='date'>Date: {props.applications[application].submissionDate}</div>

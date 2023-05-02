@@ -176,7 +176,7 @@ const Sidebar = ({isAuthenticated}) => {
           {
             path: "/EvaluationSelectUser",
             name: "Interview Evaluation",
-            icon: <FaCalendarAlt />,
+            icon: <FaClipboardList />,
             roles: ['admin']
           },
           
@@ -207,7 +207,7 @@ const Sidebar = ({isAuthenticated}) => {
           {
             path: "/EvaluationSelectUser",
             name: "Interview Evaluation",
-            icon: <FaCalendarAlt />,
+            icon: <FaClipboardList />,
             roles: ['committee']
           },
           {

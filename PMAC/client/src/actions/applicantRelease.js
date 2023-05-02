@@ -58,3 +58,24 @@ export const getWaiver = () => async (dispatch) => {
     });
   }
 };
+
+// Get waiver by ID
+export const getUserWaiver = (userId) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/apprelease/user/${userId}`);
+
+    dispatch({
+      type: GET_WAIVERS,
+      
+      payload: res.data
+    });
+    //console.log('Waiver data:', res.data);
+    return res.data;
+    
+  } catch (err) {
+    dispatch({
+      type: WAIVER_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

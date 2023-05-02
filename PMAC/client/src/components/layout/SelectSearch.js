@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllProfile, getSearchProfile } from '../../actions/profile';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import css from '../../styles/SearchApplication.module.css';
 
 const SelectSearch = ({
   profile: { profiles, loading },
@@ -29,23 +30,34 @@ const SelectSearch = ({
   };
 
   return (
-    <div>
-    <h1 className='text-center mt-4'></h1>
-    <form>
-      {/* onChange for search */}
-      <input
-        type='text'
-        onChange={(e) => setSearchFname(e.target.value)}
-        placeholder='Filter by Firstname' />
-
-      {/* onChange for search */}
-      <input
-        type='text'
-        onChange={(e) => setSearchLname(e.target.value)}
-        placeholder='Filter by Lastname' />        
-    </form>
     
-    <div style={{ height: '400px', overflow: 'scroll' }}>
+    <div className={css.container}>
+      <h1 className='text-center mt-4'></h1>
+        
+        <h1 className={css.subTitle} style={{width:'45%', height:'25%'}}>
+          Search for a Student's Completed Application
+          <br></br>
+          <br />
+          <p style={{fontSize:'15pt'}}>To go to a Student's Application, click on their First Name</p>
+        </h1>
+        
+        
+        <div className={css.entire}>  
+
+        <form>
+          {/* onChange for search */}
+          <input
+            type='text'
+            onChange={(e) => setSearchFname(e.target.value)}
+            placeholder='Filter by Firstname' />
+
+          {/* onChange for search */}
+          <input
+            type='text'
+            onChange={(e) => setSearchLname(e.target.value)}
+            placeholder='Filter by Lastname' />        
+        </form>
+    <segment>
 
         <table className='table'>
           <thead>
@@ -86,6 +98,7 @@ const SelectSearch = ({
               ))}
           </tbody>
         </table>
+      </segment>
       </div>
     </div>
 );};

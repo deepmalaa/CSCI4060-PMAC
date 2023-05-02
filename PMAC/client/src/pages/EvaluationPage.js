@@ -1,18 +1,16 @@
 import React from 'react';
 import '../styles/StatusPage.css';
 import { Link } from 'react-router-dom';
+import s from '../styles/StudentProfile.module.css';
 
 function EvaluationPage(props) {
   const { myProp, profile, evaluator, applicationType } = props;
 
   return (
-    <form>
-      <div style={{ textAlign: 'left', maxWidth: '100%' }} dangerouslySetInnerHTML={{ __html: myProp }} />
+    <form className={s.form} style={{height:'100%', minHeight:'400px'}}>
       
-      <p>Evaluator: {props.evaluator}</p>
-      <p>Application Type: {applicationType}</p>
+      <div style={{ textAlign: 'left', maxWidth: '100%', margin:'10px'}} dangerouslySetInnerHTML={{ __html: myProp }} />
     </form>
-    
   );
 }
 

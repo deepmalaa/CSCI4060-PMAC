@@ -64,6 +64,30 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   let status4 = 'Pending';
   let status5 = 'Pending';
 
+  let evaluation;
+  if (profile && profile.interview_evaluation) {
+    evaluation = profile.interview_evaluation.map((exp, index) => {
+      if (exp.application === 'Medical Application' && (exp.interviewEvaluation !== null && exp.interviewEvaluation !== '')) {
+        status1 = 'Complete';
+      }
+      else if (exp.application === 'Osteopathic Medical Application' && (exp.interviewEvaluation !== null && exp.interviewEvaluation !== '')) {
+        status2 = 'Complete';
+      }
+      else if (exp.application === 'Physician Assistant Application' && (exp.interviewEvaluation !== null && exp.interviewEvaluation !== '')) {
+        status3 = 'Complete';
+      }
+      else if (exp.application === 'Dental Application' && (exp.interviewEvaluation !== null && exp.interviewEvaluation !== '')) {
+        status4 = 'Complete';
+      }
+      else if (exp.application === 'Other (ex: Podiatry) Application' && (exp.interviewEvaluation !== null && exp.interviewEvaluation !== '')) {
+        status5 = 'Complete';
+      }
+      else{
+        // handle case where application value does not match any options
+      }
+    });
+  }
+
   // Default release
   let releaseForm = false;
   // Default message
@@ -215,10 +239,14 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
             <div style={{marginTop:'50px'}}>
               <button className="btn btn-primary" onClick={() => setSelectedApplication('')}>Done</button>
             </div>
+            
           )}
           </>
         </div> 
+
+        
       </> 
+      
     );
   }
 

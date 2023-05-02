@@ -71,7 +71,7 @@ function Details({ application }) {
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
-          <p className='content'>Feedback: {feedback}</p>
+
         </>
       );
       break;
@@ -85,7 +85,7 @@ function Details({ application }) {
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
-          <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
+
         </>
       );
       break;
@@ -98,9 +98,7 @@ function Details({ application }) {
             <p className='content'>Name: {application.name}</p>
             <p className='content'>Status: {status}</p>
             <p className='content'>Submission Date: {submissionDate}</p>
-            <p className='content'>Interview Scheduled: {interviewStatus ? 'Yes' : 'No'}</p>
-            <p className='content'>Interview Date: {interviewDate}</p>
-            <p className='content'>Interview Time: {interviewTime}</p>
+
           </>
         );
         break;
@@ -113,9 +111,7 @@ function Details({ application }) {
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
-          <p className='content'>Overall Score: {score}</p>
-          <p className='content'>Interview Date: {interviewDate}</p>
-          <p className='content'>Interview Time: {interviewTime}</p>
+
         </>
       );
       break;

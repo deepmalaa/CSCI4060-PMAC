@@ -70,4 +70,17 @@ router.get('/', auth, async (req, res) => {
     }
   });
 
+  // get user by certain id
+  router.get('/user/:id', auth, async (req, res) => {
+
+    try {
+      const waivers = await ApplicationRelease.findOne({user: req.params.id }).populate('user', ['authorize', 'evaluate', 'name_release']);
+      
+      res.json(waivers);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+
 module.exports = router;

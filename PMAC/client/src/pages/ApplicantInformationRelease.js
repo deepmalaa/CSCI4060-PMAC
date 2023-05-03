@@ -36,10 +36,10 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
         if (!loading && profile) {
             setFormData({authorize:"",
             evaluate:"",
-            name_release:"",
+            name_release: profile.fname +" "+  profile.mname +" "+ profile.lname,
             name: profile.fname +" "+  profile.mname +" "+ profile.lname,
             cwid: profile.cwid,
-            signature:"",
+            signature: profile.fname +" "+  profile.mname +" "+ profile.lname,
             date: ""})
         }
       }, [getCurrentProfile, loading]); 

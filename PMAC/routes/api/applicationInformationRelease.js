@@ -11,8 +11,8 @@ const User = require('../../models/User');
 // @desc    Application release
 // @access  Private
 router.post('/',[auth,[
-    check('name', 'Name is required').not().isEmpty(),
-    check('signature', 'Signature is required').not().isEmpty(),
+    check('signature', 'Name is required').not().isEmpty(),
+    check('authorize', 'Authorize is required').not().isEmpty(),
 ]],async (req,res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){

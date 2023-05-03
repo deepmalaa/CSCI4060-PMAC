@@ -140,7 +140,7 @@ const ApplicantInformation =({applicantRelease, getCurrentProfile,
                             </label>
                         <div className={s.left}>
                             <label>
-                                Name: <input 
+                                Signature: <input 
                                 type="text" 
                                 name="signature" 
                                 value={formData.signature} 

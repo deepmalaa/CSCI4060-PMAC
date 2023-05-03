@@ -18,7 +18,7 @@ import { getWaiver } from '../actions/applicantRelease';
 
 // Pulling User profile information
 const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile: { profile }}) =>{
-  useEffect(() => {getCurrentProfile();}, [getCurrentProfile]);
+  useEffect(() => {getCurrentProfile(profile);}, [getCurrentProfile]);
 
   const [waivers, setWaivers] = useState([]);
   const [facultyForms, setFacultyForms] = useState([]);
@@ -58,11 +58,21 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
   let Verified5 = false;
 
   // Default status
-  let status1 = 'Pending';
-  let status2 = 'Pending';
-  let status3 = 'Pending';
-  let status4 = 'Pending';
-  let status5 = 'Pending';
+  let status1 = 'Incomplete';
+  let status2 = 'Incomplete';
+  let status3 = 'Incomplete';
+  let status4 = 'Incomplete';
+  let status5 = 'Incomplete';
+
+  
+    if(profile && profile.status === true) {
+      status1 = 'Pending';
+      status2 = 'Pending';
+      status3 = 'Pending';
+      status4 = 'Pending';
+      status5 = 'Pending';
+    }
+
 
   let evaluation;
   if (profile && profile.interview_evaluation) {
@@ -115,7 +125,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     if(profile.medicalField5 === true) {
       Verified5 = true;  
     }
-  //}
+  
 
     // Medical Application info
     const submittedApplications = {
@@ -126,8 +136,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         status: status1,
         interviewStatus: false,
         submissionDate: DateOfSubmission,
-        //release: releaseForm,
-        //Statusmessage: message,
       },
       
       // Osteopathic Medical Application info
@@ -138,8 +146,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         status: status2,
         interviewStatus: false,
         submissionDate: DateOfSubmission,
-        //release: releaseForm,
-        //Statusmessage: message,
       },
       // Physician Assistant Application info
       application3: {
@@ -149,8 +155,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         status: status3,
         interviewStatus: false,
         submissionDate: DateOfSubmission,
-        //release: releaseForm,
-        //Statusmessage: message,
       },
       
       //Dental Application info
@@ -161,8 +165,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         status: status4,
         interviewStatus: false,
         submissionDate: DateOfSubmission,
-        //release: releaseForm,
-        //Statusmessage: message,
       },
 
       // Other(ex: Podiatry) Application info
@@ -173,8 +175,6 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
         status: status5,
         interviewStatus: false,
         submissionDate: DateOfSubmission,
-        //release: releaseForm,
-        //Statusmessage: message,
       },
     };
   
@@ -196,8 +196,7 @@ const StatusPage =({getCurrentProfile, applicantRelease, auth: { user }, profile
     const interviewStatus = submittedApplications[selectedApplication]?.interviewStatus;
     const submissionDate = submittedApplications[selectedApplication]?.submissionDate;
     const name = submittedApplications[selectedApplication]?.name;
-    //const release = submittedApplications[selectedApplication]?.releaseForm;
-    //const Statusmessage = submittedApplications[selectedApplication]?.Statusmessage;
+
   
     
     return (

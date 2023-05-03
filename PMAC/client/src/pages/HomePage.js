@@ -39,6 +39,8 @@ function FormOne({isAuthenticated}) {
                         <ul>
                             <li><a href= {link} >{name}</a></li>
                             <li><a href="/createAccount">Create Account</a></li>
+                            <li><a href="#interview">Interview Process</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
                         </ul>
                     </div>
                 
@@ -94,7 +96,7 @@ function FormOne({isAuthenticated}) {
             </div>
             {/* break */}
 
-            <div className={s.contentBoxG}>
+            <div id="interview" className={s.contentBoxG}>
                 <div className={s.textTitle}>
                     The Interview Process
                 </div>
@@ -161,7 +163,7 @@ function FormOne({isAuthenticated}) {
             {/* break */}
 
             <div className={s.goldBars}> </div>
-            <div className={s.bottomBanner}>
+            <div id="contact" className={s.bottomBanner}>
                 <div className={s.img}>
                     <img src={bottomBanner} alt="Backdrop of ULM Campus"/>  
                 </div>

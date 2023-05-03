@@ -31,6 +31,8 @@ const CommitteeMemberLanding = ({
                       <div className={s.whiteBar}>
                           <ul>
                               <li><a href="/dashboardCommittee">Home</a></li>
+                              <li><a href="#what">To-Do List</a></li>
+                              <li><a href="#contact">Contact Us</a></li>
                           </ul>
 
                       </div>
@@ -72,7 +74,7 @@ const CommitteeMemberLanding = ({
                     
                 </div>
                 
-                <div className={s.textBox}>
+                <div id="what" className={s.textBox}>
                   
                 Faculty members from across ULM's campus comprise the 
                 Pre-Medical Advisory Committee. The faculty members work 
@@ -90,7 +92,7 @@ const CommitteeMemberLanding = ({
             {/* break */}
 
 
-            <div className={s.contentBox}>
+            <div  className={s.contentBox}>
 
               <div className={s.grayLeft}>
                 <div className={s.textTitle1}>What can I do?</div>
@@ -125,7 +127,7 @@ const CommitteeMemberLanding = ({
             </div>
             <div className={s.contentBox}></div>
             <div className={s.goldBars}></div>
-            <div className={s.bottomBanner}>
+            <div id="contact" className={s.bottomBanner}>
             
                 <div className={s.img}>
                     <img src={bottomBanner} alt="Backdrop of ULM Campus"/>  

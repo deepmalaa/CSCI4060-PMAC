@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../actions/profile';
 import Sidebar from '../components/layout/Sidebar';
 import SelectSearch from '../components/layout/SelectSearch';
-import s from '../styles/ApplicantInformation.module.css';
 import css from '../styles/SearchApplication.module.css';
+import s from '../styles/StudentProfile.module.css';
 
 const InterviewEvaluation = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile }
 }) => {
+  
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
+  const [isShown, setIsShown] = useState(false);
   const [applicants, setApplicants] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [selectedApplicant, setSelectedApplicant] = useState(null);
@@ -25,6 +30,7 @@ const InterviewEvaluation = ({
     }
     fetchData();
   }, []);
+  
 
   const handleSearchNameChange = (event) => {
     setSearchName(event.target.value);
@@ -44,22 +50,30 @@ const InterviewEvaluation = ({
     <>
       <Sidebar role={user && user.type} />
                      
-      
+      <div className={s.subTitle1}>Search For a Student's Completed Application <div className={s.subTitle2}>To go to a Student's Application, click on their First Name</div></div>
+      <button
+            className={s.buttonCust1}
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}>
+          </button>
+          {isShown && (
+            <div className={s.hoverContent1}>
+              <div className={s.hoverHead}> 
+                Help
+              </div>
+              <div className={s.hoverText}>
+                - To go to a Student's Application, click on their First Name. Underlined in blue.
+              </div>
+
+              <div className={s.hoverText}>
+                - If two students have the same name, you can identify them by their email or CWID.
+              </div>
+
+            </div>
+          )}
 
         <div onSubmit={handleFormSubmit}>
-          <SelectSearch
-            applicants={applicants
-              .filter((item) => {
-                return searchName.toLowerCase() === ''
-                  ? item
-                  : `${item.fname} ${item.lname}`.toLowerCase().includes(searchName.toLowerCase());
-              })
-              .filter((item) => {
-                return item.faculty_evaluation;
-              })}
-            onSelect={handleSelectApplicant}
-            onSearchChange={handleSearchNameChange}
-          />
+          <SelectSearch/>
           
         </div>        
       

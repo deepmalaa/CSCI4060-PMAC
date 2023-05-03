@@ -43,7 +43,7 @@ const ScheduleAlg = ({
     }, []);
 
 
-    
+    console.log(schemas)
     
     
 
@@ -102,7 +102,9 @@ const ScheduleAlg = ({
             const eventEndTime = new Date(admin[j].end);
             const timeSlotDuration = 90; // minutes
             var timeSlotStart = eventStartTime;
-            
+            // GET DAY ----------------------------------------------------------------------------------------------------
+            console.log("admin")
+            console.log(admin[j])
             
             // Loops through all potential time slots of event
             
@@ -132,8 +134,8 @@ const ScheduleAlg = ({
 
                     
                     // Checks if time slot fits committees availability
-                    if(comitStart <= timeSlotStart && comitEnd >= timeSlotEnd) {
-                        
+                    if(comitStart <= timeSlotStart && comitEnd >= timeSlotEnd && committee[i].daysOfWeek[0] === admin[j].daysOfWeek[0]) {
+                       
                         availableCommittee.push(committee[i]);
                     }
                 }
@@ -157,24 +159,30 @@ const ScheduleAlg = ({
                         
 
                         // Checks if time slot fits student availability
-                        if(studStart <= timeSlotStart && studEnd >= timeSlotEnd) {
+                        if(studStart <= timeSlotStart && studEnd >= timeSlotEnd && student[x].daysOfWeek[0] ===  admin[j].daysOfWeek[0]) {
                             availableStudents.push(student[x]); 
                         }
                         
                     }
 
                     if(availableStudents.length > 0) {
-
-                        const dateT =  {"title": "", "start": "", "end": "", "daysOfWeek": "", "startTime": "", "endTime":"", "extendedProps": {
+                      console.log("Avail")
+                        console.log(availableCommittee)
+                        console.log(availableStudents)
+                    
+                        var dateT =  {"title": "", "start": "", "end": "", "daysOfWeek": "", "startTime": "", "endTime":"", "extendedProps": {
                           "names": ""}};
+                          dateT.extendedProps.names = "";
+                          //console.log(dateT.extendedProps)
                         // Need to match ids with names and send them via title
                         dateT.title = "Meeting";
                         
                         dateT.extendedProps.names = "Committee: ";
-                        
+                        var comNames = "Committee: ";
+
                         for (var i = 0; i < availableCommittee.length; i++)
                         {
-                          
+                          //console.log(availableCommittee)
                           var comName = userInfo.find(user => user._id === availableCommittee[i].user);
                           
                           dateT.extendedProps.names += comName.name;
@@ -212,7 +220,7 @@ const ScheduleAlg = ({
 
                         
 
-                        dateT.daysOfWeek = [ timeSlotStart.getDay() ];
+                        dateT.daysOfWeek = [admin[j].daysOfWeek[0] ];
 
                        
 

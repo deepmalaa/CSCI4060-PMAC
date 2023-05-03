@@ -32,11 +32,11 @@ function Details({ application }) {
     case 'Pending':
       content = (
         <>
-          <ProgressSteps status="Pending" />
           <p className='content'>Application: {application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>
           <p className='content'>Submission Date: {submissionDate}</p>
+          <p className='content'>Note: Please refer to the Status Bar on the home page to ensure all tasks are completed.</p>
         </>
       );
       break;
@@ -44,7 +44,6 @@ function Details({ application }) {
     case 'Incomplete':
       content = (
         <>
-          <ProgressSteps status="Waiver" />
           <p className='content'> Application: {application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: Incomplete (Note: Application cannot be reviewed until completed) </p>
@@ -56,7 +55,6 @@ function Details({ application }) {
     case 'Complete':
       content = (
         <>
-          <ProgressSteps status="Complete" />
           <p className='content'>{application.title}</p>
           <p className='content'>Name: {application.name}</p>
           <p className='content'>Status: {status}</p>

@@ -409,7 +409,6 @@ const handleChange5 = () => {
                 size = "25"
                 value={formData.mcat}
                 onChange={e=> onChange(e)}
-                pattern="[0-9]*"
                 title="Please enter only numeric characters for MCAT"
                 />
           </div>
@@ -424,7 +423,6 @@ const handleChange5 = () => {
                 size = "25"
                 value={formData.dat}
                 onChange={e=> onChange(e)}
-                pattern="[0-9]*"
                 title="Please enter only numeric characters for DAT"
                 />
           </div>
@@ -439,7 +437,6 @@ const handleChange5 = () => {
                 size = "25"
                 value={formData.oat}
                 onChange={e=> onChange(e)}
-                pattern="[0-9]*"
                 title="Please enter only numeric characters for OAT"
                 />
           </div>
@@ -451,7 +448,6 @@ const handleChange5 = () => {
                 type="text"
                 id="GRE"
                 name="gre"
-                pattern="[0-9]*"
                 size = "25"
                 value={formData.gre}
                 onChange={e=> onChange(e)}
